@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌿 Deploy Tool - Synchro Management</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236b9e78'/%3E%3Cstop offset='100%25' stop-color='%233d7a4a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Cpath d='M32 14 L42 30 H36 V44 H28 V30 H22 Z' fill='white' opacity='0.95'/%3E%3Cpath d='M22 48 H42' stroke='white' stroke-width='3' stroke-linecap='round' opacity='0.8'/%3E%3C/svg%3E">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Zen Maru Gothic', sans-serif; min-height: 100vh; background: linear-gradient(170deg, #f7f3ee 0%, #e8e0d4 30%, #d4cfc8 60%, #c9d6c5 100%); color: #3d3529; padding: 2rem; position: relative; overflow-x: hidden; }
+body::before { content: ''; position: fixed; top: -10%; right: -15%; width: 500px; height: 500px; background: radial-gradient(ellipse, rgba(164,190,148,0.3) 0%, rgba(164,190,148,0.05) 60%, transparent 70%); border-radius: 60% 40% 50% 50%; z-index: 0; animation: float1 20s ease-in-out infinite; }
+body::after { content: ''; position: fixed; bottom: -10%; left: -10%; width: 400px; height: 400px; background: radial-gradient(ellipse, rgba(200,180,150,0.25) 0%, rgba(200,180,150,0.05) 60%, transparent 70%); border-radius: 40% 60% 50% 50%; z-index: 0; animation: float2 25s ease-in-out infinite; }
+@keyframes float1 { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-30px,20px) rotate(5deg); } }
+@keyframes float2 { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(20px,-30px) rotate(-5deg); } }
+.container { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+.header { text-align: center; margin-bottom: 2rem; }
+.header h1 { font-size: 1.8rem; font-weight: 700; color: #4a6741; letter-spacing: 0.05em; }
+.header .subtitle { color: #7a7060; font-size: 0.9rem; margin-top: 0.3rem; font-weight: 400; }
+.card { background: rgba(255,255,255,0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.card h2 { font-size: 1rem; color: #5a7a50; margin-bottom: 1rem; font-weight: 500; }
+.form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: center; }
+.form-row label { min-width: 110px; font-size: 0.85rem; color: #7a7060; font-weight: 500; }
+.form-row input, .form-row select { flex: 1; background: rgba(255,255,255,0.7); border: 1px solid rgba(164,190,148,0.4); border-radius: 8px; padding: 0.5rem 0.75rem; color: #3d3529; font-size: 0.85rem; font-family: inherit; transition: border-color 0.3s; }
+.form-row input:focus, .form-row select:focus { outline: none; border-color: #5a7a50; box-shadow: 0 0 0 3px rgba(90,122,80,0.1); }
+.btn { background: linear-gradient(135deg, #6b9a5e, #5a7a50); color: #fff; border: none; padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.3s; box-shadow: 0 2px 8px rgba(90,122,80,0.2); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(90,122,80,0.3); }
+.btn-small { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
+.btn-outline { background: transparent; color: #5a7a50; border: 1px solid rgba(90,122,80,0.4); box-shadow: none; }
+.btn-outline:hover { background: rgba(90,122,80,0.08); transform: none; }
+.saved-indicator { color: #5a7a50; font-size: 0.8rem; margin-left: 0.5rem; font-weight: 500; }
+.repo-list { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
+.repo-item { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.5); border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+.repo-item .repo-name { flex: 1; color: #3d3529; }
+.repo-item .repo-label { color: #7a7060; font-size: 0.75rem; }
+.repo-item .btn-remove { background: none; border: none; color: #c47058; cursor: pointer; font-size: 1rem; padding: 0 0.3rem; }
+.add-repo-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+.add-repo-row input { flex: 1; font-size: 0.8rem; }
+.resize-options { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.resize-options label { min-width: auto; display: flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; }
+.resize-options input[type="checkbox"] { width: auto; flex: none; accent-color: #5a7a50; }
+.resize-options input[type="number"] { width: 70px; flex: none; text-align: center; }
+.drop-zone { border: 2px dashed rgba(164,190,148,0.5); border-radius: 16px; padding: 3rem 2rem; text-align: center; transition: all 0.4s; cursor: pointer; margin-bottom: 1.5rem; background: rgba(255,255,255,0.3); }
+.drop-zone:hover { border-color: #5a7a50; background: rgba(255,255,255,0.5); }
+.drop-zone.dragover { border-color: #5a7a50; background: rgba(164,190,148,0.15); transform: scale(1.01); }
+.drop-zone.processing { border-color: #c4a958; background: rgba(196,169,88,0.08); }
+.drop-zone.done { border-color: #5a7a50; background: rgba(90,122,80,0.08); }
+.drop-zone .drop-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+.drop-zone strong { color: #3d3529; font-size: 1rem; }
+.drop-zone p { color: #7a7060; margin-top: 0.3rem; font-size: 0.8rem; }
+.progress-bar { background: rgba(164,190,148,0.2); border-radius: 6px; height: 8px; margin: 1rem 0; overflow: hidden; display: none; }
+.progress-bar .fill { height: 100%; background: linear-gradient(90deg, #a4be94, #5a7a50); transition: width 0.3s; border-radius: 6px; }
+.log { background: rgba(45,40,35,0.85); border-radius: 10px; padding: 1rem; max-height: 280px; overflow-y: auto; font-family: 'SF Mono', Monaco, monospace; font-size: 0.75rem; line-height: 1.7; }
+.log-entry { padding: 1px 0; }
+.log-entry.info { color: #a09888; }
+.log-entry.success { color: #8cb87a; }
+.log-entry.error { color: #d47a6a; }
+.log-entry.progress { color: #d4b86a; }
+.footer { text-align: center; margin-top: 2rem; color: #a09888; font-size: 0.75rem; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>🌿 Deploy Tool</h1>
+<p class="subtitle">zip をドロップ → 画像最適化 → GitHub に自動デプロイ</p>
+</div>
+<div class="card">
+<h2>🔑 GitHub Token</h2>
+<div class="form-row">
+<label>Token</label>
+<input type="password" id="token" placeholder="github_pat_xxxx...">
+<button class="btn btn-small" onclick="saveToken()">保存</button>
+<span id="saved-msg" class="saved-indicator" style="display:none">✓</span>
+</div>
+</div>
+<div class="card">
+<h2>📂 アップ先</h2>
+<div class="form-row">
+<label>リポジトリ</label>
+<select id="repo-select" onchange="onRepoChange()"></select>
+</div>
+<div class="form-row">
+<label>ブランチ</label>
+<input type="text" id="branch" value="main">
+</div>
+<details style="margin-top:0.75rem">
+<summary style="cursor:pointer;color:#5a7a50;font-size:0.85rem;font-weight:500">リポジトリを管理</summary>
+<div class="repo-list" id="repo-list"></div>
+<div class="add-repo-row">
+<input type="text" id="new-repo-owner" placeholder="オーナー (例: synchro-mgmt)" style="flex:0.8">
+<input type="text" id="new-repo-name" placeholder="リポジトリ名" style="flex:1">
+<input type="text" id="new-repo-label" placeholder="表示名" style="flex:0.8">
+<button class="btn btn-small btn-outline" onclick="addRepo()">追加</button>
+</div>
+</details>
+</div>
+<div class="card">
+<h2>🖼️ 画像最適化</h2>
+<div class="resize-options">
+<label><input type="checkbox" id="resize-enabled" checked> リサイズ</label>
+<label>最大幅 <input type="number" id="max-width" value="1600" min="400" max="4000" step="100">px</label>
+<label>品質 <input type="number" id="quality" value="80" min="10" max="100" step="5">%</label>
+</div>
+</div>
+<div class="drop-zone" id="drop-zone">
+<div class="drop-icon">🌏</div>
+<strong>ここに zip をドロップ</strong>
+<p>クリックでファイル選択もOK</p>
+</div>
+<input type="file" id="file-input" accept=".zip" style="display:none">
+<div class="progress-bar" id="progress-bar"><div class="fill" id="progress-fill"></div></div>
+<div class="log" id="log"></div>
+<div class="footer">Synchro Management Deploy Tool v2.1</div>
+</div>
+<script>
+const DEFAULT_REPOS=[{owner:'synchro-mgmt',name:'ldm-earth-journey',label:'LDM アースジャーニー LP'},{owner:'synchro-mgmt',name:'internal-field',label:'社内サイト (internal-field)'},{owner:'synchro-mgmt',name:'open-field',label:'公開サイト (open-field)'}];function getRepos(){const s=localStorage.getItem('deploy-repos');return s?JSON.parse(s):DEFAULT_REPOS}function saveRepos(r){localStorage.setItem('deploy-repos',JSON.stringify(r))}function renderRepos(){const repos=getRepos(),select=document.getElementById('repo-select'),list=document.getElementById('repo-list'),last=localStorage.getItem('deploy-last-repo')||`${repos[0].owner}/${repos[0].name}`;select.innerHTML=repos.map(r=>`<option value="${r.owner}/${r.name}" ${last===`${r.owner}/${r.name}`?'selected':''}>${r.label||r.name}</option>`).join('');list.innerHTML=repos.map((r,i)=>`<div class="repo-item"><span class="repo-name">${r.owner}/${r.name}</span><span class="repo-label">${r.label||''}</span><button class="btn-remove" onclick="removeRepo(${i})" title="削除">×</button></div>`).join('')}function addRepo(){const o=document.getElementById('new-repo-owner').value.trim(),n=document.getElementById('new-repo-name').value.trim(),l=document.getElementById('new-repo-label').value.trim();if(!o||!n)return;const repos=getRepos();repos.push({owner:o,name:n,label:l||n});saveRepos(repos);renderRepos();document.getElementById('new-repo-owner').value='';document.getElementById('new-repo-name').value='';document.getElementById('new-repo-label').value=''}function removeRepo(i){const repos=getRepos();repos.splice(i,1);saveRepos(repos);renderRepos()}function onRepoChange(){localStorage.setItem('deploy-last-repo',document.getElementById('repo-select').value)}function saveToken(){localStorage.setItem('deploy-token',document.getElementById('token').value);const m=document.getElementById('saved-msg');m.style.display='inline';setTimeout(()=>m.style.display='none',2000)}function loadToken(){const t=localStorage.getItem('deploy-token');if(t)document.getElementById('token').value=t;const b=localStorage.getItem('deploy-branch');if(b)document.getElementById('branch').value=b}loadToken();renderRepos();function log(msg,type='info'){const el=document.getElementById('log'),entry=document.createElement('div');entry.className=`log-entry ${type}`;entry.textContent=`[${new Date().toLocaleTimeString()}] ${msg}`;el.appendChild(entry);el.scrollTop=el.scrollHeight}function setProgress(p){const bar=document.getElementById('progress-bar');bar.style.display='block';document.getElementById('progress-fill').style.width=p+'%'}const dropZone=document.getElementById('drop-zone'),fileInput=document.getElementById('file-input');dropZone.addEventListener('click',()=>fileInput.click());fileInput.addEventListener('change',e=>{if(e.target.files[0])processZip(e.target.files[0])});dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('dragover')});dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('dragover'));dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f&&f.name.endsWith('.zip'))processZip(f);else log('zip ファイルをドロップしてください','error')});async function resizeImage(blob,fn){if(!document.getElementById('resize-enabled').checked)return blob;const mw=parseInt(document.getElementById('max-width').value),q=parseInt(document.getElementById('quality').value)/100,ext=fn.split('.').pop().toLowerCase();if(!['jpg','jpeg','png','webp'].includes(ext))return blob;return new Promise(resolve=>{const img=new Image;img.onload=()=>{if(img.width<=mw){resolve(blob);return}const r=mw/img.width,c=document.createElement('canvas');c.width=mw;c.height=Math.round(img.height*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(b=>resolve(b),ext==='png'?'image/png':'image/jpeg',q)};img.onerror=()=>resolve(blob);img.src=URL.createObjectURL(blob)})}async function fetchRetry(url,opts,retries=3){for(let i=0;i<retries;i++){try{const res=await fetch(url,opts);if(res.ok)return res;if(res.status>=500&&i<retries-1){log(`サーバーエラー (${res.status})、${i+1}回目リトライ...`,'progress');await new Promise(r=>setTimeout(r,2000*(i+1)));continue}throw new Error(`HTTP ${res.status}: ${await res.text()}`)}catch(err){if(err.message.startsWith('HTTP'))throw err;if(i<retries-1){log(`通信エラー、${i+1}回目リトライ (${retries-i-1}回残り)...`,'progress');await new Promise(r=>setTimeout(r,3000*(i+1)))}else throw err}}}async function ghAPI(method,path,token,body=null){const opts={method,headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}};if(body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body)}const res=await fetchRetry(`https://api.github.com${path}`,opts);return await res.json()}function arrayBufferToBase64(buf){const bytes=new Uint8Array(buf);let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);return btoa(bin)}async function processZip(file){const token=document.getElementById('token').value,repoFull=document.getElementById('repo-select').value,branch=document.getElementById('branch').value;if(!token){log('GitHub Token を設定してください','error');return}if(!repoFull){log('リポジトリを選択してください','error');return}localStorage.setItem('deploy-branch',branch);dropZone.classList.add('processing');log(`📦 ${file.name} (${(file.size/1024/1024).toFixed(1)}MB) を処理中...`,'progress');try{log('zip を解凍中...','info');const zip=await JSZip.loadAsync(file),entries=Object.entries(zip.files).filter(([_,f])=>!f.dir);log(`${entries.length} ファイルを検出`,'info');const cacheKey=`deploy-uploaded-${repoFull}`;let uploaded={};try{uploaded=JSON.parse(localStorage.getItem(cacheKey)||'{}')}catch(e){}const files=[];let totalOrig=0,totalResized=0;const imageExts=['jpg','jpeg','png','webp','gif'];for(let idx=0;idx<entries.length;idx++){const[path,zipEntry]=entries[idx];let cleanPath=path;const firstSlash=path.indexOf('/');if(firstSlash>0)cleanPath=path.substring(firstSlash+1);const blob=await zipEntry.async('blob');totalOrig+=blob.size;let finalBlob=blob;const ext=path.split('.').pop().toLowerCase();if(imageExts.includes(ext)){finalBlob=await resizeImage(blob,path);if(finalBlob.size<blob.size)log(`🖼️ ${cleanPath.split('/').pop()}: ${(blob.size/1024).toFixed(0)}KB → ${(finalBlob.size/1024).toFixed(0)}KB`,'info')}totalResized+=finalBlob.size;const arrayBuf=await finalBlob.arrayBuffer();files.push({path:cleanPath,content:arrayBufferToBase64(arrayBuf)});setProgress((idx+1)/entries.length*40)}if(totalOrig!==totalResized)log(`📊 合計: ${(totalOrig/1024/1024).toFixed(1)}MB → ${(totalResized/1024/1024).toFixed(1)}MB (${Math.round((1-totalResized/totalOrig)*100)}% 削減)`,'success');log('GitHub にプッシュ中...','progress');const ref=await ghAPI('GET',`/repos/${repoFull}/git/ref/heads/${branch}`,token),currentCommitSha=ref.object.sha;log(`現在のコミット: ${currentCommitSha.substring(0,7)}`,'info');const commitData=await ghAPI('GET',`/repos/${repoFull}/git/commits/${currentCommitSha}`,token),baseTreeSha=commitData.tree.sha;log(`ベースツリー: ${baseTreeSha.substring(0,7)}`,'info');const treeEntries=[];let skipCount=0;for(let i=0;i<files.length;i++){const f=files[i];if(uploaded[f.path]){treeEntries.push({path:f.path,mode:'100644',type:'blob',sha:uploaded[f.path]});skipCount++;continue}const blob=await ghAPI('POST',`/repos/${repoFull}/git/blobs`,token,{content:f.content,encoding:'base64'});treeEntries.push({path:f.path,mode:'100644',type:'blob',sha:blob.sha});uploaded[f.path]=blob.sha;localStorage.setItem(cacheKey,JSON.stringify(uploaded));setProgress(40+((i+1)/files.length)*50);if((i+1)%5===0||i===files.length-1)log(`アップロード中... ${i+1}/${files.length}${skipCount>0?` (${skipCount} スキップ)`:''}`,'info')}if(skipCount>0)log(`⏩ ${skipCount} ファイルは前回アップ済みのためスキップ`,'info');log('ツリーを作成中...','info');const tree=await ghAPI('POST',`/repos/${repoFull}/git/trees`,token,{base_tree:baseTreeSha,tree:treeEntries});if(!tree.sha)throw new Error(`ツリー作成失敗: ${tree.message||JSON.stringify(tree)}`);log('コミットを作成中...','info');const commit=await ghAPI('POST',`/repos/${repoFull}/git/commits`,token,{message:`Deploy: ${file.name} (${new Date().toLocaleString('ja-JP')})`,tree:tree.sha,parents:[currentCommitSha]});if(!commit.sha)throw new Error(`コミット作成失敗: ${commit.message||JSON.stringify(commit)}`);log('ref を更新中...','info');await ghAPI('PATCH',`/repos/${repoFull}/git/refs/heads/${branch}`,token,{sha:commit.sha});localStorage.removeItem(cacheKey);setProgress(100);log(`✅ デプロイ完了！ ${files.length} ファイルをプッシュしました`,'success');log(`🔗 https://github.com/${repoFull}`,'success');dropZone.classList.remove('processing');dropZone.classList.add('done')}catch(err){log(`❌ エラー: ${err.message}`,'error');log('💡 もう一度 zip をドロップすると、アップ済みファイルはスキップして途中から再開します','info');dropZone.classList.remove('processing');console.error(err)}}
+</script>
+</body>
+</html>
