@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロードマップ — 次回UBM大阪（6/20）まで</title>
+<link rel="icon" type="image/svg+xml" href="/internal-field/assets/favicon.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #132040;
+    --navy-light: #1b2d4f;
+    --accent: #e94560;
+    --accent-soft: #ff6b81;
+    --gold: #f0d9a8;
+    --gold-dark: #c4a86a;
+    --green: #2ecc71;
+    --green-dark: #1a9c54;
+    --green-bg: #e8faf0;
+    --orange: #f39c12;
+    --orange-bg: #fef9e7;
+    --blue: #3498db;
+    --blue-bg: #eaf2f8;
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 24px rgba(0,0,0,0.06);
+    --shadow-hover: 0 8px 32px rgba(0,0,0,0.1);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 75%, var(--accent) 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(240,217,168,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 0.82em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    color: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+  .hero .subtitle {
+    font-size: 0.95em;
+    opacity: 0.75;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .hero .countdown {
+    margin-top: 24px;
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .hero .countdown small {
+    font-size: 0.42em;
+    font-weight: 400;
+    opacity: 0.6;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .hero .meta {
+    margin-top: 20px;
+    font-size: 0.78em;
+    opacity: 0.4;
+    letter-spacing: 0.05em;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: box-shadow 0.3s ease;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+  .card h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .emoji { font-size: 1.2em; }
+  .card h3 {
+    font-size: 1.05em;
+    font-weight: 700;
+    margin: 20px 0 10px;
+    color: var(--text);
+  }
+
+  .plan-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .plan-card {
+    text-align: center;
+    padding: 14px 6px;
+    border-radius: var(--radius-sm);
+    font-size: 0.72em;
+    font-weight: 600;
+    line-height: 1.4;
+    transition: transform 0.2s ease;
+  }
+  .plan-card:hover { transform: translateY(-2px); }
+  .plan-card .num {
+    display: block;
+    font-size: 1.6em;
+    font-weight: 900;
+    margin-bottom: 4px;
+    font-family: 'Noto Sans JP', sans-serif;
+  }
+  .plan-card.done { background: linear-gradient(135deg, #d5f5e3, #a9dfbf); color: #1a6b3c; }
+  .plan-card.big { background: linear-gradient(135deg, #abebc6, #82e0aa); color: #1a6b3c; }
+  .plan-card.evolving { background: linear-gradient(135deg, #e8daef, #d2b4de); color: #6c3483; }
+  .plan-card.not-started { background: linear-gradient(135deg, #fadbd8, #f5b7b1); color: #a93226; }
+
+  .insight {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border-radius: var(--radius-sm);
+    padding: 24px 28px;
+    margin: 20px 0;
+    border: 1px solid #fde68a;
+  }
+  .insight h3 {
+    color: #92400e;
+    margin-top: 0;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.05em;
+  }
+  .insight p { font-size: 0.92em; color: #78350f; }
+  .insight strong { color: #1a1a2e; }
+
+  .timeline {
+    position: relative;
+    margin: 24px 0 24px 20px;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--border) 0%, var(--accent) 50%, var(--navy) 100%);
+    border-radius: 3px;
+  }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+    background: #fff;
+    z-index: 1;
+  }
+  .tl-item.today::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(233,69,96,0.2); }
+  .tl-item.key::before { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 0 4px rgba(243,156,18,0.2); }
+  .tl-item.done::before { background: var(--green); border-color: var(--green); }
+  .tl-item.ubm::before { background: var(--navy); border-color: var(--navy); width: 18px; height: 18px; left: -41px; top: 6px; box-shadow: 0 0 0 4px rgba(10,22,40,0.15); }
+
+  .tl-date {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .tl-item.today .tl-date { color: var(--accent); }
+  .tl-item.key .tl-date { color: var(--orange); }
+  .tl-item.ubm .tl-date { color: var(--navy); font-size: 0.9em; font-weight: 900; }
+
+  .tl-content {
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+  }
+  .tl-item.today .tl-content { background: #fef2f2; border-color: #fecaca; }
+  .tl-item.key .tl-content { background: var(--orange-bg); border-color: #fde68a; }
+  .tl-item.done .tl-content { background: var(--green-bg); border-color: #a7f3d0; }
+  .tl-item.ubm .tl-content { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #93c5fd; }
+
+  .tl-title { font-weight: 700; font-size: 0.92em; margin-bottom: 6px; }
+  .tl-desc { font-size: 0.85em; color: var(--text-sub); line-height: 1.8; }
+  .tl-tag {
+    display: inline-block;
+    font-size: 0.68em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    background: var(--border);
+    color: var(--text-sub);
+    margin-left: 6px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  .check-item {
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    border-left: 5px solid;
+  }
+  .check-item.clear { background: var(--green-bg); border-color: var(--green); }
+  .check-item.almost { background: var(--orange-bg); border-color: var(--orange); }
+  .check-item.info { background: var(--blue-bg); border-color: var(--blue); }
+  .check-item.future { background: #f8fafc; border-color: #cbd5e1; }
+  .check-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .check-header strong { font-size: 0.92em; }
+  .check-badge {
+    font-size: 0.75em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .check-badge.green { background: var(--green); }
+  .check-badge.orange { background: var(--orange); }
+  .check-badge.blue { background: var(--blue); }
+  .check-badge.gray { background: #94a3b8; }
+  .check-body { font-size: 0.85em; margin-top: 8px; color: var(--text-sub); }
+
+  .os-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .os-card {
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    font-size: 0.85em;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease;
+  }
+  .os-card:hover { transform: translateY(-1px); }
+  .os-label { font-weight: 700; font-size: 0.78em; color: var(--text-sub); display: block; margin-bottom: 4px; letter-spacing: 0.02em; }
+  .os-status { font-weight: 700; }
+  .os-status.good { color: var(--green-dark); }
+  .os-status.progress { color: var(--blue); }
+
+  .prospect-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    font-size: 0.88em;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .prospect-table thead tr {
+    background: var(--navy);
+    color: #fff;
+  }
+  .prospect-table th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.9em; letter-spacing: 0.03em; }
+  .prospect-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .prospect-table tbody tr:last-child td { border-bottom: none; }
+  .prospect-table tbody tr:hover { background: #f8fafc; }
+  .prospect-table .done-row { background: var(--green-bg); }
+  .prospect-table .done-row td { color: var(--green-dark); }
+
+  .summary {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(233,69,96,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .summary h2 {
+    color: var(--gold);
+    border-bottom-color: rgba(255,255,255,0.15);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    position: relative;
+  }
+  .summary p { opacity: 0.9; margin-bottom: 14px; position: relative; }
+  .summary strong { color: var(--gold); }
+
+  .new-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #c62828);
+    color: #fff;
+    font-size: 0.6em;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    margin-top: 28px;
+    font-size: 0.78em;
+    color: var(--text-sub);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 40px 24px 36px; }
+    .hero h1 { font-size: 1.6em; }
+    .hero .countdown { font-size: 1.5em; }
+    .plan-grid { grid-template-columns: repeat(4, 1fr); }
+    .os-grid { grid-template-columns: 1fr; }
+    .container { padding: 24px 16px; }
+    .card { padding: 24px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Synchro Management</div>
+    <h1>UBM大阪ロードマップ</h1>
+    <div class="subtitle">合宿で学んだことを「実行した結果」を持って、次のステージへ</div>
+    <div class="countdown">
+      次回 6/20（土）
+      <small>UBM大阪 9:00-21:00</small>
+    </div>
+    <div class="meta">作成 4/23 / 更新 5/8 / v5</div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="card">
+  <h2><span class="emoji">📍</span> 今の現在地 — 合宿から33日目</h2>
+
+  <p>合宿（4/5）で決めた7つのアクションプラン。33日経って、こうなってる：</p>
+
+  <div class="plan-grid">
+    <div class="plan-card big">
+      <span class="num">1</span>メソッド<br>言語化<br>基盤構築済
+    </div>
+    <div class="plan-card done">
+      <span class="num">2</span>講師<br>1on1<br>完了
+    </div>
+    <div class="plan-card evolving">
+      <span class="num">3</span>定義<br>統一<br>進行中
+    </div>
+    <div class="plan-card evolving">
+      <span class="num">4</span>仲間の<br>時間<br>本格稼働
+    </div>
+    <div class="plan-card evolving">
+      <span class="num">5</span>離脱率<br>把握<br>実データ取得中
+    </div>
+    <div class="plan-card done">
+      <span class="num">6</span>コスト<br>構造<br>v4完成
+    </div>
+    <div class="plan-card done">
+      <span class="num">7</span>UBM<br>日程<br>完了
+    </div>
+  </div>
+
+  <div class="insight">
+    <h3>この1週間（5/1〜5/8）で一気に景色が変わった</h3>
+    <p>プラン外で起きたことが、会社の未来を決定づけた：</p>
+    <p><strong>コミュニティ起点モデルへの転換</strong> — まりこしMTGで確定。「新規集客→販売」から「コミュニティ育成→自然な循環」へ。<br>
+    <strong>財務設計v4</strong> — サブスク中心モデル（月額¥8,800）で収益構造を再設計。ダッシュボード3ページを公開サイトに実装。<br>
+    <strong>コンテンツ資産のDB化</strong> — Facebook投稿92件、Notta書き起こし、セミナー素材をGitHubに集約。発信基盤が完成。<br>
+    <strong>メルマガ配信本格稼働</strong> — アースジャーニーDay1〜Day5+配信。「仲間の時間」が実際に動き始めた。<br>
+    <strong>中畑さんが運営チームに参加</strong> — 人が増えた。チームが広がり始めている。<br>
+    <strong>5/6 Zoomセミナー約300名参加</strong> — 34人がLDMアースジャーニー（月額8,800円コミュニティ）に転換。初の実売上が発生。<br>
+    <strong>5/8 さらに14名が新規追加</strong> — 8,800円コミュニティの会員が20人→34人に成長。MRR ~299,200円。<br>
+    <strong>生命体ベースへの転換宣言</strong> — セミナーの中で「もう旧モデルには戻らない」と宣言。会社の在り方自体が変わった。<br>
+    <strong>オプチャ1,000人超→プロジェクト化決定（5/7）</strong> — 単なるチャットから「プロジェクト」へ格上げ。<br>
+    <strong>story-engine-v2完成</strong> — 5スキル分割のストーリー駆動型発信システムが稼働開始。</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🗓</span> タイムライン — 6/20 UBM大阪まで</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item done">
+      <div class="tl-date">4/23（木）</div>
+      <div class="tl-content">
+        <div class="tl-title">財務整理 完了</div>
+        <div class="tl-desc">科目修正・売掛金解消・仕訳ルール確定。管理体制を構築。</div>
+      </div>
+    </div>
+
+    <div class="tl-item done">
+      <div class="tl-date">4/25（金）</div>
+      <div class="tl-content">
+        <div class="tl-title">講師コーチング 1on1 完了 <span class="tl-tag">プラン2</span></div>
+        <div class="tl-desc">LDM受講生との初コーチングを実施。具体的な宿題を出し、次回も確定。手応えあり。</div>
+      </div>
+    </div>
+
+    <div class="tl-item done">
+      <div class="tl-date">4/29（火・祝）</div>
+      <div class="tl-content">
+        <div class="tl-title">コンテンツ基盤構築 + エンジン再設計</div>
+        <div class="tl-desc">コンテンツ資産のデータベース化、発信パイプラインの再設計、インフラ整備を一気に実行。</div>
+      </div>
+    </div>
+
+    <div class="tl-item done">
+      <div class="tl-date">4/30（水）</div>
+      <div class="tl-content">
+        <div class="tl-title">仕訳ルール確定 + ロードマップv2公開</div>
+        <div class="tl-desc">会計ルール最終確定、コンテンツ集約進行、全セッション振り返り統合更新。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">5/1（木）<span class="new-badge">NEW</span></div>
+      <div class="tl-content">
+        <div class="tl-title">content-vault本格構築 + メルマガ配信開始</div>
+        <div class="tl-desc">Facebook投稿92件・Notta書き起こしをGitHubに集約。アースジャーニーDay 1メルマガを配信。「仲間の時間」が実際に始まった瞬間。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">5/2（金）<span class="new-badge">NEW</span></div>
+      <div class="tl-content">
+        <div class="tl-title">財務設計v4完成 + 公開サイト大幅拡張</div>
+        <div class="tl-desc">サブスク中心モデル（月額¥8,800）で収益構造を再設計。会社設計ロードマップ・財務マネジメント設計・ギャップ分析の3ダッシュボードを公開サイトに実装。財務ストーリー「サナギから羽化するまで」も公開。Google Driveフォルダ構造も整備。</div>
+      </div>
+    </div>
+
+    <div class="tl-item done">
+      <div class="tl-date">5/3（土）</div>
+      <div class="tl-content">
+        <div class="tl-title">コミュニティ起点モデル確定 + チーム拡大</div>
+        <div class="tl-desc">まりこしMTGで「コミュニティ起点モデル」への転換を確定。中畑さんが運営チームに参加。メルマガDay 2+3配信。全エージェント知識共有基盤を整備（CLAUDE.md更新）。open-fieldポータル更新。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">5/6（水）<span class="new-badge">NEW</span></div>
+      <div class="tl-content">
+        <div class="tl-title">Zoomセミナー ~300名参加 — 初の実売上発生</div>
+        <div class="tl-desc">34人がLDMアースジャーニー（月額8,800円コミュニティ）に転換（当初20人→5/8時点で34人に成長）。初の実売上が発生。セミナー内で生命体ベースへの転換を宣言。「もう旧モデルには戻らない」。</div>
+      </div>
+    </div>
+
+    <div class="tl-item done">
+      <div class="tl-date">5/7（木）<span class="new-badge">NEW</span></div>
+      <div class="tl-content">
+        <div class="tl-title">オプチャ1,000人超→プロジェクト化決定</div>
+        <div class="tl-desc">単なるチャットから「プロジェクト」へ格上げ。content-vault大量push（Notta書き起こし等）。</div>
+      </div>
+    </div>
+
+    <div class="tl-item today">
+      <div class="tl-date">5/8（金）— 今日 <span class="new-badge">NEW</span></div>
+      <div class="tl-content">
+        <div class="tl-title">全ドキュメント最新版更新 + story-engine-v2稼働中</div>
+        <div class="tl-desc">北原関連全ドキュメント最新版更新。story-engine-v2稼働中。Kindle本第1章v2完成・VIRAP™命名。会員34人に成長、MRR ~299,200円。</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5月前半</div>
+      <div class="tl-content">
+        <div class="tl-title">実証期間 — 実売上発生 & KPI計測開始</div>
+        <div class="tl-desc">5/6 Zoomセミナーで実証完了。月次試算表は5/10月報回で確認予定。サブスクKPI計測開始（会員34人、MRR~299,200円。目標57人まで残り23人）。</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5/10（土）</div>
+      <div class="tl-content">
+        <div class="tl-title">月報回参加</div>
+        <div class="tl-desc">月次試算表の確認。5月前半の実績を報告。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">5/26（月）</div>
+      <div class="tl-content">
+        <div class="tl-title">第2回コーチング（14:00） <span class="tl-tag">プラン2</span></div>
+        <div class="tl-desc">第1回で出した宿題の報告を受ける。次のステップを決める。</div>
+      </div>
+    </div>
+
+    <div class="tl-item ubm">
+      <div class="tl-date">6/20（土）UBM大阪</div>
+      <div class="tl-content">
+        <div class="tl-title">UBM大阪 — 9:00〜21:00（次回参加）</div>
+        <div class="tl-desc">合宿から2ヶ月半の成果を報告。コミュニティ起点モデルの方向性、財務構造の進化、コンテンツ基盤の構築をフィードバックにかける。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🛡️</span> チェックシート攻略プラン</h2>
+  <p>合宿で記入した10項目の進捗サマリー：</p>
+
+  <div style="margin: 20px 0;">
+    <div class="check-item clear">
+      <div class="check-header">
+        <strong>次回UBM日程</strong>
+        <span class="check-badge green">クリア済み</span>
+      </div>
+      <div class="check-body" style="color:#166534;">年間スケジュール全登録。次回6/20大阪。</div>
+    </div>
+
+    <div class="check-item clear">
+      <div class="check-header">
+        <strong>コスト構造把握</strong>
+        <span class="check-badge green">クリア済み</span>
+      </div>
+      <div class="check-body" style="color:#166534;">財務設計v4完成。サブスク中心モデル（月額¥8,800）で収益構造を再設計。ダッシュボード3ページで可視化済み。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>月次集計体制</strong>
+        <span class="check-badge orange">あと一歩</span>
+      </div>
+      <div class="check-body">管理体制構築済み、仕訳ルール確定済み。月次試算表を1回出せばクリア。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>見直し体制</strong>
+        <span class="check-badge orange">あと一歩</span>
+      </div>
+      <div class="check-body">日次・月次・隔月の3層構造で実質できている。ギャップ分析ダッシュボードで可視化済み。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>括りの人との関係</strong>
+        <span class="check-badge orange">深化中</span>
+      </div>
+      <div class="check-body">1on1コーチング実施済み。5/26に第2回確定。まりこしMTGでコミュニティ起点モデルを共同設計。5/6セミナーで生命体ベース転換を宣言。</div>
+    </div>
+
+    <div class="check-item info">
+      <div class="check-header">
+        <strong>積み上げ行動</strong>
+        <span class="check-badge blue">ロードマップで説明可能</span>
+      </div>
+      <div class="check-body">このロードマップ自体が回答。33日間で会社の基盤・財務・コンテンツ・チーム・発信すべてが動いている。5/6 Zoomセミナー300名・34人転換、MRR ~299,200円の実績。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>離脱率把握</strong>
+        <span class="check-badge orange">実データ取得中</span>
+      </div>
+      <div class="check-body">34人がコミュニティ転換。MRR ~299,200円。目標57人まで残り23人。実データに基づく離脱率把握が可能に。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🔄</span> OS更新 — 現在の状況</h2>
+
+  <div class="os-grid">
+    <div class="os-card">
+      <span class="os-label">「勝たせる」→「循環させる」</span>
+      <span class="os-status good">◎ コミュニティ起点モデルで体現</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「お客さん」→「教え子」</span>
+      <span class="os-status good">◎ メルマガで実践中</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">属人性→思考統一</span>
+      <span class="os-status good">◎ エージェントチーム+マニュアル</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「孤独」→「共にいる」</span>
+      <span class="os-status good">◎ 中畑さん参加・チーム拡大</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「つい（対）」を見る</span>
+      <span class="os-status good">◎ 5/6セミナーで実践</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「新規」→「既存」重視</span>
+      <span class="os-status good">◎ サブスクモデルで構造化</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🔭</span> 6/20 UBM大阪までの展望</h2>
+
+  <table class="prospect-table">
+    <thead>
+      <tr><th>時期</th><th>アクション</th><th>状態</th></tr>
+    </thead>
+    <tbody>
+      <tr class="done-row"><td>5/1</td><td>content-vault構築・メルマガ配信開始</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/2</td><td>財務設計v4完成・ダッシュボード公開</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/3</td><td>コミュニティ起点モデル確定</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/6</td><td>Zoomセミナー300名・34人転換 — 初の実売上</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/7</td><td>オプチャプロジェクト化・content-vault大量push</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/8</td><td>全ドキュメント最新版更新・story-engine-v2稼働</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/8</td><td>会員34人に成長、MRR ~299,200円</td><td>✅ 完了</td></tr>
+      <tr><td>5月前半</td><td>🔜 5/10月報回で確認 — 月次試算表の実証</td><td>🔜 次</td></tr>
+      <tr><td>5月前半</td><td>✅ 5/6-5/8で実証（34人転換） — コミュニティ起点モデル</td><td>✅ 実証済</td></tr>
+      <tr><td>5月〜</td><td>メソッド言語化の第一歩（content-vault活用）</td><td>—</td></tr>
+      <tr><td>5/10</td><td>月報回参加</td><td>🔜 次</td></tr>
+      <tr><td><strong>5/26</strong></td><td><strong>第2回コーチング</strong></td><td>—</td></tr>
+      <tr><td><strong>6/20</strong></td><td><strong>UBM大阪 — 成果報告</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="summary">
+  <h2>合宿から33日間の意味 — 5月、回り始めた</h2>
+
+  <p style="margin-top:20px; font-size:1.05em;">
+    この33日間で、「準備」が「実行」に変わり、「実行」が「実績」になった。
+  </p>
+
+  <p>
+    足元を整理し、会社の基盤を構築し、財務を設計し直し、コンテンツを集約し、<br>
+    そして5月に入った瞬間 — メルマガが配信され、コミュニティ起点モデルが確定し、チームが広がった。<br>
+    5/6 Zoomセミナーでは約300名が参加し、34人がコミュニティに転換。<strong>MRR ~299,200円に成長。</strong><br>
+    <strong>もう「仕込み」じゃない。循環が実際に回っている。</strong>
+  </p>
+
+  <p>
+    6/20 UBM大阪では、「こんなに動いた」じゃなく<br>
+    「実際にこう循環した」を報告できる。
+  </p>
+
+  <p style="margin-top:28px; text-align:center; font-size:1.3em; font-weight:900; color:var(--gold); letter-spacing:0.05em;">
+    循環が、加速している。
+  </p>
+</div>
+
+<div class="footer">
+  作成: 4/23 / 更新: 5/8（v5）<br>
+  Synchro Management | internal-field
+</div>
+
+</div>
+</body>
+</html>
