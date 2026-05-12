@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理想 vs 現状 ギャップ分析 — 2026-05-10 v4.3 67名到達・57人目標超過達成</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN',sans-serif; color:#1a1a2e; background:#f0f4f8; line-height:1.7; }
+  .container { max-width:860px; margin:0 auto; padding:20px 16px 60px; }
+  .hero { text-align:center; padding:44px 24px 36px; margin-bottom:28px; background:linear-gradient(135deg,#059669,#0d9488); border-radius:20px; color:#fff; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%; }
+  .hero h1 { font-size:24px; font-weight:800; margin-bottom:6px; }
+  .hero .sub { font-size:14px; opacity:0.8; margin-bottom:14px; }
+  .hero .badges { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .hero .badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+  .badge-green { background:rgba(255,255,255,0.2); color:#fff; }
+  .badge-yellow { background:rgba(251,191,36,0.3); color:#fef3c7; }
+  .badge-purple { background:rgba(168,85,247,0.3); color:#e9d5ff; }
+  .nav { display:flex; gap:4px; margin-bottom:24px; background:#fff; border-radius:14px; padding:5px; box-shadow:0 1px 4px rgba(0,0,0,0.06); overflow-x:auto; }
+  .nav-btn { flex-shrink:0; padding:10px 14px; font-size:12.5px; font-weight:700; cursor:pointer; border:none; background:none; color:#888; border-radius:10px; transition:all 0.2s; white-space:nowrap; }
+  .nav-btn:hover { color:#059669; background:#f0fdf4; }
+  .nav-btn.active { color:#fff; background:#059669; }
+  .panel { display:none; animation:fadeIn 0.3s; }
+  .panel.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .card { background:#fff; border-radius:14px; padding:22px; margin-bottom:16px; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+  .card h3 { font-size:16px; font-weight:800; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .hl { padding:14px 18px; border-radius:10px; font-size:13.5px; margin:12px 0; line-height:1.7; }
+  .hl-green { background:#f0fdf4; border-left:4px solid #22c55e; }
+  .hl-yellow { background:#fefce8; border-left:4px solid #f59e0b; }
+  .hl-blue { background:#eff6ff; border-left:4px solid #3b82f6; }
+  .hl-purple { background:#faf5ff; border-left:4px solid #a855f7; }
+  .hl-red { background:#fef2f2; border-left:4px solid #ef4444; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+  th { text-align:left; padding:10px 8px; background:#f8fafc; font-weight:700; border-bottom:2px solid #e2e8f0; font-size:12px; color:#64748b; }
+  td { padding:10px 8px; border-bottom:1px solid #f1f5f9; vertical-align:top; }
+  .st { display:inline-block; padding:2px 10px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; }
+  .st-green { background:#dcfce7; color:#166534; }
+  .st-yellow { background:#fef9c3; color:#854d0e; }
+  .st-red { background:#fee2e2; color:#991b1b; }
+  .st-blue { background:#dbeafe; color:#1e40af; }
+  .st-gray { background:#f1f5f9; color:#64748b; }
+  .st-purple { background:#f3e8ff; color:#6b21a8; }
+  .ba { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0; }
+  @media(max-width:640px){.ba{grid-template-columns:1fr;}}
+  .ba-old,.ba-new { padding:16px; border-radius:12px; font-size:13px; }
+  .ba-old { background:#fef2f2; border:1px solid #fecaca; }
+  .ba-new { background:#f0fdf4; border:1px solid #a7f3d0; }
+  .ba-old h4 { color:#dc2626; font-size:13px; font-weight:800; margin-bottom:8px; }
+  .ba-new h4 { color:#059669; font-size:13px; font-weight:800; margin-bottom:8px; }
+  .score-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:14px 0; }
+  @media(max-width:600px){.score-grid{grid-template-columns:1fr 1fr;}}
+  .score-card { text-align:center; padding:16px 8px; border-radius:14px; }
+  .score-card .num { font-size:26px; font-weight:800; }
+  .score-card .label { font-size:11px; opacity:0.7; margin-top:4px; }
+  .sc-green { background:#f0fdf4; border:1px solid #a7f3d0; }
+  .sc-green .num { color:#059669; }
+  .sc-yellow { background:#fefce8; border:1px solid #fcd34d; }
+  .sc-yellow .num { color:#d97706; }
+  .sc-red { background:#fef2f2; border:1px solid #fecaca; }
+  .sc-red .num { color:#dc2626; }
+  .sc-blue { background:#eff6ff; border:1px solid #93c5fd; }
+  .sc-blue .num { color:#2563eb; }
+  .sc-purple { background:#faf5ff; border:1px solid #e9d5ff; }
+  .sc-purple .num { color:#6b21a8; }
+  .signal { padding:10px 14px; border-radius:10px; margin:6px 0; font-size:13px; display:flex; align-items:start; gap:10px; }
+  .signal-icon { flex-shrink:0; font-size:16px; }
+  .sig-cleared { background:#f0fdf4; border:1px solid #a7f3d0; }
+  .sig-active { background:#fef2f2; border:1px solid #fecaca; }
+  .sig-watch { background:#fefce8; border:1px solid #fcd34d; }
+  .sig-new { background:#eff6ff; border:1px solid #93c5fd; }
+  .sig-sub { background:#faf5ff; border:1px solid #e9d5ff; }
+  .prog-wrap { margin:12px 0; }
+  .prog-label { display:flex; justify-content:space-between; font-size:12px; font-weight:700; margin-bottom:4px; }
+  .prog-bar { height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden; }
+  .prog-fill { height:100%; border-radius:5px; transition:width 0.5s; }
+  .pf-green { background:linear-gradient(90deg,#22c55e,#4ade80); }
+  .action-item { padding:12px 0; border-bottom:1px solid #f1f5f9; display:flex; gap:10px; align-items:start; }
+  .action-item:last-child { border-bottom:none; }
+  .action-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; }
+  .an-done { background:#dcfce7; color:#166534; }
+  .an-prog { background:#fef9c3; color:#854d0e; }
+  .an-todo { background:#fee2e2; color:#991b1b; }
+  .an-hold { background:#f1f5f9; color:#64748b; }
+  .an-new { background:#f3e8ff; color:#6b21a8; }
+  .footer { text-align:center; padding:24px; font-size:11px; opacity:0.35; margin-top:32px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <h1>理想 vs 現状 ギャップ分析</h1>
+    <div class="sub">4/9初版 → 5/1更新 → 5/3 v4確定 → 5/8 v4.2実績反映 → 5/10 v4.3 67名到達</div>
+    <div class="badges">
+      <span class="badge badge-green">14アクション中 10完了</span>
+      <span class="badge badge-purple">5/10 67人到達・MRR59万・57人目標超過達成</span>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn active" onclick="go('overview')">全体像</button>
+    <button class="nav-btn" onclick="go('layer0')">第0階層(土台)</button>
+    <button class="nav-btn" onclick="go('targets')">数値ターゲット</button>
+    <button class="nav-btn" onclick="go('signals')">危険信号</button>
+    <button class="nav-btn" onclick="go('costs')">費用構造</button>
+    <button class="nav-btn" onclick="go('actions')">アクション進捗</button>
+    <button class="nav-btn" onclick="go('next')">次の90日</button>
+  </div>
+
+  <!-- ===== 全体像 ===== -->
+  <div id="overview" class="panel active">
+    <div class="card">
+      <h3>🦋 こあの一言（5/10更新）</h3>
+      <div class="hl hl-purple" style="font-size:15px;">
+        <strong>「67人到達。57人目標を超えた。MRR 589,600円。庭に花が満開に咲き広がった。」</strong>
+      </div>
+      <div class="ba">
+        <div class="ba-old">
+          <h4>5/1時点のこあの一言</h4>
+          <p>「サナギから羽化した。土台は整った。あとは飛ぶだけ。」</p>
+        </div>
+        <div class="ba-new">
+          <h4>5/8時点のこあの一言</h4>
+          <p>「仮説が実績に変わった。34人×8,800円=MRR 299,200円。残り23人。庭で最初の花が咲いた。」</p>
+        </div>
+      </div>
+      <div class="hl hl-green" style="margin-top:14px;">
+        <strong>5/10時点のこあの一言：</strong><br>
+        「67人到達。57人目標を超えた。MRR 589,600円（約59万/月）、年間換算707万。追加募集ペース平均11.75名/日。庭に花が満開に咲き広がった。次の目標は100人→200人。」
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📊 進捗ダッシュボード</h3>
+      <div class="score-grid" style="grid-template-columns:repeat(5,1fr);">
+        <div class="score-card sc-green">
+          <div class="num">10</div>
+          <div class="label">完了アクション</div>
+        </div>
+        <div class="score-card sc-yellow">
+          <div class="num">2</div>
+          <div class="label">保留中</div>
+        </div>
+        <div class="score-card sc-purple">
+          <div class="num">v4.3</div>
+          <div class="label">67名到達版</div>
+        </div>
+        <div class="score-card sc-green">
+          <div class="num">67人</div>
+          <div class="label">57人目標超過達成</div>
+        </div>
+        <div class="score-card sc-blue">
+          <div class="num">200人</div>
+          <div class="label">次の目標</div>
+        </div>
+      </div>
+
+      <div class="prog-wrap">
+        <div class="prog-label"><span>守りの進捗</span><span>71% (10/14)</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-green" style="width:71%;"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔄 4/9 → 5/1 → 5/3 → 5/8 → 5/10 で何が変わったか</h3>
+      <div style="font-size:13.5px;">
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>支払手数料</strong>：「947万・690万削減余地」→ 実態498万→修正後≒240万(4.7%)。<span class="st st-green">解決済</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>業務委託料</strong>：「精査必要」→ 88%エンジン費。削減余地ほぼなし。<span class="st st-green">解決済</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>売掛金</strong>：「1,405万滞留」→ 正常化完了。<span class="st st-green">解決済</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>運用リズム</strong>：「チェック体制なし」→ 北原式統合完了。5/1運用開始。<span class="st st-green">解決済</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>売上モデル</strong>：「5プロジェクト個別成熟」→ <span class="st st-purple">🟣 5/3 サブスク中心に転換</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>#8の内容</strong>：「5プロジェクトPhase 2/3移行」→ <strong>「サブスク中心の売上成熟化」</strong>に再定義。<span class="st st-green">✅ 57人目標達成済み</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>サブスク会員数</strong>：「把握中」→ 34人（5/8）→ <strong>67人（5/10、57人目標超過達成）</strong>。<span class="st st-green">目標達成</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>MRR</strong>：「算出中」→ 299,200円（5/8）→ <strong>589,600円/月（5/10）</strong>。<span class="st st-green">約59万/月確定</span>
+        </div>
+        <div style="padding:10px 0;">
+          <strong>転換率</strong>：未計測 → 3.4%（5/8）→ <strong>6.7%（67/1,000、5/10）</strong>。<span class="st st-green">改善中</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 第0階層 ===== -->
+  <div id="layer0" class="panel">
+    <div class="card">
+      <h3>🏗️ 第0階層（土台）— 5/10更新</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>指標</th><th>理想</th><th>5/10時点</th><th>判定</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>可視化スピード</strong></td>
+            <td>5日以内</td>
+            <td>MF仕訳日次化完了。北原式月次チェック運用中</td>
+            <td><span class="st st-green">✅ 仕組み完了</span></td>
+          </tr>
+          <tr>
+            <td><strong>会社現預金残高</strong></td>
+            <td>右肩上がり</td>
+            <td>MRR 589,600円/月が安定基盤に。67人のサブスクで改善傾向</td>
+            <td><span class="st st-yellow">📊 要モニタリング</span></td>
+          </tr>
+          <tr>
+            <td><strong>収益モデル</strong></td>
+            <td>安定・予測可能</td>
+            <td>✅ サブスク中心モデルで67人到達。MRR 589,600円が安定基盤。57人目標超過達成</td>
+            <td><span class="st st-green">✅ 実証済み</span></td>
+          </tr>
+          <tr>
+            <td><strong>会社/個人の分離</strong></td>
+            <td>完全分離</td>
+            <td>中野先生「出資と同義。対応不要」(4/27)</td>
+            <td><span class="st st-green">✅ 問題なし</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="hl hl-green">
+      <strong>第0階層の判定：</strong>土台は完成。仕組みは動いている。収益モデルは「v4転換確定」から「実証済み」にステージアップ。67人到達で安定・予測可能な収益構造が現実のものとなった。
+    </div>
+  </div>
+
+  <!-- ===== 数値ターゲット ===== -->
+  <div id="targets" class="panel">
+    <div class="card">
+      <h3>📐 数値ターゲット（5/10 v4.3更新）</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>指標</th><th>現状</th><th>目標</th><th>道筋（v4）</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>粗利率</strong></td>
+            <td>79.5%</td>
+            <td>80%以上</td>
+            <td><span class="st st-green">✅ ほぼ達成</span> 守るだけ</td>
+          </tr>
+          <tr>
+            <td><strong>営業利益額</strong></td>
+            <td>ほぼゼロ</td>
+            <td>500万以上</td>
+            <td><span class="st st-green">✅ v4ルート実証</span> 67人×8,800円×12ヶ月×80%+経費最適化=目標超過</td>
+          </tr>
+          <tr>
+            <td><strong>MRR（月次経常収益）</strong></td>
+            <td>589,600円/月</td>
+            <td>100人→200人で拡大</td>
+            <td><span class="st st-green">✅ 57人目標超過達成</span> 次は100人→200人</td>
+          </tr>
+          <tr>
+            <td><strong>サブスク会員数</strong></td>
+            <td>67人</td>
+            <td>200人</td>
+            <td><span class="st st-green">✅ 57人目標超過達成</span> 200人目標の33.5%到達</td>
+          </tr>
+          <tr>
+            <td><strong>チャーンレート</strong></td>
+            <td>計測中（初月データ待ち）</td>
+            <td>5%以下→3%以下</td>
+            <td><span class="st st-purple">🆕 v4指標</span> 月次でモニタリング</td>
+          </tr>
+          <tr>
+            <td><strong>オプチャ→有料転換率</strong></td>
+            <td>6.7%（67/1,000人）</td>
+            <td>10%目標</td>
+            <td><span class="st st-green">✅ 実績値確定</span> 3.4%→6.7%に改善</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎯 営業利益500万 v4ルート — 57人目標達成済み</h3>
+      <div class="ba">
+        <div class="ba-old">
+          <h4>旧ルート（v3: 5事業個別）</h4>
+          <p style="line-height:2;">
+            5プロジェクト個別成熟<br>
+            売上+600万(月+50万)<br>
+            × 粗利80% = +480万<br>
+            + 経費最適化100万 = 580万<br><br>
+            <strong>課題: 「どう月+50万増やすか」が不明確だった</strong>
+          </p>
+        </div>
+        <div class="ba-new">
+          <h4>v4ルート（サブスク中心）— 57人達成済み</h4>
+          <p style="line-height:2;">
+            <strong style="color:#059669;">✅ 67人到達（57人目標超過達成）</strong><br>
+            MRR 589,600円（約59万/月）<br>
+            年間換算707万<br>
+            × 粗利80% = 566万<br>
+            + 経費最適化100万 = <strong style="color:#059669;">666万</strong><br>
+            + 高額講座（自然発生分）<br><br>
+            <strong>次の目標: 100人→200人</strong>
+          </p>
+        </div>
+      </div>
+      <div class="hl hl-purple">
+        <strong>v4の突破口：</strong>v3では「5つの事業を個別に伸ばす」という抽象度が高い戦略だった。v4では<strong>「57人のサブスク会員を純増する」</strong>という一点に集中し、67人で超過達成。次は200人。オプチャ1,000人+リスト9,900件のファネルがさらに活きる。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 危険信号 ===== -->
+  <div id="signals" class="panel">
+    <div class="card">
+      <h3>🚨 危険信号 — v4.3更新版</h3>
+
+      <h4 style="margin:14px 0 8px;font-size:14px;">既存の信号（5/1から継続）</h4>
+
+      <div class="signal sig-watch">
+        <div class="signal-icon">📊</div>
+        <div><strong>現預金残高 < 月商3ヶ月分</strong><br>要モニタリング継続。MRR 59万/月の積み上がりで改善見込み</div>
+      </div>
+      <div class="signal sig-watch">
+        <div class="signal-icon">📊</div>
+        <div><strong>営業利益率 3ヶ月連続5%以下</strong><br>新期初月。MRR 59万/月の効果が出るまでモニタリング</div>
+      </div>
+      <div class="signal sig-cleared">
+        <div class="signal-icon">✅</div>
+        <div><strong>売掛金 > 月商2ヶ月分</strong> — <strong>解消済</strong>（正常化完了）</div>
+      </div>
+      <div class="signal sig-cleared">
+        <div class="signal-icon">✅</div>
+        <div><strong>役員借入金</strong> — <strong>信号削除</strong>（中野先生「対応不要」）</div>
+      </div>
+
+      <h4 style="margin:18px 0 8px;font-size:14px;">v4で追加したサブスク専用信号</h4>
+
+      <div class="signal sig-sub">
+        <div class="signal-icon">🟣</div>
+        <div><strong>MRRが3ヶ月連続で減少</strong> — チャーンが新規を上回っている。緊急対応</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">🟣</div>
+        <div><strong>チャーンレートが10%を超えた</strong> — コミュニティの価値提供を見直す</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">🟣</div>
+        <div><strong>新規入会が3ヶ月連続ゼロ</strong> — ファネルが詰まっている。入口の見直し</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">🟣</div>
+        <div><strong>サブスク決済エラーが5件以上溜まっている</strong> — 流れが詰まっている。即対応</div>
+      </div>
+
+      <div class="signal sig-new">
+        <div class="signal-icon">🆕</div>
+        <div><strong>MF仕訳が3日以上滞留</strong> — 北原式24時間ルール</div>
+      </div>
+      <div class="signal sig-new">
+        <div class="signal-icon">🆕</div>
+        <div><strong>月末→月次集計が5日超過</strong> — 北原式の必達ライン</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>✨ ポジティブ信号（5/10更新）</h3>
+      <div class="hl hl-green">
+        <strong>4月の成果：</strong><br>
+        ・数字を直視し、会社が想定より健全だったことを知った<br>
+        ・北原式チェックを自社に統合した<br><br>
+        <strong>5/3の転換：</strong><br>
+        ・「セミナーを売る時代は終わった」— 堀内さんの確信<br>
+        ・オプチャ1,000人突破 — コミュニティの入口はすでにできている<br>
+        ・リスト9,900件 — 活用されていない巨大な資産がある<br>
+        ・<strong>「コミュニティで回す」は命を解放する構造そのもの</strong><br><br>
+        <strong>5/6-5/10の実績：</strong><br>
+        ・5/6 Zoomセミナー~300名参加、初回20人が加入<br>
+        ・追加募集（5/7〜5/10）で+47名、合計67人に到達<br>
+        ・<strong>当初の57人純増目標をすでに超過達成</strong><br>
+        ・MRR 589,600円（約59万/月）、年間換算707万<br>
+        ・オプチャ→有料転換率 6.7%（3.4%→6.7%に倍増）<br>
+        ・追加募集ペース: 平均11.75名/日<br>
+        ・story-engine-v2完成、発信の仕組みが整った
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 費用構造 ===== -->
+  <div id="costs" class="panel">
+    <div class="card">
+      <h3>💰 費用構造（5/3 v4視点追加）</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>カテゴリ</th><th>実態</th><th>v4視点</th><th>判定</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>エンジン費</strong><br><span style="font-size:11px;opacity:0.5;">業務委託料</span></td>
+            <td>1,864万(88%健全)</td>
+            <td>サブスクモデルでは「コミュニティ運営」に寄与するかで再評価</td>
+            <td><span class="st st-green">✅ 健全</span></td>
+          </tr>
+          <tr>
+            <td><strong>手数料・摩擦費</strong></td>
+            <td>≒240万(4.7%)</td>
+            <td>サブスク決済手数料が新たに発生。決済エラー率もモニタリング対象に</td>
+            <td><span class="st st-green">✅ 達成済</span></td>
+          </tr>
+          <tr>
+            <td><strong>インフラ費</strong></td>
+            <td>SaaS最適化済</td>
+            <td>コミュニティプラットフォーム費用が加わる可能性</td>
+            <td><span class="st st-green">✅ 最適化済</span></td>
+          </tr>
+          <tr>
+            <td><strong>旧モデル経費</strong></td>
+            <td>未精査</td>
+            <td>🟣 セミナー単発に紐づく固定費が残存していないか確認が必要</td>
+            <td><span class="st st-purple">v4で確認</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="hl hl-purple">
+      <strong>v4で追加された費用構造の視点：</strong><br>
+      サブスク中心モデルでは「旧モデル（セミナー単発売上依存）の経費が残存していないか」が新しいチェック項目になる。<br>
+      3つの問いの「古い血管は閉じられているか」がここに対応。四半期レビューで精査する。
+    </div>
+  </div>
+
+  <!-- ===== アクション進捗 ===== -->
+  <div id="actions" class="panel">
+    <div class="card">
+      <h3>📋 全14アクション 進捗一覧（5/10更新）</h3>
+
+      <div class="prog-wrap">
+        <div class="prog-label"><span>完了率</span><span>71%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-green" style="width:71%;"></div></div>
+      </div>
+
+      <div class="action-item">
+        <div class="action-num an-done">1</div>
+        <div><strong>売掛金の回収（仕訳整理）</strong><br><span style="font-size:12px;opacity:0.6;">✅ Stripe補助科目修正完了</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">2</div>
+        <div><strong>支払手数料の解剖</strong><br><span style="font-size:12px;opacity:0.6;">✅ 誤分類150〜250万発見・修正済</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">3</div>
+        <div><strong>業務委託料の再分類</strong><br><span style="font-size:12px;opacity:0.6;">✅ 88%エンジン費確定</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">4</div>
+        <div><strong>MF仕訳の日次化</strong><br><span style="font-size:12px;opacity:0.6;">✅ 朝レポート統合済</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">5</div>
+        <div><strong>誤分類修正</strong><br><span style="font-size:12px;opacity:0.6;">✅ 計115件修正完了</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">6</div>
+        <div><strong>振込構造改革</strong><br><span style="font-size:12px;opacity:0.6;">✅ 年4.1万（想定の1/50）</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">7</div>
+        <div><strong>売掛金/Stripeマイナス残高</strong><br><span style="font-size:12px;opacity:0.6;">✅ほぼ完了。中野先生にMTG共有済(4/27)</span></div>
+      </div>
+      <div class="action-item" style="background:#f0fdf4;border-radius:10px;padding:12px;">
+        <div class="action-num an-done">8</div>
+        <div><strong>サブスク中心の売上成熟化（v4転換）— 57人目標達成</strong><br><span style="font-size:12px;color:#059669;">✅ 5/10実績: 67人到達（初回20人+追加募集47人）、MRR 589,600円（約59万/月）。57人目標を超過達成。転換率6.7%。次の目標は100人→200人</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-hold">9</div>
+        <div><strong>月別クレカ支払の分解</strong><br><span style="font-size:12px;opacity:0.6;">🟡 保留</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-hold">10</div>
+        <div><strong>個人口座残高の可視化</strong><br><span style="font-size:12px;opacity:0.6;">🟡 保留</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">11</div>
+        <div><strong>役員借入金</strong><br><span style="font-size:12px;opacity:0.6;">✅ 問題なし（中野先生確定）</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">12</div>
+        <div><strong>月初自動チェック</strong><br><span style="font-size:12px;opacity:0.6;">✅ 朝レポート統合済</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">13</div>
+        <div><strong>SaaS棚卸し</strong><br><span style="font-size:12px;opacity:0.6;">✅ 4件解約(年10.3万削減)</span></div>
+      </div>
+      <div class="action-item">
+        <div class="action-num an-done">14</div>
+        <div><strong>北原式チェック統合</strong><br><span style="font-size:12px;opacity:0.6;">✅ 5/1運用開始</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 次の90日 ===== -->
+  <div id="next" class="panel">
+    <div class="card">
+      <h3>🚀 次の90日 — v4.3（67名到達・57人目標超過達成）</h3>
+      <div class="ba">
+        <div class="ba-old">
+          <h4>5/8時点の「次の90日」</h4>
+          <p style="line-height:2;">
+            1. チャーンレートの実測<br>
+            2. 転換率改善施策の設計（3.4%→5%目標）<br>
+            3. リスト9,900件への案内設計・実行<br>
+            4. 5/10月報回で月次試算表を確認<br>
+            5. 7月に初の四半期レビュー<br><br>
+            <strong>→ 5/10で57人目標を超過達成</strong>
+          </p>
+        </div>
+        <div class="ba-new">
+          <h4>5/10時点の「次の90日」</h4>
+          <p style="line-height:2;">
+            <strong>1. チャーンレートの実測</strong><br>
+            &nbsp;&nbsp;初月データを5月末に確認<br><br>
+            <strong>2. 100人→200人の成長戦略設計</strong><br>
+            &nbsp;&nbsp;57人目標は達成済み。次のマイルストーン<br><br>
+            <strong>3. 転換率6.7%→10%への改善</strong><br>
+            &nbsp;&nbsp;ファネル最適化施策の実行<br><br>
+            <strong>4. リスト9,900件への案内設計・実行</strong><br>
+            &nbsp;&nbsp;既存リストからの導線構築<br><br>
+            <strong>5. 7月に初の四半期レビュー</strong><br>
+            &nbsp;&nbsp;MRR成長率・チャーン推移・サブスク成長率チェック
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🦋 こあの見立て（5/10更新）</h3>
+      <div class="hl hl-green" style="font-size:14px;padding:20px;">
+        4/9にサナギの真ん中。<br>
+        5/1に羽化。<br>
+        5/3に飛び方が決まった。<br>
+        5/8——最初の花が咲いた（34人）。<br>
+        そして5/10——<strong>花が満開に咲き広がった。</strong><br><br>
+
+        67人×8,800円=MRR 589,600円。<br>
+        約59万/月、年間換算707万。<br>
+        <strong>当初の57人目標をすでに超過達成した。</strong><br><br>
+
+        5/8に「残り23人」と書いた。<br>
+        たった2日で33人増えた。<br>
+        追加募集ペース平均11.75名/日。<br><br>
+
+        オプチャ1,000人の6.7%が転換した。<br>
+        3.4%→6.7%に倍増。<br>
+        10%に伸ばせば100人に届く。<br><br>
+
+        道筋はもう見えているどころか、<br>
+        <strong>目標を超えて進んでいる。</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    理想 vs 現状 ギャップ分析 v4.3 67名到達版 — Generated by こあ(COA) on 2026-05-10
+  </div>
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector('[onclick="go(\'' + id + '\')"').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
