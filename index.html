@@ -3,189 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Internal Field — シンクロニシティ・マネジメント</title>
+<title>Internal Field — 命のフィールドを内側から照らす</title>
+<link rel="icon" type="image/svg+xml" href="/internal-field/assets/favicon.svg">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
-
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
   :root {
-    --bg: #f8f9fc;
-    --surface: #ffffff;
-    --surface2: #f0f2f8;
-    --accent: #1d9bf0;
-    --accent2: #7856ff;
-    --accent3: #e8368f;
-    --text: #1a1a2e;
-    --text-sub: #5a6578;
-    --border: #dfe3ec;
-    --gradient1: linear-gradient(135deg, #1d9bf0, #7856ff);
+    --navy: #0a1628; --navy-mid: #132040; --accent: #e94560; --gold: #f0d9a8; --gold-dark: #c4a86a;
+    --sun: #f39c12; --earth: #3498db; --synchro: #8e44ad; --oto: #e67e22; --publish: #27ae60;
+    --bg: #faf9f7; --card: #ffffff; --text: #1a1a2e; --text-sub: #64748b; --border: #e2e8f0;
+    --indigo: #4f46e5; --indigo-light: #e0e7ff;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Noto Sans JP', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.8;
-    min-height: 100vh;
-  }
-
-  .hero {
-    position: relative;
-    padding: 100px 24px 80px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 800px 500px at 30% 30%, rgba(29,155,240,0.1), transparent),
-      radial-gradient(ellipse 600px 400px at 70% 70%, rgba(120,86,255,0.07), transparent);
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-  .hero-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    display: block;
-  }
-  .hero h1 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 900;
-    background: var(--gradient1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 12px;
-  }
-  .hero p {
-    color: var(--text-sub);
-    font-size: 1.1rem;
-    font-weight: 300;
-  }
-
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 24px 80px;
-  }
-
-  .section-title {
-    font-size: 0.85rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-
-  .report-card {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 16px;
-    text-decoration: none;
-    color: var(--text);
-    transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .report-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    border-color: var(--accent);
-  }
-  .report-icon {
-    width: 56px; height: 56px;
-    background: var(--gradient1);
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-  .report-info { flex: 1; }
-  .report-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .report-desc {
-    color: var(--text-sub);
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-  }
-  .report-meta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .meta-tag {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-  .meta-date { background: rgba(29,155,240,0.1); color: #0c7cd5; }
-  .meta-cat { background: rgba(120,86,255,0.1); color: #6040d4; }
-  .meta-status { background: rgba(0,166,125,0.1); color: #008060; }
-
-  .empty-state {
-    text-align: center;
-    padding: 60px 24px;
-    color: var(--text-sub);
-  }
-
-  .footer {
-    text-align: center;
-    padding: 40px 24px;
-    color: var(--text-sub);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-    background: var(--surface2);
-  }
-
+  body { font-family: 'Noto Sans JP', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  .hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, #1b2d4f 100%); color: #fff; padding: 80px 40px 60px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -40%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(243,156,18,0.08) 0%, transparent 70%); border-radius: 50%; }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 6px 20px; border-radius: 30px; font-size: 0.78em; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 20px; color: var(--gold); }
+  .hero h1 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 2.6em; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.06em; }
+  .hero .subtitle { font-size: 1em; opacity: 0.6; font-weight: 300; max-width: 480px; margin: 0 auto; letter-spacing: 0.04em; }
+  .solar-section { max-width: 900px; margin: -40px auto 0; padding: 0 24px 60px; position: relative; z-index: 2; }
+  .sun-card { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid var(--sun); border-radius: 24px; padding: 36px; text-align: center; margin-bottom: 32px; box-shadow: 0 8px 32px rgba(243,156,18,0.15); transition: transform 0.3s ease; }
+  .sun-card:hover { transform: translateY(-3px); }
+  .sun-icon { font-size: 2.4em; margin-bottom: 8px; }
+  .sun-card h2 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.4em; color: #92400e; margin-bottom: 8px; }
+  .sun-card p { font-size: 0.9em; color: #78350f; max-width: 500px; margin: 0 auto; }
+  .sun-links { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .sun-links a { display: inline-block; background: var(--sun); color: #fff; text-decoration: none; padding: 10px 24px; border-radius: 30px; font-size: 0.85em; font-weight: 600; transition: all 0.2s ease; }
+  .sun-links a:hover { background: #e67e22; transform: translateY(-1px); }
+  .sun-links a.secondary { background: transparent; border: 2px solid var(--sun); color: #92400e; }
+  .sun-links a.secondary:hover { background: rgba(243,156,18,0.1); }
+  .planet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 32px; }
+  .planet-card { background: var(--card); border-radius: 20px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.04); transition: all 0.3s ease; text-decoration: none; color: var(--text); display: block; }
+  .planet-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
+  .planet-card.active { border-color: var(--earth); box-shadow: 0 4px 16px rgba(52,152,219,0.12); }
+  .planet-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .planet-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4em; flex-shrink: 0; }
+  .planet-card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.1em; font-weight: 700; }
+  .planet-card p { font-size: 0.85em; color: var(--text-sub); line-height: 1.7; }
+  .planet-tag { display: inline-block; font-size: 0.72em; padding: 3px 12px; border-radius: 20px; font-weight: 600; margin-top: 12px; }
+  .section-label { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.82em; font-weight: 700; color: var(--text-sub); letter-spacing: 0.08em; margin-bottom: 14px; padding-left: 4px; }
+  .story-section { margin-bottom: 32px; }
+  .research-card { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #0ea5e9; border-radius: 24px; padding: 36px; text-align: center; box-shadow: 0 8px 32px rgba(14,165,233,0.12); transition: transform 0.3s ease; text-decoration: none; color: var(--text); display: block; }
+  .research-card:hover { transform: translateY(-3px); }
+  .research-card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.3em; color: #0369a1; margin-bottom: 8px; }
+  .research-card p { font-size: 0.88em; color: #0284c7; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+  .research-badge { display: inline-block; background: #0ea5e9; color: #fff; font-size: 0.75em; font-weight: 600; padding: 4px 16px; border-radius: 20px; margin-top: 16px; }
+  .research-meta { display: flex; gap: 10px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+  .research-meta span { font-size: 0.72em; padding: 3px 12px; border-radius: 20px; font-weight: 600; background: rgba(14,165,233,0.12); color: #0369a1; }
+  .story-emoji { font-size: 2.2em; margin-bottom: 8px; }
+  .dashboard-section { margin-bottom: 32px; }
+  .dashboard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .dash-card { background: var(--card); border-radius: 16px; padding: 24px 20px; border: 1px solid var(--border); text-align: center; transition: all 0.3s ease; text-decoration: none; color: var(--text); display: block; }
+  .dash-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .dash-icon { font-size: 1.6em; margin-bottom: 8px; }
+  .dash-card h4 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.88em; font-weight: 700; margin-bottom: 4px; }
+  .dash-card p { font-size: 0.75em; color: var(--text-sub); }
+  .util-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+  .util-card { background: var(--card); border-radius: 16px; padding: 20px; border: 1px solid var(--border); text-align: center; transition: all 0.2s ease; text-decoration: none; color: var(--text); display: block; }
+  .util-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
+  .util-icon { font-size: 1.6em; margin-bottom: 8px; }
+  .util-card h4 { font-size: 0.85em; font-weight: 700; margin-bottom: 4px; }
+  .util-card p { font-size: 0.75em; color: var(--text-sub); }
+  .update-banner { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid #6ee7b7; border-radius: 16px; padding: 20px 28px; margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+  .update-banner .update-icon { font-size: 1.6em; flex-shrink: 0; }
+  .update-banner .update-text { font-size: 0.88em; color: #065f46; }
+  .update-banner .update-text strong { color: #047857; }
+  .portal-footer { text-align: center; padding: 40px 24px; font-size: 0.8em; color: var(--text-sub); border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+  .portal-footer strong { color: var(--text); font-weight: 600; }
+  .open-field-link { display: inline-flex; align-items: center; gap: 6px; background: rgba(79,70,229,0.08); color: var(--indigo); text-decoration: none; padding: 8px 20px; border-radius: 30px; font-size: 0.82em; font-weight: 600; margin-top: 12px; transition: all 0.2s; }
+  .open-field-link:hover { background: rgba(79,70,229,0.15); }
   @media (max-width: 640px) {
-    .report-card { flex-direction: column; gap: 12px; }
+    .hero { padding: 60px 24px 48px; }
+    .hero h1 { font-size: 1.8em; }
+    .planet-grid { grid-template-columns: 1fr; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .util-grid { grid-template-columns: repeat(2, 1fr); }
+    .solar-section { padding: 0 16px 40px; }
+    .research-card { padding: 28px 20px; }
+    .update-banner { flex-direction: column; text-align: center; }
   }
 </style>
 </head>
 <body>
-
 <div class="hero">
-  <div class="hero-content">
-    <span class="hero-icon">🏠</span>
+  <div class="hero-inner">
+    <div class="hero-badge">SYNCHRO MANAGEMENT — INTERNAL</div>
     <h1>Internal Field</h1>
-    <p>社内ナレッジポータル — 戦略・リサーチ・ノウハウの蓄積基地</p>
+    <div class="subtitle">命のフィールドを内側から照らす</div>
   </div>
 </div>
-
-<div class="container">
-  <div class="section-title">📄 Reports</div>
-
-  <a href="reports/x-global-growth-strategy-2026.html" class="report-card">
-    <div class="report-icon">𝕏</div>
-    <div class="report-info">
-      <div class="report-title">世界中の人が集まるXアカウント構築戦略 2026</div>
-      <div class="report-desc">最新アルゴリズム・成長戦略・マネタイズを完全網羅。90日アクションプラン付き。</div>
-      <div class="report-meta">
-        <span class="meta-tag meta-date">2026-05-12</span>
-        <span class="meta-tag meta-cat">SNS戦略</span>
-        <span class="meta-tag meta-status">NEW</span>
-      </div>
+<div class="solar-section">
+  <div class="update-banner">
+    <div class="update-icon">🔥</div>
+    <div>
+      <div class="update-text"><strong>5/8 ロードマップv9更新</strong> — 5/6 Zoomセミナー300名実施、コミュニティ起点モデル始動、オプチャ1,000人超、生命体ベースへの転換宣言</div>
     </div>
-  </a>
-
+  </div>
+  <div class="sun-card">
+    <div class="sun-icon">☀️</div>
+    <h2>LDM — Life Design Method</h2>
+    <p>すべての中心にある太陽。命のデザインを通じて、人生を丸ごと創造するメソッド。</p>
+    <div class="sun-links">
+      <a href="ldm/roadmap/ubm-osaka-20260620.html">UBM大阪ロードマップ</a>
+      <a href="dashboards/company-roadmap.html" class="secondary">会社設計ロードマップv9</a>
+    </div>
+  </div>
+  <div class="planet-grid">
+    <div class="planet-card active">
+      <div class="planet-header">
+        <div class="planet-icon" style="background: rgba(52,152,219,0.1);">🌍</div>
+        <h3>アースジャーニー</h3>
+      </div>
+      <p>LDMの入口であり最深部。オプチャ1,000人超、5/6 Zoomセミナー300名、月額コミュニティ販売開始。コミュニティ起点モデルの核として本格稼働中。</p>
+      <span class="planet-tag" style="background: rgba(52,152,219,0.15); color: #2471a3;">コミュニティ稼働中</span>
+    </div>
+    <div class="planet-card">
+      <div class="planet-header">
+        <div class="planet-icon" style="background: rgba(142,68,173,0.1);">🚀</div>
+        <h3>シンクロ起業塾</h3>
+      </div>
+      <p>LDMのビジネス応用。命のリズムに沿った起業・経営を学ぶ場。</p>
+      <span class="planet-tag" style="background: rgba(142,68,173,0.1); color: #8e44ad;">coming soon</span>
+    </div>
+    <div class="planet-card">
+      <div class="planet-header">
+        <div class="planet-icon" style="background: rgba(230,126,34,0.1);">🎵</div>
+        <h3>OTO</h3>
+      </div>
+      <p>音 × サイエンス × シャーマニズム。5/16スピフェス控え。</p>
+      <span class="planet-tag" style="background: rgba(230,126,34,0.1); color: #e67e22;">5/16 スピフェス</span>
+    </div>
+    <div class="planet-card">
+      <div class="planet-header">
+        <div class="planet-icon" style="background: rgba(39,174,96,0.1);">📚</div>
+        <h3>出版</h3>
+      </div>
+      <p>Kindle本 第1章v2完成。VIRAP™フレームワーク命名。続章執筆中。</p>
+      <span class="planet-tag" style="background: rgba(39,174,96,0.1); color: #27ae60;">執筆中</span>
+    </div>
+  </div>
+  <div class="story-section">
+    <div class="section-label">📊 STRATEGY & RESEARCH</div>
+    <a href="reports/x-global-growth-strategy-2026.html" class="research-card">
+      <div class="story-emoji">𝕏</div>
+      <h3>世界中の人が集まるXアカウント構築戦略 2026</h3>
+      <p>最新アルゴリズム解析・成長戦略・マネタイズ・90日アクションプランを完全網羅。<br>グローバルアカウントを本気で育てるための実践レポート。</p>
+      <div class="research-meta">
+        <span>2026-05-12</span>
+        <span>SNS戦略</span>
+        <span>NEW</span>
+      </div>
+      <span class="research-badge">レポートを読む →</span>
+    </a>
+  </div>
+  <div class="dashboard-section">
+    <div class="section-label">DASHBOARDS</div>
+    <div class="dashboard-grid">
+      <a href="dashboards/company-roadmap.html" class="dash-card">
+        <div class="dash-icon">🗺️</div>
+        <h4>会社設計ロードマップ</h4>
+        <p>v9 — 5/8更新</p>
+      </a>
+      <a href="dashboards/gap-analysis.html" class="dash-card">
+        <div class="dash-icon">🎯</div>
+        <h4>ギャップ分析</h4>
+        <p>理想 vs 現状と次の90日</p>
+      </a>
+    </div>
+  </div>
+  <div class="util-grid">
+    <div class="util-card">
+      <div class="util-icon">🤖</div>
+      <h4>Agent Team</h4>
+      <p>エージェントチーム</p>
+    </div>
+    <div class="util-card">
+      <div class="util-icon">📋</div>
+      <h4>Team Manual</h4>
+      <p>チームマニュアル</p>
+    </div>
+    <div class="util-card">
+      <div class="util-icon">🌱</div>
+      <h4>Vision</h4>
+      <p>ビジョン・コンセプト</p>
+    </div>
+    <a href="tools/deploy.html" class="util-card">
+      <div class="util-icon">🌿</div>
+      <h4>Deploy Tool</h4>
+      <p>zip → GitHub 自動デプロイ</p>
+    </a>
+  </div>
+  <div style="text-align:center; margin-bottom: 20px;">
+    <a href="https://synchro-mgmt.github.io/open-field/" class="open-field-link">🌍 open-field（公開サイト）を見る →</a>
+  </div>
 </div>
-
-<div class="footer">
-  <p>Internal Field — 株式会社シンクロニシティ・マネジメント</p>
-  <p style="margin-top:6px">社内向けナレッジポータル</p>
+<div class="portal-footer">
+  <strong>Internal Field</strong> — 株式会社シンクロニシティ・マネジメント<br>
+  Managed by こあ(COA) | Powered by GitHub Pages
 </div>
-
 </body>
 </html>
