@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <radialGradient id="s" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#fff176"/>
+      <stop offset="65%" stop-color="#fdd835"/>
+      <stop offset="100%" stop-color="#f9a825"/>
+    </radialGradient>
+    <linearGradient id="r" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fdd835"/>
+      <stop offset="100%" stop-color="#f9a825"/>
+    </linearGradient>
+  </defs>
+
+  <!-- White background -->
+  <rect width="512" height="512" rx="64" fill="#ffffff"/>
+
+  <!-- Orbit arcs -->
+  <path d="M260,44 A212,212 0 0,1 462,224" fill="none" stroke="#f9a825" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M468,288 A212,212 0 0,1 288,468" fill="none" stroke="#f9a825" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M224,468 A212,212 0 0,1 44,288" fill="none" stroke="#f9a825" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M44,224 A212,212 0 0,1 224,44" fill="none" stroke="#f9a825" stroke-width="5.5" stroke-linecap="round"/>
+
+  <!-- Planets -->
+  <circle cx="218" cy="44" r="11" fill="#f9a825"/>
+  <circle cx="178" cy="56" r="5.5" fill="#fbc02d" opacity="0.65"/>
+  <circle cx="464" cy="240" r="7" fill="#f9a825" opacity="0.8"/>
+  <circle cx="296" cy="468" r="6" fill="#f9a825" opacity="0.75"/>
+  <circle cx="340" cy="462" r="4" fill="#fbc02d" opacity="0.55"/>
+  <circle cx="44" cy="280" r="8" fill="#f9a825" opacity="0.8"/>
+  <circle cx="48" cy="230" r="4.5" fill="#fbc02d" opacity="0.55"/>
+
+  <!-- Cardinal rays -->
+  <polygon points="256,48 240,186 256,198 272,186" fill="url(#r)"/>
+  <polygon points="256,48 240,186 256,198 272,186" fill="url(#r)" transform="rotate(90 256 256)"/>
+  <polygon points="256,48 240,186 256,198 272,186" fill="url(#r)" transform="rotate(180 256 256)"/>
+  <polygon points="256,48 240,186 256,198 272,186" fill="url(#r)" transform="rotate(270 256 256)"/>
+
+  <!-- Diagonal rays -->
+  <polygon points="256,88 246,192 256,202 266,192" fill="url(#r)" transform="rotate(45 256 256)"/>
+  <polygon points="256,88 246,192 256,202 266,192" fill="url(#r)" transform="rotate(135 256 256)"/>
+  <polygon points="256,88 246,192 256,202 266,192" fill="url(#r)" transform="rotate(225 256 256)"/>
+  <polygon points="256,88 246,192 256,202 266,192" fill="url(#r)" transform="rotate(315 256 256)"/>
+
+  <!-- Minor rays -->
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(22.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(67.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(112.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(157.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(202.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(247.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(292.5 256 256)"/>
+  <polygon points="256,120 250,194 256,200 262,194" fill="#fbc02d" opacity="0.6" transform="rotate(337.5 256 256)"/>
+
+  <!-- Sun core -->
+  <circle cx="256" cy="256" r="76" fill="url(#s)"/>
+</svg>
