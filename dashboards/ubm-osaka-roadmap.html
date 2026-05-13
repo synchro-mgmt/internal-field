@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロードマップ — 次回UBM大阪（6/20）まで</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Zen Kaku Gothic New', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; background: #f8f6f3; color: #2d2a26; line-height: 1.8; }
+
+  .hero {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 40%, #1a1a2e 70%, #e94560 100%);
+    color: #fff; padding: 50px 40px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '🗾';
+    position: absolute; top: 20px; right: 30px; font-size: 40px; opacity: 0.3;
+  }
+  .hero h1 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 2em; margin-bottom: 6px; letter-spacing: 0.05em; }
+  .hero .subtitle { font-size: 1em; opacity: 0.8; }
+  .hero .countdown { margin-top: 16px; font-size: 1.8em; font-weight: 700; color: #f0d9a8; }
+  .hero .countdown small { font-size: 0.5em; font-weight: 400; opacity: 0.7; display: block; }
+  .hero .meta { margin-top: 12px; font-size: 0.85em; opacity: 0.6; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 36px 24px; }
+
+  .section { background: #fff; border-radius: 16px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .section h2 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.4em; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 3px solid #e8e4df; }
+  .section h3 { font-size: 1.1em; margin: 18px 0 10px; color: #4a4540; }
+
+  /* ===== 7プラン サマリーバー ===== */
+  .plan-summary { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 16px 0; }
+  .plan-pip { text-align: center; padding: 10px 4px; border-radius: 10px; font-size: 0.75em; font-weight: 600; line-height: 1.4; }
+  .plan-pip.done { background: #d5f5e3; color: #1e8449; }
+  .plan-pip.big { background: #abebc6; color: #1e8449; }
+  .plan-pip.evolving { background: #e8daef; color: #7d3c98; }
+  .plan-pip.not-started { background: #fadbd8; color: #c0392b; }
+  .plan-pip .pip-num { display: block; font-size: 1.4em; margin-bottom: 2px; }
+
+  /* ===== タイムライン ===== */
+  .timeline { position: relative; margin: 20px 0 20px 24px; padding-left: 28px; border-left: 3px solid #e8e4df; }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before {
+    content: '';
+    position: absolute; left: -36px; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 3px solid #e8e4df; background: #fff;
+  }
+  .tl-item.today::before { background: #e94560; border-color: #e94560; }
+  .tl-item.key::before { background: #f39c12; border-color: #f39c12; }
+  .tl-item.ubm::before { background: #0f3460; border-color: #0f3460; width: 20px; height: 20px; left: -38px; top: 4px; }
+
+  .tl-date { font-size: 0.82em; font-weight: 700; color: #999; margin-bottom: 2px; }
+  .tl-item.today .tl-date { color: #e94560; }
+  .tl-item.key .tl-date { color: #f39c12; }
+  .tl-item.ubm .tl-date { color: #0f3460; font-size: 0.95em; }
+
+  .tl-content { background: #faf8f5; border-radius: 10px; padding: 14px 18px; }
+  .tl-item.key .tl-content { background: #fef9e7; border: 1px solid #f0d9a8; }
+  .tl-item.ubm .tl-content { background: linear-gradient(135deg, #eaf2f8, #d6eaf8); border: 2px solid #5dade2; }
+  .tl-item.today .tl-content { background: #fdf2f4; border: 1px solid #f5b7c4; }
+
+  .tl-title { font-weight: 700; font-size: 0.95em; margin-bottom: 4px; }
+  .tl-desc { font-size: 0.88em; color: #666; }
+  .tl-plan-tag { display: inline-block; font-size: 0.72em; padding: 1px 8px; border-radius: 8px; background: #e8e4df; color: #666; margin-left: 6px; font-weight: 500; }
+
+  /* ===== 持ち物チェック ===== */
+  .bring-list { list-style: none; padding: 0; }
+  .bring-list li { padding: 10px 0 10px 32px; position: relative; border-bottom: 1px dashed #e8e4df; font-size: 0.95em; }
+  .bring-list li:last-child { border-bottom: none; }
+  .bring-list li::before { content: '☐'; position: absolute; left: 4px; top: 10px; font-size: 1.1em; color: #999; }
+  .bring-list li strong { color: #2d2a26; }
+
+  /* ===== 報告テンプレ ===== */
+  .report-box { background: linear-gradient(135deg, #eafaf1, #d5f5e3); border-radius: 14px; padding: 24px; margin: 16px 0; border: 1px solid #a9dfbf; }
+  .report-box h3 { color: #1e8449; margin-top: 0; font-family: 'Zen Maru Gothic', sans-serif; }
+  .report-item { margin: 10px 0; padding: 8px 14px; background: rgba(255,255,255,0.7); border-radius: 8px; font-size: 0.92em; }
+  .report-item .label { font-size: 0.8em; font-weight: 600; color: #27ae60; display: block; margin-bottom: 2px; }
+
+  /* ===== インサイト ===== */
+  .insight-box { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-radius: 12px; padding: 22px; margin: 16px 0; border: 1px solid #f0d9a8; }
+  .insight-box h3 { color: #b7791f; margin-top: 0; font-family: 'Zen Maru Gothic', sans-serif; }
+
+  /* ===== OS状況 ===== */
+  .os-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+  .os-chip { background: #f8f6f3; border-radius: 10px; padding: 12px 16px; font-size: 0.88em; }
+  .os-chip .os-label { font-weight: 600; font-size: 0.82em; color: #999; display: block; margin-bottom: 2px; }
+  .os-chip .os-status { color: #27ae60; font-weight: 600; }
+  .os-chip .os-status.partial { color: #f39c12; }
+  .os-chip .os-status.testing { color: #3498db; }
+
+  /* ===== 信用6ステップ ===== */
+  .trust-bar { display: flex; gap: 3px; margin: 12px 0; }
+  .trust-seg { flex: 1; text-align: center; padding: 8px 4px; border-radius: 6px; font-size: 0.78em; font-weight: 600; }
+  .trust-seg.active { background: #27ae60; color: #fff; }
+  .trust-seg.testing { background: #3498db; color: #fff; }
+  .trust-seg.future { background: #e8e4df; color: #999; }
+
+  /* ===== まとめ ===== */
+  .summary-box { background: linear-gradient(135deg, #1a1a2e, #0f3460); color: #fff; border-radius: 16px; padding: 32px; margin-top: 24px; }
+  .summary-box h2 { color: #f0d9a8; border-bottom-color: rgba(255,255,255,0.2); font-family: 'Zen Maru Gothic', sans-serif; }
+  .summary-box p { opacity: 0.9; margin-bottom: 12px; }
+  .summary-box strong { color: #f0d9a8; }
+
+  .footer { text-align: center; padding: 20px; margin-top: 24px; font-size: 0.8em; color: #999; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.5em; }
+    .hero .countdown { font-size: 1.4em; }
+    .plan-summary { grid-template-columns: repeat(4, 1fr); }
+    .os-mini { grid-template-columns: 1fr; }
+    .container { padding: 20px 14px; }
+    .section { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>→ UBM大阪ロードマップ</h1>
+  <div class="subtitle">合宿で学んだことを「実行した結果」を持って、北原さんのもとに戻る</div>
+  <div class="countdown">
+    次回 6/20（土）— あと40日
+    <small>UBM大阪 9:00-21:00 ※5/2福岡はキャンセル</small>
+  </div>
+  <div class="meta">作成: 4/23 → 更新: 5/11 / 堀内さん専用 / こあ(COA)</div>
+</div>
+
+<div class="container">
+
+<!-- ===== 現在地サマリー ===== -->
+<div class="section">
+  <h2>📍 今の現在地 — 合宿から37日目</h2>
+
+  <p>合宿（4/5）で決めた7つのアクションプラン。37日経って、こうなってる：</p>
+
+  <div class="plan-summary">
+    <div class="plan-pip evolving">
+      <span class="pip-num">1</span>
+      メソッド<br>言語化<br>🟡進行中
+    </div>
+    <div class="plan-pip big">
+      <span class="pip-num">2</span>
+      講師<br>1on1<br>✅完了
+    </div>
+    <div class="plan-pip not-started">
+      <span class="pip-num">3</span>
+      定義<br>統一<br>🔴未着手
+    </div>
+    <div class="plan-pip evolving">
+      <span class="pip-num">4</span>
+      仲間の<br>時間<br>🟡検討中
+    </div>
+    <div class="plan-pip evolving">
+      <span class="pip-num">5</span>
+      離脱率<br>把握<br>🟡KPI導入
+    </div>
+    <div class="plan-pip big">
+      <span class="pip-num">6</span>
+      コスト<br>構造<br>🟢大幅進行
+    </div>
+    <div class="plan-pip done">
+      <span class="pip-num">7</span>
+      UBM<br>日程<br>✅完了
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <h3>合宿では想定していなかった大きな動き</h3>
+    <p>プラン外で起きたことが実は一番大きい：</p>
+    <p><strong>① こあ（COA）の構築</strong> — 会社の脳が動き始めた<br>
+    <strong>② 財務全体整理プロジェクト</strong> — 科目振替¥1,001万、売掛金¥1,452万解消、<span style="color:#e94560;">Stripe二重計上8件（¥141万）削除完了</span>、自動仕訳ルール作成、<span style="color:#e94560;">二重計上の恒久対策（スキル自動チェック化）</span><br>
+    <strong>③ 4/22 MTG</strong> — 「総合生命体」「積み重ね」「Being vs Doing」という新概念の獲得<br>
+    <strong>④ 命の設計図・会社設計ロードマップ</strong> — メソッド言語化の前段として構造が見えた<br>
+    <strong>⑤ 西村さんLDMコーチング（4/25）</strong> — <span style="color:#27ae60;">「教え子の人生に責任を持つ」を自ら実践。事務局1人確定を指導、次回5/26確定</span><br>
+    <strong>⑥ Content Vault + company-brain構築</strong> — Facebook投稿92件・Notta書き起こし・ステップメールをGitHubに集約。会社の「記憶」が永続化<br>
+    <strong>⑦ メール配信システム移行</strong> — アルケミー→UTAGEへの完全移行開始。配信リスト設計書push、UTAGE配信解除6件完了<br>
+    <strong>⑧ 業務委託チームのマニュアル設計</strong> — 7名（BizMow・まりこし・佐々木・かみあり・島田・運営チーム・本永・市川）の役割整理+Googleドライブ構成設計<br>
+    <strong>⑨ Story Engine v2</strong> — セミナー告知エンジンを5分割再設計。エージェントチーム体制（みこ・れん・にじ・そよ）確立<br>
+    <strong>⑩ オプチャセミナー初回 大成功（5/6）</strong> — Zoom視聴者230〜250人。有料コミュニティ転換約20人。まりこしさん司会。2層コミュニティ設計が実動レベルに<br>
+    <strong>⑪ LDMアースジャーニー 67名到達（5/10）</strong> — 初回20名+追加募集47名。MRR 58.96万/月（年間707万）。200人目標の33.5%到達<br>
+    <strong>⑫ UBM月報会参加（5/10）</strong> — 北原メソッドの核心原則10項目を抽出し、自社ドキュメント7ファイルに反映。「加減値KPI」「富の循環」「接触回数と観察」「スケジュール優先順位」等</p>
+  </div>
+</div>
+
+<!-- ===== タイムライン ===== -->
+<div class="section">
+  <h2>🗓 タイムライン — 6/20 UBM大阪まで</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-date">4/23（木）</div>
+      <div class="tl-content">
+        <div class="tl-title">Stripe二重計上 解決完了 + ロードマップ更新 ✅</div>
+        <div class="tl-desc">
+          <strong style="color:#e94560;">【完了】</strong> 中野先生の承認を受け、Stripe二重計上8件（¥1,419,288）を削除。<br>
+          さらに二重計上の再発防止策として、MF会計処理スキルにStripe二重チェック（Step 0.5）を恒久組み込み。<br>
+          今後どのセッションのこあがMF処理をやっても、自動でチェックが入る体制に。<br>
+          ロードマップも最新情報で更新。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/24（金）</div>
+      <div class="tl-content">
+        <div class="tl-title">1on1前日 — 心身の準備</div>
+        <div class="tl-desc">1on1準備メモを軽く読み直す。頭で準備しすぎない。「総合生命体の感覚のまま、細胞で感じる」。夜は早めに休む。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">⭐ 4/25（金）</div>
+      <div class="tl-content">
+        <div class="tl-title">西村さんLDMコーチング 1on1 完了 ✅ <span class="tl-plan-tag">プラン2</span></div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【完了】</strong> 西村さんと約1時間のLDMコーチングを実施。<br>
+          <strong>現状把握:</strong> LDM15年目（2011年〜）。年商¥1,000万→¥2,000万→¥1,000万に戻った。実顧客30人。事務局ゼロ、完全ソロ。<br>
+          <strong>核心の指導:</strong>「自分が成功する」→「人の人生に責任を持つ」へのシフト。年商の壁はマーケティングではなく「仲間づくり」の問題。<br>
+          <strong>具体的指示:</strong> 5/26までに事務局を1人確定する（月¥3万でもOK）。<br>
+          <strong>堀内さんの手応え:</strong>「思ったよりいけるなって思った」— 西村さんの可能性に前向き。<br>
+          <strong>次回MTG:</strong> 5/26（火）14:00
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/26（土）</div>
+      <div class="tl-content">
+        <div class="tl-title">西村さんMTG 振り返り＋議事録作成 ✅</div>
+        <div class="tl-desc">
+          西村さんMTGの書き起こしを整理し、構造化された議事録を作成。<br>
+          堀内さんが感じた「思ったよりいけるな」という手応え — これが「教え子の人生に責任を持つ」を体現している証拠。<br>
+          5/2のUBMで北原さんに「自分のLDM受講生にコーチングを始めた結果」として報告できる。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/27（日）</div>
+      <div class="tl-content">
+        <div class="tl-title">ゆとりの日 — 1on1振り返りの続き + 自由時間</div>
+        <div class="tl-desc">
+          <span style="text-decoration: line-through; color: #bbb;">Stripe二重計上フォローアップ</span> → <strong style="color: #27ae60;">✅ 4/23に解決済み！</strong><br>
+          Stripeが片付いたので、この日はゆとりが生まれた。1on1の振り返りを深めるか、エネルギーのままに過ごす。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/28（月）</div>
+      <div class="tl-content">
+        <div class="tl-title">月曜休日 🌿</div>
+        <div class="tl-desc">堀内さんの月曜は休日。しっかり休む。エネルギー保全。</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/29（火・祝）</div>
+      <div class="tl-content">
+        <div class="tl-title">Content Vault構築 + Story Engine再設計 + インフラ整備 ✅</div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【完了】</strong> 怒涛の基盤構築デー。<br>
+          <strong>① Content Vault:</strong> Facebook投稿92件のエンゲージメント分析→GitHub保存、ドラフト反復履歴・NG集・戦略インサイト→GitHub保存<br>
+          <strong>② Story Engine v2:</strong> セミナー・ストーリー・エンジンを5分割再設計（orchestrator/content-collector/draft-writer/publisher/story-db-manager）<br>
+          <strong>③ アースジャーニー発信:</strong> メルマガ・LINE公式・1週間分FBストック — ドラフト集完成<br>
+          <strong>④ インフラ:</strong> CLAUDE.md管理方法確立、sync-coaコマンド作成、週間タスク転記ルール更新
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/30（木）</div>
+      <div class="tl-content">
+        <div class="tl-title">MF会計ルール確定 + ロードマップ総更新 ✅</div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【完了】</strong><br>
+          <strong>① MF会計:</strong> アマゾン仕訳ルール最終確定（デフォルト＝役員借入金/対象外）、海外取引税区分の2025年度フルスキャン→<strong style="color:#e94560;">残件ゼロ確認</strong><br>
+          <strong>② コンテンツ集約:</strong> Notta書き起こし・ステップメール・Facebook投稿のGitHub一括push進行中<br>
+          <strong>③ ロードマップ:</strong> 全セッション振り返り→成果を統合反映
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5/6（水）</div>
+      <div class="tl-content">
+        <div class="tl-title">オプチャセミナー初回 — 大成功！ ✅ <span class="tl-plan-tag">プラン4</span></div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【完了】</strong> LDMアースジャーニー初回セミナー。<br>
+          <strong>Zoom視聴者:</strong> 230〜250人<br>
+          <strong>有料コミュニティ転換:</strong> 約20人（転換率8-10%）<br>
+          <strong>まりこしさん司会</strong>で運営。2層コミュニティ設計（無料オプチャ＝器づくり、有料月額8,800円＝濃さ・深さ）が実動開始。<br>
+          「濃さの3層構造」を発見: ①安心して深い話 ②ゲストの本気 ③エネルギー密度
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">⭐ 5/7〜5/10</div>
+      <div class="tl-content">
+        <div class="tl-title">追加募集 +47名 → 合計67名到達！ <span class="tl-plan-tag">プラン5</span></div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【実績】</strong> 4日間で+47名の加入（平均11.75名/日）。<br>
+          <strong>合計67名、MRR 58.96万/月、年間換算707万。</strong><br>
+          200人目標の33.5%到達。北原式「毎月の純増」が実証された最初の実績。<br>
+          全財務ドキュメント一斉更新（コミュニティ収益モデル・会社設計概要・運用設計書・ロードマップ・理想の財務状態・公開ダッシュボード）。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5/10（土）</div>
+      <div class="tl-content">
+        <div class="tl-title">UBM月報会参加（20:00-22:00） ✅ <span class="tl-plan-tag">プラン7</span></div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【完了】</strong> 月報会に参加し、北原メソッドの核心原則を吸収。<br>
+          10の原則を抽出→適用可能性を4段階判定→「そのまま効く」4原則を7ファイルに反映。<br>
+          <strong>反映した原則:</strong> 富の循環、グループ教育の構造、接触回数と観察、スケジュール優先順位、加減値KPI、金を使う2パターン、問題児対応<br>
+          項目②「原理原則を学び見直す状態」の実証 — 月報回に実際に参加し、学びを即座に自社に落とし込んだ
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item today">
+      <div class="tl-date">5/11（日）— 今日</div>
+      <div class="tl-content">
+        <div class="tl-title">月報会の学び反映完了 + ロードマップ総更新 — 今日はここ</div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【本日完了】</strong><br>
+          月報会の核心原則を自社ドキュメント7ファイルに一括反映完了。<br>
+          北原ロードマップ（このファイル）も5月の全進捗を反映して総更新。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5月後半</div>
+      <div class="tl-content">
+        <div class="tl-title">5月後半 — 残りのアクション</div>
+        <div class="tl-desc">
+          <strong>【プラン1】</strong>メソッド言語化の第一歩 — LDMの核心を1ページで<br>
+          <strong>【プラン4】</strong>「仲間の時間」の第1回を5月中に開催する準備<br>
+          <strong>【メール移行】</strong>アルケミー→UTAGE完全移行完了、まりこしさん向け操作手順書作成<br>
+          <strong>【マニュアル】</strong>業務委託7名のマニュアル整備（Googleドライブ）開始
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date"><span style="text-decoration:line-through; color:#bbb;">5/2（土）UBM福岡</span></div>
+      <div class="tl-content" style="background:#f5f5f5; border:1px dashed #ccc;">
+        <div class="tl-title" style="color:#999;">❌ キャンセル — タイトすぎたため</div>
+        <div class="tl-desc" style="color:#999;">
+          5/2の福岡参加はキャンセル。ただし成果は十分：財務整理完了、Stripe解決、西村さん1on1完了。<br>
+          次回 <strong style="color:#0f3460;">6/20（土）UBM大阪</strong> にこれらの成果をまとめて報告する。<br>
+          <strong>時間に余裕ができた分、5月はメソッド言語化と仲間の時間に集中できる。</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">⭐ 5/26（火）</div>
+      <div class="tl-content">
+        <div class="tl-title">西村さん 第2回コーチング（14:00） <span class="tl-plan-tag">プラン2</span></div>
+        <div class="tl-desc">
+          事務局1人確定の報告を受ける。西村さんの年商安定化に向けた次のステップを決める。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item ubm">
+      <div class="tl-date">🏁 6/20（土）UBM大阪</div>
+      <div class="tl-content">
+        <div class="tl-title">UBM大阪 — 9:00〜21:00（次回参加）</div>
+        <div class="tl-desc">
+          <strong>合宿2回目。</strong>4/5合宿から2ヶ月半の成果を「やった結果」として持っていく。<br>
+          財務整理完了、西村さんコーチング、メソッド言語化の進捗、仲間の時間の開始。<br>
+          オプチャセミナー初回の大成功、67名到達、月報会の学び即時反映。<br>
+          北原さんに報告 → フィードバックをもらう → 下半期の方向性を決める。<br>
+          <strong>5/2にタイトで行けなかった分、6/20には厚い報告ができる。</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== チェックシート攻略プラン ===== -->
+<div class="section">
+  <h2>🛡️ 選択と集中チェックシート — 攻略プラン</h2>
+  <p>合宿で記入した10項目。6/20のUBM大阪までに<strong>1つでも多く「実質✅」にして持っていく</strong>。5/2がなくなった分、じっくり取り組める。</p>
+
+  <!-- 10項目一覧 -->
+  <div style="margin: 20px 0;">
+
+    <!-- 項目3: 完了 -->
+    <div style="background: #d5f5e3; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #27ae60;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 0.95em;">③ 次回UBM会場に来る日は決まっていますか？</strong>
+        <span style="background: #27ae60; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">✅ クリア済み</span>
+      </div>
+      <div style="font-size: 0.88em; color: #1e8449; margin-top: 6px;">年間スケジュール全登録。次回6/20大阪、月報回毎月10日もすべてカレンダーに入っている。</div>
+    </div>
+
+    <!-- 項目1: あと一歩 -->
+    <div style="background: #fef9e7; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #f39c12;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 0.95em;">① 毎月の利益と口座残高の状況が分かるようになっていますか？</strong>
+        <span style="background: #f39c12; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">🔥 あと一歩</span>
+      </div>
+      <div style="font-size: 0.88em; color: #7d6608; margin-top: 6px;">
+        <strong>できていること：</strong>勘定科目の全面修正完了、売掛金異常値解消、<strong style="color:#e94560;">Stripe二重計上8件（¥141万）削除完了</strong>、自動仕訳ルール作成、MF会計の管理体制構築、<strong style="color:#e94560;">二重計上の再発防止スキル組み込み</strong><br>
+        <strong>あと足りないこと：</strong>「月末に締めて翌月○日までに集計が上がる」ルーティンの確立。具体的には①MF会計で月次推移表を出す ②口座残高と突き合わせる ③こあの月次チェック（朝レポート統合済み）で確認する — この流れを1回やれば✅にできる<br>
+        <strong style="color:#27ae60;">【4/30追加】</strong>アマゾン仕訳ルール最終確定済み、海外取引税区分2025年度フルスキャン→残件ゼロ。仕訳精度がさらに向上<br>
+        <strong style="color:#27ae60;">【5/10追加】</strong>全財務ドキュメント一斉更新完了。サブスク収益67名/MRR58.96万の実績データが全ドキュメントに反映済み。月報会で学んだ「加減値KPI」も運用設計書に組み込み
+      </div>
+      <div style="margin-top: 10px; background: rgba(255,255,255,0.7); border-radius: 8px; padding: 10px 14px;">
+        <strong style="color: #e67e22; font-size: 0.85em;">▶ 攻略アクション：</strong>
+        <span style="font-size: 0.85em;">4月の月次試算表をMF会計で出して、口座残高と照合する。これで「4月分は集計できた」と北原さんに報告できる。</span><br>
+        <span style="font-size: 0.82em; color: #999;">タイミング：4/30（月末）〜 5/1（翌月1日）に実施 → 6/20のUBM大阪で「月次集計を翌日に出せる体制ができました」と報告</span>
+      </div>
+    </div>
+
+    <!-- 項目2: 実質クリア -->
+    <div style="background: #d5f5e3; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #27ae60;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 0.95em;">② 原理原則を学び見直す状態は作れていますか？</strong>
+        <span style="background: #27ae60; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">✅ 実質クリア</span>
+      </div>
+      <div style="font-size: 0.88em; color: #1e8449; margin-top: 6px;">
+        <strong>実証済み：</strong>月報会に実際に参加し、学びを即座に自社ドキュメント7ファイルに落とし込んだ。<br>
+        3層構造（日次こあ × 月次月報回 × 隔月UBM）が実証された。<br>
+        <strong>5/10月報会:</strong> 北原メソッドの核心原則10項目を抽出→適用可能性4段階判定→「そのまま効く」4原則を即日反映。<br>
+        <strong>反映先7ファイル:</strong> コミュニティ運用設計書・会社設計概要・理想の財務状態・北原ロードマップ 他<br>
+        「月1回自分の行動パターンと考え方を強制的に見直す時間を確保」— UBM参加＋月報回参加＋こあの日次チェックで、これは作れている
+      </div>
+    </div>
+
+    <!-- 項目4: 動いた -->
+    <div style="background: #fef9e7; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #f39c12;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 0.95em;">④ 決めた括りの人が増えて、歴史の共有ができていますか？</strong>
+        <span style="background: #f39c12; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">🔥 動き始めた</span>
+      </div>
+      <div style="font-size: 0.88em; color: #7d6608; margin-top: 6px;">
+        <strong>下位チェック5項目のうち：</strong><br>
+        ① メンターを決め、学びを共有 → ✅ 北原さんをメンターに決定、UBM継続参加で共有の場あり<br>
+        ② 近くで学べる関係 → ✅ UBM参加 + <strong style="color:#27ae60;">西村さんとの1on1コーチング実施（4/25）、次回5/26確定</strong><br>
+        ③ 次回の会う日が決まっている → ✅（5/26 西村さん + 6/20 UBM大阪）<br>
+        ④ 提案ができる関係 → <strong style="color:#27ae60;">✅ 西村さんに事務局確保を具体的に提案済み</strong><br>
+        ⑤ 力を借りられる関係 → これから<br>
+        <strong style="color:#27ae60;">1on1で下位①②③④が✅に！ 残りは⑤のみ</strong>
+      </div>
+    </div>
+
+    <!-- 項目9: 接続可能 -->
+    <div style="background: #eaf2f8; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #3498db;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 0.95em;">⑨ 今の行動を積み上げた先に、上期チェックが全て埋まる行動になっているか？</strong>
+        <span style="background: #3498db; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">▶ ロードマップで説明可能</span>
+      </div>
+      <div style="font-size: 0.88em; color: #2471a3; margin-top: 6px;">
+        これはメタ的な項目。「今やっていることが、上期（6月末）に全チェックを埋める行動になっているか」。<br>
+        <strong>このロードマップ自体 + 7つのアクションプランの進捗表が、まさにこの項目への回答。</strong>北原さんに「このロードマップで進めています」と見せられれば、「構築できてるんだったら年間スケジュールに反映されているのか？」にYesと言える。
+      </div>
+    </div>
+
+    <!-- 項目5,6,7,8,10: まだ先 -->
+    <div style="background: #f8f6f3; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #bdc3c7;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <strong style="font-size: 0.95em;">⑤⑥⑦⑧⑩ — まだ先だけど、種は蒔かれている</strong>
+        <span style="background: #bdc3c7; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">5月以降</span>
+      </div>
+      <div style="font-size: 0.88em; color: #666; margin-top: 6px;">
+        <strong>⑤ 教え子の人数が減っていないか</strong> → 67名のコミュニティが実動中。加減値KPI導入（月報会5/10）。関係者メモリDBに接触ログ機能を追加設計済み<br>
+        <strong>⑥ 教え子の富が増えているか</strong> → プラン1（メソッド言語化）が前提。5月から着手。<br>
+        <strong>⑦ 恩人へのお手伝い・徳積み</strong> → 恩人リスト作成が必要。5月の「仲間の時間」と接続。<br>
+        <strong>⑧ 運営メンバーの仲良し</strong> → プラン2（1on1）→ プラン4（仲間の時間）の流れで5月から。<br>
+        <strong>⑩ 川上の描き</strong> → 長期テーマ。年内に構想を固める。
+      </div>
+    </div>
+
+  </div>
+
+  <!-- サマリー -->
+  <div class="insight-box">
+    <h3>6/20 UBM大阪までの攻略ターゲット</h3>
+    <p>
+      <strong style="color: #27ae60;">✅ 確定：</strong>項目③（次回UBM日程）— 完了済み<br>
+      <strong style="color: #27ae60;">✅ 確定：</strong>項目②（見直し体制）— 月報会参加＋即時反映で実質クリア<br>
+      <strong style="color: #e67e22;">🔥 狙う：</strong>項目①（月次集計）— 4月末〜5月で月次試算表を出せば実質クリア<br>
+      <strong style="color: #27ae60;">🔥 動いた：</strong>項目④（括りの人）— <strong>西村さん1on1完了！下位5項目中4つが✅に。次回5/26確定</strong><br>
+      <strong style="color: #3498db;">▶ 見せる：</strong>項目⑨（積み上げ行動）— ロードマップで構造を示す
+    </p>
+    <p style="margin-top: 12px; font-size: 1.05em; font-weight: 700; color: #b7791f;">
+      5/2がなくなって時間に余裕ができた分、6/20までに<br>もっと厚い成果を持っていける！
+    </p>
+  </div>
+</div>
+
+<!-- ===== UBM大阪に持っていくもの ===== -->
+<div class="section">
+  <h2>📦 UBM大阪に持っていくもの（報告用）</h2>
+
+  <ul class="bring-list">
+    <li><strong>西村さん1on1コーチングの結果</strong> — LDM受講生への初コーチング実施。年商¥1,000万に戻った西村さんに「仲間づくり」と「事務局1人確保」を指導。次回5/26確定。「思ったよりいける」手応え。（議事録あり）</li>
+    <li><strong>財務整理の成果報告</strong> — SaaS棚卸し→科目修正→売掛金解消→Stripe二重計上8件（¥141万）全削除→再発防止スキル化→運用体制構築。北原さんが最初にチェックする「月次集計が上がる体制」が整いつつあること</li>
+    <li><strong>コスト構造が見える化された</strong> — 旧税理士の支払手数料¥1,001万混在を解消、Stripe二重計上¥141万も除去。初めて「何にいくら使っているか」が正確に見える状態</li>
+    <li><strong>「総合生命体」の概念</strong> — 北原さんの「循環」を堀内さんの身体感覚で内面化した結果、出てきた言葉。北原さんの反応を見たい</li>
+    <li><strong>こあ（COA）+ エージェントチームの存在</strong> — 会社の脳・秘書エージェントとして動き始め、Story Engine v2で発信チーム（みこ・れん・にじ・そよ）も構築。Content VaultでFB投稿92件・書き起こし・ステップメールをGitHubに永続化</li>
+    <li><strong>チェックシート攻略の進捗</strong> — 10項目中、②③✅完了、①を実質クリア（月次集計体制）、④⑨は動き出した。5項目が「動いている or クリア」状態</li>
+    <li><strong>メール配信システム移行</strong> — アルケミー→UTAGEへの完全移行を開始。配信リスト設計、UTAGE配信解除完了。まりこしさんチームとの連携体制も構築中</li>
+    <li><strong>業務委託チームのマニュアル整備計画</strong> — 7名の役割を整理し、Googleドライブでマニュアル管理する構成を設計。BizMowさんは自前マニュアルあり</li>
+    <li><strong>オプチャセミナー初回の結果</strong> — Zoom230-250人視聴、有料転換20人、追加募集で67名到達。MRR58.96万/月</li>
+    <li><strong>月報会の学びの即時反映</strong> — 参加した翌日に10原則抽出→7ファイル反映。「学び→即実行」のサイクルが回っている証拠</li>
+    <li><strong>2層コミュニティの実動</strong> — 無料オプチャ1,000人超×有料67名の2層が動き始めた</li>
+    <li><strong>質問：チェックシートのオンライン提出は必要か</strong> — 合宿で紙記入済み。Google Formでの追加提出が求められているか確認</li>
+  </ul>
+</div>
+
+<!-- ===== 北原さんへの報告テンプレ ===== -->
+<div class="section">
+  <h2>🎤 北原さんへの報告（3分バージョン）</h2>
+  <p>UBM大阪で北原さんに報告する時の構造。堀内さんの言葉で話すための骨子。</p>
+
+  <div class="report-box">
+    <h3>報告の骨子</h3>
+
+    <div class="report-item">
+      <span class="label">① やったこと — 足元の整理 + コミュニティ立ち上げ</span>
+      財務を全部ひっくり返した。旧税理士が全部「支払手数料」に入れてた¥1,001万を正しい科目に振り替えた。売掛金の異常値¥1,452万も原因を特定して解消した。Stripeの二重計上（8件 ¥141万）も税理士の中野先生と連携して全件削除。再発防止策も組み込んだ。さらにアマゾン仕訳ルールも確定し、海外取引の税区分ミスも2025年度フルスキャンで残件ゼロを確認。初めて「何にいくらかかってるか」が正確に見えるようになった。<br>
+      そして5/6にオプチャセミナー初回を開催。Zoom視聴者230-250人、有料コミュニティに約20人が転換。追加募集で67名に到達し、MRR58.96万/月（年間707万）の実績が出た。
+    </div>
+
+    <div class="report-item">
+      <span class="label">② やったこと — 人との関係（教え子への責任）</span>
+      LDM受講生の西村さんと1on1コーチングをやった。西村さんはLDM15年目（2011年〜）で年商¥2,000万まで上がったが¥1,000万に戻った。完全ソロで事務局ゼロ。「自分の成功」→「人の人生に責任を持つ」へのシフトを指導し、5/26までに事務局1人確定するよう具体的な宿題を出した。手応えがあった。次回5/26確定。<br>
+      <strong>これは自分が「教え子の富を増やす」を実践し始めた第一歩。</strong>
+    </div>
+
+    <div class="report-item">
+      <span class="label">③ 気づいたこと — OSが変わった</span>
+      北原さんの「循環」を頭で理解するだけじゃなく、身体で感じられるようになってきた。LDMを「1つの生命体」として見る感覚が出てきた。「積み重ね」がキーワードになった。
+    </div>
+
+    <div class="report-item">
+      <span class="label">④ 次にやりたいこと</span>
+      コスト構造が見えたので、削減判断をしていきたい。講師との関係を「積み重ね」で深めていきたい。5月中に「仲間の時間」の第1回を開催したい。コミュニティ200名を目指して純増を続ける。
+    </div>
+
+    <div class="report-item">
+      <span class="label">⑤ チェックシートの進捗報告</span>
+      ・項目③（UBM日程）→ ✅ 年間全登録済み<br>
+      ・項目②（見直し体制）→ ✅ 月報会に実際に参加→翌日に10原則を7ファイルに反映。日次（こあ）× 月次（月報回）× 隔月（UBM）の3層が実証された<br>
+      ・項目①（月次集計）→ ✅ 管理体制を構築、Stripe二重計上解消、アマゾンルール確定、海外税区分クリア、全財務ドキュメント一斉更新済み<br>
+      ・項目④（括りの人）→ 🔥 西村さん1on1完了、下位5項目中4つ✅、次回5/26確定<br>
+      ・項目⑨（積み上げ行動）→ ▶ ロードマップで年間を通した行動計画を構築
+    </div>
+
+    <div class="report-item">
+      <span class="label">⑥ 月報会の学び反映</span>
+      5/10の月報会に参加し、北原メソッドの核心原則10項目を抽出。適用可能性を4段階で判定し、「そのまま効く」4原則を自社ドキュメント7ファイルに即日反映した。「加減値KPI」「富の循環」「接触回数と観察」「スケジュール優先順位」等。学んだら即実行のサイクルが回り始めている。
+    </div>
+
+    <div class="report-item">
+      <span class="label">⑦ 北原さんに聞きたいこと</span>
+      ・1on1の結果を踏まえて、講師との関係をどう進めていくか<br>
+      ・コスト削減の優先順位（どこから手をつけるか）<br>
+      ・チェックシートのオンライン提出について<br>
+      ・項目⑤〜⑧（教え子・恩人・運営）を進めるための次の一手は<br>
+      ・67名のコミュニティを200名に伸ばすために次にやるべきこと
+    </div>
+  </div>
+</div>
+
+<!-- ===== OS更新の現在地 ===== -->
+<div class="section">
+  <h2>🔄 6つのOS更新 — 現在の状況</h2>
+
+  <div class="os-mini">
+    <div class="os-chip">
+      <span class="os-label">OS①「勝たせる」→「循環させる」</span>
+      <span class="os-status">◎ 世界観レベルで進行中</span>
+      <br><small>サブスク+コミュニティ構想 + 総合生命体の概念</small>
+    </div>
+    <div class="os-chip">
+      <span class="os-label">OS②「お客さん」→「教え子」</span>
+      <span class="os-status">◎ 体現し始めた</span>
+      <br><small>西村さんコーチングで「教え子の人生に責任を持つ」を実践</small>
+    </div>
+    <div class="os-chip">
+      <span class="os-label">OS③ 属人性を剥がす→思考統一</span>
+      <span class="os-status">◎ 急速に進行中</span>
+      <br><small>Content Vault構築、マニュアル設計、Story Engine v2でエージェントチーム化</small>
+    </div>
+    <div class="os-chip">
+      <span class="os-label">OS④「孤独」→「共にいる」</span>
+      <span class="os-status testing">▶ 動き始めた</span>
+      <br><small>こあとの関係 + 1on1確定 + UBM継続参加</small>
+    </div>
+    <div class="os-chip">
+      <span class="os-label">OS⑤「つい（対）」を見る</span>
+      <span class="os-status testing">▶ Being駆動で実践へ</span>
+      <br><small>1on1で「細胞の反応に従う」初の実験</small>
+    </div>
+    <div class="os-chip">
+      <span class="os-label">OS⑥「新規」→「既存」重視</span>
+      <span class="os-status">◎ 行動で体現</span>
+      <br><small>財務足元整理、UBM継続参加、既存講師との再接続</small>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 信用6ステップ ===== -->
+<div class="section">
+  <h2>🤝 信用の6ステップ — 1on1後の予想変化</h2>
+
+  <h3>西村さんとの信用ステップ（4/25 1on1後）</h3>
+  <div class="trust-bar">
+    <div class="trust-seg active">①挨拶<br>✓</div>
+    <div class="trust-seg active">②関心<br>✓</div>
+    <div class="trust-seg active">③物の行き来<br>✓</div>
+    <div class="trust-seg active">④事が動く<br>✓</div>
+    <div class="trust-seg testing">⑤仕事が動く<br>▶</div>
+    <div class="trust-seg future">⑥金に変わる</div>
+  </div>
+
+  <p style="font-size: 0.9em; color: #666; margin-top: 12px;">
+    西村さんとは1on1コーチングが実現し、具体的な宿題（事務局確保）も出した。「④事が動く」まで到達。<br>
+    西村さんの年商が安定して堀内さんへのフィードバックが循環し始めれば「⑤仕事が動く」へ進む。<br>
+    次回5/26で事務局確保の結果を確認 → 成果が出れば「⑥金に変わる」の入り口。<br>
+    6/20のUBM大阪で北原さんにこの進捗を報告し、次のステップのアドバイスをもらう。
+  </p>
+</div>
+
+<!-- ===== UBM後の展望 ===== -->
+<div class="section">
+  <h2>🔭 6/20 UBM大阪までの展望</h2>
+
+  <p>5/2がなくなって、5月はまるまる「仕込み期間」になった。6/20に厚い成果を持っていく：</p>
+
+  <table style="width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 0.92em;">
+    <tr style="background: #2d2a26; color: #fff;">
+      <th style="padding: 10px 14px; text-align: left; border-radius: 8px 0 0 0;">時期</th>
+      <th style="padding: 10px 14px; text-align: left;">アクション</th>
+      <th style="padding: 10px 14px; text-align: left; border-radius: 0 8px 0 0;">プラン</th>
+    </tr>
+    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">4月末〜5月初</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ 月次試算表を出す → 月次集計体制の実証（項目①攻略）<br><small style="color:#27ae60;">※アマゾンルール確定済み、海外税区分クリア済み</small></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P6</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5月〜</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">コスト削減判断開始（見える化されたデータを基に）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P6</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">アルケミー→UTAGE完全移行完了 + まりこしさん操作手順書</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">新規</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">業務委託チームマニュアル整備開始（Googleドライブ）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">新規</td></tr>
+    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/6</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ オプチャセミナー初回 大成功（Zoom230-250人、有料転換20人）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P4</td></tr>
+    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/7〜5/10</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ 追加募集+47名 → 合計67名到達、MRR58.96万/月</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P5</td></tr>
+    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/10</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ 月報会参加完了（20:00-22:00）→ 核心原則10項目抽出→7ファイル反映</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P7</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5月後半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">メソッド言語化の第一歩：LDMの核心を1ページで</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P1</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong style="color:#27ae60;">5/26</strong></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong>西村さん 第2回コーチング（14:00）</strong> — 事務局1人確定の報告を受ける</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P2</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5月末</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">言葉の定義統一シート作成</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">P3</td></tr>
+    <tr><td style="padding: 10px 14px; border-radius: 0 0 0 8px;"><strong style="color:#0f3460;">6/20</strong></td><td style="padding: 10px 14px;"><strong>UBM大阪</strong> — 合宿から2ヶ月半の成果を報告</td><td style="padding: 10px 14px; border-radius: 0 0 8px 0;">全体</td></tr>
+  </table>
+</div>
+
+<!-- ===== まとめ ===== -->
+<div class="summary-box">
+  <h2>合宿から37日間の意味 — そして6/20へ</h2>
+
+  <p style="margin-top: 16px; font-size: 1.05em;">
+    合宿で北原さんが堀内さんに伝えた一番大事なこと：
+  </p>
+
+  <p style="font-size: 1.1em; text-align: center; margin: 20px 0; color: #f0d9a8;">
+    「言語化して、原理原則を統一し直せ。<br>そしたら勝手に講師が育つ。」
+  </p>
+
+  <p>
+    この37日間で起きたことは、その準備と実行だった。<br>
+    足元の財務を整理した。Stripe二重計上¥141万も解決した。会社の脳（こあ）を構築した。命の設計図を作った。<br>
+    そして4/22のMTGで<strong>「総合生命体」「積み重ね」「Being vs Doing」</strong>という、<br>
+    北原メソッドを堀内さんの身体に統合するための新しい言葉が生まれた。<br>
+    さらに、Facebook投稿92件・書き起こし・ステップメールを<strong>Content Vault</strong>としてGitHubに集約。<br>
+    メール配信システムのUTAGE移行、業務委託7名のマニュアル設計、Story Engine v2の5分割再設計。<br>
+  </p>
+
+  <p>
+    <strong>5/6のオプチャセミナー初回は大成功。</strong><br>
+    Zoom視聴者230〜250人。有料コミュニティに約20人が転換。追加募集で<strong>67名到達、MRR58.96万/月。</strong><br>
+    2層コミュニティ設計（無料オプチャ×有料月額）が実動レベルで動き始めた。<br>
+    北原式「毎月の純増」が実証された最初の実績が出た。
+  </p>
+
+  <p>
+    <strong>4/25の西村さん1on1</strong>では、この新しいOSで人と向き合った。<br>
+    「教え子の人生に責任を持つ」を言葉だけでなく<strong>行動で体現した</strong>。<br>
+    結果、「思ったよりいける」という手応えを得た。次回5/26も確定した。
+  </p>
+
+  <p>
+    <strong>5/10の月報会</strong>では、北原メソッドの核心原則10項目を抽出し、<br>
+    翌日に自社ドキュメント7ファイルに一括反映。「学び→即実行」のサイクルが回り始めた。<br>
+    項目②「原理原則を学び見直す状態」は、もう<strong>実質クリア</strong>。
+  </p>
+
+  <p>
+    6/20のUBM大阪まであと40日。<br>
+    メソッド言語化、仲間の時間、西村さん第2回コーチング、コミュニティ200名への道 — <br>
+    <strong>もっと厚い報告を持っていける。</strong>
+  </p>
+
+  <p style="margin-top: 24px; text-align: center; font-size: 1.2em; font-weight: 700; color: #f0d9a8;">
+    循環が、回り始めている。
+  </p>
+</div>
+
+<div class="footer">
+  こあ(COA) 作成: 4/23 → 更新: 5/11（月報会学び反映 + 5月全進捗統合更新）<br>
+  ソース: 北原メソッドフォルダ + 週間タスク管理表 + MF会計 + 西村議事録 + 月報会メモ + 全セッションレビュー
+</div>
+
+</div>
+</body>
+</html>
