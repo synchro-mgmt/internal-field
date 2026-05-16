@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>人類の進化とお金 — OTO 戦略ロードマップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0807;
+    --bg-2: #1a1210;
+    --bg-3: #221816;
+    --ink: #e8dfd3;
+    --ink-mute: #a8a097;
+    --gold: #d4af37;
+    --gold-soft: #b8943a;
+    --vermillion: #c1272d;
+    --vermillion-soft: #8b1e22;
+    --line: rgba(212, 175, 55, 0.18);
+    --line-strong: rgba(212, 175, 55, 0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(ellipse at top, rgba(193, 39, 45, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+      var(--bg);
+    min-height: 100vh;
+  }
+  .container { max-width: 980px; margin: 0 auto; padding: 60px 24px 120px; }
+  .hero {
+    text-align: center; padding: 60px 0 80px;
+    border-bottom: 1px solid var(--line); position: relative;
+  }
+  .hero::before {
+    content: ""; position: absolute; top: 0; left: 50%;
+    transform: translateX(-50%); width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+  }
+  .hero-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(140px, 22vw, 240px);
+    font-weight: 900; line-height: 1;
+    letter-spacing: -0.05em; margin-bottom: 20px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--vermillion) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
+  }
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 900; color: var(--ink);
+    margin-bottom: 16px; letter-spacing: 0.05em;
+  }
+  .hero-sub {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--gold); letter-spacing: 0.3em; margin-bottom: 8px;
+  }
+  .hero-date {
+    color: var(--ink-mute); font-size: 14px;
+    letter-spacing: 0.2em; margin-top: 24px;
+  }
+  .hero-decoration {
+    display: inline-block; color: var(--vermillion);
+    font-size: 18px; margin: 16px 12px; letter-spacing: 0.5em;
+  }
+  section { margin: 80px 0; }
+  .section-label {
+    display: inline-block; font-family: 'Noto Serif JP', serif;
+    font-size: 12px; color: var(--vermillion);
+    letter-spacing: 0.4em; margin-bottom: 12px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--vermillion);
+  }
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 700; color: var(--gold);
+    margin-bottom: 24px; letter-spacing: 0.05em;
+  }
+  .section-lead {
+    color: var(--ink-mute); font-size: 15px; line-height: 1.9;
+    max-width: 700px; margin-bottom: 32px;
+  }
+  .core-card {
+    background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+    border: 1px solid var(--line); padding: 48px 36px;
+    border-radius: 4px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .core-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .core-card .quote {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--gold); line-height: 1.6;
+    margin-bottom: 20px; letter-spacing: 0.05em;
+  }
+  .core-card .quote-sub { color: var(--ink-mute); font-size: 14px; line-height: 1.9; }
+  .declaration {
+    background: linear-gradient(135deg, var(--vermillion-soft), var(--bg-2));
+    border: 1px solid var(--vermillion); padding: 56px 36px;
+    border-radius: 4px; text-align: center; position: relative;
+  }
+  .declaration-mark {
+    color: var(--gold); font-family: 'Shippori Mincho', serif;
+    font-size: 32px; margin-bottom: 16px; letter-spacing: 1em;
+  }
+  .declaration-body {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(18px, 2.6vw, 24px);
+    color: #fff; line-height: 1.9; letter-spacing: 0.05em;
+  }
+  .declaration-body em { color: var(--gold); font-style: normal; font-weight: 900; }
+  .declaration-note { color: var(--ink-mute); font-size: 12px; margin-top: 24px; letter-spacing: 0.2em; }
+  .phase {
+    display: grid; grid-template-columns: 140px 1fr; gap: 32px;
+    margin-bottom: 48px; padding: 36px;
+    background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
+    border-left: 3px solid var(--vermillion);
+    border-radius: 0 4px 4px 0; position: relative;
+  }
+  .phase-kanji-block { text-align: center; border-right: 1px solid var(--line); padding-right: 24px; }
+  .phase-kanji {
+    font-family: 'Shippori Mincho', serif; font-size: 96px; line-height: 1;
+    color: var(--gold); font-weight: 900;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); margin-bottom: 12px;
+  }
+  .phase-num { font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--vermillion); letter-spacing: 0.2em; }
+  .phase-title { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 3vw, 26px); color: var(--gold); margin-bottom: 8px; font-weight: 700; }
+  .phase-period { color: var(--vermillion); font-size: 13px; letter-spacing: 0.15em; margin-bottom: 20px; }
+  .phase-body { color: var(--ink); font-size: 15px; line-height: 1.9; }
+  .phase-body strong { color: var(--gold); }
+  .phase-body ul { list-style: none; margin: 16px 0; padding: 0; }
+  .phase-body li { padding: 6px 0 6px 24px; position: relative; }
+  .phase-body li::before { content: "◆"; position: absolute; left: 0; color: var(--vermillion); font-size: 10px; top: 12px; }
+  .phase-callout {
+    background: rgba(193, 39, 45, 0.1); border: 1px solid rgba(193, 39, 45, 0.3);
+    padding: 16px 20px; margin-top: 20px; border-radius: 4px;
+    color: var(--ink); font-size: 14px; line-height: 1.8;
+  }
+  .phase-callout strong { color: var(--vermillion); }
+  .timetable { margin-top: 20px; border-top: 1px solid var(--line); }
+  .timetable-row { display: grid; grid-template-columns: 130px 1fr; padding: 12px 0; border-bottom: 1px solid var(--line); gap: 16px; }
+  .timetable-time { color: var(--vermillion); font-family: 'Noto Serif JP', serif; font-size: 14px; letter-spacing: 0.1em; }
+  .timetable-content { color: var(--ink); font-size: 14px; }
+  .timetable-content strong { color: var(--gold); }
+  .three-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  .three-card {
+    background: linear-gradient(180deg, var(--bg-2), var(--bg-3));
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 32px 24px; position: relative;
+  }
+  .three-card .chakra-kanji { font-family: 'Shippori Mincho', serif; font-size: 56px; color: var(--gold); font-weight: 900; margin-bottom: 8px; line-height: 1; }
+  .three-card .chakra-label { color: var(--vermillion); font-size: 12px; letter-spacing: 0.3em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .three-card .role { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 16px; margin-bottom: 8px; }
+  .three-card .person-name { font-family: 'Noto Serif JP', serif; font-size: 22px; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .three-card .core-quote { color: var(--gold); font-style: italic; font-size: 13px; line-height: 1.7; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+  .three-card .details { font-size: 13px; color: var(--ink-mute); line-height: 1.8; }
+  .three-card .details strong { color: var(--ink); }
+  .three-card .details p { margin-bottom: 8px; }
+  .layer-stack { display: flex; flex-direction: column; gap: 2px; margin-top: 24px; }
+  .layer { padding: 28px 32px; border-left: 4px solid var(--gold); background: var(--bg-2); border-radius: 0 4px 4px 0; }
+  .layer-top { border-color: var(--gold); }
+  .layer-mid { border-color: var(--vermillion); background: var(--bg-3); }
+  .layer-bottom { border-color: var(--gold-soft); }
+  .layer-label { color: var(--vermillion); font-size: 11px; letter-spacing: 0.3em; margin-bottom: 8px; }
+  .layer-title { font-family: 'Noto Serif JP', serif; font-size: 18px; color: var(--gold); margin-bottom: 6px; }
+  .layer-desc { font-size: 14px; color: var(--ink); line-height: 1.8; }
+  .timeline { margin: 32px 0; position: relative; padding-left: 32px; }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold), var(--vermillion), var(--gold-soft)); }
+  .timeline-item { position: relative; padding-bottom: 32px; }
+  .timeline-item::before { content: ""; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 12px var(--gold); }
+  .timeline-date { color: var(--vermillion); font-size: 13px; letter-spacing: 0.2em; margin-bottom: 4px; }
+  .timeline-event { color: var(--ink); font-size: 15px; line-height: 1.8; }
+  .timeline-event strong { color: var(--gold); }
+  .footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--line); text-align: center; color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; line-height: 2; }
+  .footer-decoration { color: var(--gold); font-size: 18px; letter-spacing: 0.5em; margin-bottom: 20px; }
+  @media (max-width: 700px) {
+    .container { padding: 40px 16px 80px; }
+    .phase { grid-template-columns: 1fr; padding: 24px; }
+    .phase-kanji-block { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; padding-bottom: 16px; }
+    .phase-kanji { font-size: 72px; }
+    .three-card-grid { grid-template-columns: 1fr; }
+    .timetable-row { grid-template-columns: 100px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <div class="hero-kanji">音</div>
+    <div class="hero-sub">SONIC WEALTH EVOLUTION</div>
+    <h1 class="hero-title">人類の進化とお金</h1>
+    <div class="hero-decoration">◇　◆　◇</div>
+    <div style="color:var(--ink-mute); font-size:14px; letter-spacing:0.15em; line-height:1.9;">
+      新しい時代に入り、進化することで<br>新しい世界と豊かさの流れに繋がる
+    </div>
+    <div class="hero-date">OTO 全体ロードマップ ／ 2026.05.16〜</div>
+  </header>
+
+  <section>
+    <span class="section-label">─ STRATEGY CORE ─</span>
+    <h2 class="section-title">戦略の核</h2>
+    <p class="section-lead">売らない今夜から始まり、欲求が臨界点に達したところで開く。アースジャーニー型の熱狂を作る。</p>
+    <div class="core-card">
+      <div class="quote">「焚き火を大きく育ててから、<br>火を分けていく」</div>
+      <div class="quote-sub">マッチで火をつけるんじゃなく、薪をどんどん集めて、<br>勝手に燃え広がる火種を作る。</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ DECLARATION ─</span>
+    <h2 class="section-title">上の次元の宣言（仮）</h2>
+    <p class="section-lead">3人の役割分担（松果体・ハート・丹田）の上に立つ、もう一段の世界観。これが決まると、その下の構造が自然に整う。</p>
+    <div class="declaration">
+      <div class="declaration-mark">◇</div>
+      <div class="declaration-body">
+        新しい時代に入り、<br><em>進化</em>することで、<br>新しい世界と<em>豊かさの流れ</em>に繋がる。<br>──そのスイッチを、音で、3人で、入れる夜。
+      </div>
+      <div class="declaration-note">※ 今夜21時までに、最終の一言を降ろす</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ 3 LAYERS ─</span>
+    <h2 class="section-title">統合の三層</h2>
+    <p class="section-lead">上層（宣言）が方法論を意味づけ、結果（お金・豊かさ）を結果として位置づける。</p>
+    <div class="layer-stack">
+      <div class="layer layer-top">
+        <div class="layer-label">上層 ── 宣言</div>
+        <div class="layer-title">人類の進化</div>
+        <div class="layer-desc">新しい時代に入り、進化することで新しい世界と豊かさの流れに繋がる</div>
+      </div>
+      <div class="layer layer-mid">
+        <div class="layer-label">中層 ── 方法</div>
+        <div class="layer-title">音源 × セミナー（松果体 → ハート → 丹田）</div>
+        <div class="layer-desc">3人で天から地まで垂直に降ろす、OSアップデートのプロセス</div>
+      </div>
+      <div class="layer layer-bottom">
+        <div class="layer-label">下層 ── 結果</div>
+        <div class="layer-title">お金・豊かさ・現実</div>
+        <div class="layer-desc">進化した在り方には、お金は自然と循環する</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ PHASE 0 ─</span>
+    <h2 class="section-title">残り時間で固めること</h2>
+    <div class="phase">
+      <div class="phase-kanji-block"><div class="phase-kanji">整</div><div class="phase-num">Phase 0</div></div>
+      <div>
+        <div class="phase-title">本番までに揃える</div>
+        <div class="phase-period">〜 5/16 21:00</div>
+        <div class="phase-body">
+          <ul>
+            <li><strong>上の次元の「宣言」を降ろす</strong>（今夜の冒頭の一言）</li>
+            <li>3人のパート分けと流れの最終確認（松果体 → ハート → 丹田）</li>
+            <li>LPの金額部分を一旦外す（販売しない夜にする）</li>
+            <li>3人それぞれの「言葉の種」を1個ずつ決める（拡散される一言）</li>
+            <li>Sonic Wealth Evolution資料の使う/使わないライン引き</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ PHASE 1 ─</span>
+    <h2 class="section-title">今夜の本番</h2>
+    <div class="phase">
+      <div class="phase-kanji-block"><div class="phase-kanji">降</div><div class="phase-num">Phase 1</div></div>
+      <div>
+        <div class="phase-title">天 → 心 → 地 へ、垂直に降ろす</div>
+        <div class="phase-period">5/16 ( FRI ) 21:00 〜 22:30 頃</div>
+        <div class="phase-body">
+          <p>3人がリレーで、頭→心→腹まで一気に通す。OSアップデートが完了する夜。</p>
+          <div class="timetable">
+            <div class="timetable-row"><div class="timetable-time">21:00 – 21:10</div><div class="timetable-content"><strong>オープニング</strong> ／ 上の次元の宣言を立てる（3人で）</div></div>
+            <div class="timetable-row"><div class="timetable-time">21:10 – 21:30</div><div class="timetable-content"><strong>松果体 ── レナ</strong> ／ 周波数で覚醒する</div></div>
+            <div class="timetable-row"><div class="timetable-time">21:30 – 21:50</div><div class="timetable-content"><strong>ハート ── 堀内</strong> ／ 開いて、未来に繋がる</div></div>
+            <div class="timetable-row"><div class="timetable-time">21:50 – 22:10</div><div class="timetable-content"><strong>丹田 ── ライラ</strong> ／ 緩んで、身体に降ろす</div></div>
+            <div class="timetable-row"><div class="timetable-time">22:10 – 22:20</div><div class="timetable-content"><strong>音の体験ワーク</strong> ／ レナ主導、3人で</div></div>
+            <div class="timetable-row"><div class="timetable-time">22:20 – 22:30</div><div class="timetable-content"><strong>クロージング</strong> ／ LPチラ見せ（金額なし）、「ここまでです✨」</div></div>
+          </div>
+          <div class="phase-callout">
+            <strong>重要な姿勢：</strong>
+            売らない。資料は見せても説明しない。3人のエネルギーで持っていく。<br>拡散される「言葉の種」を意図的に置く。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ PHASE 2 ─</span>
+    <h2 class="section-title">アーカイブ解放</h2>
+    <div class="phase">
+      <div class="phase-kanji-block"><div class="phase-kanji">拡</div><div class="phase-num">Phase 2</div></div>
+      <div>
+        <div class="phase-title">見逃した人も巻き込む</div>
+        <div class="phase-period">5/17（土）〜 5/18（日） ／ 2日間限定</div>
+        <div class="phase-body">
+          <ul>
+            <li>アーカイブURLをオプチャに投下（真理子さん）</li>
+            <li>「見逃した人へ」メッセージ配信</li>
+            <li>オプチャに感想スレッドを開く</li>
+            <li>3人それぞれが、参加者の感想にハートで反応</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ PHASE 3 ─</span>
+    <h2 class="section-title">ジワジワ盛り上げ</h2>
+    <div class="phase">
+      <div class="phase-kanji-block"><div class="phase-kanji">育</div><div class="phase-num">Phase 3</div></div>
+      <div>
+        <div class="phase-title">熱を育てる、人を増やす、欲求を上げる</div>
+        <div class="phase-period">5/19（月）〜 販売開始まで</div>
+        <div class="phase-body">
+          <p><strong>【オプチャ層】</strong></p>
+          <ul>
+            <li>参加者の感想を3人がリポストして温める</li>
+            <li>「響いたフレーズ」スレッドを作る</li>
+            <li>切り抜き動画・画像を1日1個投下</li>
+            <li>新しい人がどんどん入ってくる流れを作る</li>
+          </ul>
+          <p style="margin-top:16px;"><strong>【SNS層】</strong></p>
+          <ul>
+            <li>3人各自のSNSで連動投稿</li>
+            <li>「人類の進化とお金」というワードを統一して使う</li>
+            <li>響いた一言を画像化して拡散</li>
+          </ul>
+          <p style="margin-top:16px;"><strong>【オフライン層／任意】</strong></p>
+          <ul>
+            <li>個別セッション・対話会などで「あの夜の体験」を語る</li>
+            <li>リアルの口コミで温度を上げる</li>
+          </ul>
+          <div class="phase-callout">
+            <strong>育てるべき指標：</strong>
+            オプチャ人数（増えてるか） ／ 「欲しい」「いつ販売？」の声 ／ 感想の質（神話的な言葉が出てきているか）
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ PHASE 4 ─</span>
+    <h2 class="section-title">バーン✨ 販売開始</h2>
+    <div class="phase">
+      <div class="phase-kanji-block"><div class="phase-kanji">開</div><div class="phase-num">Phase 4</div></div>
+      <div>
+        <div class="phase-title">欲求の臨界点で、扉を開く</div>
+        <div class="phase-period">タイミングは欲求の臨界点</div>
+        <div class="phase-body">
+          <p><strong>タイミングの見極め：</strong></p>
+          <ul>
+            <li>オプチャで「次はいつ？」「販売してほしい」が複数出てきた時</li>
+            <li>感想がジワジワじゃなくて「自分から書きたい」モードに変わった時</li>
+            <li>3人の中で「今だ」が揃った時</li>
+          </ul>
+          <p style="margin-top:16px;"><strong>開く時の演出：</strong></p>
+          <ul>
+            <li>「お待たせしました。ご希望にお応えして、ついにできました✨」</li>
+            <li>LPの金額部分を復活</li>
+            <li>申込ページに導線</li>
+          </ul>
+          <div class="phase-callout">
+            <strong>売る商品：</strong>
+            「お金の音源セミナー」（Sonic Wealth Evolution の本体）<br>単価設計は堀内さん＆真理子さんで詰める
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ PHASE 5 ─</span>
+    <h2 class="section-title">その先</h2>
+    <div class="phase">
+      <div class="phase-kanji-block"><div class="phase-kanji">続</div><div class="phase-num">Phase 5</div></div>
+      <div>
+        <div class="phase-title">受講生コミュニティ・継続展開</div>
+        <div class="phase-period">販売後 〜 ／ 続く</div>
+        <div class="phase-body">
+          <ul>
+            <li>受講生だけの場（別オプチャ？クローズドコミュニティ？）</li>
+            <li>音源の継続提供</li>
+            <li>3人とのリアルな繋がりを設計</li>
+            <li>受講生の変化・体験談を素材化</li>
+            <li>次のセミナー・次のコンテンツへの種まき</li>
+            <li>「Sonic Wealth Evolution」がブランド化する</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ THE 3 PILLARS ─</span>
+    <h2 class="section-title">3人の特徴 ── 松果体・ハート・丹田</h2>
+    <p class="section-lead">3人がそれぞれ違う角度から照らす、ど真ん中にある一つの世界。天から地へ垂直に降ろす構造。</p>
+    <div class="three-card-grid">
+      <div class="three-card">
+        <div class="chakra-kanji">天</div>
+        <div class="chakra-label">松果体 ── PINEAL</div>
+        <div class="role">外側からの覚醒</div>
+        <div class="person-name">レナさん</div>
+        <div class="core-quote">「進化したい」じゃ進化しない。<br>「進化する」と決める。</div>
+        <div class="details">
+          <p><strong>担当：</strong>周波数・音・場</p>
+          <p><strong>動詞：</strong>鳴らす・共鳴する・目覚める</p>
+          <p><strong>共創原理：</strong>1人の決意で場の周波数が変わる</p>
+          <p><strong>キャラ：</strong>風・光・宇宙 ／ キラキラ</p>
+        </div>
+      </div>
+      <div class="three-card">
+        <div class="chakra-kanji">心</div>
+        <div class="chakra-label">ハート ── HEART</div>
+        <div class="role">構造からのリブート</div>
+        <div class="person-name">堀内さん</div>
+        <div class="core-quote">お金は、努力じゃない。<br>在り方の排出だ。</div>
+        <div class="details">
+          <p><strong>担当：</strong>ハート・未来・富の論理</p>
+          <p><strong>動詞：</strong>開く・繋がる・受け入れる</p>
+          <p><strong>共創原理：</strong>富は「増幅できる人」に流れる</p>
+          <p><strong>キャラ：</strong>山・構造・変態 ／ 静かに熱い</p>
+        </div>
+      </div>
+      <div class="three-card">
+        <div class="chakra-kanji">地</div>
+        <div class="chakra-label">丹田 ── HARA</div>
+        <div class="role">内側からの解放</div>
+        <div class="person-name">ライラさん</div>
+        <div class="core-quote">進化は飛躍じゃない。<br>ふにゃふにゃでええんやで。</div>
+        <div class="details">
+          <p><strong>担当：</strong>神経系・体・安心</p>
+          <p><strong>動詞：</strong>緩む・委ねる・降ろす</p>
+          <p><strong>共創原理：</strong>セルフラブが他者にも増えていく</p>
+          <p><strong>キャラ：</strong>水・お母さん・遊び ／ あったか</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ TIMELINE ─</span>
+    <h2 class="section-title">全体タイムライン</h2>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">5/16 ( FRI ) 21:00</div><div class="timeline-event"><strong>🔥 今夜の本番</strong> ── 焚き火に火をつける</div></div>
+      <div class="timeline-item"><div class="timeline-date">5/17 – 5/18 ( SAT – SUN )</div><div class="timeline-event"><strong>📼 アーカイブ解放</strong> ── 火が広がる</div></div>
+      <div class="timeline-item"><div class="timeline-date">5/19 〜</div><div class="timeline-event"><strong>🌊 ジワジワ盛り上げ</strong> ── 切り抜き・感想・オプチャ拡大、SNS連動、欲求の温度を上げる</div></div>
+      <div class="timeline-item"><div class="timeline-date">??? 日後（欲求の臨界点）</div><div class="timeline-event"><strong>✨ バーン販売開始</strong> ── 「お待たせしました」</div></div>
+      <div class="timeline-item"><div class="timeline-date">販売後 〜</div><div class="timeline-event"><strong>🌳 受講生コミュニティ・次の波</strong> ── 続く</div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ INSIGHT ─</span>
+    <h2 class="section-title">この設計で一番効くこと</h2>
+    <div class="core-card">
+      <div class="quote-sub" style="text-align:left; color:var(--ink); font-size:15px;">
+        <strong style="color:var(--gold);">Phase 1 の質が、Phase 4 の成否を決める。</strong><br><br>
+        Phase 1 で「神話的な体験」を渡す。<br>
+        → 参加者が Phase 3 で「神話的な言葉で語り出す」。<br>
+        → その言葉が拡散の燃料になる。<br>
+        → Phase 4 で バーン✨ が立ち上がる。<br><br>
+        今夜21時、堀内さんが立つ場所がここ。
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-decoration">◇　◆　◇</div>
+    <div>OTO ── 音 × サイエンス × シャーマニズム</div>
+    <div>株式会社シンクロニシティ・マネジメント</div>
+    <div style="margin-top:16px; opacity:0.6;">Internal use only ── OTO members</div>
+  </footer>
+</div>
+</body>
+</html>
