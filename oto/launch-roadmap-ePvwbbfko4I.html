@@ -38,108 +38,42 @@
     min-height: 100vh;
   }
   .container { max-width: 980px; margin: 0 auto; padding: 60px 24px 120px; }
-  .hero {
-    text-align: center; padding: 60px 0 80px;
-    border-bottom: 1px solid var(--line); position: relative;
-  }
-  .hero::before {
-    content: ""; position: absolute; top: 0; left: 50%;
-    transform: translateX(-50%); width: 1px; height: 40px;
-    background: linear-gradient(to bottom, transparent, var(--gold));
-  }
+  .hero { text-align: center; padding: 60px 0 80px; border-bottom: 1px solid var(--line); position: relative; }
+  .hero::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--gold)); }
   .hero-kanji {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(140px, 22vw, 240px);
-    font-weight: 900; line-height: 1;
-    letter-spacing: -0.05em; margin-bottom: 20px;
+    font-size: clamp(80px, 16vw, 180px);
+    color: var(--gold);
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
     background: linear-gradient(180deg, var(--gold) 0%, var(--vermillion) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
   }
-  .hero-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(28px, 4.5vw, 44px);
-    font-weight: 900; color: var(--ink);
-    margin-bottom: 16px; letter-spacing: 0.05em;
-  }
-  .hero-sub {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(14px, 2vw, 18px);
-    color: var(--gold); letter-spacing: 0.3em; margin-bottom: 8px;
-  }
-  .hero-date {
-    color: var(--ink-mute); font-size: 14px;
-    letter-spacing: 0.2em; margin-top: 24px;
-  }
-  .hero-decoration {
-    display: inline-block; color: var(--vermillion);
-    font-size: 18px; margin: 16px 12px; letter-spacing: 0.5em;
-  }
+  .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .hero-sub { font-family: 'Noto Serif JP', serif; font-size: clamp(14px, 2vw, 18px); color: var(--gold); letter-spacing: 0.3em; margin-bottom: 8px; }
+  .hero-date { color: var(--ink-mute); font-size: 14px; letter-spacing: 0.2em; margin-top: 24px; }
+  .hero-decoration { display: inline-block; color: var(--vermillion); font-size: 18px; margin: 16px 12px; letter-spacing: 0.5em; }
   section { margin: 80px 0; }
-  .section-label {
-    display: inline-block; font-family: 'Noto Serif JP', serif;
-    font-size: 12px; color: var(--vermillion);
-    letter-spacing: 0.4em; margin-bottom: 12px;
-    padding-bottom: 8px; border-bottom: 1px solid var(--vermillion);
-  }
-  .section-title {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(22px, 3.5vw, 32px);
-    font-weight: 700; color: var(--gold);
-    margin-bottom: 24px; letter-spacing: 0.05em;
-  }
-  .section-lead {
-    color: var(--ink-mute); font-size: 15px; line-height: 1.9;
-    max-width: 700px; margin-bottom: 32px;
-  }
-  .core-card {
-    background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
-    border: 1px solid var(--line); padding: 48px 36px;
-    border-radius: 4px; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .core-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-  .core-card .quote {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(20px, 3vw, 28px);
-    color: var(--gold); line-height: 1.6;
-    margin-bottom: 20px; letter-spacing: 0.05em;
-  }
+  .section-label { display: inline-block; font-family: 'Noto Serif JP', serif; font-size: 12px; color: var(--vermillion); letter-spacing: 0.4em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--vermillion); }
+  .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--gold); margin-bottom: 24px; letter-spacing: 0.05em; }
+  .section-lead { color: var(--ink-mute); font-size: 15px; line-height: 1.9; max-width: 700px; margin-bottom: 32px; }
+  .core-card { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); padding: 48px 36px; border-radius: 4px; text-align: center; position: relative; overflow: hidden; }
+  .core-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .core-card .quote { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 3vw, 28px); color: var(--gold); line-height: 1.6; margin-bottom: 20px; letter-spacing: 0.05em; }
   .core-card .quote-sub { color: var(--ink-mute); font-size: 14px; line-height: 1.9; }
-  .declaration {
-    background: linear-gradient(135deg, var(--vermillion-soft), var(--bg-2));
-    border: 1px solid var(--vermillion); padding: 56px 36px;
-    border-radius: 4px; text-align: center; position: relative;
-  }
-  .declaration-mark {
-    color: var(--gold); font-family: 'Shippori Mincho', serif;
-    font-size: 32px; margin-bottom: 16px; letter-spacing: 1em;
-  }
-  .declaration-body {
-    font-family: 'Noto Serif JP', serif;
-    font-size: clamp(18px, 2.6vw, 24px);
-    color: #fff; line-height: 1.9; letter-spacing: 0.05em;
-  }
+  .declaration { background: linear-gradient(135deg, var(--vermillion-soft), var(--bg-2)); border: 1px solid var(--vermillion); padding: 56px 36px; border-radius: 4px; text-align: center; position: relative; }
+  .declaration-mark { color: var(--gold); font-family: 'Shippori Mincho', serif; font-size: 32px; margin-bottom: 16px; letter-spacing: 1em; }
+  .declaration-body { font-family: 'Noto Serif JP', serif; font-size: clamp(18px, 2.6vw, 24px); color: #fff; line-height: 1.9; letter-spacing: 0.05em; }
   .declaration-body em { color: var(--gold); font-style: normal; font-weight: 900; }
   .declaration-note { color: var(--ink-mute); font-size: 12px; margin-top: 24px; letter-spacing: 0.2em; }
-  .phase {
-    display: grid; grid-template-columns: 140px 1fr; gap: 32px;
-    margin-bottom: 48px; padding: 36px;
-    background: linear-gradient(135deg, var(--bg-2), var(--bg-3));
-    border-left: 3px solid var(--vermillion);
-    border-radius: 0 4px 4px 0; position: relative;
-  }
+  .phase { display: grid; grid-template-columns: 140px 1fr; gap: 32px; margin-bottom: 48px; padding: 36px; background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border-left: 3px solid var(--vermillion); border-radius: 0 4px 4px 0; position: relative; }
   .phase-kanji-block { text-align: center; border-right: 1px solid var(--line); padding-right: 24px; }
-  .phase-kanji {
-    font-family: 'Shippori Mincho', serif; font-size: 96px; line-height: 1;
-    color: var(--gold); font-weight: 900;
-    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); margin-bottom: 12px;
-  }
+  .phase-kanji { font-family: 'Shippori Mincho', serif; font-size: 96px; line-height: 1; color: var(--gold); font-weight: 900; text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); margin-bottom: 12px; }
   .phase-num { font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--vermillion); letter-spacing: 0.2em; }
   .phase-title { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 3vw, 26px); color: var(--gold); margin-bottom: 8px; font-weight: 700; }
   .phase-period { color: var(--vermillion); font-size: 13px; letter-spacing: 0.15em; margin-bottom: 20px; }
@@ -148,11 +82,7 @@
   .phase-body ul { list-style: none; margin: 16px 0; padding: 0; }
   .phase-body li { padding: 6px 0 6px 24px; position: relative; }
   .phase-body li::before { content: "◆"; position: absolute; left: 0; color: var(--vermillion); font-size: 10px; top: 12px; }
-  .phase-callout {
-    background: rgba(193, 39, 45, 0.1); border: 1px solid rgba(193, 39, 45, 0.3);
-    padding: 16px 20px; margin-top: 20px; border-radius: 4px;
-    color: var(--ink); font-size: 14px; line-height: 1.8;
-  }
+  .phase-callout { background: rgba(193, 39, 45, 0.1); border: 1px solid rgba(193, 39, 45, 0.3); padding: 16px 20px; margin-top: 20px; border-radius: 4px; color: var(--ink); font-size: 14px; line-height: 1.8; }
   .phase-callout strong { color: var(--vermillion); }
   .timetable { margin-top: 20px; border-top: 1px solid var(--line); }
   .timetable-row { display: grid; grid-template-columns: 130px 1fr; padding: 12px 0; border-bottom: 1px solid var(--line); gap: 16px; }
@@ -160,11 +90,7 @@
   .timetable-content { color: var(--ink); font-size: 14px; }
   .timetable-content strong { color: var(--gold); }
   .three-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
-  .three-card {
-    background: linear-gradient(180deg, var(--bg-2), var(--bg-3));
-    border: 1px solid var(--line); border-radius: 4px;
-    padding: 32px 24px; position: relative;
-  }
+  .three-card { background: linear-gradient(180deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); border-radius: 4px; padding: 32px 24px; position: relative; }
   .three-card .chakra-kanji { font-family: 'Shippori Mincho', serif; font-size: 56px; color: var(--gold); font-weight: 900; margin-bottom: 8px; line-height: 1; }
   .three-card .chakra-label { color: var(--vermillion); font-size: 12px; letter-spacing: 0.3em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
   .three-card .role { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 16px; margin-bottom: 8px; }
@@ -203,7 +129,7 @@
 <body>
 <div class="container">
   <header class="hero">
-    <div class="hero-kanji">音</div>
+    <div class="hero-kanji">OTO</div>
     <div class="hero-sub">SONIC WEALTH EVOLUTION</div>
     <h1 class="hero-title">人類の進化とお金</h1>
     <div class="hero-decoration">◇　◆　◇</div>
@@ -241,21 +167,9 @@
     <h2 class="section-title">統合の三層</h2>
     <p class="section-lead">上層（宣言）が方法論を意味づけ、結果（お金・豊かさ）を結果として位置づける。</p>
     <div class="layer-stack">
-      <div class="layer layer-top">
-        <div class="layer-label">上層 ── 宣言</div>
-        <div class="layer-title">人類の進化</div>
-        <div class="layer-desc">新しい時代に入り、進化することで新しい世界と豊かさの流れに繋がる</div>
-      </div>
-      <div class="layer layer-mid">
-        <div class="layer-label">中層 ── 方法</div>
-        <div class="layer-title">音源 × セミナー（松果体 → ハート → 丹田）</div>
-        <div class="layer-desc">3人で天から地まで垂直に降ろす、OSアップデートのプロセス</div>
-      </div>
-      <div class="layer layer-bottom">
-        <div class="layer-label">下層 ── 結果</div>
-        <div class="layer-title">お金・豊かさ・現実</div>
-        <div class="layer-desc">進化した在り方には、お金は自然と循環する</div>
-      </div>
+      <div class="layer layer-top"><div class="layer-label">上層 ── 宣言</div><div class="layer-title">人類の進化</div><div class="layer-desc">新しい時代に入り、進化することで新しい世界と豊かさの流れに繋がる</div></div>
+      <div class="layer layer-mid"><div class="layer-label">中層 ── 方法</div><div class="layer-title">音源 × セミナー（松果体 → ハート → 丹田）</div><div class="layer-desc">3人で天から地まで垂直に降ろす、OSアップデートのプロセス</div></div>
+      <div class="layer layer-bottom"><div class="layer-label">下層 ── 結果</div><div class="layer-title">お金・豊かさ・現実</div><div class="layer-desc">進化した在り方には、お金は自然と循環する</div></div>
     </div>
   </section>
 
@@ -298,10 +212,7 @@
             <div class="timetable-row"><div class="timetable-time">22:10 – 22:20</div><div class="timetable-content"><strong>音の体験ワーク</strong> ／ レナ主導、3人で</div></div>
             <div class="timetable-row"><div class="timetable-time">22:20 – 22:30</div><div class="timetable-content"><strong>クロージング</strong> ／ LPチラ見せ（金額なし）、「ここまでです✨」</div></div>
           </div>
-          <div class="phase-callout">
-            <strong>重要な姿勢：</strong>
-            売らない。資料は見せても説明しない。3人のエネルギーで持っていく。<br>拡散される「言葉の種」を意図的に置く。
-          </div>
+          <div class="phase-callout"><strong>重要な姿勢：</strong>売らない。資料は見せても説明しない。3人のエネルギーで持っていく。<br>拡散される「言葉の種」を意図的に置く。</div>
         </div>
       </div>
     </div>
@@ -354,10 +265,7 @@
             <li>個別セッション・対話会などで「あの夜の体験」を語る</li>
             <li>リアルの口コミで温度を上げる</li>
           </ul>
-          <div class="phase-callout">
-            <strong>育てるべき指標：</strong>
-            オプチャ人数（増えてるか） ／ 「欲しい」「いつ販売？」の声 ／ 感想の質（神話的な言葉が出てきているか）
-          </div>
+          <div class="phase-callout"><strong>育てるべき指標：</strong>オプチャ人数（増えてるか） ／ 「欲しい」「いつ販売？」の声 ／ 感想の質（神話的な言葉が出てきているか）</div>
         </div>
       </div>
     </div>
@@ -384,10 +292,7 @@
             <li>LPの金額部分を復活</li>
             <li>申込ページに導線</li>
           </ul>
-          <div class="phase-callout">
-            <strong>売る商品：</strong>
-            「お金の音源セミナー」（Sonic Wealth Evolution の本体）<br>単価設計は堀内さん＆真理子さんで詰める
-          </div>
+          <div class="phase-callout"><strong>売る商品：</strong>「お金の音源セミナー」（Sonic Wealth Evolution の本体）<br>単価設計は堀内さん＆真理子さんで詰める</div>
         </div>
       </div>
     </div>
