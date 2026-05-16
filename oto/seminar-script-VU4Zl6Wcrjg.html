@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>OTO 今夜の進行台本 — 5/16 21:00</title>
+<title>OTO セミナー1 実施記録 — 5/16 21:00 ✅完了</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@700;900&display=swap" rel="stylesheet">
@@ -43,6 +43,7 @@
   .schedule-detail ul { list-style: none; margin-top: 8px; }
   .schedule-detail li { padding: 4px 0 4px 20px; position: relative; font-size: 13px; }
   .schedule-detail li::before { content: "◆"; position: absolute; left: 0; color: var(--vermillion); font-size: 8px; top: 8px; }
+  .schedule-result { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); padding: 12px 16px; margin-top: 12px; border-radius: 4px; font-size: 13px; color: var(--gold); }
   @media (max-width: 700px) { .schedule-block { grid-template-columns: 1fr; padding: 20px; gap: 12px; } }
   .three-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
   .three-card { background: linear-gradient(180deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); border-radius: 4px; padding: 32px 24px; position: relative; }
@@ -56,6 +57,8 @@
   .killer-list li:last-child { border-bottom: none; }
   .killer-list li::before { content: "「"; position: absolute; left: 0; color: var(--vermillion); }
   .killer-list li::after { content: "」"; color: var(--vermillion); }
+  .killer-list li.new::before { content: "✨「"; }
+  .killer-list li.new { color: #fff; }
   .topic-list { list-style: none; }
   .topic-list li { padding: 4px 0 4px 16px; position: relative; font-size: 13px; color: var(--ink); }
   .topic-list li::before { content: "・"; position: absolute; left: 0; color: var(--gold); }
@@ -72,7 +75,12 @@
   .stance-mark { color: var(--vermillion); font-size: 24px; font-weight: 900; text-align: center; }
   .stance-content { color: var(--ink); font-size: 14px; line-height: 1.8; }
   .stance-content strong { color: var(--gold); }
-  .link-back { display: inline-block; padding: 14px 28px; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Noto Serif JP', serif; font-size: 14px; letter-spacing: 0.1em; transition: all 0.3s; border-radius: 4px; }
+  .result-summary { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(193,39,45,0.1)); border: 1px solid var(--gold); padding: 36px; border-radius: 4px; }
+  .result-summary h3 { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 18px; margin-bottom: 16px; }
+  .result-summary p { color: var(--ink); font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
+  .result-summary strong { color: var(--gold); }
+  .result-summary .number { color: var(--vermillion); font-size: 32px; font-weight: 900; font-family: 'Noto Serif JP', serif; }
+  .link-back { display: inline-block; padding: 14px 28px; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Noto Serif JP', serif; font-size: 14px; letter-spacing: 0.1em; transition: all 0.3s; border-radius: 4px; margin: 0 8px; }
   .link-back:hover { background: var(--gold); color: var(--bg); }
   .footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--line); text-align: center; color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; line-height: 2; }
   .footer-decoration { color: var(--gold); font-size: 18px; letter-spacing: 0.5em; margin-bottom: 20px; }
@@ -82,32 +90,60 @@
 <div class="container">
   <header class="hero">
     <div class="hero-kanji">OTO</div>
-    <div class="hero-sub">TONIGHT'S SCRIPT</div>
-    <h1 class="hero-title">今夜の進行台本</h1>
+    <div class="hero-sub">SEMINAR #1 ── IMPLEMENTATION RECORD</div>
+    <h1 class="hero-title">セミナー1 実施記録  ✅ 完了</h1>
     <div class="hero-decoration">◇　◆　◇</div>
     <div style="color:var(--ink-mute); font-size:14px; letter-spacing:0.15em; line-height:1.9;">
-      人類の進化とお金<br>3人で、天から地へ、垂直に降ろす
+      人類の進化とお金<br>3人で、天から地へ、垂直に降ろした
     </div>
-    <div class="hero-date">2026.05.16 ( FRI )  ／  21:00 ─ 22:30</div>
+    <div class="hero-date">2026.05.16 ( FRI )  ／  21:00 ─ 22:30  ／  100名超参加</div>
   </header>
 
   <section>
+    <span class="section-label">─ RESULT ─</span>
+    <h2 class="section-title">実施結果サマリー</h2>
+    <p class="section-lead">設計通り、それ以上が起きた夜。次のフェーズ（ジワジワ→5/24販売開始）の燃料が、想像以上に集まった。</p>
+    <div class="result-summary">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; text-align: center;">
+        <div>
+          <div class="number">100+</div>
+          <div style="color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; margin-top: 4px;">PARTICIPANTS</div>
+        </div>
+        <div>
+          <div class="number">3</div>
+          <div style="color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; margin-top: 4px;">CHAKRAS UNIFIED</div>
+        </div>
+        <div>
+          <div class="number">5/24</div>
+          <div style="color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; margin-top: 4px;">SALE LAUNCH</div>
+        </div>
+      </div>
+      <h3>◇ 設計通り動いたこと</h3>
+      <p>松果体（レナ）→ ハート（堀内）→ 丹田（ライラ）の流れが完璧に通り、バトンも自然に繋がった。最後の音の体験ワークでは<strong>意識が飛ぶ参加者続出</strong>、神経に電気が走ったというコメントが多数。</p>
+      <h3>◇ 想定以上だったこと</h3>
+      <p>LPチラ見せが「<strong>ジラスラー</strong>」（堀内さん命名）として参加者を巻き込む演出に変化。「もっと見せて」「続き見たい」コールが連発。<strong>5/24セミナー2の予告</strong>で熱量MAX。</p>
+      <h3>◇ 新しく降臨したキラーワード</h3>
+      <p>・<strong>「お金は、価値の排出の結果」</strong>（堀内）<br>・<strong>「異常値を叩き出さないと、進化しない」</strong>（堀内）<br>・<strong>「人間12W vs AI 27億W」</strong>（レナ）<br>・<strong>「呪いを無効化するスキル」</strong>（ライラ）<br>・<strong>「3もらって10になる、セルフラブ」</strong>（ライラ）</p>
+    </div>
+  </section>
+
+  <section>
     <span class="section-label">─ DECLARATION ─</span>
-    <h2 class="section-title">上の次元の宣言</h2>
-    <p class="section-lead">今夜のオープニングで、3人で立てる宣言。これが立ってれば、その下のすべてが意味を持つ。</p>
+    <h2 class="section-title">上の次元の宣言  ✅ 立てた</h2>
+    <p class="section-lead">オープニングで3人で立てた宣言。100名超の参加者に届けた。今後のあらゆる発信の旗印。</p>
     <div class="declaration">
       <div class="declaration-mark">◇</div>
       <div class="declaration-body">
-        新しい時代に入り、<br><em>進化</em>することで、<br>新しい世界と<em>豊かさの流れ</em>に繋がる。<br>──そのスイッチを、音で、3人で、入れる夜。
+        新しい時代に入り、<br><em>進化</em>することで、<br>新しい世界と<em>豊かさの流れ</em>に繋がる。<br>──そのスイッチを、音で、3人で、入れる。
       </div>
-      <div class="declaration-note">※ 21:00ピッタリに、堀内さんから始める（仮）</div>
+      <div class="declaration-note">★ 5/16セミナーで届けた宣言 ／ 今後の発信もこのライン</div>
     </div>
   </section>
 
   <section>
     <span class="section-label">─ FLOW ─</span>
-    <h2 class="section-title">天 → 心 → 地 へ、垂直に降ろす</h2>
-    <p class="section-lead">3人がリレーで、頭→心→腹まで一気に通す。OSアップデートが完了する夜。</p>
+    <h2 class="section-title">天 → 心 → 地 へ、垂直に降ろした</h2>
+    <p class="section-lead">3人がリレーで、頭→心→腹まで一気に通した。OSアップデートが完了した夜。</p>
     <div class="flow-diagram">
       <div class="flow-step"><div class="step-kanji">天</div><div class="step-label">PHASE 1</div><div class="step-name">松果体・レナ</div></div>
       <div class="flow-step"><div class="step-kanji">心</div><div class="step-label">PHASE 2</div><div class="step-name">ハート・堀内</div></div>
@@ -117,14 +153,14 @@
   </section>
 
   <section>
-    <span class="section-label">─ SCHEDULE ─</span>
-    <h2 class="section-title">タイムテーブル</h2>
-    <p class="section-lead">90分の流れ。各セクション20分×3 + 体験ワーク15分 + 余裕。</p>
+    <span class="section-label">─ SCHEDULE & RESULT ─</span>
+    <h2 class="section-title">タイムテーブル ＆ 実施結果</h2>
+    <p class="section-lead">90分の流れと、実際に起きたこと。各セクションに ✅ 実施結果 を併記。</p>
 
     <div class="schedule-block">
       <div class="schedule-time">21:00 – 21:10</div>
       <div>
-        <div class="schedule-title">★ オープニング（3人で）</div>
+        <div class="schedule-title">★ オープニング（3人で）  ✅</div>
         <div class="schedule-detail">
           場の周波数を上げる。今夜の宣言を立てる。
           <ul>
@@ -132,6 +168,7 @@
             <li>「今夜は、人類の進化とお金の話です」</li>
             <li>「今夜は、売る夜じゃない。世界を渡す夜」と明示</li>
           </ul>
+          <div class="schedule-result">✓ 100名超が集まり、宣言「人類の進化とお金」が立った。参加者の温度が一気に上がった。</div>
         </div>
       </div>
     </div>
@@ -139,7 +176,7 @@
     <div class="schedule-block">
       <div class="schedule-time">21:10 – 21:30</div>
       <div>
-        <div class="schedule-title">★ 第1幕・松果体 ── レナさん</div>
+        <div class="schedule-title">★ 第1幕・松果体 ── レナさん  ✅</div>
         <div class="schedule-detail">
           天から音を降ろし、参加者の松果体を起動させる。
           <ul>
@@ -148,6 +185,7 @@
             <li>風の時代・感性の時代の宣言</li>
             <li>参加者にスタンプ・コメントで「決意表明」させる</li>
           </ul>
+          <div class="schedule-result">✓ <strong>「人間12W vs AI 27億W」</strong>の話で会場一気に覚醒。「進化する」と決意表明する参加者続出。</div>
         </div>
       </div>
     </div>
@@ -155,16 +193,16 @@
     <div class="schedule-block">
       <div class="schedule-time">21:30 – 21:50</div>
       <div>
-        <div class="schedule-title">★ 第2幕・ハート ── 堀内さん</div>
+        <div class="schedule-title">★ 第2幕・ハート ── 堀内さん  ✅</div>
         <div class="schedule-detail">
           目覚めた状態で、ハートが開いてるか・閉じてるかを体感させる。
           <ul>
-            <li>ハートの開閉を実演（前回のZoomでやったやつ）</li>
+            <li>ハートの開閉を実演</li>
             <li>「閉じたいんだね」を認めるプロセス</li>
             <li>「お金は、努力じゃない。在り方の排出だ」</li>
-            <li>「増やすより、消耗を減らす」</li>
-            <li>ハートと無限の富の連動</li>
+            <li>サラリーマン時代「住む世界、変わった」体験談</li>
           </ul>
+          <div class="schedule-result">✓ ハート閉じる実演で参加者「苦しい」「呼吸できない」コメント連発。<strong>「進化に対してハートが閉じるのが正常」「異常値を叩き出す」</strong>が新キラーワードとして降臨。</div>
         </div>
       </div>
     </div>
@@ -172,24 +210,24 @@
     <div class="schedule-block">
       <div class="schedule-time">21:50 – 22:10</div>
       <div>
-        <div class="schedule-title">★ 第3幕・丹田 ── ライラさん</div>
+        <div class="schedule-title">★ 第3幕・丹田 ── ライラさん  ✅</div>
         <div class="schedule-detail">
           開いたハートを、身体・神経系まで降ろして着地させる。
           <ul>
-            <li>「肩の力、抜いてみて」体感ワーク</li>
+            <li>「呪いを無効化するスキル」</li>
             <li>「ふにゃふにゃでええんやで」</li>
             <li>過去ベースの神経系の話</li>
-            <li>セルフハグ・ため息・体の声を許す</li>
-            <li>「安心の中でしかチャレンジできない」</li>
+            <li>「3もらって10にする」セルフラブの増幅</li>
           </ul>
+          <div class="schedule-result">✓ 「生きてるだけで勝ち組」「DNAは環境で引き出される」など新フレーズ多数。「打てば響く」レスポンスで場が一段上がった。</div>
         </div>
       </div>
     </div>
 
     <div class="schedule-block">
-      <div class="schedule-time">22:10 – 22:25</div>
+      <div class="schedule-time">22:10 – 22:13</div>
       <div>
-        <div class="schedule-title">★ 音の体験ワーク（レナ主導、3人で場を作る）</div>
+        <div class="schedule-title">★ 音の体験ワーク（レナ主導、3人で場を作る）  ✅</div>
         <div class="schedule-detail">
           天から地まで通った状態で、音を浴びる。共鳴の体験。
           <ul>
@@ -197,22 +235,23 @@
             <li>3人で場を作る（沈黙含む）</li>
             <li>体感を持ち帰ってもらう</li>
           </ul>
+          <div class="schedule-result">✓ 堀内さんも「意識飛んでた」と告白。「神経に電気が走った」「太古の時代と新時代の融合」など神話的な感想多数。これがPhase 3の拡散燃料になる。</div>
         </div>
       </div>
     </div>
 
     <div class="schedule-block">
-      <div class="schedule-time">22:25 – 22:30</div>
+      <div class="schedule-time">22:20 – 22:27</div>
       <div>
-        <div class="schedule-title">★ クロージング（3人で）</div>
+        <div class="schedule-title">★ クロージング（3人で）  ✅</div>
         <div class="schedule-detail">
           売らない。世界観だけ渡して、余韻を残して終わる。
           <ul>
-            <li>LPチラ見せ（金額外す）「実はこういう体験を作ってる」</li>
-            <li>「今夜はここまでです✨」</li>
+            <li>LPチラ見せ（金額外す）</li>
+            <li>5/24セミナー2の予告</li>
             <li>「オプチャで感想シェアしてね」</li>
-            <li>「またね、また会おう」で締める</li>
           </ul>
+          <div class="schedule-result">✓ LPチラ見せが<strong>「ジラスラー」</strong>として爆発。「見せて見せて」「続き欲しい」コール連発。5/24予告で熱量MAX。次の波の準備完了。</div>
         </div>
       </div>
     </div>
@@ -220,8 +259,8 @@
 
   <section>
     <span class="section-label">─ 3 PILLARS ─</span>
-    <h2 class="section-title">3人の役割 × キラーワード</h2>
-    <p class="section-lead">各人が「今夜、絶対に置きたい一言」。これが拡散の種になる。</p>
+    <h2 class="section-title">3人の役割 × キラーワード（5/16降臨ワード追加版）</h2>
+    <p class="section-lead">設計時のキラーワードに加えて、本番中に降臨した新ワードを ✨ マークで追加。これが拡散素材の核になる。</p>
 
     <div class="three-card-grid">
       <div class="three-card">
@@ -229,24 +268,18 @@
         <div class="chakra-label">松果体 ── レナ</div>
         <div class="person-name">レナさん</div>
         <div class="role-label">▶ 外側からの覚醒・周波数の専門家</div>
-        <h4>◆ 担当領域</h4>
-        <ul class="topic-list">
-          <li>周波数・音・場・共鳴</li>
-          <li>意図と決意のスイッチを入れる</li>
-          <li>参加者を「目覚め」のモードに連れていく</li>
-        </ul>
-        <h4>◆ キラーワード</h4>
+        <h4>◆ キラーワード（事前設計）</h4>
         <ul class="killer-list">
           <li>進化したい、じゃ進化しない。進化する、と決める</li>
           <li>全部が周波数。お守りも、念も、名前も、植物も</li>
           <li>1人の決意で、場の周波数が変わる</li>
           <li>AIにできないのは、感じること</li>
         </ul>
-        <h4>◆ 持ち味</h4>
-        <ul class="topic-list">
-          <li>キラキラ・宇宙的・神秘</li>
-          <li>「えっ、それすごくないですか！？」</li>
-          <li>反応するエネルギーで場を上げる</li>
+        <h4 style="color: var(--gold);">✨ 5/16降臨ワード</h4>
+        <ul class="killer-list">
+          <li class="new">人間が12ワットでできることに、AIは27億ワット必要</li>
+          <li class="new">進化したいなら、進化するって覚悟を決める</li>
+          <li class="new">周波数の強さは、思いの強さ</li>
         </ul>
       </div>
 
@@ -255,25 +288,19 @@
         <div class="chakra-label">ハート ── 堀内</div>
         <div class="person-name">堀内さん</div>
         <div class="role-label">▶ 構造からのリブート・在り方の翻訳者</div>
-        <h4>◆ 担当領域</h4>
-        <ul class="topic-list">
-          <li>ハート・未来との繋がり・富の論理</li>
-          <li>「閉じてる」を認めるプロセス</li>
-          <li>お金と在り方の構造を見せる</li>
-        </ul>
-        <h4>◆ キラーワード</h4>
+        <h4>◆ キラーワード（事前設計）</h4>
         <ul class="killer-list">
           <li>ハートは、開いてるか、閉じてるか。それだけ</li>
           <li>お金は、努力じゃない。在り方の排出だ</li>
           <li>増やすより、消耗を減らす</li>
           <li>ハートと無限の富は、連動する</li>
-          <li>お金の稼ぎ方じゃない。在り方の進化</li>
         </ul>
-        <h4>◆ 持ち味</h4>
-        <ul class="topic-list">
-          <li>静かに熱い・構造的・変態的</li>
-          <li>バンジー＝ブランコ感覚</li>
-          <li>未来から逆算で動く</li>
+        <h4 style="color: var(--gold);">✨ 5/16降臨ワード</h4>
+        <ul class="killer-list">
+          <li class="new">進化に対してハートが閉じるのが、正常</li>
+          <li class="new">異常値を叩き出さないと、進化しない</li>
+          <li class="new">住む世界、変わった（サラリーマン辞めた話）</li>
+          <li class="new">怖いまま、ハートを開く</li>
         </ul>
       </div>
 
@@ -282,25 +309,19 @@
         <div class="chakra-label">丹田 ── ライラ</div>
         <div class="person-name">ライラさん</div>
         <div class="role-label">▶ 内側からの解放・身体に降ろす翻訳者</div>
-        <h4>◆ 担当領域</h4>
-        <ul class="topic-list">
-          <li>神経系・体・安心</li>
-          <li>緩めて、委ねて、着地させる</li>
-          <li>進化を「現実」に降ろす</li>
-        </ul>
-        <h4>◆ キラーワード</h4>
+        <h4>◆ キラーワード（事前設計）</h4>
         <ul class="killer-list">
           <li>進化はドラゴンボールの飛躍じゃない。ふにゃふにゃでええんやで</li>
           <li>過去ベースの体が、90%を握ってる</li>
           <li>天才は、緩んでる</li>
           <li>安心の中でしかチャレンジできない</li>
-          <li>セルフラブが、他者にも増える</li>
         </ul>
-        <h4>◆ 持ち味</h4>
-        <ul class="topic-list">
-          <li>あったか・お母さん・遊び感覚</li>
-          <li>関西弁の柔らかさ</li>
-          <li>身体に「ふぅ」と降りるトーン</li>
+        <h4 style="color: var(--gold);">✨ 5/16降臨ワード</h4>
+        <ul class="killer-list">
+          <li class="new">体は呪いを無効化するために使う</li>
+          <li class="new">3もらって10になる、セルフラブの増幅</li>
+          <li class="new">生きてるだけで、私たちは勝ち組</li>
+          <li class="new">DNAは環境で引き出される因子が変わる</li>
         </ul>
       </div>
     </div>
@@ -308,8 +329,8 @@
 
   <section>
     <span class="section-label">─ BATON ─</span>
-    <h2 class="section-title">バトンの繋ぎ方</h2>
-    <p class="section-lead">前のパートが残したものを、次のパートが受け取る。流れに切れ目を作らない。</p>
+    <h2 class="section-title">バトンの繋ぎ方  ✅ 完璧に繋がった</h2>
+    <p class="section-lead">設計通りのバトンで、流れに切れ目を作らなかった。実際に交わされた言葉の記録。</p>
 
     <div class="baton">
       <div class="baton-header">
@@ -350,44 +371,44 @@
 
   <section>
     <span class="section-label">─ STANCE ─</span>
-    <h2 class="section-title">本番の姿勢</h2>
-    <p class="section-lead">今夜、3人で守る合言葉。これが崩れたら、ゲームが変わる。</p>
+    <h2 class="section-title">本番で守った姿勢  ✅ 守れた</h2>
+    <p class="section-lead">今夜、3人で守った合言葉。次回（5/24）でも同じスタンスを継続する。</p>
     <div class="stance">
       <div class="stance-row">
         <div class="stance-mark">①</div>
-        <div class="stance-content"><strong>売らない</strong>。今夜はセールしない、金額の話をしない。「ここまでです✨」で終える。</div>
+        <div class="stance-content"><strong>売らない</strong> ── 金額の話をしなかった。「ここまでです✨」で終えた。 ✅</div>
       </div>
       <div class="stance-row">
         <div class="stance-mark">②</div>
-        <div class="stance-content"><strong>資料は説明しない</strong>。LPはチラ見せのみ。資料があると「用意してる感」が出るので、3人のエネルギーで持っていく。</div>
+        <div class="stance-content"><strong>資料は説明しない</strong> ── LPはチラ見せのみ。3人のエネルギーで持っていった。 ✅</div>
       </div>
       <div class="stance-row">
         <div class="stance-mark">③</div>
-        <div class="stance-content"><strong>拡散される「言葉の種」を意図的に置く</strong>。各人キラーワードを意識して、参加者が感想に書きたくなる一言を渡す。</div>
+        <div class="stance-content"><strong>拡散される「言葉の種」を意図的に置く</strong> ── 各人キラーワード＋新フレーズ多数発生。 ✅</div>
       </div>
       <div class="stance-row">
         <div class="stance-mark">④</div>
-        <div class="stance-content"><strong>3人で「招待」する</strong>。バックエンドを売るんじゃなく、「この世界に来る人を見つける」スタンス。</div>
+        <div class="stance-content"><strong>3人で「招待」する</strong> ── 売るんじゃなく「この世界に来る人を見つけた」。5/24予告で扉を開いた。 ✅</div>
       </div>
       <div class="stance-row">
         <div class="stance-mark">⑤</div>
-        <div class="stance-content"><strong>参加者を巻き込む</strong>。スタンプ・コメント・リアクションで、参加者自身が「決意表明」する場面を作る。</div>
+        <div class="stance-content"><strong>参加者を巻き込む</strong> ── スタンプ・コメント・「ジラスラー」で参加者自身が場を作った。 ✅</div>
       </div>
     </div>
   </section>
 
   <section style="text-align:center;">
-    <span class="section-label">─ RELATED ─</span>
-    <h2 class="section-title">関連リンク</h2>
-    <p class="section-lead" style="margin: 0 auto 24px;">全体の戦略ロードマップはこちら</p>
+    <span class="section-label">─ NEXT ─</span>
+    <h2 class="section-title">次のステップ</h2>
+    <p class="section-lead" style="margin: 0 auto 24px;">5/16の熱量を、ジワジワ拡散して、5/24で爆発させる。</p>
     <a class="link-back" href="./launch-roadmap-ePvwbbfko4I.html">◇ 全体ロードマップへ ◇</a>
   </section>
 
   <footer class="footer">
     <div class="footer-decoration">◇　◆　◇</div>
     <div>OTO ── 音 × サイエンス × シャーマニズム</div>
-    <div>2026.05.16  ／  Tonight's Script</div>
-    <div style="margin-top:16px; opacity:0.6;">Internal use only ── OTO members</div>
+    <div>2026.05.16  ／  Seminar #1 Implementation Record</div>
+    <div style="margin-top:16px; opacity:0.6;">Internal use only ── OTO members  ／  Last updated: 2026.05.16 ( 実施直後 )</div>
   </footer>
 </div>
 </body>
