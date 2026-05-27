@@ -52,9 +52,10 @@
   .research-meta span { font-size: 0.72em; padding: 3px 12px; border-radius: 20px; font-weight: 600; background: rgba(14,165,233,0.12); color: #0369a1; }
   .story-emoji { font-size: 2.2em; margin-bottom: 8px; }
   .dashboard-section { margin-bottom: 32px; }
-  .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .dashboard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .dash-card { background: var(--card); border-radius: 16px; padding: 24px 20px; border: 1px solid var(--border); text-align: center; transition: all 0.3s ease; text-decoration: none; color: var(--text); display: block; }
   .dash-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .dash-card.featured { border-color: var(--accent); box-shadow: 0 4px 16px rgba(233,69,96,0.12); }
   .dash-icon { font-size: 1.6em; margin-bottom: 8px; }
   .dash-card h4 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.88em; font-weight: 700; margin-bottom: 4px; }
   .dash-card p { font-size: 0.75em; color: var(--text-sub); }
@@ -96,7 +97,7 @@
   <div class="update-banner">
     <div class="update-icon">🔥</div>
     <div>
-      <div class="update-text"><strong>5/8 ロードマップv9更新</strong> — 5/6 Zoomセミナー300名実施、コミュニティ起点モデル始動、オプチャ1,000人超、生命体ベースへの転換宣言</div>
+      <div class="update-text"><strong>5/27 ロードマップ総更新</strong> — 西村さん2回目完了（事務局確保クリア）・LP真完成・Kindle本第4章完了・AIセミナー企画始動・67名/MRR59万到達・UBM大阪まであと24日</div>
     </div>
   </div>
   <div class="sun-card">
@@ -104,7 +105,7 @@
     <h2>LDM — Life Design Method</h2>
     <p>すべての中心にある太陽。命のデザインを通じて、人生を丸ごと創造するメソッド。</p>
     <div class="sun-links">
-      <a href="ldm/roadmap/ubm-osaka-20260620.html">UBM大阪ロードマップ</a>
+      <a href="dashboards/ubm-osaka-roadmap.html">UBM大阪ロードマップ</a>
       <a href="dashboards/company-roadmap.html" class="secondary">会社設計ロードマップv9</a>
     </div>
   </div>
@@ -114,32 +115,32 @@
         <div class="planet-icon" style="background: rgba(52,152,219,0.1);">🌍</div>
         <h3>アースジャーニー</h3>
       </div>
-      <p>LDMの入口であり最深部。オプチャ1,000人超、5/6 Zoomセミナー300名、月額コミュニティ販売開始。コミュニティ起点モデルの核として本格稼働中。</p>
-      <span class="planet-tag" style="background: rgba(52,152,219,0.15); color: #2471a3;">コミュニティ稼働中</span>
+      <p>LDMの入口であり最深部。オプチャ1,000人超、5/6 Zoomセミナー230-250名、<strong>有料コミュニティ67名到達（MRR 58.96万/月）</strong>。2層コミュニティ設計が実動中。LP完成・公開準備完了。</p>
+      <span class="planet-tag" style="background: rgba(52,152,219,0.15); color: #2471a3;">67名 / MRR 59万 稼働中</span>
     </div>
     <div class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(142,68,173,0.1);">🚀</div>
         <h3>シンクロ起業塾</h3>
       </div>
-      <p>LDMのビジネス応用。命のリズムに沿った起業・経営を学ぶ場。</p>
-      <span class="planet-tag" style="background: rgba(142,68,173,0.1); color: #8e44ad;">coming soon</span>
+      <p>LDMのビジネス応用。命のリズムに沿った起業・経営を学ぶ場。第⑧⑨回まで進行中。</p>
+      <span class="planet-tag" style="background: rgba(142,68,173,0.1); color: #8e44ad;">第⑨回進行中</span>
     </div>
     <div class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(230,126,34,0.1);">🎵</div>
         <h3>OTO</h3>
       </div>
-      <p>音 × サイエンス × シャーマニズム。5/16スピフェス控え。</p>
-      <span class="planet-tag" style="background: rgba(230,126,34,0.1); color: #e67e22;">5/16 スピフェス</span>
+      <p>音 × サイエンス × シャーマニズム。スピリフェス2026参加確定、プロフィール提出済み。</p>
+      <span class="planet-tag" style="background: rgba(230,126,34,0.1); color: #e67e22;">スピリフェス2026参加確定</span>
     </div>
     <div class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(39,174,96,0.1);">📚</div>
         <h3>出版</h3>
       </div>
-      <p>Kindle本 第1章v2完成。VIRAP™フレームワーク命名。続章執筆中。</p>
-      <span class="planet-tag" style="background: rgba(39,174,96,0.1); color: #27ae60;">執筆中</span>
+      <p>Kindle本 <strong>第4章 Stage2（グローバル構造化）全6節100点版完了</strong>。神田昌典メソッドに基づく執筆パイプラインが実動。</p>
+      <span class="planet-tag" style="background: rgba(39,174,96,0.1); color: #27ae60;">第4章完了・執筆加速中</span>
     </div>
   </div>
   <div class="story-section">
@@ -151,7 +152,6 @@
       <div class="research-meta">
         <span>2026-05-12</span>
         <span>SNS戦略</span>
-        <span>NEW</span>
       </div>
       <span class="research-badge">レポートを読む →</span>
     </a>
@@ -159,6 +159,11 @@
   <div class="dashboard-section">
     <div class="section-label">DASHBOARDS</div>
     <div class="dashboard-grid">
+      <a href="dashboards/ubm-osaka-roadmap.html" class="dash-card featured">
+        <div class="dash-icon">🏁</div>
+        <h4>UBM大阪ロードマップ</h4>
+        <p>6/20まであと24日 — 5/27更新</p>
+      </a>
       <a href="dashboards/company-roadmap.html" class="dash-card">
         <div class="dash-icon">🗺️</div>
         <h4>会社設計ロードマップ</h4>
