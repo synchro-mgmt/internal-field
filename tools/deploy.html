@@ -3,69 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌿 Deploy Tool - Synchro Management</title>
+<title>🌿 Deploy Tool v2.5 - Synchro Management</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%236b9e78'/%3E%3Cstop offset='100%25' stop-color='%233d7a4a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3Cpath d='M32 14 L42 30 H36 V44 H28 V30 H22 Z' fill='white' opacity='0.95'/%3E%3Cpath d='M22 48 H42' stroke='white' stroke-width='3' stroke-linecap='round' opacity='0.8'/%3E%3C/svg%3E">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Zen Maru Gothic', sans-serif; min-height: 100vh; background: linear-gradient(170deg, #f7f3ee 0%, #e8e0d4 30%, #d4cfc8 60%, #c9d6c5 100%); color: #3d3529; padding: 2rem; position: relative; overflow-x: hidden; }
+body { font-family: 'Zen Maru Gothic', sans-serif; min-height: 100vh; background: linear-gradient(170deg, #f7f3ee 0%, #e8e0d4 30%, #d4cfc8 60%, #c9d6c5 100%); color: #2a2418; padding: 2rem; position: relative; overflow-x: hidden; }
 body::before { content: ''; position: fixed; top: -10%; right: -15%; width: 500px; height: 500px; background: radial-gradient(ellipse, rgba(164,190,148,0.3) 0%, rgba(164,190,148,0.05) 60%, transparent 70%); border-radius: 60% 40% 50% 50%; z-index: 0; animation: float1 20s ease-in-out infinite; }
 body::after { content: ''; position: fixed; bottom: -10%; left: -10%; width: 400px; height: 400px; background: radial-gradient(ellipse, rgba(200,180,150,0.25) 0%, rgba(200,180,150,0.05) 60%, transparent 70%); border-radius: 40% 60% 50% 50%; z-index: 0; animation: float2 25s ease-in-out infinite; }
 @keyframes float1 { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-30px,20px) rotate(5deg); } }
 @keyframes float2 { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(20px,-30px) rotate(-5deg); } }
-.container { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+.container { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
 .header { text-align: center; margin-bottom: 2rem; }
-.header h1 { font-size: 1.8rem; font-weight: 700; color: #4a6741; letter-spacing: 0.05em; }
-.header .subtitle { color: #7a7060; font-size: 0.9rem; margin-top: 0.3rem; font-weight: 400; }
-.card { background: rgba(255,255,255,0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-.card h2 { font-size: 1rem; color: #5a7a50; margin-bottom: 1rem; font-weight: 500; }
-.form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: center; }
-.form-row label { min-width: 110px; font-size: 0.85rem; color: #7a7060; font-weight: 500; }
-.form-row input, .form-row select { flex: 1; background: rgba(255,255,255,0.7); border: 1px solid rgba(164,190,148,0.4); border-radius: 8px; padding: 0.5rem 0.75rem; color: #3d3529; font-size: 0.85rem; font-family: inherit; transition: border-color 0.3s; }
-.form-row input:focus, .form-row select:focus { outline: none; border-color: #5a7a50; box-shadow: 0 0 0 3px rgba(90,122,80,0.1); }
-.btn { background: linear-gradient(135deg, #6b9a5e, #5a7a50); color: #fff; border: none; padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.8rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: all 0.3s; box-shadow: 0 2px 8px rgba(90,122,80,0.2); }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(90,122,80,0.3); }
-.btn-small { padding: 0.3rem 0.6rem; font-size: 0.75rem; }
-.btn-outline { background: transparent; color: #5a7a50; border: 1px solid rgba(90,122,80,0.4); box-shadow: none; }
-.btn-outline:hover { background: rgba(90,122,80,0.08); transform: none; }
-.saved-indicator { color: #5a7a50; font-size: 0.8rem; margin-left: 0.5rem; font-weight: 500; }
+.header h1 { font-size: 1.8rem; font-weight: 700; color: #3a5639; letter-spacing: 0.05em; }
+.header .subtitle { color: #5a4f3e; font-size: 0.9rem; margin-top: 0.3rem; font-weight: 400; }
+.card { background: rgba(255,255,255,0.78); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.5); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+.card h2 { font-size: 1rem; color: #3a5639; margin-bottom: 1rem; font-weight: 600; }
+.form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; align-items: center; flex-wrap: wrap; }
+.form-row label { min-width: 110px; font-size: 0.88rem; color: #2a2418; font-weight: 500; }
+.form-row input, .form-row select { flex: 1; background: rgba(255,255,255,0.85); border: 1px solid rgba(120,140,100,0.5); border-radius: 8px; padding: 0.5rem 0.75rem; color: #2a2418; font-size: 0.88rem; font-family: inherit; transition: border-color 0.3s; }
+.form-row input:focus, .form-row select:focus { outline: none; border-color: #3a5639; box-shadow: 0 0 0 3px rgba(58,86,57,0.15); }
+.form-row .hint { font-size: 0.74rem; color: #6b6354; margin-left: 0.5rem; flex-shrink: 0; }
+.checkbox-row { display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: #2a2418; }
+.checkbox-row input[type="checkbox"] { accent-color: #3a5639; }
+.mode-tabs { display: flex; gap: 0.4rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.mode-tab { padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.8rem; cursor: pointer; border: 1px solid rgba(120,140,100,0.5); background: rgba(255,255,255,0.6); color: #3a5639; transition: all 0.2s; font-weight: 500; }
+.mode-tab.active { background: linear-gradient(135deg, #4a7541, #3a5639); color: #fff; border-color: transparent; }
+.mode-tab.danger.active { background: linear-gradient(135deg, #b85544, #9a3d2e); }
+.mode-tab.warning.active { background: linear-gradient(135deg, #c89438, #a87325); }
+.btn { background: linear-gradient(135deg, #4a7541, #3a5639); color: #fff; border: none; padding: 0.5rem 1.1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all 0.3s; box-shadow: 0 2px 8px rgba(58,86,57,0.25); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(58,86,57,0.35); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-small { padding: 0.32rem 0.65rem; font-size: 0.78rem; }
+.btn-outline { background: transparent; color: #3a5639; border: 1px solid rgba(58,86,57,0.5); box-shadow: none; }
+.btn-outline:hover { background: rgba(58,86,57,0.1); transform: none; }
+.btn-danger { background: linear-gradient(135deg, #b85544, #9a3d2e); }
+.btn-warning { background: linear-gradient(135deg, #c89438, #a87325); }
+.saved-indicator { color: #3a5639; font-size: 0.82rem; margin-left: 0.5rem; font-weight: 600; }
 .repo-list { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.5rem; }
-.repo-item { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.5); border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.8rem; }
-.repo-item .repo-name { flex: 1; color: #3d3529; }
-.repo-item .repo-label { color: #7a7060; font-size: 0.75rem; }
-.repo-item .btn-remove { background: none; border: none; color: #c47058; cursor: pointer; font-size: 1rem; padding: 0 0.3rem; }
-.add-repo-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-.add-repo-row input { flex: 1; font-size: 0.8rem; }
+.repo-item { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.65); border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.82rem; }
+.repo-item .repo-name { flex: 1; color: #2a2418; font-weight: 500; }
+.repo-item .repo-label { color: #5a4f3e; font-size: 0.76rem; }
+.repo-item .protected-badge { background: rgba(184,85,68,0.18); color: #9a3d2e; padding: 0.12rem 0.4rem; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
+.repo-item .btn-remove { background: none; border: none; color: #9a3d2e; cursor: pointer; font-size: 1.05rem; padding: 0 0.3rem; }
+.add-repo-row { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.add-repo-row input { flex: 1; font-size: 0.82rem; min-width: 110px; }
+.summary { font-size: 0.86rem; color: #2a2418; padding: 0.85rem 1rem; border-radius: 10px; background: rgba(164,190,148,0.16); border: 1px solid rgba(120,140,100,0.4); margin-top: 0.5rem; line-height: 1.75; }
+.summary .url { color: #3a5639; font-weight: 700; }
+.summary .target { color: #9a3d2e; font-weight: 700; }
+.summary.danger { background: rgba(184,85,68,0.14); border-color: rgba(184,85,68,0.5); }
 .resize-options { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
 .resize-options label { min-width: auto; display: flex; align-items: center; gap: 0.3rem; font-size: 0.85rem; }
-.resize-options input[type="checkbox"] { width: auto; flex: none; accent-color: #5a7a50; }
+.resize-options input[type="checkbox"] { width: auto; flex: none; accent-color: #3a5639; }
 .resize-options input[type="number"] { width: 70px; flex: none; text-align: center; }
-.drop-zone { border: 2px dashed rgba(164,190,148,0.5); border-radius: 16px; padding: 3rem 2rem; text-align: center; transition: all 0.4s; cursor: pointer; margin-bottom: 1.5rem; background: rgba(255,255,255,0.3); }
-.drop-zone:hover { border-color: #5a7a50; background: rgba(255,255,255,0.5); }
-.drop-zone.dragover { border-color: #5a7a50; background: rgba(164,190,148,0.15); transform: scale(1.01); }
-.drop-zone.processing { border-color: #c4a958; background: rgba(196,169,88,0.08); }
-.drop-zone.done { border-color: #5a7a50; background: rgba(90,122,80,0.08); }
+.drop-zone { border: 2px dashed rgba(120,140,100,0.6); border-radius: 16px; padding: 3rem 2rem; text-align: center; transition: all 0.4s; cursor: pointer; margin-bottom: 1.5rem; background: rgba(255,255,255,0.4); }
+.drop-zone:hover { border-color: #3a5639; background: rgba(255,255,255,0.6); }
+.drop-zone.dragover { border-color: #3a5639; background: rgba(164,190,148,0.2); transform: scale(1.01); }
+.drop-zone.processing { border-color: #c89438; background: rgba(200,148,56,0.1); cursor: wait; }
+.drop-zone.done { border-color: #3a5639; background: rgba(58,86,57,0.1); }
 .drop-zone .drop-icon { font-size: 3rem; margin-bottom: 0.5rem; }
-.drop-zone strong { color: #3d3529; font-size: 1rem; }
-.drop-zone p { color: #7a7060; margin-top: 0.3rem; font-size: 0.8rem; }
-.progress-bar { background: rgba(164,190,148,0.2); border-radius: 6px; height: 8px; margin: 1rem 0; overflow: hidden; display: none; }
-.progress-bar .fill { height: 100%; background: linear-gradient(90deg, #a4be94, #5a7a50); transition: width 0.3s; border-radius: 6px; }
-.log { background: rgba(45,40,35,0.85); border-radius: 10px; padding: 1rem; max-height: 280px; overflow-y: auto; font-family: 'SF Mono', Monaco, monospace; font-size: 0.75rem; line-height: 1.7; }
+.drop-zone strong { color: #2a2418; font-size: 1.05rem; }
+.drop-zone p { color: #5a4f3e; margin-top: 0.3rem; font-size: 0.84rem; }
+.progress-bar { background: rgba(120,140,100,0.25); border-radius: 6px; height: 8px; margin: 1rem 0; overflow: hidden; display: none; }
+.progress-bar .fill { height: 100%; background: linear-gradient(90deg, #a4be94, #3a5639); transition: width 0.3s; border-radius: 6px; }
+.log { background: rgba(35,30,25,0.92); border-radius: 10px; padding: 1rem; max-height: 280px; overflow-y: auto; font-family: 'SF Mono', Monaco, monospace; font-size: 0.78rem; line-height: 1.7; }
 .log-entry { padding: 1px 0; }
-.log-entry.info { color: #a09888; }
-.log-entry.success { color: #8cb87a; }
-.log-entry.error { color: #d47a6a; }
-.log-entry.progress { color: #d4b86a; }
-.footer { text-align: center; margin-top: 2rem; color: #a09888; font-size: 0.75rem; }
+.log-entry.info { color: #c5bea9; }
+.log-entry.success { color: #a8d68f; }
+.log-entry.error { color: #e89889; }
+.log-entry.progress { color: #e8c870; }
+.log-entry.warning { color: #f3c25e; }
+.history-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; max-height: 320px; overflow-y: auto; }
+.history-item { background: rgba(255,255,255,0.65); border-radius: 10px; padding: 0.75rem 0.9rem; font-size: 0.82rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.history-item .row1 { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.history-item .target-path { color: #3a5639; font-weight: 700; }
+.history-item .timestamp { color: #6b6354; font-size: 0.74rem; }
+.history-item .meta { color: #5a4f3e; font-size: 0.76rem; }
+.history-item .actions { display: flex; gap: 0.3rem; margin-top: 0.2rem; flex-wrap: wrap; }
+.toast { position: fixed; top: 1.5rem; right: 1.5rem; max-width: 380px; background: #fefcf8; border-left: 4px solid #3a5639; border-radius: 8px; padding: 0.85rem 1.1rem; box-shadow: 0 6px 24px rgba(0,0,0,0.15); z-index: 200; font-size: 0.86rem; color: #2a2418; transform: translateX(420px); transition: transform 0.3s; }
+.toast.show { transform: translateX(0); }
+.toast.error { border-left-color: #9a3d2e; color: #5a1d12; }
+.toast.success { border-left-color: #3a5639; }
+.toast.warning { border-left-color: #c89438; }
+.modal-backdrop { position: fixed; inset: 0; background: rgba(20,15,10,0.5); backdrop-filter: blur(4px); z-index: 100; display: none; align-items: center; justify-content: center; padding: 1rem; }
+.modal-backdrop.active { display: flex; }
+.modal { background: #fefcf8; border-radius: 16px; padding: 2rem; max-width: 580px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,0.25); max-height: 88vh; overflow-y: auto; }
+.modal h3 { font-size: 1.15rem; color: #3a5639; margin-bottom: 0.75rem; font-weight: 700; }
+.modal .modal-body { font-size: 0.88rem; color: #2a2418; line-height: 1.8; }
+.modal .modal-body .url { color: #3a5639; font-weight: 700; word-break: break-all; }
+.modal .modal-body .target { color: #9a3d2e; font-weight: 700; }
+.modal .modal-body .warn { background: rgba(184,85,68,0.14); padding: 0.85rem; border-radius: 10px; margin: 0.85rem 0; color: #5a1d12; font-size: 0.84rem; border: 1px solid rgba(184,85,68,0.3); }
+.modal .modal-body .diff-table { width: 100%; margin: 0.85rem 0; border-collapse: collapse; font-size: 0.82rem; }
+.modal .modal-body .diff-table td { padding: 0.35rem 0.6rem; border-bottom: 1px solid rgba(120,140,100,0.25); }
+.modal .modal-body .diff-table td:first-child { color: #5a4f3e; }
+.modal .modal-body .diff-table td:last-child { text-align: right; font-weight: 600; color: #2a2418; }
+.modal .modal-body .root-zone { background: rgba(184,85,68,0.08); border: 2px solid rgba(184,85,68,0.4); border-radius: 12px; padding: 1.1rem; margin: 1rem 0; }
+.modal .modal-body .root-zone h4 { color: #9a3d2e; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.modal .modal-body .root-zone label { display: flex; align-items: center; gap: 0.4rem; margin: 0.5rem 0; color: #5a1d12; font-size: 0.85rem; }
+.modal .modal-body .confirm-input { width: 100%; padding: 0.6rem 0.8rem; border: 1.5px solid rgba(184,85,68,0.5); border-radius: 8px; font-family: inherit; font-size: 0.95rem; margin-top: 0.6rem; background: #fff; color: #2a2418; font-weight: 600; text-align: center; letter-spacing: 0.2em; }
+.modal .modal-body .confirm-input:focus { outline: none; border-color: #9a3d2e; box-shadow: 0 0 0 3px rgba(184,85,68,0.15); }
+.modal .modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.25rem; flex-wrap: wrap; }
+.footer { text-align: center; margin-top: 2rem; color: #5a4f3e; font-size: 0.78rem; }
+.field-edit-row { display: flex; gap: 0.5rem; align-items: center; margin: 0.5rem 0; }
+.field-edit-row label { min-width: 90px; font-size: 0.82rem; color: #2a2418; }
+.field-edit-row input { flex: 1; padding: 0.4rem 0.65rem; border: 1px solid rgba(120,140,100,0.4); border-radius: 6px; font-family: inherit; font-size: 0.82rem; background: #fff; }
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
 <h1>🌿 Deploy Tool</h1>
-<p class="subtitle">zip をドロップ → 画像最適化 → GitHub に自動デプロイ</p>
+<p class="subtitle">zip / 個別ファイル をドロップ → 画像最適化 → GitHub に自動デプロイ <span style="opacity:0.7">v2.5</span></p>
 </div>
+
 <div class="card">
 <h2>🔑 GitHub Token</h2>
 <div class="form-row">
@@ -74,7 +125,13 @@ body::after { content: ''; position: fixed; bottom: -10%; left: -10%; width: 400
 <button class="btn btn-small" onclick="saveToken()">保存</button>
 <span id="saved-msg" class="saved-indicator" style="display:none">✓</span>
 </div>
+<div class="form-row">
+<label></label>
+<label class="checkbox-row"><input type="checkbox" id="token-persist" onchange="onTokenPersistChange()"> ブラウザに保存する（localStorage / 平文）</label>
+<span class="hint">OFFの場合: タブを閉じると消える（sessionStorage）</span>
 </div>
+</div>
+
 <div class="card">
 <h2>📂 アップ先</h2>
 <div class="form-row">
@@ -85,17 +142,61 @@ body::after { content: ''; position: fixed; bottom: -10%; left: -10%; width: 400
 <label>ブランチ</label>
 <input type="text" id="branch" value="main">
 </div>
+
+<div class="form-row" style="margin-bottom: 0.5rem">
+<label>サブディレクトリ</label>
+<div style="flex:1; min-width: 0">
+<div class="mode-tabs">
+<div class="mode-tab active" data-mode="existing" onclick="setSubdirMode('existing')">既存から選択</div>
+<div class="mode-tab" data-mode="new" onclick="setSubdirMode('new')">新規作成</div>
+<div class="mode-tab danger" data-mode="root" onclick="setSubdirMode('root')">⚠️ ルート</div>
+</div>
+<div id="subdir-existing-wrap" style="display:flex; gap:0.3rem; align-items:center">
+<select id="subdir-existing" onchange="onSubdirChange()" style="flex:1; background: rgba(255,255,255,0.85); border: 1px solid rgba(120,140,100,0.5); border-radius: 8px; padding: 0.5rem 0.75rem; color: #2a2418; font-size: 0.88rem; font-family: inherit;">
+<option value="">（読み込み中...）</option>
+</select>
+<button class="btn btn-small btn-outline" onclick="loadExistingPaths()">🔄 再取得</button>
+</div>
+<input type="text" id="subdir-new" placeholder="新規サブディレクトリ名（例: earth）" style="display:none; width:100%; background: rgba(255,255,255,0.85); border: 1px solid rgba(120,140,100,0.5); border-radius: 8px; padding: 0.5rem 0.75rem; color: #2a2418; font-size: 0.88rem; font-family: inherit;" oninput="onSubdirChange()">
+<div id="subdir-root-warn" style="display:none; padding: 0.6rem 0.85rem; border-radius: 8px; background: rgba(184,85,68,0.14); color: #5a1d12; font-size: 0.82rem; border: 1px solid rgba(184,85,68,0.3);">
+⚠️ <strong>ルート展開モード</strong>。リポジトリ全体に影響します。<br>
+保護リポジトリでは禁止。確認モーダルで二段ロックを通過する必要があります。
+</div>
+</div>
+</div>
+
+<div class="form-row" style="margin-bottom: 0.5rem">
+<label>同期モード</label>
+<div style="flex:1">
+<div class="mode-tabs">
+<div class="mode-tab active" data-sync="patch" onclick="setSyncMode('patch')">🟢 追加・更新のみ</div>
+<div class="mode-tab warning" data-sync="full" onclick="setSyncMode('full')">🔴 フル同期（削除あり）</div>
+</div>
+<div style="font-size:0.78rem; color:#5a4f3e; margin-top:0.4rem">
+<strong>追加・更新のみ</strong>: zip 内のファイルだけ反映。既存ファイルは触らない（部分更新OK）<br>
+<strong>フル同期</strong>: zip = 真として、ないファイルは削除。完全置き換え時のみ使う
+</div>
+</div>
+</div>
+
+<div id="summary" class="summary">アップ先を確認しています...</div>
+
 <details style="margin-top:0.75rem">
-<summary style="cursor:pointer;color:#5a7a50;font-size:0.85rem;font-weight:500">リポジトリを管理</summary>
+<summary style="cursor:pointer;color:#3a5639;font-size:0.88rem;font-weight:500">リポジトリを管理</summary>
 <div class="repo-list" id="repo-list"></div>
 <div class="add-repo-row">
 <input type="text" id="new-repo-owner" placeholder="オーナー (例: synchro-mgmt)" style="flex:0.8">
 <input type="text" id="new-repo-name" placeholder="リポジトリ名" style="flex:1">
 <input type="text" id="new-repo-label" placeholder="表示名" style="flex:0.8">
+</div>
+<div class="add-repo-row" style="margin-top:0.3rem">
+<input type="text" id="new-repo-domain" placeholder="公開URL (例: ej.ldm.international)" style="flex:1.5">
+<label class="checkbox-row" style="color:#5a1d12"><input type="checkbox" id="new-repo-protect"> ルート保護</label>
 <button class="btn btn-small btn-outline" onclick="addRepo()">追加</button>
 </div>
 </details>
 </div>
+
 <div class="card">
 <h2>🖼️ 画像最適化</h2>
 <div class="resize-options">
@@ -104,18 +205,1089 @@ body::after { content: ''; position: fixed; bottom: -10%; left: -10%; width: 400
 <label>品質 <input type="number" id="quality" value="80" min="10" max="100" step="5">%</label>
 </div>
 </div>
+
 <div class="drop-zone" id="drop-zone">
 <div class="drop-icon">🌏</div>
-<strong>ここに zip をドロップ</strong>
-<p>クリックでファイル選択もOK</p>
+<strong>ここに zip または個別ファイルをドロップ</strong>
+<p>クリックでファイル選択もOK / 実行前に確認ダイアログが出ます</p>
+<p style="opacity:0.7; font-size:0.76rem">対応: .zip / .html / .css / .js / .jsx / .json / .md / .png / .jpg / .webp / .svg ほか</p>
 </div>
-<input type="file" id="file-input" accept=".zip" style="display:none">
+<input type="file" id="file-input" multiple style="display:none">
+
 <div class="progress-bar" id="progress-bar"><div class="fill" id="progress-fill"></div></div>
+
 <div class="log" id="log"></div>
-<div class="footer">Synchro Management Deploy Tool v2.1</div>
+
+<details style="margin-top:1.5rem" id="history-card">
+<summary style="cursor:pointer;color:#3a5639;font-size:0.95rem;font-weight:600;padding:0.6rem;border-radius:8px;background:rgba(255,255,255,0.6)">🕒 デプロイ履歴・ロールバック</summary>
+<div class="history-list" id="history-list" style="margin-top:0.75rem"></div>
+</details>
+
+<div class="footer">Synchro Management Deploy Tool v2.5 — XSS防御 / CAS強化 / zip slipガード / subdir単位ロールバック</div>
 </div>
+
+<!-- トースト -->
+<div class="toast" id="toast"></div>
+
+<!-- 確認モーダル -->
+<div class="modal-backdrop" id="confirm-modal">
+<div class="modal">
+<h3 id="confirm-title">⚠️ デプロイ確認</h3>
+<div class="modal-body" id="confirm-body"></div>
+<div class="modal-actions">
+<button class="btn btn-outline" onclick="cancelConfirm()">キャンセル</button>
+<button class="btn" id="confirm-execute" onclick="executeDeploy()">実行する</button>
+</div>
+</div>
+</div>
+
+<!-- 個別ファイル設定モーダル -->
+<div class="modal-backdrop" id="single-file-modal">
+<div class="modal">
+<h3>📄 個別ファイル配置</h3>
+<div class="modal-body" id="single-file-body"></div>
+<div class="modal-actions">
+<button class="btn btn-outline" onclick="cancelSingleFile()">キャンセル</button>
+<button class="btn" onclick="confirmSingleFile()">確認画面へ</button>
+</div>
+</div>
+</div>
+
+<!-- ロールバックモーダル -->
+<div class="modal-backdrop" id="rollback-modal">
+<div class="modal">
+<h3>🔙 ロールバック確認</h3>
+<div class="modal-body" id="rollback-body"></div>
+<div class="modal-actions">
+<button class="btn btn-outline" onclick="cancelRollback()">キャンセル</button>
+<button class="btn btn-warning" onclick="executeRollback()">ロールバックする</button>
+</div>
+</div>
+</div>
+
 <script>
-const DEFAULT_REPOS=[{owner:'synchro-mgmt',name:'ldm-earth-journey',label:'LDM アースジャーニー LP'},{owner:'synchro-mgmt',name:'internal-field',label:'社内サイト (internal-field)'},{owner:'synchro-mgmt',name:'open-field',label:'公開サイト (open-field)'}];function getRepos(){const s=localStorage.getItem('deploy-repos');return s?JSON.parse(s):DEFAULT_REPOS}function saveRepos(r){localStorage.setItem('deploy-repos',JSON.stringify(r))}function renderRepos(){const repos=getRepos(),select=document.getElementById('repo-select'),list=document.getElementById('repo-list'),last=localStorage.getItem('deploy-last-repo')||`${repos[0].owner}/${repos[0].name}`;select.innerHTML=repos.map(r=>`<option value="${r.owner}/${r.name}" ${last===`${r.owner}/${r.name}`?'selected':''}>${r.label||r.name}</option>`).join('');list.innerHTML=repos.map((r,i)=>`<div class="repo-item"><span class="repo-name">${r.owner}/${r.name}</span><span class="repo-label">${r.label||''}</span><button class="btn-remove" onclick="removeRepo(${i})" title="削除">×</button></div>`).join('')}function addRepo(){const o=document.getElementById('new-repo-owner').value.trim(),n=document.getElementById('new-repo-name').value.trim(),l=document.getElementById('new-repo-label').value.trim();if(!o||!n)return;const repos=getRepos();repos.push({owner:o,name:n,label:l||n});saveRepos(repos);renderRepos();document.getElementById('new-repo-owner').value='';document.getElementById('new-repo-name').value='';document.getElementById('new-repo-label').value=''}function removeRepo(i){const repos=getRepos();repos.splice(i,1);saveRepos(repos);renderRepos()}function onRepoChange(){localStorage.setItem('deploy-last-repo',document.getElementById('repo-select').value)}function saveToken(){localStorage.setItem('deploy-token',document.getElementById('token').value);const m=document.getElementById('saved-msg');m.style.display='inline';setTimeout(()=>m.style.display='none',2000)}function loadToken(){const t=localStorage.getItem('deploy-token');if(t)document.getElementById('token').value=t;const b=localStorage.getItem('deploy-branch');if(b)document.getElementById('branch').value=b}loadToken();renderRepos();function log(msg,type='info'){const el=document.getElementById('log'),entry=document.createElement('div');entry.className=`log-entry ${type}`;entry.textContent=`[${new Date().toLocaleTimeString()}] ${msg}`;el.appendChild(entry);el.scrollTop=el.scrollHeight}function setProgress(p){const bar=document.getElementById('progress-bar');bar.style.display='block';document.getElementById('progress-fill').style.width=p+'%'}const dropZone=document.getElementById('drop-zone'),fileInput=document.getElementById('file-input');dropZone.addEventListener('click',()=>fileInput.click());fileInput.addEventListener('change',e=>{if(e.target.files[0])processZip(e.target.files[0])});dropZone.addEventListener('dragover',e=>{e.preventDefault();dropZone.classList.add('dragover')});dropZone.addEventListener('dragleave',()=>dropZone.classList.remove('dragover'));dropZone.addEventListener('drop',e=>{e.preventDefault();dropZone.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f&&f.name.endsWith('.zip'))processZip(f);else log('zip ファイルをドロップしてください','error')});async function resizeImage(blob,fn){if(!document.getElementById('resize-enabled').checked)return blob;const mw=parseInt(document.getElementById('max-width').value),q=parseInt(document.getElementById('quality').value)/100,ext=fn.split('.').pop().toLowerCase();if(!['jpg','jpeg','png','webp'].includes(ext))return blob;return new Promise(resolve=>{const img=new Image;img.onload=()=>{if(img.width<=mw){resolve(blob);return}const r=mw/img.width,c=document.createElement('canvas');c.width=mw;c.height=Math.round(img.height*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(b=>resolve(b),ext==='png'?'image/png':'image/jpeg',q)};img.onerror=()=>resolve(blob);img.src=URL.createObjectURL(blob)})}async function fetchRetry(url,opts,retries=3){for(let i=0;i<retries;i++){try{const res=await fetch(url,opts);if(res.ok)return res;if(res.status>=500&&i<retries-1){log(`サーバーエラー (${res.status})、${i+1}回目リトライ...`,'progress');await new Promise(r=>setTimeout(r,2000*(i+1)));continue}throw new Error(`HTTP ${res.status}: ${await res.text()}`)}catch(err){if(err.message.startsWith('HTTP'))throw err;if(i<retries-1){log(`通信エラー、${i+1}回目リトライ (${retries-i-1}回残り)...`,'progress');await new Promise(r=>setTimeout(r,3000*(i+1)))}else throw err}}}async function ghAPI(method,path,token,body=null){const opts={method,headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}};if(body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body)}const res=await fetchRetry(`https://api.github.com${path}`,opts);return await res.json()}function arrayBufferToBase64(buf){const bytes=new Uint8Array(buf);let bin='';for(let i=0;i<bytes.length;i++)bin+=String.fromCharCode(bytes[i]);return btoa(bin)}async function processZip(file){const token=document.getElementById('token').value,repoFull=document.getElementById('repo-select').value,branch=document.getElementById('branch').value;if(!token){log('GitHub Token を設定してください','error');return}if(!repoFull){log('リポジトリを選択してください','error');return}localStorage.setItem('deploy-branch',branch);dropZone.classList.add('processing');log(`📦 ${file.name} (${(file.size/1024/1024).toFixed(1)}MB) を処理中...`,'progress');try{log('zip を解凍中...','info');const zip=await JSZip.loadAsync(file),entries=Object.entries(zip.files).filter(([_,f])=>!f.dir);log(`${entries.length} ファイルを検出`,'info');const cacheKey=`deploy-uploaded-${repoFull}`;let uploaded={};try{uploaded=JSON.parse(localStorage.getItem(cacheKey)||'{}')}catch(e){}const files=[];let totalOrig=0,totalResized=0;const imageExts=['jpg','jpeg','png','webp','gif'];for(let idx=0;idx<entries.length;idx++){const[path,zipEntry]=entries[idx];let cleanPath=path;const firstSlash=path.indexOf('/');if(firstSlash>0)cleanPath=path.substring(firstSlash+1);const blob=await zipEntry.async('blob');totalOrig+=blob.size;let finalBlob=blob;const ext=path.split('.').pop().toLowerCase();if(imageExts.includes(ext)){finalBlob=await resizeImage(blob,path);if(finalBlob.size<blob.size)log(`🖼️ ${cleanPath.split('/').pop()}: ${(blob.size/1024).toFixed(0)}KB → ${(finalBlob.size/1024).toFixed(0)}KB`,'info')}totalResized+=finalBlob.size;const arrayBuf=await finalBlob.arrayBuffer();files.push({path:cleanPath,content:arrayBufferToBase64(arrayBuf)});setProgress((idx+1)/entries.length*40)}if(totalOrig!==totalResized)log(`📊 合計: ${(totalOrig/1024/1024).toFixed(1)}MB → ${(totalResized/1024/1024).toFixed(1)}MB (${Math.round((1-totalResized/totalOrig)*100)}% 削減)`,'success');log('GitHub にプッシュ中...','progress');const ref=await ghAPI('GET',`/repos/${repoFull}/git/ref/heads/${branch}`,token),currentCommitSha=ref.object.sha;log(`現在のコミット: ${currentCommitSha.substring(0,7)}`,'info');const commitData=await ghAPI('GET',`/repos/${repoFull}/git/commits/${currentCommitSha}`,token),baseTreeSha=commitData.tree.sha;log(`ベースツリー: ${baseTreeSha.substring(0,7)}`,'info');const treeEntries=[];let skipCount=0;for(let i=0;i<files.length;i++){const f=files[i];if(uploaded[f.path]){treeEntries.push({path:f.path,mode:'100644',type:'blob',sha:uploaded[f.path]});skipCount++;continue}const blob=await ghAPI('POST',`/repos/${repoFull}/git/blobs`,token,{content:f.content,encoding:'base64'});treeEntries.push({path:f.path,mode:'100644',type:'blob',sha:blob.sha});uploaded[f.path]=blob.sha;localStorage.setItem(cacheKey,JSON.stringify(uploaded));setProgress(40+((i+1)/files.length)*50);if((i+1)%5===0||i===files.length-1)log(`アップロード中... ${i+1}/${files.length}${skipCount>0?` (${skipCount} スキップ)`:''}`,'info')}if(skipCount>0)log(`⏩ ${skipCount} ファイルは前回アップ済みのためスキップ`,'info');log('ツリーを作成中...','info');const tree=await ghAPI('POST',`/repos/${repoFull}/git/trees`,token,{base_tree:baseTreeSha,tree:treeEntries});if(!tree.sha)throw new Error(`ツリー作成失敗: ${tree.message||JSON.stringify(tree)}`);log('コミットを作成中...','info');const commit=await ghAPI('POST',`/repos/${repoFull}/git/commits`,token,{message:`Deploy: ${file.name} (${new Date().toLocaleString('ja-JP')})`,tree:tree.sha,parents:[currentCommitSha]});if(!commit.sha)throw new Error(`コミット作成失敗: ${commit.message||JSON.stringify(commit)}`);log('ref を更新中...','info');await ghAPI('PATCH',`/repos/${repoFull}/git/refs/heads/${branch}`,token,{sha:commit.sha});localStorage.removeItem(cacheKey);setProgress(100);log(`✅ デプロイ完了！ ${files.length} ファイルをプッシュしました`,'success');log(`🔗 https://github.com/${repoFull}`,'success');dropZone.classList.remove('processing');dropZone.classList.add('done')}catch(err){log(`❌ エラー: ${err.message}`,'error');log('💡 もう一度 zip をドロップすると、アップ済みファイルはスキップして途中から再開します','info');dropZone.classList.remove('processing');console.error(err)}}
+// ==================== 安全ヘルパー（v2.5） ====================
+// XSS: HTMLエスケープ。innerHTMLに流す全ての動的文字列に必ず適用
+function esc(s) {
+  if (s === null || s === undefined) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+// URL用エスケープ（href属性）
+function escAttr(s) { return esc(s); }
+// zip slip / 危険パス防御
+const DANGEROUS_PATH_RE = /^(\.\.\//|\/|.*\/\.\.\/|.*\\)/;
+const BLOCKED_PREFIXES = ['.github/workflows/', '.github/actions/', '.git/'];
+function safePath(p) {
+  if (!p || typeof p !== 'string') return { ok: false, reason: 'パスが空' };
+  // 正規化: 連続スラッシュを単一に、先頭末尾の/除去、Windows '\\' を '/' に
+  let n = p.replace(/\\/g, '/').replace(/\/+/g, '/').replace(/^\/+|\/+$/g, '');
+  // 絶対パス、ドライブレター、null byte 拒否
+  if (p.startsWith('/') || /^[A-Za-z]:/.test(p) || p.includes('\0')) return { ok: false, reason: '絶対パスまたは制御文字' };
+  // ..ガード（traversal）
+  if (n.split('/').some(seg => seg === '..' || seg === '.')) return { ok: false, reason: 'パストラバーサル（..）' };
+  // CI/Git設定の書き換え拒否
+  for (const prefix of BLOCKED_PREFIXES) {
+    if (n === prefix.replace(/\/$/, '') || n.startsWith(prefix)) return { ok: false, reason: `保護パス（${prefix}）` };
+  }
+  return { ok: true, path: n };
+}
+// トークン形式の検証（GitHub PATの主要プレフィックス）
+function isLikelyValidToken(t) {
+  if (!t || typeof t !== 'string') return false;
+  return /^(ghp|gho|ghu|ghs|github_pat)_[A-Za-z0-9_]{20,}$/.test(t.trim());
+}
+
+// ==================== 既定値 ====================
+const DEFAULT_REPOS = [
+  { owner: 'synchro-mgmt', name: 'ldm-earth-journey', label: 'LDM アースジャーニー LP', domain: 'ej.ldm.international', protectRoot: true },
+  { owner: 'synchro-mgmt', name: 'open-field', label: '公開サイト (open-field)', domain: 'synchro-mgmt.github.io/open-field', protectRoot: false }
+];
+// 保護リポジトリの「初期値」（localStorageに書き換えられても、ここで上書き保護）
+const HARDCODED_PROTECT_ROOT = new Set(['synchro-mgmt/ldm-earth-journey']);
+function isProtected(repo) {
+  if (!repo) return false;
+  return HARDCODED_PROTECT_ROOT.has(`${repo.owner}/${repo.name}`) || !!repo.protectRoot;
+}
+
+// ==================== State ====================
+let subdirMode = 'existing';
+let syncMode = 'patch'; // 'patch' | 'full'
+let existingPaths = [];
+let pendingDeploy = null;
+let pendingRollback = null;
+let pendingSingleFile = null; // 個別ファイル: { file, suggestedPath }
+
+// ==================== Toast ====================
+function toast(msg, type = 'info', ms = 3500) {
+  const el = document.getElementById('toast');
+  el.className = `toast ${type}`;
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), ms);
+}
+
+// ==================== Repo 管理 ====================
+function getRepos() {
+  const saved = localStorage.getItem('deploy-repos-v23');
+  return saved ? JSON.parse(saved) : DEFAULT_REPOS;
+}
+function saveRepos(repos) { localStorage.setItem('deploy-repos-v23', JSON.stringify(repos)); }
+function getCurrentRepo() {
+  const full = document.getElementById('repo-select').value;
+  return getRepos().find(r => `${r.owner}/${r.name}` === full);
+}
+function renderRepos() {
+  const repos = getRepos();
+  const select = document.getElementById('repo-select');
+  const list = document.getElementById('repo-list');
+  const lastSelected = localStorage.getItem('deploy-last-repo') || `${repos[0].owner}/${repos[0].name}`;
+  // v2.5: 全動的値をescapeしてからinnerHTML
+  select.innerHTML = repos.map(r => {
+    const full = `${r.owner}/${r.name}`;
+    return `<option value="${esc(full)}" ${lastSelected === full ? 'selected' : ''}>${esc(r.label || r.name)}</option>`;
+  }).join('');
+  list.innerHTML = repos.map((r, i) => {
+    const protectedFlag = isProtected(r);
+    return `<div class="repo-item">
+      <span class="repo-name">${esc(r.owner)}/${esc(r.name)}</span>
+      <span class="repo-label">${esc(r.label || '')}</span>
+      ${r.domain ? `<span class="repo-label" style="color:#3a5639">→ ${esc(r.domain)}</span>` : ''}
+      ${protectedFlag ? '<span class="protected-badge">🔒 ルート保護</span>' : ''}
+      <button class="btn-remove" onclick="removeRepo(${Number(i)})" title="削除">×</button>
+    </div>`;
+  }).join('');
+}
+function addRepo() {
+  const owner = document.getElementById('new-repo-owner').value.trim();
+  const name = document.getElementById('new-repo-name').value.trim();
+  const label = document.getElementById('new-repo-label').value.trim();
+  const domain = document.getElementById('new-repo-domain').value.trim();
+  const protectRoot = document.getElementById('new-repo-protect').checked;
+  if (!owner || !name) { toast('オーナーとリポジトリ名は必須', 'error'); return; }
+  // v2.5: GitHubの仕様に合わせて文字種を制限（XSSペイロード混入防止）
+  const idRe = /^[A-Za-z0-9._-]+$/;
+  if (!idRe.test(owner) || !idRe.test(name)) {
+    toast('オーナー/リポジトリ名は英数字 . _ - のみ使用可', 'error', 5000); return;
+  }
+  if (domain && !/^[A-Za-z0-9.\/_-]+$/.test(domain)) {
+    toast('ドメインに使えない文字が含まれています', 'error'); return;
+  }
+  const repos = getRepos();
+  repos.push({ owner, name, label: label || name, domain, protectRoot });
+  saveRepos(repos);
+  renderRepos();
+  ['new-repo-owner','new-repo-name','new-repo-label','new-repo-domain'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('new-repo-protect').checked = false;
+  toast('リポジトリを追加しました', 'success');
+}
+function removeRepo(idx) {
+  const repos = getRepos();
+  repos.splice(idx, 1);
+  saveRepos(repos);
+  renderRepos();
+}
+
+// ==================== サブディレクトリ ====================
+function setSubdirMode(mode) {
+  subdirMode = mode;
+  document.querySelectorAll('.mode-tab[data-mode]').forEach(el => el.classList.toggle('active', el.dataset.mode === mode));
+  document.getElementById('subdir-existing-wrap').style.display = mode === 'existing' ? 'flex' : 'none';
+  document.getElementById('subdir-new').style.display = mode === 'new' ? 'block' : 'none';
+  document.getElementById('subdir-root-warn').style.display = mode === 'root' ? 'block' : 'none';
+  updateSummary();
+}
+
+function setSyncMode(mode) {
+  syncMode = mode;
+  document.querySelectorAll('.mode-tab[data-sync]').forEach(el => el.classList.toggle('active', el.dataset.sync === mode));
+  updateSummary();
+}
+
+function getSubdir() {
+  if (subdirMode === 'root') return '';
+  if (subdirMode === 'existing') return document.getElementById('subdir-existing').value;
+  return document.getElementById('subdir-new').value.trim().replace(/^\/+|\/+$/g, '');
+}
+
+function onSubdirChange() {
+  const repoFull = document.getElementById('repo-select').value;
+  const subdir = getSubdir();
+  if (repoFull) {
+    localStorage.setItem(`deploy-subdir-${repoFull}`, subdir);
+    localStorage.setItem(`deploy-subdir-mode-${repoFull}`, subdirMode);
+  }
+  updateSummary();
+}
+
+async function loadExistingPaths() {
+  const repo = getCurrentRepo();
+  const token = getToken();
+  const select = document.getElementById('subdir-existing');
+  if (!repo) return;
+  if (!token) { select.innerHTML = '<option value="">トークン未設定</option>'; return; }
+  try {
+    select.innerHTML = '<option value="">読み込み中...</option>';
+    const res = await fetch(`https://api.github.com/repos/${repo.owner}/${repo.name}/contents/`, {
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) {
+      select.innerHTML = '<option value="">取得失敗（権限・Token要確認）</option>';
+      toast(`既存パス取得失敗: HTTP ${res.status}`, 'error');
+      return;
+    }
+    const items = await res.json();
+    existingPaths = items.filter(i => i.type === 'dir' && !i.name.startsWith('.')).map(i => i.name);
+    const last = localStorage.getItem(`deploy-subdir-${repo.owner}/${repo.name}`) || '';
+    if (existingPaths.length === 0) {
+      select.innerHTML = '<option value="">（ディレクトリなし。新規作成モードを使用）</option>';
+    } else {
+      // v2.5: ディレクトリ名（GitHubから取得）もエスケープ
+      select.innerHTML = existingPaths.map(p => `<option value="${esc(p)}" ${p === last ? 'selected' : ''}>${esc(p)}/</option>`).join('');
+    }
+    updateSummary();
+  } catch (e) {
+    select.innerHTML = '<option value="">エラー</option>';
+    toast(`通信エラー: ${e.message}`, 'error');
+  }
+}
+
+function getPublicUrl(repo, subdir) {
+  if (!repo || !repo.domain) return '';
+  const base = repo.domain.startsWith('http') ? repo.domain : `https://${repo.domain}`;
+  return subdir ? `${base}/${subdir}/` : `${base}/`;
+}
+
+function updateSummary() {
+  const repo = getCurrentRepo();
+  const branch = document.getElementById('branch').value || 'main';
+  const subdir = getSubdir();
+  const sum = document.getElementById('summary');
+  if (!repo) { sum.textContent = 'リポジトリ未選択'; return; }
+  const path = subdir ? `/${subdir}/` : '/';
+  const url = getPublicUrl(repo, subdir);
+  const isRoot = subdirMode === 'root' || subdir === '';
+  const blocked = isRoot && isProtected(repo);
+  const syncLabel = syncMode === 'full' ? '🔴 フル同期（削除あり）' : '🟢 追加・更新のみ';
+  sum.className = 'summary' + (blocked || (isRoot && syncMode === 'full') ? ' danger' : '');
+  // v2.5: 全動的値をエスケープしてからinnerHTML
+  sum.innerHTML = `
+    🎯 デプロイ先: <span class="target">${esc(repo.owner)}/${esc(repo.name)}</span> @ ${esc(branch)} → <span class="target">${esc(path)}</span><br>
+    🔄 同期モード: ${syncLabel}<br>
+    ${url ? `🌐 公開後URL: <span class="url">${esc(url)}</span><br>` : ''}
+    ${blocked ? `🔒 <strong style="color:#9a3d2e">このリポジトリはルート展開が保護されています。サブディレクトリを指定してください。</strong>` : ''}
+    ${isRoot && !blocked ? `⚠️ ルート展開モード（既存ファイル全${syncMode === 'full' ? '削除' : '上書き'}リスクあり）` : ''}
+  `;
+}
+
+function onRepoChange() {
+  const repoFull = document.getElementById('repo-select').value;
+  localStorage.setItem('deploy-last-repo', repoFull);
+  const savedSubdir = localStorage.getItem(`deploy-subdir-${repoFull}`) || '';
+  const savedMode = localStorage.getItem(`deploy-subdir-mode-${repoFull}`) || 'existing';
+  setSubdirMode(savedMode);
+  if (savedMode === 'new') document.getElementById('subdir-new').value = savedSubdir;
+  if (savedMode === 'existing') {
+    loadExistingPaths().then(() => {
+      const sel = document.getElementById('subdir-existing');
+      if (savedSubdir) sel.value = savedSubdir;
+      updateSummary();
+    });
+  }
+  renderHistory();
+  updateSummary();
+}
+
+// ==================== Token（v2.5: input > session > local, 期限付き） ====================
+const TOKEN_TTL_MS = 7 * 24 * 3600 * 1000; // 7日
+
+function readPersistedToken() {
+  const raw = localStorage.getItem('deploy-token-v25');
+  if (!raw) {
+    // 旧キーからのマイグレーション（v2.4以前）
+    const legacy = localStorage.getItem('deploy-token');
+    if (legacy && isLikelyValidToken(legacy)) {
+      // 旧形式は即座に期限なしと見做して破棄を促す
+      localStorage.removeItem('deploy-token');
+      return legacy;
+    }
+    return null;
+  }
+  try {
+    const obj = JSON.parse(raw);
+    if (obj && obj.v && obj.exp && Date.now() < obj.exp) return obj.v;
+    localStorage.removeItem('deploy-token-v25'); // 期限切れ
+  } catch (e) { localStorage.removeItem('deploy-token-v25'); }
+  return null;
+}
+
+function getToken() {
+  // 優先順: 画面に手入力されている値 > セッション > 永続。最新ユーザ意思を尊重
+  const fromUi = (document.getElementById('token').value || '').trim();
+  if (fromUi) return fromUi;
+  return sessionStorage.getItem('deploy-token-session') || readPersistedToken() || '';
+}
+
+function saveToken() {
+  const v = (document.getElementById('token').value || '').trim();
+  if (!isLikelyValidToken(v)) {
+    toast('Tokenの形式が不正です（ghp_/github_pat_ で始まる必要）', 'error', 5000);
+    return;
+  }
+  const persist = document.getElementById('token-persist').checked;
+  if (persist) {
+    const payload = { v, exp: Date.now() + TOKEN_TTL_MS };
+    localStorage.setItem('deploy-token-v25', JSON.stringify(payload));
+    sessionStorage.removeItem('deploy-token-session');
+    toast('Token保存（localStorage / 7日で自動失効）', 'success');
+  } else {
+    sessionStorage.setItem('deploy-token-session', v);
+    localStorage.removeItem('deploy-token-v25');
+    localStorage.removeItem('deploy-token');
+    toast('Tokenはセッション中のみ保持（タブを閉じると消えます）', 'success');
+  }
+  const msg = document.getElementById('saved-msg');
+  msg.style.display = 'inline';
+  setTimeout(() => msg.style.display = 'none', 2000);
+  loadExistingPaths();
+}
+function onTokenPersistChange() {
+  // 保存ボタンで反映する設計。ON化時に既存セッション値を引き継ぐ案内のみ。
+}
+function loadToken() {
+  const persisted = readPersistedToken();
+  const sess = sessionStorage.getItem('deploy-token-session');
+  if (sess) {
+    document.getElementById('token').value = sess;
+    document.getElementById('token-persist').checked = false;
+  } else if (persisted) {
+    document.getElementById('token').value = persisted;
+    document.getElementById('token-persist').checked = true;
+  }
+  const b = localStorage.getItem('deploy-branch');
+  if (b) document.getElementById('branch').value = b;
+}
+function clearAllTokens() {
+  localStorage.removeItem('deploy-token-v25');
+  localStorage.removeItem('deploy-token');
+  sessionStorage.removeItem('deploy-token-session');
+  document.getElementById('token').value = '';
+  document.getElementById('token-persist').checked = false;
+  toast('保存されたTokenを全て削除しました', 'success');
+}
+
+// ==================== Log ====================
+function log(msg, type = 'info') {
+  const el = document.getElementById('log');
+  const entry = document.createElement('div');
+  entry.className = `log-entry ${type}`;
+  entry.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  el.appendChild(entry);
+  el.scrollTop = el.scrollHeight;
+}
+function setProgress(pct) {
+  const bar = document.getElementById('progress-bar');
+  bar.style.display = 'block';
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// ==================== 履歴 ====================
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem('deploy-history-v23') || '[]'); }
+  catch (e) { return []; }
+}
+function pushHistory(entry) {
+  const h = getHistory();
+  h.unshift(entry);
+  localStorage.setItem('deploy-history-v23', JSON.stringify(h.slice(0, 30)));
+  renderHistory();
+}
+function renderHistory() {
+  const list = document.getElementById('history-list');
+  const h = getHistory();
+  if (h.length === 0) { list.innerHTML = '<div style="font-size:0.8rem;color:#5a4f3e;padding:0.5rem">履歴なし</div>'; return; }
+  // v2.5: 全動的値をescape。URLはhref安全のために形式チェック
+  list.innerHTML = h.map((e, i) => {
+    const subdirPath = e.subdir ? '/' + e.subdir + '/' : '/';
+    const sha7 = String(e.commitSha || '').substring(0, 7);
+    const pubUrl = (typeof e.publicUrl === 'string' && /^https?:\/\//.test(e.publicUrl)) ? e.publicUrl : '';
+    const repoSafe = String(e.repo || '').replace(/[^A-Za-z0-9._/-]/g, '');
+    return `
+    <div class="history-item">
+      <div class="row1">
+        <div>
+          <span class="target-path">${esc(e.repo)} → ${esc(subdirPath)}</span>
+          <div class="meta">${esc(e.fileName)} (${Number(e.fileCount)} files / ${e.syncMode === 'full' ? 'フル同期' : (e.syncMode === 'rollback' ? 'rollback' : '追加・更新')}) / commit ${esc(sha7)}</div>
+        </div>
+        <span class="timestamp">${esc(new Date(e.timestamp).toLocaleString('ja-JP'))}</span>
+      </div>
+      <div class="actions">
+        <button class="btn btn-small btn-warning" onclick="confirmRollback(${Number(i)})">🔙 取り消す</button>
+        ${pubUrl ? `<a class="btn btn-small btn-outline" href="${escAttr(pubUrl)}" target="_blank" rel="noopener noreferrer">🔗 開く</a>` : ''}
+        <a class="btn btn-small btn-outline" href="https://github.com/${escAttr(repoSafe)}/commit/${escAttr(sha7)}" target="_blank" rel="noopener noreferrer">📜 コミット</a>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ==================== Init ====================
+loadToken();
+renderRepos();
+const initRepo = document.getElementById('repo-select').value;
+if (initRepo) {
+  const savedMode = localStorage.getItem(`deploy-subdir-mode-${initRepo}`) || 'existing';
+  setSubdirMode(savedMode);
+  loadExistingPaths();
+  const savedSubdir = localStorage.getItem(`deploy-subdir-${initRepo}`) || '';
+  if (savedMode === 'new') document.getElementById('subdir-new').value = savedSubdir;
+}
+renderHistory();
+updateSummary();
+document.getElementById('branch').addEventListener('input', updateSummary);
+document.getElementById('subdir-existing').addEventListener('change', onSubdirChange);
+
+// ==================== ファイル受け取り ====================
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFiles(e.target.files); });
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
+});
+
+function handleFiles(fileList) {
+  const files = Array.from(fileList);
+  if (files.length === 1 && files[0].name.endsWith('.zip')) {
+    analyzeZip(files[0]);
+  } else {
+    handleSingleFiles(files);
+  }
+}
+
+// ==================== 個別ファイル処理 ====================
+async function handleSingleFiles(files) {
+  const token = getToken();
+  const repo = getCurrentRepo();
+  if (!token) { toast('Token を設定してください', 'error'); return; }
+  if (!repo) { toast('リポジトリを選択してください', 'error'); return; }
+
+  const subdir = getSubdir();
+  if ((subdirMode === 'root' || !subdir) && isProtected(repo)) {
+    toast(`🔒 ${repo.owner}/${repo.name} はルート展開が保護されています`, 'error');
+    return;
+  }
+
+  // ファイル設定モーダル表示
+  pendingSingleFile = { files, suggestedPaths: files.map(f => subdir ? `${subdir}/${f.name}` : f.name) };
+  showSingleFileModal();
+}
+
+function showSingleFileModal() {
+  const sf = pendingSingleFile;
+  const body = document.getElementById('single-file-body');
+  // v2.5: 全動的値をescape、input value属性も保護
+  let html = `<p>個別ファイルとしてデプロイします。配置パスを確認してください。</p>`;
+  sf.files.forEach((f, i) => {
+    html += `<div class="field-edit-row">
+      <label>${esc(f.name)}</label>
+      <input type="text" id="single-path-${Number(i)}" value="${escAttr(sf.suggestedPaths[i] || '')}" placeholder="リポジトリ内のフルパス">
+    </div>`;
+  });
+  html += `<div style="margin-top:0.85rem; padding:0.6rem 0.85rem; border-radius:8px; background: rgba(164,190,148,0.16); font-size:0.82rem; color:#2a2418">
+    📝 同期モードは <strong>追加・更新のみ</strong> 固定（個別ファイルは削除しません）<br>
+    🛡️ <code>..</code>、絶対パス、<code>.github/workflows/</code> などへの書き込みはブロックされます
+  </div>`;
+  body.innerHTML = html;
+  document.getElementById('single-file-modal').classList.add('active');
+}
+
+function cancelSingleFile() {
+  document.getElementById('single-file-modal').classList.remove('active');
+  pendingSingleFile = null;
+}
+
+async function confirmSingleFile() {
+  document.getElementById('single-file-modal').classList.remove('active');
+  const sf = pendingSingleFile;
+  const finalPaths = sf.files.map((_, i) => document.getElementById(`single-path-${i}`).value.trim().replace(/^\/+|\/+$/g, ''));
+  const invalid = finalPaths.findIndex(p => !p);
+  if (invalid >= 0) { toast(`${sf.files[invalid].name}: パスが空です`, 'error'); return; }
+  // v2.5: zip slip / 保護パス防御
+  for (let i = 0; i < finalPaths.length; i++) {
+    const check = safePath(finalPaths[i]);
+    if (!check.ok) {
+      toast(`${sf.files[i].name}: ${check.reason}`, 'error', 6000);
+      dropZone.classList.remove('processing');
+      return;
+    }
+    finalPaths[i] = check.path;
+  }
+
+  // ファイル準備
+  dropZone.classList.add('processing');
+  log(`📄 個別ファイル ${sf.files.length} 件を解析中...`, 'progress');
+  const repo = getCurrentRepo();
+  const branch = document.getElementById('branch').value;
+  const files = [];
+  let totalOrig = 0, totalResized = 0;
+  const imageExts = ['jpg','jpeg','png','webp','gif'];
+
+  for (let i = 0; i < sf.files.length; i++) {
+    const f = sf.files[i];
+    const blob = f;
+    totalOrig += blob.size;
+    let finalBlob = blob;
+    const ext = f.name.split('.').pop().toLowerCase();
+    if (imageExts.includes(ext)) finalBlob = await resizeImage(blob, f.name);
+    totalResized += finalBlob.size;
+    const arrayBuf = await finalBlob.arrayBuffer();
+    files.push({ path: finalPaths[i], content: arrayBufferToBase64(arrayBuf), size: finalBlob.size });
+  }
+
+  // 差分計算（個別ファイル版）
+  const diffStats = await calculateDiffForFiles(repo, branch, files, getToken());
+
+  // 確認モーダルに渡す（zipと同様）
+  pendingDeploy = {
+    file: { name: sf.files.length === 1 ? sf.files[0].name : `${sf.files.length} files`, size: sf.files.reduce((s,f) => s + f.size, 0) },
+    repo, branch,
+    subdir: getSubdir(),
+    files, totalOrig, totalResized, diffStats,
+    token: getToken(),
+    isSingleFile: true,
+    syncModeUsed: 'patch'  // 個別ファイルは常にpatch
+  };
+  pendingSingleFile = null;
+  showConfirmModal();
+}
+
+// ==================== zip 解析 ====================
+async function resizeImage(blob, filename) {
+  if (!document.getElementById('resize-enabled').checked) return blob;
+  const maxWidth = parseInt(document.getElementById('max-width').value);
+  const quality = parseInt(document.getElementById('quality').value) / 100;
+  const ext = filename.split('.').pop().toLowerCase();
+  if (!['jpg','jpeg','png','webp'].includes(ext)) return blob;
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      if (img.width <= maxWidth) { resolve(blob); return; }
+      const ratio = maxWidth / img.width;
+      const canvas = document.createElement('canvas');
+      canvas.width = maxWidth;
+      canvas.height = Math.round(img.height * ratio);
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      canvas.toBlob((b) => resolve(b), ext === 'png' ? 'image/png' : 'image/jpeg', quality);
+    };
+    img.onerror = () => resolve(blob);
+    img.src = URL.createObjectURL(blob);
+  });
+}
+
+async function fetchRetry(url, options, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.ok) return res;
+      if (res.status >= 500 && i < retries - 1) {
+        log(`サーバーエラー (${res.status})、${i+1}回目リトライ...`, 'progress');
+        await new Promise(r => setTimeout(r, 2000 * (i + 1)));
+        continue;
+      }
+      throw new Error(`HTTP ${res.status}: ${await res.text()}`);
+    } catch (err) {
+      if (err.message.startsWith('HTTP')) throw err;
+      if (i < retries - 1) {
+        log(`通信エラー、${i+1}回目リトライ...`, 'progress');
+        await new Promise(r => setTimeout(r, 3000 * (i + 1)));
+      } else { throw err; }
+    }
+  }
+}
+
+async function ghAPI(method, path, token, body = null) {
+  const opts = {
+    method,
+    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+  };
+  if (body) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+  const res = await fetchRetry(`https://api.github.com${path}`, opts);
+  return await res.json();
+}
+
+function arrayBufferToBase64(buffer) {
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+async function analyzeZip(file) {
+  const token = getToken();
+  const repo = getCurrentRepo();
+  const branch = document.getElementById('branch').value;
+  const subdir = getSubdir();
+  if (!token) { toast('Token を設定してください', 'error'); return; }
+  if (!repo) { toast('リポジトリを選択してください', 'error'); return; }
+  if ((subdirMode === 'root' || !subdir) && isProtected(repo)) {
+    toast(`🔒 ${repo.owner}/${repo.name} はルート展開が保護されています`, 'error');
+    return;
+  }
+  if (subdirMode === 'new' && !subdir) {
+    toast('新規サブディレクトリ名を入力してください', 'error'); return;
+  }
+  // v2.5: subdir 自体も safePath 検査（"earth/../" 等を拒否）
+  if (subdir) {
+    const check = safePath(subdir);
+    if (!check.ok) { toast(`サブディレクトリ名が不正: ${check.reason}`, 'error', 5000); return; }
+  }
+
+  dropZone.classList.add('processing');
+  log(`📦 ${file.name} (${(file.size/1024/1024).toFixed(1)}MB) を解析中...`, 'progress');
+
+  try {
+    const zip = await JSZip.loadAsync(file);
+    const entries = Object.entries(zip.files).filter(([_, f]) => !f.dir);
+    log(`${entries.length} ファイルを検出`, 'info');
+
+    const files = [];
+    const rejected = [];
+    let totalOrig = 0, totalResized = 0;
+    const imageExts = ['jpg','jpeg','png','webp','gif'];
+
+    for (let idx = 0; idx < entries.length; idx++) {
+      const [path, zipEntry] = entries[idx];
+      let cleanPath = path;
+      const firstSlash = path.indexOf('/');
+      if (firstSlash > 0) cleanPath = path.substring(firstSlash + 1);
+      const finalPathRaw = subdir ? `${subdir}/${cleanPath}` : cleanPath;
+      // v2.5: zip slip / 保護パス防御。1ファイルでも危険なら全体を中止
+      const check = safePath(finalPathRaw);
+      if (!check.ok) {
+        rejected.push({ path: path, reason: check.reason });
+        continue;
+      }
+      const finalPath = check.path;
+
+      const blob = await zipEntry.async('blob');
+      totalOrig += blob.size;
+      let finalBlob = blob;
+      const ext = path.split('.').pop().toLowerCase();
+      if (imageExts.includes(ext)) finalBlob = await resizeImage(blob, path);
+      totalResized += finalBlob.size;
+      const arrayBuf = await finalBlob.arrayBuffer();
+      files.push({ path: finalPath, content: arrayBufferToBase64(arrayBuf), size: finalBlob.size });
+    }
+    // v2.5: 危険パスが見つかったらユーザに明示し中止
+    if (rejected.length > 0) {
+      log(`🛑 ${rejected.length} 件の危険パスを検出してデプロイを中止しました`, 'error');
+      rejected.slice(0, 5).forEach(r => log(`  ❌ ${r.path} (${r.reason})`, 'error'));
+      if (rejected.length > 5) log(`  ...他 ${rejected.length - 5} 件`, 'error');
+      toast(`🛑 zip内に危険パス検出（${rejected.length}件）`, 'error', 8000);
+      dropZone.classList.remove('processing');
+      return;
+    }
+    if (files.length === 0) {
+      log('⚠️ デプロイ対象ファイルが0件です', 'warning');
+      toast('対象ファイルが0件', 'warning');
+      dropZone.classList.remove('processing');
+      return;
+    }
+
+    log('既存ファイル差分を確認中...', 'info');
+    const diffStats = await calculateDiff(repo, branch, subdir, files, token);
+
+    pendingDeploy = {
+      file, repo, branch, subdir, files, totalOrig, totalResized, diffStats, token,
+      isSingleFile: false,
+      syncModeUsed: syncMode
+    };
+    showConfirmModal();
+  } catch (err) {
+    log(`❌ 解析エラー: ${err.message}`, 'error');
+    toast(`解析失敗: ${err.message}`, 'error', 5000);
+    dropZone.classList.remove('processing');
+  }
+}
+
+// recursive=1 で一発取得（rate limit 配慮）
+async function calculateDiff(repo, branch, subdir, files, token) {
+  const stats = { add: 0, update: 0, deleteIfFullSync: 0, totalExisting: 0, totalFiles: files.length };
+  try {
+    // refからcommit→treeを取得し、recursive=1で全ファイル一覧化
+    const ref = await ghAPI('GET', `/repos/${repo.owner}/${repo.name}/git/ref/heads/${branch}`, token);
+    const commitData = await ghAPI('GET', `/repos/${repo.owner}/${repo.name}/git/commits/${ref.object.sha}`, token);
+    const tree = await ghAPI('GET', `/repos/${repo.owner}/${repo.name}/git/trees/${commitData.tree.sha}?recursive=1`, token);
+    const existing = (tree.tree || []).filter(t => t.type === 'blob').map(t => ({ path: t.path, sha: t.sha }));
+    const inSubdir = subdir ? existing.filter(e => e.path.startsWith(subdir + '/') || e.path === subdir) : existing;
+    stats.totalExisting = inSubdir.length;
+
+    const existingMap = new Map(inSubdir.map(e => [e.path, e.sha]));
+    const newPaths = new Set(files.map(f => f.path));
+    for (const f of files) {
+      if (existingMap.has(f.path)) stats.update++;
+      else stats.add++;
+    }
+    // フル同期時：既存にあって新ファイルにないもの = 削除対象
+    for (const e of inSubdir) {
+      if (!newPaths.has(e.path)) stats.deleteIfFullSync++;
+    }
+  } catch (e) {
+    log(`差分取得失敗（新規ディレクトリの可能性）: ${e.message}`, 'warning');
+  }
+  return stats;
+}
+
+async function calculateDiffForFiles(repo, branch, files, token) {
+  const stats = { add: 0, update: 0, deleteIfFullSync: 0, totalExisting: 0, totalFiles: files.length };
+  try {
+    const ref = await ghAPI('GET', `/repos/${repo.owner}/${repo.name}/git/ref/heads/${branch}`, token);
+    const commitData = await ghAPI('GET', `/repos/${repo.owner}/${repo.name}/git/commits/${ref.object.sha}`, token);
+    const tree = await ghAPI('GET', `/repos/${repo.owner}/${repo.name}/git/trees/${commitData.tree.sha}?recursive=1`, token);
+    const existing = (tree.tree || []).filter(t => t.type === 'blob').map(t => t.path);
+    const existingSet = new Set(existing);
+    for (const f of files) {
+      if (existingSet.has(f.path)) stats.update++;
+      else stats.add++;
+    }
+  } catch (e) { /* 無視 */ }
+  return stats;
+}
+
+// ==================== 確認モーダル ====================
+function showConfirmModal() {
+  const d = pendingDeploy;
+  const url = getPublicUrl(d.repo, d.subdir);
+  const path = d.subdir ? `/${d.subdir}/` : '/';
+  const isRoot = !d.subdir;
+  const isFullSync = d.syncModeUsed === 'full';
+  const body = document.getElementById('confirm-body');
+  // v2.5: 全動的値をescape
+  let html = `
+    <p>以下の内容でデプロイを実行します。</p>
+    <table class="diff-table">
+      <tr><td>リポジトリ</td><td>${esc(d.repo.owner)}/${esc(d.repo.name)}</td></tr>
+      <tr><td>ブランチ</td><td>${esc(d.branch)}</td></tr>
+      <tr><td>サブディレクトリ</td><td><span class="target">${esc(path)}</span></td></tr>
+      <tr><td>同期モード</td><td>${isFullSync ? '🔴 フル同期（削除あり）' : '🟢 追加・更新のみ'}</td></tr>
+      ${url ? `<tr><td>公開後URL</td><td><span class="url">${esc(url)}</span></td></tr>` : ''}
+      <tr><td>${d.isSingleFile ? 'ファイル' : 'zip'}</td><td>${esc(d.file.name)} (${(d.file.size/1024/1024).toFixed(2)}MB)</td></tr>
+      <tr><td>ファイル数</td><td>${Number(d.files.length)}</td></tr>
+      ${d.totalOrig && d.totalOrig !== d.totalResized ? `<tr><td>画像最適化</td><td>${(d.totalOrig/1024/1024).toFixed(2)}MB → ${(d.totalResized/1024/1024).toFixed(2)}MB (${Math.round((1-d.totalResized/d.totalOrig)*100)}% 削減)</td></tr>` : ''}
+      <tr><td colspan="2" style="font-weight:600;color:#3a5639;padding-top:0.6rem">差分プレビュー</td></tr>
+      <tr><td>🆕 新規追加</td><td>${Number(d.diffStats.add)} ファイル</td></tr>
+      <tr><td>🔄 上書き</td><td>${Number(d.diffStats.update)} ファイル</td></tr>
+      ${isFullSync ? `<tr><td>🗑️ 削除</td><td style="color:#9a3d2e">${Number(d.diffStats.deleteIfFullSync)} ファイル</td></tr>` : ''}
+    </table>
+  `;
+  if (isFullSync && d.diffStats.deleteIfFullSync > 0) {
+    html += `<div class="warn">🔴 <strong>フル同期モード</strong>です。${Number(d.diffStats.deleteIfFullSync)} ファイルが削除されます。実行前にもう一度確認してください。</div>`;
+  }
+  if (isRoot) {
+    html += `<div class="root-zone">
+      <h4>⚠️ ルート展開モード — 二段ロック</h4>
+      <p style="font-size:0.85rem;color:#5a1d12">リポジトリのルートに展開されます。続行するには2つの条件をクリアしてください：</p>
+      <label><input type="checkbox" id="root-ack" onchange="updateRootGate()"> リポジトリ全体に影響することを理解した</label>
+      <p style="margin-top:0.5rem;font-size:0.82rem;color:#5a1d12">↓ 続けて <strong>ROOT</strong> と入力</p>
+      <input type="text" class="confirm-input" id="root-confirm" placeholder="ROOT" oninput="updateRootGate()" autocomplete="off">
+    </div>`;
+  }
+  body.innerHTML = html;
+  document.getElementById('confirm-execute').disabled = isRoot;
+  document.getElementById('confirm-modal').classList.add('active');
+}
+
+function updateRootGate() {
+  const acked = document.getElementById('root-ack')?.checked;
+  const typed = document.getElementById('root-confirm')?.value === 'ROOT';
+  document.getElementById('confirm-execute').disabled = !(acked && typed);
+}
+
+function cancelConfirm() {
+  document.getElementById('confirm-modal').classList.remove('active');
+  document.getElementById('confirm-execute').disabled = false;
+  pendingDeploy = null;
+  dropZone.classList.remove('processing');
+  log('⏸️ デプロイをキャンセルしました', 'info');
+  toast('キャンセルしました', 'info');
+}
+
+// ==================== デプロイ実行（CAS対応） ====================
+async function executeDeploy() {
+  document.getElementById('confirm-modal').classList.remove('active');
+  document.getElementById('confirm-execute').disabled = false;
+  const d = pendingDeploy;
+  if (!d) return;
+
+  try {
+    localStorage.setItem('deploy-branch', d.branch);
+    log(`🚀 デプロイ実行: ${d.repo.owner}/${d.repo.name} → ${d.subdir ? '/' + d.subdir + '/' : '/'} (${d.syncModeUsed === 'full' ? 'フル同期' : '追加・更新'})`, 'progress');
+
+    // CAS: parent SHA を取得 → 後で更新時に検証
+    let attempt = 0;
+    const maxAttempts = 3;
+    let success = false;
+    let commit = null;
+
+    while (attempt < maxAttempts && !success) {
+      attempt++;
+      log(`試行 ${attempt}/${maxAttempts}`, 'info');
+
+      const ref = await ghAPI('GET', `/repos/${d.repo.owner}/${d.repo.name}/git/ref/heads/${d.branch}`, d.token);
+      const currentCommitSha = ref.object.sha;
+      log(`現在のHEAD: ${currentCommitSha.substring(0,7)}`, 'info');
+
+      const commitData = await ghAPI('GET', `/repos/${d.repo.owner}/${d.repo.name}/git/commits/${currentCommitSha}`, d.token);
+      const baseTreeSha = commitData.tree.sha;
+
+      // v2.5: ベースツリーは毎回再取得。フル同期: 削除エントリのmodeを既存ツリーから継承
+      let baseTreeForBuild = baseTreeSha;
+      let extraDeleteEntries = [];
+      let existingModeMap = new Map(); // path → mode（更新ファイルでもmode継承）
+      try {
+        const tree = await ghAPI('GET', `/repos/${d.repo.owner}/${d.repo.name}/git/trees/${baseTreeSha}?recursive=1`, d.token);
+        if (tree.truncated) {
+          log('⚠️ 既存ツリーが大きすぎてGitHub APIが切り詰めました。フル同期は安全のため中止します。', 'warning');
+          if (d.syncModeUsed === 'full') throw new Error('tree truncated: フル同期は実行できません');
+        }
+        const existing = (tree.tree || []).filter(t => t.type === 'blob');
+        for (const e of existing) existingModeMap.set(e.path, e.mode || '100644');
+        if (d.syncModeUsed === 'full') {
+          const inSubdir = d.subdir ? existing.filter(e => e.path.startsWith(d.subdir + '/') || e.path === d.subdir) : existing;
+          const newPaths = new Set(d.files.map(f => f.path));
+          for (const e of inSubdir) {
+            if (!newPaths.has(e.path)) {
+              // sha:null で削除。modeは既存を継承（実行ファイル100755等を考慮）
+              extraDeleteEntries.push({ path: e.path, mode: e.mode || '100644', type: 'blob', sha: null });
+            }
+          }
+          if (extraDeleteEntries.length > 0) log(`🗑️ フル同期: ${extraDeleteEntries.length} ファイルを削除対象として追加`, 'info');
+        }
+      } catch (e) {
+        if (d.syncModeUsed === 'full') throw e;
+        log(`既存ツリー取得失敗、追加・更新のみで進行: ${e.message}`, 'warning');
+      }
+
+      // blob 作成（更新ファイルのmodeも継承して既存実行ビットを守る）
+      const treeEntries = [];
+      for (let i = 0; i < d.files.length; i++) {
+        const f = d.files[i];
+        const blob = await ghAPI('POST', `/repos/${d.repo.owner}/${d.repo.name}/git/blobs`, d.token, { content: f.content, encoding: 'base64' });
+        const mode = existingModeMap.get(f.path) || '100644';
+        treeEntries.push({ path: f.path, mode, type: 'blob', sha: blob.sha });
+        setProgress(((i + 1) / d.files.length) * 75);
+        if ((i + 1) % 5 === 0 || i === d.files.length - 1) {
+          log(`アップロード中... ${i + 1}/${d.files.length}`, 'info');
+        }
+      }
+      const allEntries = [...treeEntries, ...extraDeleteEntries];
+
+      log('ツリー作成中...', 'info');
+      const tree2 = await ghAPI('POST', `/repos/${d.repo.owner}/${d.repo.name}/git/trees`, d.token, { base_tree: baseTreeForBuild, tree: allEntries });
+      if (!tree2.sha) throw new Error(`ツリー作成失敗: ${tree2.message || ''}`);
+
+      log('コミット作成中...', 'info');
+      const commitMsg = `Deploy: ${d.file.name} → ${d.subdir ? '/' + d.subdir + '/' : '/'} (${d.syncModeUsed === 'full' ? 'full-sync' : 'patch'}) ${new Date().toLocaleString('ja-JP')}`;
+      const newCommit = await ghAPI('POST', `/repos/${d.repo.owner}/${d.repo.name}/git/commits`, d.token, {
+        message: commitMsg, tree: tree2.sha, parents: [currentCommitSha]
+      });
+      if (!newCommit.sha) throw new Error(`コミット作成失敗: ${newCommit.message || ''}`);
+
+      // CAS: 現在のrefがcurrentCommitShaのままなら更新成功、変わっていたら衝突
+      try {
+        log('ref 更新中（CAS検証）...', 'info');
+        // 通常のPATCH。GitHubはref更新時にforce=false（デフォルト）だと非fast-forwardを拒否する
+        const updateRes = await fetch(`https://api.github.com/repos/${d.repo.owner}/${d.repo.name}/git/refs/heads/${d.branch}`, {
+          method: 'PATCH',
+          headers: { 'Authorization': `token ${d.token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sha: newCommit.sha, force: false })
+        });
+        if (updateRes.ok) {
+          commit = newCommit;
+          success = true;
+        } else if (updateRes.status === 422) {
+          // 競合：parent SHA変わってる。リトライ
+          log(`⚠️ 並行デプロイ検知（CAS失敗）。リトライ...`, 'warning');
+          await new Promise(r => setTimeout(r, 1500));
+        } else {
+          throw new Error(`ref更新失敗: HTTP ${updateRes.status} ${await updateRes.text()}`);
+        }
+      } catch (e) {
+        if (attempt >= maxAttempts) throw e;
+        log(`リトライ理由: ${e.message}`, 'warning');
+      }
+    }
+
+    if (!success) throw new Error('CASリトライ上限到達。他のデプロイと競合している可能性があります');
+
+    setProgress(100);
+    const publicUrl = getPublicUrl(d.repo, d.subdir);
+    log(`✅ デプロイ完了！ ${d.files.length} ファイル / commit ${commit.sha.substring(0,7)}`, 'success');
+    if (publicUrl) log(`🌐 公開URL: ${publicUrl}`, 'success');
+    toast(`✅ デプロイ完了 (${d.files.length}ファイル)`, 'success', 5000);
+
+    pushHistory({
+      timestamp: Date.now(),
+      repo: `${d.repo.owner}/${d.repo.name}`,
+      branch: d.branch,
+      subdir: d.subdir,
+      fileName: d.file.name,
+      fileCount: d.files.length,
+      commitSha: commit.sha,
+      parentSha: commit.parents[0].sha,
+      publicUrl: publicUrl,
+      syncMode: d.syncModeUsed,
+    });
+
+    dropZone.classList.remove('processing');
+    dropZone.classList.add('done');
+    pendingDeploy = null;
+  } catch (err) {
+    log(`❌ デプロイエラー: ${err.message}`, 'error');
+    toast(`❌ デプロイ失敗: ${err.message}`, 'error', 6000);
+    dropZone.classList.remove('processing');
+    pendingDeploy = null;
+  }
+}
+
+// ==================== ロールバック（v2.5: subdir単位差分復元） ====================
+function confirmRollback(idx) {
+  const h = getHistory();
+  pendingRollback = h[idx];
+  if (!pendingRollback) return;
+  const r = pendingRollback;
+  const body = document.getElementById('rollback-body');
+  const sha7 = String(r.commitSha || '').substring(0,7);
+  const parent7 = String(r.parentSha || '').substring(0,7);
+  const subdirPath = r.subdir ? '/' + r.subdir + '/' : '/';
+  const scopeNote = r.subdir
+    ? `<strong>${esc('/' + r.subdir + '/')}</strong> 配下のみ復元します（他ディレクトリの最新変更は維持）。`
+    : `<strong style="color:#9a3d2e">ルート配下全体</strong>を復元します。リポジトリ全体に影響します。`;
+  body.innerHTML = `
+    <p>以下のデプロイを取り消します（revert コミットを作成）。</p>
+    <table class="diff-table">
+      <tr><td>リポジトリ</td><td>${esc(r.repo)}</td></tr>
+      <tr><td>サブディレクトリ</td><td><span class="target">${esc(subdirPath)}</span></td></tr>
+      <tr><td>取り消し対象 commit</td><td>${esc(sha7)}</td></tr>
+      <tr><td>戻り先 (parent)</td><td>${esc(parent7)}</td></tr>
+      <tr><td>元のデプロイ日時</td><td>${esc(new Date(r.timestamp).toLocaleString('ja-JP'))}</td></tr>
+      <tr><td>復元範囲</td><td>${scopeNote}</td></tr>
+    </table>
+    <div class="warn">⚠️ ロールバックは新しいコミットとして記録されます。元のコミットは履歴に残ります。<br>
+    🛡️ <strong>v2.5</strong>: subdir指定時はそのディレクトリのファイル群だけを parent 時点に戻し、他は触りません。</div>
+  `;
+  document.getElementById('rollback-modal').classList.add('active');
+}
+
+function cancelRollback() {
+  document.getElementById('rollback-modal').classList.remove('active');
+  pendingRollback = null;
+}
+
+async function executeRollback() {
+  document.getElementById('rollback-modal').classList.remove('active');
+  const r = pendingRollback;
+  const token = getToken();
+  if (!r || !token) { toast('Token を確認してください', 'error'); return; }
+
+  try {
+    log(`🔙 ロールバック開始: ${r.repo} ${r.commitSha.substring(0,7)} → ${r.parentSha.substring(0,7)}${r.subdir ? ' (/' + r.subdir + '/ 単位)' : ' (全体)'}`, 'progress');
+
+    // 現状HEAD
+    const ref = await ghAPI('GET', `/repos/${r.repo}/git/ref/heads/${r.branch}`, token);
+    const currentSha = ref.object.sha;
+    const currentCommit = await ghAPI('GET', `/repos/${r.repo}/git/commits/${currentSha}`, token);
+    const currentTreeSha = currentCommit.tree.sha;
+    log(`現在のHEAD: ${currentSha.substring(0,7)}`, 'info');
+
+    // parent コミット（戻り先）
+    const parentCommit = await ghAPI('GET', `/repos/${r.repo}/git/commits/${r.parentSha}`, token);
+    if (!parentCommit.tree) throw new Error('parent コミット取得失敗');
+
+    let newTreeSha;
+    if (!r.subdir) {
+      // ルート展開だったケース: 全体置き換え（従来通り）
+      newTreeSha = parentCommit.tree.sha;
+      log('⚠️ subdirなし。リポジトリ全体を parent ツリーへ置き換えます', 'warning');
+    } else {
+      // v2.5: subdir 単位の差分復元
+      // 1. parent ツリーから subdir 配下のエントリ取得
+      // 2. current ツリーから subdir 配下のエントリ取得
+      // 3. 差分: parent側にあるもの→そのSHAで上書き、parent側になくcurrent側にあるもの→sha:null削除
+      const parentTree = await ghAPI('GET', `/repos/${r.repo}/git/trees/${parentCommit.tree.sha}?recursive=1`, token);
+      const currentTree = await ghAPI('GET', `/repos/${r.repo}/git/trees/${currentTreeSha}?recursive=1`, token);
+      if (parentTree.truncated || currentTree.truncated) {
+        log('⚠️ ツリーが大きすぎて切り詰められました。subdir単位ロールバックは安全のため中止', 'error');
+        throw new Error('tree truncated: subdir単位ロールバック不可');
+      }
+      const subdir = r.subdir;
+      const isInSubdir = (path) => path === subdir || path.startsWith(subdir + '/');
+      const parentEntries = (parentTree.tree || []).filter(t => t.type === 'blob' && isInSubdir(t.path));
+      const currentEntries = (currentTree.tree || []).filter(t => t.type === 'blob' && isInSubdir(t.path));
+      const parentMap = new Map(parentEntries.map(e => [e.path, e]));
+      const currentPaths = new Set(currentEntries.map(e => e.path));
+
+      const tree = [];
+      // parent側にあるエントリを復元
+      for (const e of parentEntries) {
+        tree.push({ path: e.path, mode: e.mode || '100644', type: 'blob', sha: e.sha });
+      }
+      // current側にあって parent側にない = 削除
+      for (const e of currentEntries) {
+        if (!parentMap.has(e.path)) {
+          tree.push({ path: e.path, mode: e.mode || '100644', type: 'blob', sha: null });
+        }
+      }
+      if (tree.length === 0) {
+        throw new Error('復元対象が0件です（既にparent状態と同じ可能性）');
+      }
+      log(`subdir差分: 復元 ${parentEntries.length} / 削除 ${tree.length - parentEntries.length}`, 'info');
+
+      const newTree = await ghAPI('POST', `/repos/${r.repo}/git/trees`, token, { base_tree: currentTreeSha, tree });
+      if (!newTree.sha) throw new Error(`ロールバックツリー作成失敗: ${newTree.message || ''}`);
+      newTreeSha = newTree.sha;
+    }
+
+    const revertCommit = await ghAPI('POST', `/repos/${r.repo}/git/commits`, token, {
+      message: `Revert deploy${r.subdir ? ' (/' + r.subdir + '/)' : ''}: ${r.fileName} (was ${r.commitSha.substring(0,7)}, restored to ${r.parentSha.substring(0,7)})\n\nRollback at ${new Date().toLocaleString('ja-JP')}`,
+      tree: newTreeSha,
+      parents: [currentSha]
+    });
+    if (!revertCommit.sha) throw new Error(`revert コミット作成失敗: ${revertCommit.message || ''}`);
+
+    log('ref 更新中（CAS）...', 'info');
+    const upd = await fetch(`https://api.github.com/repos/${r.repo}/git/refs/heads/${r.branch}`, {
+      method: 'PATCH',
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sha: revertCommit.sha, force: false })
+    });
+    if (!upd.ok) throw new Error(`ref更新失敗: HTTP ${upd.status} ${await upd.text()}`);
+
+    log(`✅ ロールバック完了！ revert commit ${revertCommit.sha.substring(0,7)}`, 'success');
+    toast('🔙 ロールバック完了', 'success', 5000);
+    pushHistory({
+      timestamp: Date.now(),
+      repo: r.repo, branch: r.branch, subdir: r.subdir,
+      fileName: `[ROLLBACK${r.subdir ? ' /' + r.subdir + '/' : ''}] ${r.fileName}`,
+      fileCount: 0, commitSha: revertCommit.sha,
+      parentSha: currentSha, publicUrl: r.publicUrl, syncMode: 'rollback'
+    });
+    pendingRollback = null;
+  } catch (err) {
+    log(`❌ ロールバックエラー: ${err.message}`, 'error');
+    toast(`❌ ロールバック失敗: ${err.message}`, 'error', 6000);
+    pendingRollback = null;
+  }
+}
 </script>
 </body>
 </html>
