@@ -180,11 +180,142 @@
 
   .footer { text-align: center; padding: 60px 24px; color: var(--text-sub); font-size: 0.85rem; border-top: 1px solid var(--border); background: var(--surface2); }
 
+  /* === 2026-05-27 Update Section === */
+  .update-banner {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+  }
+  .update-banner-inner {
+    background: linear-gradient(135deg, rgba(120,86,255,0.10), rgba(232,54,143,0.08));
+    border: 2px solid rgba(120,86,255,0.35);
+    border-radius: 16px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .update-banner-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+  .update-banner-text {
+    flex: 1;
+  }
+  .update-banner-text strong {
+    color: var(--accent2);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .update-banner-text a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .update-banner-text a:hover { text-decoration: underline; }
+
+  .update-section {
+    max-width: 900px;
+    margin: 80px auto;
+    padding: 0 24px;
+  }
+  .update-section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .update-section-header .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--gradient2);
+    color: #fff;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .update-section-header h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    background: var(--gradient1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .update-section-header p {
+    color: var(--text-sub);
+    font-size: 1rem;
+  }
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-top: 4px solid var(--accent);
+  }
+  .project-card.p2 { border-top-color: var(--accent2); }
+  .project-card.p3 { border-top-color: var(--accent3); }
+  .project-card.p4 { border-top-color: var(--gold); }
+  .project-card h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .project-card .role {
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .project-card p {
+    font-size: 0.88rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+  .shift-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    margin: 24px 0;
+  }
+  .shift-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .shift-box.old { border-left: 4px solid #aab0bc; }
+  .shift-box.new { border-left: 4px solid var(--green); background: linear-gradient(135deg, rgba(0,166,125,0.05), rgba(29,155,240,0.03)); }
+  .shift-box h5 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-sub);
+    margin-bottom: 8px;
+  }
+  .shift-box.new h5 { color: var(--green); }
+  .shift-arrow {
+    font-size: 2rem;
+    color: var(--accent);
+    text-align: center;
+  }
+
   @media (max-width: 640px) {
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .toc-grid { grid-template-columns: 1fr; }
     .vs-grid { grid-template-columns: 1fr; }
     .vs-label { display: none; }
+    .shift-grid { grid-template-columns: 1fr; }
+    .shift-arrow { transform: rotate(90deg); }
   }
 </style>
 </head>
@@ -197,7 +328,18 @@
     <span class="x-logo">𝕏</span>
     <h1>世界中の人が集まるXアカウント<br>構築戦略 2026</h1>
     <p class="subtitle">最新アルゴリズム・成長戦略・マネタイズを完全網羅</p>
-    <span class="date-badge">📅 2026年5月12日 作成 — 堀内さん専用</span>
+    <span class="date-badge">📅 2026年5月12日 作成 / 2026年5月27日 ビジョン整理MTG反映 — 堀内さん専用</span>
+  </div>
+</div>
+
+<div class="update-banner">
+  <div class="update-banner-inner">
+    <div class="update-banner-icon">🔄</div>
+    <div class="update-banner-text">
+      <strong>2026-05-27 ビジョン整理MTG後のアップデート反映済み</strong>
+      <span style="color:var(--text-sub);font-size:0.9rem">本レポートのSNS戦略本体は引き続き有効。ターゲット層・位置づけを「4プロジェクト体制」「リーダー層シフト」に更新。</span>
+      <a href="#update-2026-05-27">→ アップデート注記セクションへ</a>
+    </div>
   </div>
 </div>
 
@@ -214,6 +356,7 @@
       <a href="#s7"><span class="toc-num">7</span>X Premium — 課金すべきか</a>
       <a href="#s8"><span class="toc-num">8</span>マネタイズ戦略</a>
       <a href="#s9"><span class="toc-num">9</span>90日アクションプラン</a>
+      <a href="#update-2026-05-27"><span class="toc-num" style="background:var(--gradient2)">★</span>2026-05-27 アップデート注記</a>
     </div>
   </div>
 </div>
@@ -237,8 +380,8 @@
     <p>成長の中心はアフリカ・東南アジア・中東の新興市場。日本は世界で最もXが浸透している国（人口比64.1%）で、日本発のコンテンツはグローバルに届きやすい土壌がある。</p>
   </div>
   <div class="highlight">
-    <div class="highlight-title">💡 堀内さんにとっての好機</div>
-    <p style="color:var(--text-sub)">Xは「小さなアカウントを積極的に発見する」アルゴリズム変更を2026年に実施。フォロワー0からでも質の高いコンテンツは拡散される。しかも日本はXの最大市場の一つ。セミナー講師・著者・コンテンツクリエイターとしての堀内さんのコンテンツは、テキストベースのXと相性抜群。</p>
+    <div class="highlight-title">💡 堀内さんにとっての好機（5/27 MTG後の位置づけ）</div>
+    <p style="color:var(--text-sub)">Xは「小さなアカウントを積極的に発見する」アルゴリズム変更を2026年に実施。フォロワー0からでも質の高いコンテンツは拡散される。しかも日本はXの最大市場の一つ。<strong>4プロジェクト体制（LDM・シンクロ起業塾・OTO・社外プロジェクト）すべての「リーダー層集客チャネル」</strong>として、特にLDM中心プロジェクトの入口（無料オプチャ→月8,800円→上位2-4万）に直結する導線になる。</p>
   </div>
 </div>
 
@@ -314,6 +457,10 @@
     </div>
     <p>「passionate about」「helping businesses」のような汎用フレーズは避ける。具体的で、自分にしか書けない一文を。キーワードを自然に含めて検索されやすくする。</p>
     <p style="margin-top:12px"><strong>グローバル対応のポイント：</strong>日本語＋英語のバイリンガルbio。日本語メインで、英語を1行添えるスタイルが、両方のオーディエンスに届く。</p>
+    <div class="highlight pink" style="margin-top:12px">
+      <div class="highlight-title">🔑 5/27 MTG後のキーワード反映</div>
+      <p style="color:var(--text-sub)">bioに「純度」「共鳴度」「仕組み化」「構造化」を自然に織り込む。<strong>「教える人」ではなく「仕組み化する人」</strong>という真骨頂が伝わるポジショニングへ。リーダー・経営者層が「この人と組めば自分の事業も構造化できる」と感じる文言を。</p>
+    </div>
   </div>
   <div class="card">
     <h3>📌 固定ポスト</h3>
@@ -324,6 +471,7 @@
   <div class="card">
     <h3>🔗 リンク（1つだけ）</h3>
     <p>Xは1つのリンクしか設定できない。最も重要な導線へ。bio内でリンク先を言及するとクリック率が上がる。ホームページではなく、明確なCTA（セミナー案内、Linktreeなど）がベスト。</p>
+    <p style="margin-top:8px;color:var(--accent2)"><strong>5/27 MTG後の推奨導線：</strong>LDM無料オプチャ（1,300人規模）への入口、もしくはLDMサブスク3階層の案内ページ。「まず無料コミュニティで雰囲気を感じる」がリーダー層にとって低リスクな最初の一歩。</p>
   </div>
 </div>
 
@@ -339,6 +487,10 @@
       <div class="vs-label">:</div>
       <div class="vs-box"><div style="font-size:2.5rem;font-weight:900;color:var(--accent3)">20%</div><div style="color:var(--text-sub);margin-top:8px">プロモーション<br><small>セミナー告知・サービス案内</small></div></div>
     </div>
+  </div>
+  <div class="highlight pink">
+    <div class="highlight-title">🎯 5/27 MTG後のターゲット層（重要シフト）</div>
+    <p style="color:var(--text-sub)">これまでの「自己犠牲・不安層」（救いを求める層）ではなく、<strong>「新時代を作るリーダー・経営者層」</strong>にコンテンツの周波数を合わせる。同情ではなく共鳴、依存ではなく共創。コンテンツの口調・テーマ・前提知識すべてを「すでに自分の事業を持っている人」「既に何かを動かしている人」に向けて設計する。</p>
   </div>
   <div class="card">
     <h3>🧵 スレッド（最強フォーマット）</h3>
@@ -360,14 +512,14 @@
     <p>視聴完了率がビュー数より重要。30秒の動画を最後まで見てもらう方が、2分の動画で15秒離脱されるより圧倒的に高評価。</p>
   </div>
   <div class="card">
-    <h3>💬 反応が取れるコンテンツタイプ</h3>
+    <h3>💬 反応が取れるコンテンツタイプ（リーダー層向けに再設計）</h3>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
       <span class="tag tag-blue">具体的な意見＋理由</span><span class="tag tag-blue">オリジナルデータ</span>
-      <span class="tag tag-pink">業界の出来事への速報コメント</span><span class="tag tag-green">ステップバイステップの解説</span>
-      <span class="tag tag-gold">失敗談＋学び</span><span class="tag tag-blue">逆説・常識を覆す主張</span>
-      <span class="tag tag-pink">Before/After</span><span class="tag tag-green">舞台裏・日常</span>
+      <span class="tag tag-pink">業界の出来事への速報コメント</span><span class="tag tag-green">仕組み化・構造化の解説</span>
+      <span class="tag tag-gold">経営判断の舞台裏</span><span class="tag tag-blue">逆説・常識を覆す主張</span>
+      <span class="tag tag-pink">純度・共鳴度の言語化</span><span class="tag tag-green">プロジェクト設計の実例</span>
     </div>
-    <p>特に合うもの：セミナーでの気づきスレッド、受講生の変容ストーリー（匿名化）、メソッドの1ステップを深掘りした短い解説、閃きの瞬間をリアルタイム投稿。</p>
+    <p>特に合うもの：<strong>OTOユニット（3人ユニット・純度0-4）での発見、LDMサブスク設計の裏側、シンクロ起業塾「資本主義からの脱却」の問い、ミロクの郷の覚醒・エネルギー保全の体感</strong>。「教育/伝授」ではなく「仕組み化/構造化」を軸に、リーダーが「自分の事業にもこの構造が使える」と直感する投稿に。</p>
   </div>
   <div class="card">
     <h3>🔗 リンクの扱い方（超重要）</h3>
@@ -404,12 +556,12 @@
       <div class="highlight-title">なぜリプライが効くのか</div>
       <p style="color:var(--text-sub)">フォロワー10万人のアカウントにリプライすると、その人のフォロワー数千人の目に触れる。しかもアルゴリズムはリプライに「いいね」の<strong>27倍</strong>の重みを与える。つまりリプライは「無料の広告枠」。</p>
     </div>
-    <p><strong>具体的なアクション：</strong></p>
+    <p><strong>具体的なアクション（5/27 MTG後 — リーダー層フォーカス）：</strong></p>
     <ul class="checklist">
-      <li>自分のニッチで2〜10倍のフォロワーを持つアカウントを20人特定する</li>
-      <li>毎日10〜20件の「価値のある」リプライを投稿する（「いいですね！」ではなく、自分の視点や経験を加えた返信）</li>
+      <li>リプライ先は「経営者・起業家・新時代のリーダー層」のアカウント20人を選定（救済系・スピ系の大型アカウントは避ける）</li>
+      <li>毎日10〜20件の「価値のある」リプライを投稿する（「いいですね！」ではなく、仕組み化・構造化の視点を加えた返信）</li>
       <li>相手が返信してくれたら会話を続ける（会話 = 150倍の重み）</li>
-      <li>一貫して30日間続ければ、500〜1,000人の新規フォロワー</li>
+      <li>一貫して30日間続ければ、500〜1,000人の新規フォロワー（しかも純度の高いリーダー層）</li>
     </ul>
   </div>
   <div class="card">
@@ -427,6 +579,7 @@
   <div class="card">
     <h3>🤝 コラボレーション戦術</h3>
     <p>共同スレッド、共同Spaces、引用RT＋コメントでお互いのオーディエンスに露出する。自分のニッチの「仲間」を見つけて、競争ではなく共創する。</p>
+    <p style="margin-top:8px;color:var(--accent2)"><strong>5/27 MTG後の連携先候補：</strong>社外プロジェクト（神田さん新企画・リンポチェ様事務局）との共同Spaces、OTOユニット仲間との3者対談など。</p>
   </div>
   <div class="card">
     <h3>📊 現実的な成長ペース</h3>
@@ -463,13 +616,14 @@
     </ul>
   </div>
   <div class="card">
-    <h3>🎯 グローバルで刺さるコンテンツテーマ</h3>
+    <h3>🎯 グローバルで刺さるコンテンツテーマ（リーダー層向けに再設計）</h3>
     <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">
       <span class="tag tag-blue">意識変容・マインドセット</span><span class="tag tag-pink">日本的な知恵×現代ビジネス</span>
-      <span class="tag tag-green">セミナー/ワークショップのリアル</span><span class="tag tag-gold">起業家のストーリー</span>
+      <span class="tag tag-green">プロジェクトの仕組み化・構造化</span><span class="tag tag-gold">起業家・経営者のストーリー</span>
       <span class="tag tag-blue">AI × 人間の意識</span><span class="tag tag-pink">シンクロニシティ体験</span>
+      <span class="tag tag-green">純度（purity）・共鳴度（resonance）</span>
     </div>
-    <p>「意識」「直感」「シンクロニシティ」など、英語圏でも強い関心を持たれているテーマ。「日本から来た新しい視点」として差別化が効く。</p>
+    <p>「意識」「直感」「シンクロニシティ」「purity」「resonance」など、英語圏のリーダー・起業家層に強い関心を持たれているテーマ。「日本から来た、構造化された新しい経営の視点」として差別化が効く。</p>
   </div>
 </div>
 
@@ -525,8 +679,9 @@
     <p><strong>⑥ 長文Article賞金</strong> — 最優秀長文記事に100万ドルの賞金プール。</p>
   </div>
   <div class="highlight">
-    <div class="highlight-title">💡 最適マネタイズ経路</div>
-    <p style="color:var(--text-sub)">X自体の収益化より、Xを「セミナー集客」「メルマガ登録」「著書の認知拡大」のファネルとして使う方が遥かに大きなリターン。Xの広告収益は月数千〜数万円程度だが、Xからセミナーに1人誘導できれば数万〜数十万円。</p>
+    <div class="highlight-title">💡 最適マネタイズ経路（5/27 MTG後アップデート）</div>
+    <p style="color:var(--text-sub)">X自体の収益化より、Xを<strong>「4プロジェクト全体への送客ファネル」</strong>として使う方が遥かに大きなリターン。具体的には：</p>
+    <p style="color:var(--text-sub)">① <strong>LDM無料オプチャ（1,300人規模）への送客</strong> — Xの認知層 → オプチャでの体感 → 月8,800円 → 上位2-4万のサブスク3階層へ<br>② <strong>シンクロ起業塾への問い合わせ</strong> — 「資本主義からの脱却」の問いに共鳴したリーダー層<br>③ <strong>OTO 3人ユニットのご縁づくり</strong> — 純度の高い対話相手の発見<br>④ <strong>社外プロジェクト連携</strong> — 神田さん新企画・リンポチェ様事務局との接点</p>
   </div>
 </div>
 
@@ -542,17 +697,17 @@
       <ul class="checklist">
         <li>X Premiumに加入（$8/月プラン）</li>
         <li>プロフィール写真・ヘッダー画像を設定</li>
-        <li>バイリンガルbioを作成（日本語メイン＋英語1行）</li>
-        <li>リンクを設定（セミナーLP or Linktree）</li>
-        <li>自己紹介スレッドを作成して固定ポストに</li>
-        <li>フォローすべき同ジャンルの大型アカウントを20人リストアップ</li>
+        <li>バイリンガルbioを作成（日本語メイン＋英語1行、「仕組み化／純度／共鳴度」を織り込む）</li>
+        <li>リンクを設定（LDM無料オプチャ or LDMサブスク3階層案内）</li>
+        <li>自己紹介スレッドを作成して固定ポストに（4プロジェクト体制を簡潔に伝える）</li>
+        <li>フォローすべき「リーダー・経営者層」の大型アカウントを20人リストアップ</li>
       </ul>
     </div>
     <div class="timeline-item">
       <div class="timeline-phase">Week 2〜4 — 種まき</div>
       <div class="timeline-title">リプライ中心の成長フェーズ</div>
       <ul class="checklist">
-        <li>毎日10〜20件の戦略的リプライ（大型アカウントへ）</li>
+        <li>毎日10〜20件の戦略的リプライ（リーダー層の大型アカウントへ）</li>
         <li>毎日1〜2件のオリジナル投稿</li>
         <li>週1本のスレッド投稿</li>
         <li>投稿後30分はXに張り付いてリプライに即レス</li>
@@ -569,7 +724,7 @@
       <ul class="checklist">
         <li>週2本のスレッド投稿（日本語1 + 英語1）</li>
         <li>ネイティブ動画を週1本（60秒以内、字幕付き）</li>
-        <li>初のX Space開催（テーマを1つ絞って）</li>
+        <li>初のX Space開催（OTO・LDM・シンクロ起業塾のどれか1テーマに絞って）</li>
         <li>コラボ相手を見つけて共同スレッドor共同Space</li>
         <li>日本語の人気投稿を英語に翻訳して再投稿</li>
         <li>ハッシュタグ戦略の最適化</li>
@@ -581,14 +736,14 @@
       <ul class="checklist">
         <li>週次Spaces定例化（固定曜日・時間）</li>
         <li>コンテンツカレンダーの運用開始</li>
-        <li>セミナーの告知をX向けに最適化（リンクなし版）</li>
+        <li>4プロジェクトの告知をX向けに最適化（リンクなし版）</li>
         <li>反響の高いスレッドをnote記事やメルマガに展開</li>
         <li>フォロワー分析：どの国・どのテーマで伸びているか確認</li>
-        <li>投稿→リプライ→Spaces→セミナー誘導のファネル完成</li>
+        <li>投稿→リプライ→Spaces→LDMオプチャ→サブスク3階層 のファネル完成</li>
       </ul>
       <div class="highlight gold" style="margin-top:12px">
         <div class="highlight-title">90日後の目標ライン</div>
-        <p style="color:var(--text-sub)">フォロワー1,000〜3,000人 / 週のインプレッション10万超 / Spaces定期開催 / セミナーへの導線確立</p>
+        <p style="color:var(--text-sub)">フォロワー1,000〜3,000人 / 週のインプレッション10万超 / Spaces定期開催 / 4プロジェクトへの導線確立（特にLDMオプチャへの誘導）</p>
       </div>
     </div>
   </div>
@@ -599,15 +754,120 @@
     <p>① <strong>閃き・セミナー書き起こし → X向けスレッド</strong>のドラフトを自動生成（英語版も同時作成）</p>
     <p>② <strong>毎朝のレポート</strong>にXのエンゲージメント状況を含める</p>
     <p>③ <strong>Facebook投稿のX展開</strong> — 反響の良かったFB投稿をXフォーマットに変換</p>
-    <p>④ <strong>セミナー告知のX最適化</strong> — X向けの告知パターンを追加</p>
+    <p>④ <strong>4プロジェクトの告知のX最適化</strong> — LDM・シンクロ起業塾・OTO・社外プロジェクトそれぞれの告知パターンを追加</p>
   </div>
 </div>
 
 </div>
 
+<!-- === 2026-05-27 ビジョン整理MTG後のアップデート === -->
+<div class="update-section" id="update-2026-05-27">
+  <div class="update-section-header">
+    <span class="badge">2026-05-27 UPDATE</span>
+    <h2>ビジョン整理MTG後のアップデート注記</h2>
+    <p>本レポート（2026-05-12版）のSNS戦略本体は引き続き有効。<br>位置づけ・ターゲット・コンテンツの周波数を新方針に整合させる。</p>
+  </div>
+
+  <div class="card">
+    <h3>🎯 Xアカウントの新しい位置づけ</h3>
+    <p>Xアカウントは、これまでの「単独SNS集客チャネル」から、<strong>「LDM中心プロジェクト＋4プロジェクト全体のリーダー層集客チャネル」</strong>へと位置づけを再定義する。</p>
+    <div class="highlight">
+      <p style="color:var(--text)"><strong>主目的：</strong>新時代を作るリーダー・経営者層をXで惹きつけ、LDM無料オプチャ（1,300人規模）への流入を最大化。そこから月8,800円→上位2-4万のサブスク3階層へとつなぐ。<br><br>同時に、シンクロ起業塾・OTO・社外プロジェクト（神田さん新企画＋リンポチェ様事務局）にも自然に橋渡しできる発信を行う。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🏛️ 新4プロジェクト体制</h3>
+    <p>Xでの発信内容はこの4プロジェクトを背景に組み立てる。</p>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="role">① 中心</div>
+        <h4>LDM</h4>
+        <p>サブスク3階層：<br>無料オプチャ1,300人 → 月8,800円 → 上位2-4万。Xからの主たる送客先。</p>
+      </div>
+      <div class="project-card p2">
+        <div class="role">② 思想軸</div>
+        <h4>シンクロ起業塾</h4>
+        <p>「資本主義からの脱却」を問いとする塾。Xでは思想・哲学系の投稿の受け皿に。</p>
+      </div>
+      <div class="project-card p3">
+        <div class="role">③ 共鳴ユニット</div>
+        <h4>OTO</h4>
+        <p>3人ユニット形式・純度0-4の指標。Xでは共鳴・対話のリアルを発信。<small>（旧Oto表記から変更）</small></p>
+      </div>
+      <div class="project-card p4">
+        <div class="role">④ 連携先</div>
+        <h4>社外プロジェクト</h4>
+        <p>神田さん新企画＋リンポチェ様事務局。Xでの共同Spaces・コラボ投稿の連携先。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔀 ターゲット層シフト</h3>
+    <div class="shift-grid">
+      <div class="shift-box old">
+        <h5>これまで</h5>
+        <p style="color:var(--text-sub);font-size:0.92rem;line-height:1.6"><strong>自己犠牲・不安層</strong><br>救いを求めている人。同情と共感を入口に。「あなたを助けます」型の発信。</p>
+      </div>
+      <div class="shift-arrow">→</div>
+      <div class="shift-box new">
+        <h5>これから（5/27以降）</h5>
+        <p style="color:var(--text)"><strong>新時代を作るリーダー・経営者層</strong><br>すでに動いている人。共鳴と共創を入口に。「一緒に構造を作りましょう」型の発信。</p>
+      </div>
+    </div>
+    <p style="margin-top:12px;color:var(--text-sub)">この変化はbio・固定ポスト・スレッドのトーン・リプライ先の選定すべてに反映する。「救う」「導く」のトーンを「組む」「構造化する」「共鳴する」へ。</p>
+  </div>
+
+  <div class="card">
+    <h3>🔑 反映すべきキーワード・真骨頂</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0">
+      <span class="tag tag-blue" style="font-size:0.95rem;padding:8px 16px">純度（purity）</span>
+      <span class="tag tag-pink" style="font-size:0.95rem;padding:8px 16px">共鳴度（resonance）</span>
+      <span class="tag tag-green" style="font-size:0.95rem;padding:8px 16px">仕組み化</span>
+      <span class="tag tag-gold" style="font-size:0.95rem;padding:8px 16px">構造化</span>
+    </div>
+    <div class="highlight pink">
+      <div class="highlight-title">⚡ 真骨頂の言語化</div>
+      <p style="color:var(--text-sub)">堀内さんの真骨頂は <strong>「教育／伝授」ではなく「仕組み化／構造化」</strong>。<br>Xでも「教える人」ではなく「共に構造を作る人」「仕組みを見える化する人」として現れる。<br>リーダー層は「教えてほしい」とは思っていない。「一緒に構造化したい」と思っている。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>✨ 直近の発信テーマソース</h3>
+    <p>当面のXコンテンツは、以下を素材として展開できる：</p>
+    <ul class="checklist">
+      <li><strong>5/25-26 ミロクの郷の覚醒</strong> — 体感ベースの発信。場・覚醒・共鳴がテーマ。</li>
+      <li><strong>エネルギー保全</strong> — リーダー・経営者層が抱える「消耗」への根本的アプローチ。仕組みでカバーする発想。</li>
+      <li><strong>6月新エネルギー体制スタート</strong> — 「新しいフェーズが始まった」リアルタイム発信。</li>
+      <li><strong>OTOユニットの実体験</strong> — 3人ユニット・純度0-4の指標を、抽象論ではなく現場のリアルで。</li>
+      <li><strong>LDMサブスク3階層の設計思想</strong> — なぜ無料オプチャから始まるのか、なぜ階層が必要なのか。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>📅 ガバナンス・次回確認</h3>
+    <p>本レポートのX戦略は、次回ビジョン整理MTGで再点検する。</p>
+    <div class="highlight gold">
+      <div class="highlight-title">次回MTG</div>
+      <p style="color:var(--text)"><strong>2026年8月5日（水）14:30 - 16:00</strong><br><span style="color:var(--text-sub);font-size:0.9rem">90日アクションプランの中間レビュー、4プロジェクトへの送客実績、リーダー層への到達度などをここで検証する。</span></p>
+    </div>
+  </div>
+
+  <div class="card" style="border:2px dashed var(--border)">
+    <h3>📎 関連ドキュメント</h3>
+    <ul class="checklist" style="margin-top:8px">
+      <li><a href="https://github.com/synchro-mgmt/company-brain/blob/main/UPDATES_2026-05-27.md" style="color:var(--accent);text-decoration:none">company-brain / UPDATES_2026-05-27.md</a></li>
+      <li><a href="https://github.com/synchro-mgmt/company-brain/blob/main/company-core/会社設計概要.md" style="color:var(--accent);text-decoration:none">company-brain / company-core / 会社設計概要.md</a></li>
+      <li><a href="https://github.com/synchro-mgmt/company-brain/blob/main/story-db/current-story.md" style="color:var(--accent);text-decoration:none">company-brain / story-db / current-story.md</a></li>
+    </ul>
+  </div>
+</div>
+
 <div class="footer">
   <p>𝕏 Global Growth Strategy 2026 — 株式会社シンクロニシティ・マネジメント</p>
-  <p style="margin-top:16px;font-size:0.75rem;color:#aab0bc">本レポートは2026年5月時点の公開情報に基づいて作成されています</p>
+  <p style="margin-top:8px;font-size:0.78rem">2026年5月12日 初版作成 / 2026年5月27日 ビジョン整理MTG反映</p>
+  <p style="margin-top:16px;font-size:0.75rem;color:#aab0bc">本レポートは2026年5月時点の公開情報と社内方針に基づいて作成されています</p>
 </div>
 
 </body>
