@@ -1,5 +1,12 @@
 # 画像生成プロンプト集（GPT-4o ネイティブ画像生成向け）
 
+> ⚠️ **ARCHIVE NOTICE（2026-05-27以降）**
+> このプロンプト集は 2026-05-16セミナー時点 のものです。
+> **2026-05-27 ビジョン整理MTG** で OTOの方針が再定義されました（純度レベル0-4 / 「分からなくても接続OK」/ 4プロジェクト体制③ / 表記は「Oto」→「**OTO**」に統一）。
+> IMG 30, 31, 32 など「販売開始 / シンクロニシティ・マネー・アルケミー / 5/24」前提の画像は、現方針では使用しません。
+> IMG 01〜29 のビジュアル世界観は OTO の純度Lv2〜3 の体験表現として継承可能です。
+> 現行ロードマップ：`oto/launch-roadmap-ePvwbbfko4I.html`
+
 各スライド番号に対応する画像プロンプト。Codex側で GPT-4o の画像生成機能で生成してください。
 
 **共通スタイル指定（全プロンプトの末尾に追加推奨）：**
@@ -350,6 +357,8 @@ epic transformation, deep cosmic mystical scene.
 
 ## IMG 30 ── 次なる次元へ、進化せよ
 
+> ⚠️ **現方針（2026-05-27以降）では未使用。** 「Join the Evolution」型の強い告知ではなく、純度Lv0-4の入口として「分からなくても接続OK」を表現するビジュアルに差し替えること。
+
 ```
 A grand cosmic doorway opening, brilliant golden light pouring through, 
 several human silhouettes walking toward it with determined steps, 
@@ -360,7 +369,7 @@ epic, mystical, deeply moving, gold and vermillion divine light.
 
 ---
 
-## IMG 31 (オプション) ── シンクロニシティ・マネー・アルケミー
+## IMG 31 (オプション) ── シンクロニシティ・マネー・アルケミー  ※現方針では未使用
 
 ```
 An alchemist's vessel with three streams flowing in: 
@@ -371,7 +380,7 @@ the ultimate fusion, mystical laboratory, vermillion fire beneath.
 
 ---
 
-## IMG 32 (オプション) ── 5/24予告
+## IMG 32 (オプション) ── 5/24予告  ※現方針では未使用
 
 ```
 A mystical calendar showing the date 5/24, 
@@ -384,3 +393,4 @@ golden countdown vibe, vermillion accents.
 ---
 
 — Claude側のこあ (COA)
+Last updated: 2026-05-27（新方針反映 ／ アーカイブ化注記追加）
