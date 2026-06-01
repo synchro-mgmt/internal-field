@@ -9,7 +9,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
   :root {
     --navy: #0a1628; --navy-mid: #132040; --accent: #e94560; --gold: #f0d9a8; --gold-dark: #c4a86a;
-    --sun: #f39c12; --earth: #3498db; --synchro: #8e44ad; --oto: #e67e22; --publish: #27ae60;
+    --sun: #f39c12; --ldm: #d97706; --synchro: #8e44ad; --oto: #e67e22; --external: #0891b2;
     --bg: #faf9f7; --card: #ffffff; --text: #1a1a2e; --text-sub: #64748b; --border: #e2e8f0;
     --indigo: #4f46e5; --indigo-light: #e0e7ff;
   }
@@ -26,8 +26,10 @@
   .sun-card:hover { transform: translateY(-3px); }
   .sun-icon { font-size: 2.4em; margin-bottom: 8px; }
   .sun-card h2 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.4em; color: #92400e; margin-bottom: 8px; }
-  .sun-card p { font-size: 0.9em; color: #78350f; max-width: 500px; margin: 0 auto; }
-  .sun-links { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+  .sun-card p { font-size: 0.9em; color: #78350f; max-width: 560px; margin: 0 auto; }
+  .sun-keywords { display: flex; gap: 8px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+  .sun-keywords span { font-size: 0.75em; font-weight: 700; padding: 4px 14px; border-radius: 20px; background: rgba(243,156,18,0.18); color: #92400e; letter-spacing: 0.05em; }
+  .sun-links { display: flex; gap: 12px; justify-content: center; margin-top: 22px; flex-wrap: wrap; }
   .sun-links a { display: inline-block; background: var(--sun); color: #fff; text-decoration: none; padding: 10px 24px; border-radius: 30px; font-size: 0.85em; font-weight: 600; transition: all 0.2s ease; }
   .sun-links a:hover { background: #e67e22; transform: translateY(-1px); }
   .sun-links a.secondary { background: transparent; border: 2px solid var(--sun); color: #92400e; }
@@ -35,12 +37,19 @@
   .planet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 32px; }
   .planet-card { background: var(--card); border-radius: 20px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.04); transition: all 0.3s ease; text-decoration: none; color: var(--text); display: block; }
   .planet-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
-  .planet-card.active { border-color: var(--earth); box-shadow: 0 4px 16px rgba(52,152,219,0.12); }
+  .planet-card.active { border-color: var(--ldm); box-shadow: 0 4px 16px rgba(217,119,6,0.15); }
   .planet-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
   .planet-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4em; flex-shrink: 0; }
   .planet-card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.1em; font-weight: 700; }
   .planet-card p { font-size: 0.85em; color: var(--text-sub); line-height: 1.7; }
   .planet-tag { display: inline-block; font-size: 0.72em; padding: 3px 12px; border-radius: 20px; font-weight: 600; margin-top: 12px; }
+  .ldm-structure { margin-top: 14px; padding: 14px; background: #fffbeb; border-radius: 12px; border: 1px solid #fde68a; }
+  .ldm-structure .layer { display: flex; align-items: center; gap: 8px; font-size: 0.78em; margin-bottom: 6px; color: #78350f; }
+  .ldm-structure .layer:last-child { margin-bottom: 0; }
+  .ldm-structure .layer .lv { font-weight: 700; min-width: 56px; padding: 2px 8px; border-radius: 8px; text-align: center; font-size: 0.95em; }
+  .ldm-structure .layer .lv.l1 { background: rgba(217,119,6,0.15); color: #92400e; }
+  .ldm-structure .layer .lv.l2 { background: rgba(217,119,6,0.3); color: #78350f; }
+  .ldm-structure .layer .lv.l3 { background: var(--ldm); color: #fff; }
   .section-label { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.82em; font-weight: 700; color: var(--text-sub); letter-spacing: 0.08em; margin-bottom: 14px; padding-left: 4px; }
   .story-section { margin-bottom: 32px; }
   .research-card { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #0ea5e9; border-radius: 24px; padding: 36px; text-align: center; box-shadow: 0 8px 32px rgba(14,165,233,0.12); transition: transform 0.3s ease; text-decoration: none; color: var(--text); display: block; }
@@ -95,52 +104,64 @@
 </div>
 <div class="solar-section">
   <div class="update-banner">
-    <div class="update-icon">🔥</div>
+    <div class="update-icon">🌅</div>
     <div>
-      <div class="update-text"><strong>5/27 ロードマップ総更新</strong> — 西村さん2回目完了（事務局確保クリア）・LP真完成・Kindle本第4章完了・AIセミナー企画始動・67名/MRR59万到達・UBM大阪まであと24日</div>
+      <div class="update-text"><strong>2026-05-27 ビジョン整理MTG</strong> — 4プロジェクト体制へ再編（LDM／シンクロ起業塾／OTO／社外プロジェクト）。5/25-26ミロクの郷で覚醒、6月から新エネルギー体制スタート。次回ビジョン整理MTGは 8/5(水) 14:30-16:00。</div>
     </div>
   </div>
   <div class="sun-card">
     <div class="sun-icon">☀️</div>
-    <h2>LDM — Life Design Method</h2>
-    <p>すべての中心にある太陽。命のデザインを通じて、人生を丸ごと創造するメソッド。</p>
+    <h2>堀内圭祐 — 命のフィールドの中心</h2>
+    <p>4プロジェクトの真ん中にある太陽。教育や伝授ではなく、<strong>仕組み化／構造化</strong>が真骨頂。リーダー・経営者層へ届く純度の高い場を、共鳴で広げていく。</p>
+    <div class="sun-keywords">
+      <span>純度</span><span>共鳴度</span><span>仕組み化</span>
+    </div>
     <div class="sun-links">
       <a href="dashboards/ubm-osaka-roadmap.html">UBM大阪ロードマップ</a>
       <a href="dashboards/company-roadmap.html" class="secondary">会社設計ロードマップv9</a>
     </div>
   </div>
+  <div class="section-label">🪐 4 PROJECTS — 4プロジェクト体制</div>
   <div class="planet-grid">
     <div class="planet-card active">
       <div class="planet-header">
-        <div class="planet-icon" style="background: rgba(52,152,219,0.1);">🌍</div>
-        <h3>アースジャーニー</h3>
+        <div class="planet-icon" style="background: rgba(217,119,6,0.12);">☀️</div>
+        <h3>① LDM（Life Design Method）</h3>
       </div>
-      <p>LDMの入口であり最深部。オプチャ1,000人超、5/6 Zoomセミナー230-250名、<strong>有料コミュニティ67名到達（MRR 58.96万/月）</strong>。2層コミュニティ設計が実動中。LP完成・公開準備完了。</p>
-      <span class="planet-tag" style="background: rgba(52,152,219,0.15); color: #2471a3;">67名 / MRR 59万 稼働中</span>
+      <p>すべての中心。命のデザインを通じて人生を丸ごと創造するメソッド。<strong>サブスク3階層</strong>で純度を保ちながら広げ、<strong>関係性3階層</strong>でFC化（フランチャイズ化）まで展望する。出版（Kindle）はLDMの言語化レイヤーとして内包。</p>
+      <div class="ldm-structure">
+        <div class="layer"><span class="lv l1">L1</span>無料オプチャ（アースジャーニー）— 1,300人の入口</div>
+        <div class="layer"><span class="lv l2">L2</span>月額 8,800円 サブスク — コアメンバー</div>
+        <div class="layer"><span class="lv l3">L3</span>月額 2〜4万円 上位プログラム — リーダー層</div>
+      </div>
+      <div class="ldm-structure" style="margin-top:8px;">
+        <div class="layer"><span class="lv l1">関係</span>堀内 → 講師トップ3 → お客様（FC化展望）</div>
+      </div>
+      <span class="planet-tag" style="background: rgba(217,119,6,0.15); color: #92400e;">中心プロジェクト / 6月新体制</span>
     </div>
     <div class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(142,68,173,0.1);">🚀</div>
-        <h3>シンクロ起業塾</h3>
+        <h3>② シンクロ起業塾</h3>
       </div>
-      <p>LDMのビジネス応用。命のリズムに沿った起業・経営を学ぶ場。第⑧⑨回まで進行中。</p>
-      <span class="planet-tag" style="background: rgba(142,68,173,0.1); color: #8e44ad;">第⑨回進行中</span>
+      <p>LDMのビジネス応用。命のリズムに沿った起業・経営を学ぶ場。<strong>リーダー・経営者層</strong>へターゲットをシフトし、純度の高い共鳴を生む場へ。第⑨回進行中。</p>
+      <span class="planet-tag" style="background: rgba(142,68,173,0.1); color: #8e44ad;">第⑨回進行中 / 経営者層へ</span>
     </div>
     <div class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(230,126,34,0.1);">🎵</div>
-        <h3>OTO</h3>
+        <h3>③ OTO</h3>
       </div>
-      <p>音 × サイエンス × シャーマニズム。スピリフェス2026参加確定、プロフィール提出済み。</p>
+      <p>音 × サイエンス × シャーマニズム。命の周波数を場として現すプロジェクト。スピリフェス2026参加確定、プロフィール提出済み。</p>
       <span class="planet-tag" style="background: rgba(230,126,34,0.1); color: #e67e22;">スピリフェス2026参加確定</span>
     </div>
     <div class="planet-card">
       <div class="planet-header">
-        <div class="planet-icon" style="background: rgba(39,174,96,0.1);">📚</div>
-        <h3>出版</h3>
+        <div class="planet-icon" style="background: rgba(8,145,178,0.1);">🌐</div>
+        <h3>④ 社外プロジェクト</h3>
       </div>
-      <p>Kindle本 <strong>第4章 Stage2（グローバル構造化）全6節100点版完了</strong>。神田昌典メソッドに基づく執筆パイプラインが実動。</p>
-      <span class="planet-tag" style="background: rgba(39,174,96,0.1); color: #27ae60;">第4章完了・執筆加速中</span>
+      <p>共鳴ベースで関わる外部の場。<strong>神田昌典さん新企画</strong>と<strong>リンポチェ様事務局</strong>の2つを軸に、堀内さんの仕組み化の力を外部の生態系へ届ける。</p>
+      <span class="planet-tag" style="background: rgba(8,145,178,0.1); color: #0e7490;">神田さん新企画 / リンポチェ様事務局</span>
     </div>
   </div>
   <div class="story-section">
@@ -167,12 +188,12 @@
       <a href="dashboards/company-roadmap.html" class="dash-card">
         <div class="dash-icon">🗺️</div>
         <h4>会社設計ロードマップ</h4>
-        <p>v9 — 5/8更新</p>
+        <p>v9 — 4プロジェクト体制反映</p>
       </a>
       <a href="dashboards/financial-roadmap.html" class="dash-card">
         <div class="dash-icon">💰</div>
         <h4>財務マネジメント設計</h4>
-        <p>v4.3 — サブスク中心モデル</p>
+        <p>LDM 3階層サブスクモデル</p>
       </a>
       <a href="dashboards/gap-analysis.html" class="dash-card">
         <div class="dash-icon">🎯</div>
