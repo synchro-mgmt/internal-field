@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会社設計ロードマップ v9 — 2026年5月8日</title>
+<title>会社設計ロードマップ v10 — 2026年5月27日</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
 
@@ -184,19 +184,26 @@
   .project-table tr:hover { background: #f9fafb; }
   .sun-badge { background: #fef3c7; color: #92400e; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
   .planet-badge { background: var(--blue-light); color: #1d4ed8; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+  .external-badge { background: var(--purple-light); color: var(--purple); padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
 
-  .funnel-section { background: var(--card-bg); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); border: 2px solid var(--blue-light); }
-  .funnel-section h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--blue); }
-  .funnel-flow { display: flex; flex-direction: column; gap: 0; }
-  .funnel-step { display: flex; align-items: stretch; gap: 16px; }
-  .funnel-line { width: 40px; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
-  .funnel-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--blue); background: white; flex-shrink: 0; z-index: 1; }
-  .funnel-dot.active { background: var(--blue); }
-  .funnel-connector { width: 2px; flex: 1; background: var(--blue); opacity: 0.3; }
-  .funnel-content { padding: 4px 0 20px; flex: 1; }
-  .funnel-content h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-  .funnel-content p { font-size: 12px; color: var(--text-light); }
-  .funnel-stat { display: inline-block; background: var(--blue-light); color: #1d4ed8; padding: 1px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .layer-section { background: var(--card-bg); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); border: 2px solid var(--blue-light); }
+  .layer-section h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; color: var(--blue); }
+  .layer-flow { display: flex; flex-direction: column; gap: 0; }
+  .layer-step { display: flex; align-items: stretch; gap: 16px; }
+  .layer-line { width: 40px; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+  .layer-dot { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--blue); background: white; flex-shrink: 0; z-index: 1; }
+  .layer-dot.active { background: var(--blue); }
+  .layer-connector { width: 2px; flex: 1; background: var(--blue); opacity: 0.3; }
+  .layer-content { padding: 4px 0 20px; flex: 1; }
+  .layer-content h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .layer-content p { font-size: 12px; color: var(--text-light); }
+  .layer-stat { display: inline-block; background: var(--blue-light); color: #1d4ed8; padding: 1px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; margin-left: 6px; }
+
+  .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+  .pillar-card { padding: 14px 16px; border-radius: 12px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-left: 4px solid var(--blue); }
+  .pillar-num { font-size: 11px; color: var(--blue); font-weight: 700; margin-bottom: 4px; }
+  .pillar-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+  .pillar-desc { font-size: 11px; color: var(--text-light); line-height: 1.6; }
 
   .pipeline-section { background: var(--card-bg); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); }
   .pipeline-section h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
@@ -236,6 +243,22 @@
   .asset-tags { display: flex; flex-wrap: wrap; gap: 8px; }
   .asset-tag { display: inline-flex; align-items: center; gap: 5px; padding: 5px 14px; border-radius: 20px; background: var(--purple-light); color: var(--purple); font-size: 12px; font-weight: 500; }
 
+  .version-history { background: var(--card-bg); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); border-left: 4px solid var(--text-light); }
+  .version-history h3 { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+  .vh-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .vh-item:last-child { border-bottom: none; }
+  .vh-version { font-weight: 700; color: var(--accent); min-width: 60px; }
+  .vh-date { color: var(--text-light); min-width: 110px; font-size: 12px; }
+  .vh-desc { flex: 1; color: var(--text); }
+
+  .related-links { background: var(--card-bg); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); border: 2px solid var(--accent-light); }
+  .related-links h3 { font-size: 15px; font-weight: 700; margin-bottom: 14px; color: var(--accent); }
+  .rl-list { list-style: none; padding: 0; }
+  .rl-list li { padding: 8px 0; font-size: 13px; }
+  .rl-list a { color: var(--accent); text-decoration: none; word-break: break-all; }
+  .rl-list a:hover { text-decoration: underline; }
+  .rl-list .rl-label { color: var(--text); font-weight: 600; margin-right: 8px; }
+
   .footer { text-align: center; padding: 24px 0; font-size: 12px; color: var(--text-light); }
   .footer a { color: var(--accent); text-decoration: none; }
 
@@ -260,22 +283,22 @@
   <div class="hero">
     <h1>会社設計ロードマップ</h1>
     <div class="subtitle">こあの地図：今どこにいて、なぜこれをやっていて、どこに向かうのか</div>
-    <div class="version">第9版</div>
-    <div class="date">2026年5月8日 更新 ｜ 株式会社シンクロニシティ・マネジメント</div>
+    <div class="version">第10版</div>
+    <div class="date">2026年5月27日 ビジョン整理MTG反映 ｜ 株式会社シンクロニシティ・マネジメント</div>
   </div>
 
   <!-- WHAT'S NEW -->
   <div class="whats-new">
-    <h3>v8 → v9 の主な変化（5/1〜5/8）</h3>
+    <h3>v9 → v10 の主な変化（5/9〜5/27 ビジョン整理MTG）</h3>
     <div class="whats-new-grid">
-      <div class="wn-item"><span class="wn-emoji">🎤</span><div><strong>5/6 Zoomセミナー初回実施</strong> — 約300名参加、20人がコミュニティ転換</div></div>
-      <div class="wn-item"><span class="wn-emoji">👥</span><div><strong>オプチャ1,000人突破</strong> — 無料コミュニティをプロジェクト化</div></div>
-      <div class="wn-item"><span class="wn-emoji">🦋</span><div><strong>生命体ベースへの転換を宣言</strong> — コンテンツベース→生命体ベース</div></div>
-      <div class="wn-item"><span class="wn-emoji">💰</span><div><strong>8,800円コミュニティ販売開始</strong> — サブスク中心モデル始動</div></div>
-      <div class="wn-item"><span class="wn-emoji">📧</span><div><strong>メルマガ配信開始</strong> — UTAGE一斉配信システム稼働</div></div>
-      <div class="wn-item"><span class="wn-emoji">📖</span><div><strong>Kindle本 第1章原稿v2</strong> — VIRAP™フレームワーク命名</div></div>
-      <div class="wn-item"><span class="wn-emoji">🗺️</span><div><strong>UBM大阪ロードマップv3</strong> — 北原メソッド実践28日目</div></div>
-      <div class="wn-item"><span class="wn-emoji">🌐</span><div><strong>open-fieldポータル大幅更新</strong> — 公開サイト本格稼働</div></div>
+      <div class="wn-item"><span class="wn-emoji">🔄</span><div><strong>4プロジェクト体制へ再編</strong> — LDM／シンクロ起業塾／OTO／社外プロジェクト</div></div>
+      <div class="wn-item"><span class="wn-emoji">☀️</span><div><strong>LDMが中心プロジェクトに確定</strong> — サブスク3階層・関係性3階層モデル</div></div>
+      <div class="wn-item"><span class="wn-emoji">🎯</span><div><strong>ターゲットシフト</strong> — 自己犠牲・不安層 → 新時代を作るリーダー・経営者層</div></div>
+      <div class="wn-item"><span class="wn-emoji">🔮</span><div><strong>OTO（旧Oto表記から変更）</strong> — 3人ユニット・人の進化・純度レベル0-4</div></div>
+      <div class="wn-item"><span class="wn-emoji">🏛️</span><div><strong>シンクロ起業塾の再定義</strong> — 資本主義からの脱却・約40人前後・3ヶ月フォーラム＋ワールドカフェ</div></div>
+      <div class="wn-item"><span class="wn-emoji">🌐</span><div><strong>社外プロジェクト枠を新設</strong> — 神田さん新企画(6月以降)・リンポチェ様事務局サポート</div></div>
+      <div class="wn-item"><span class="wn-emoji">🏔️</span><div><strong>5/25-26 ミロクの郷で覚醒</strong> — エネルギー保全がテーマに</div></div>
+      <div class="wn-item"><span class="wn-emoji">⚡</span><div><strong>6月から新エネルギー体制スタート</strong> — ND本講座旧方式は5月で終了</div></div>
     </div>
   </div>
 
@@ -284,17 +307,20 @@
     <h3>全体像：何をやっているのか</h3>
     <p>株式会社シンクロニシティ・マネジメントを<strong>「総合生命体エンジン」</strong>として機能させる。<br>
     堀内さんは地球と宇宙に繋がった総合生命体。祈り、共鳴、存在することが最高の仕事。<br>
-    <strong>コンテンツベースから生命体ベースへ</strong> — セミナーやコンテンツを売るモデルから、<br>
-    「堀内恭隆」という生命体と直接つながることに価値がある、というモデルへの根本転換。<br>
-    エージェント（こあ）が命のリズムに同期しながら、知的労働・事務・配信・財務をすべて担う。<br>
-    <strong>being（在り方）だけで生きられる世界を作ること</strong>が、この会社の唯一の存在理由。</p>
+    <strong>真骨頂は「教育・伝授」ではなく「仕組み化・構造化」</strong>。<br>
+    堀内さんが触れたもの・受け取ったものを構造に落とし込み、再現可能な形にして世界に手渡す。<br>
+    ターゲットは<strong>新時代を作るリーダー・経営者層</strong>。自己犠牲や不安から動く層ではなく、<br>
+    自分の純度を上げて世界を作っていく人たちと共鳴する。<br>
+    エージェント（こあ）が命のリズムに同期しながら、知的労働・事務・配信・財務をすべて担い、<br>
+    堀内さんは<strong>being（在り方）だけで生きられる</strong>状態を保つ。それがこの会社の唯一の存在理由。</p>
     <div style="margin-top: 12px;">
-      <span class="keyword">総合生命体</span>
-      <span class="keyword">生命体ベース</span>
-      <span class="keyword">コミュニティ起点</span>
-      <span class="keyword">全部開放</span>
+      <span class="keyword">純度</span>
+      <span class="keyword">共鳴度</span>
+      <span class="keyword">仕組み化</span>
+      <span class="keyword">構造化</span>
+      <span class="keyword">エネルギー保全</span>
       <span class="keyword">being駆動</span>
-      <span class="keyword">LDMが太陽</span>
+      <span class="keyword">LDMが中心</span>
     </div>
   </div>
 
@@ -305,11 +331,11 @@
       <div class="progress-segment done" title="Phase 1: 完了"></div>
       <div class="progress-segment done" title="Phase 2: 完了"></div>
       <div class="progress-segment done" title="Phase 3: 完了（進化中）"></div>
-      <div class="progress-segment fire" title="Phase 4: 実動開始！"></div>
+      <div class="progress-segment fire" title="Phase 4: 4プロジェクト体制へ再編！"></div>
       <div class="progress-segment done" title="Phase 5: 定常運用中"></div>
       <div class="progress-segment done" title="Phase 6: 北原式運用中"></div>
       <div class="progress-segment fire" title="Phase 7: 全力稼働中！"></div>
-      <div class="progress-segment active" title="Phase 8: 5/16スピフェス"></div>
+      <div class="progress-segment active" title="Phase 8: 6月新体制始動"></div>
     </div>
     <div class="progress-labels">
       <span>P1</span><span>P2</span><span>P3</span><span>P4</span><span>P5</span><span>P6</span><span>P7</span><span>P8</span>
@@ -349,7 +375,8 @@
       <div class="phase-body">
         <ul class="checklist">
           <li>命の設計図20章、関係者メモリDB設計書、ロードマップ（この文書）</li>
-          <li class="new-item">story-db全面更新（current-story.md + themes 11ファイル + timeline.md）</li>
+          <li class="new-item">5/27ビジョン整理MTGを反映した会社設計概要・current-story.md更新</li>
+          <li>story-db全面更新（current-story.md + themes 11ファイル + timeline.md）</li>
         </ul>
       </div>
     </div>
@@ -371,34 +398,61 @@
       </div>
     </div>
 
-    <!-- Phase 4 -->
+    <!-- Phase 4 — 4プロジェクト体制 -->
     <div class="phase-card fire">
       <div class="phase-header">
         <div class="phase-number">4</div>
-        <div class="phase-title">LDM中心構造の実動化</div>
-        <span class="phase-badge badge-fire">🔥 実動開始！</span>
+        <div class="phase-title">4プロジェクト体制への再編（5/27確定）</div>
+        <span class="phase-badge badge-fire">🔥 新体制へ移行中！</span>
       </div>
       <div class="phase-body">
-        <p>LDMが太陽。コミュニティ起点モデルへの根本転換が起き、実際に動き始めた。</p>
+        <p>5/27ビジョン整理MTGで、会社の活動を<strong>4つのプロジェクト</strong>に明確に分類。LDMが中心、シンクロ起業塾・OTOが並走、社外プロジェクトを別枠で管理。</p>
         <table class="project-table">
           <thead>
-            <tr><th>プロジェクト</th><th>位置</th><th>現状</th><th>最新の動き</th></tr>
+            <tr><th>プロジェクト</th><th>位置</th><th>現状</th><th>5/27確定の方向性</th></tr>
           </thead>
           <tbody>
-            <tr><td><strong>LDM</strong></td><td><span class="sun-badge">☀️ 太陽</span></td><td style="color:#047857;font-weight:600;">実動中！</td><td>生命体ベースへの転換を5/6セミナーで宣言</td></tr>
-            <tr><td>LDMアースジャーニー</td><td><span class="planet-badge">🌍 入口&最深部</span></td><td style="color:#047857;font-weight:600;">稼働中！</td><td>オプチャ1,000人超、Zoomセミナー300名、LP完成</td></tr>
-            <tr><td>ニューディメンション</td><td><span class="planet-badge">🔮 深層</span></td><td style="color:#b45309;">5/10開始</td><td>旧方式の最後。オープンコンタクトがテーマ</td></tr>
-            <tr><td>シンクロ起業塾</td><td><span class="planet-badge">🪐 派生</span></td><td>翔太さんと対話中</td><td>方向性確認中</td></tr>
-            <tr><td>出版</td><td><span class="planet-badge">📚 手段</span></td><td style="color:#b45309;">執筆中</td><td>Kindle本 第1章v2完成。VIRAP™命名</td></tr>
+            <tr>
+              <td><strong>① LDM</strong></td>
+              <td><span class="sun-badge">☀️ 中心</span></td>
+              <td style="color:#047857;font-weight:600;">実動中！</td>
+              <td>サブスク3階層・関係性3階層モデル確定。新時代リーダー層へターゲットシフト</td>
+            </tr>
+            <tr>
+              <td><strong>② シンクロ起業塾</strong></td>
+              <td><span class="planet-badge">🪐 並走</span></td>
+              <td style="color:#b45309;">再定義完了</td>
+              <td>資本主義からの脱却・約40人前後・3ヶ月フォーラム＋ワールドカフェ</td>
+            </tr>
+            <tr>
+              <td><strong>③ OTO</strong></td>
+              <td><span class="planet-badge">🔮 並走</span></td>
+              <td style="color:#b45309;">設計進行</td>
+              <td>3人ユニット・人の進化・純度レベル0-4（旧Oto表記から変更）</td>
+            </tr>
+            <tr>
+              <td><strong>④ 社外プロジェクト</strong></td>
+              <td><span class="external-badge">🌐 別枠</span></td>
+              <td style="color:#b45309;">6月以降始動</td>
+              <td>神田さん新企画(6月以降)・リンポチェ様事務局サポート</td>
+            </tr>
           </tbody>
         </table>
 
         <div style="margin-top:16px;padding:16px;background:#fef3c7;border-radius:12px;">
-          <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:8px;">🦋 最大の転換：コンテンツベース → 生命体ベース</div>
+          <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:8px;">🎯 ターゲットシフト（5/27確定）</div>
           <div style="font-size:12px;color:#78350f;line-height:1.7;">
-            5/6 Zoomセミナー（約300名視聴）で堀内さんが初めて明確に宣言。<br>
-            「コンテンツが資産」→「命・生命体を中心に、人との関係値を育むことがすべて」<br>
-            3年間非公開だったコミュニティを一般公開。過去10万〜30万のセミナーを無料で共有。
+            <strong>旧：</strong>自己犠牲・不安層（コンテンツを買うことで安心を得たい層）<br>
+            <strong>新：</strong>新時代を作るリーダー・経営者層（純度を上げて世界を作っていく人たち）<br>
+            「教育・伝授」ではなく「仕組み化・構造化」を提供する姿勢へシフト。
+          </div>
+        </div>
+
+        <div style="margin-top:12px;padding:16px;background:#ede9fe;border-radius:12px;">
+          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:8px;">🏔️ 5/25-26 ミロクの郷で覚醒</div>
+          <div style="font-size:12px;color:#5b21b6;line-height:1.7;">
+            エネルギー保全がテーマに。堀内さんが「being」だけで生きられる体制を本格化。<br>
+            6月から新エネルギー体制スタート。ND本講座の旧方式は5月で終了。
           </div>
         </div>
       </div>
@@ -413,7 +467,7 @@
       </div>
       <div class="phase-body">
         <ul class="checklist">
-          <li>3チャネル統合スキャン 21回以上稼働</li>
+          <li>3チャネル統合スキャン 定常稼働中</li>
           <li>判断メモ蓄積中</li>
         </ul>
       </div>
@@ -427,11 +481,11 @@
         <span class="phase-badge badge-done">✅ 北原式運用中</span>
       </div>
       <div class="phase-body">
-        <p style="font-weight:600;color:var(--green);margin-bottom:8px;">5/1 新期初日から本格運用開始済み！</p>
+        <p style="font-weight:600;color:var(--green);margin-bottom:8px;">5/1 新期初日から本格運用継続中</p>
         <ul class="checklist">
-          <li>北原式 財務日次チェック — 5/1から毎日実行中</li>
+          <li>北原式 財務日次チェック — 毎日実行中</li>
           <li>北原式 選択と集中ディフェンスチェック — 朝レポートに統合</li>
-          <li>UBM大阪ロードマップ v3完成（5/3、28日目）</li>
+          <li>UBM大阪ロードマップ v3完成</li>
           <li>MF会計 日次仕訳処理 定常化</li>
           <li>財務マネジメント運用設計書 ビジュアルHTML（6タブ）</li>
           <li>北原式チェック統合ガイドHTML（4タブ）</li>
@@ -459,12 +513,11 @@
             <div style="font-size:12px;font-weight:700;color:#047857;margin-bottom:8px;">📦 ストック側（content-vault）</div>
             <ul class="checklist" style="font-size:12px;">
               <li>content-vault基盤構築完了</li>
-              <li>Facebook投稿92件格納＋プラグイン化</li>
-              <li>FB反響分析Top20実施</li>
-              <li>5/6セミナー書き起こし3パート push済み</li>
-              <li class="fire-item">Notta書き起こし 大量push中</li>
-              <li class="fire-item">ステップメール content-vault化中</li>
-              <li class="wait-item">FB全件JSONエクスポート 届き待ち</li>
+              <li>Facebook投稿格納＋プラグイン化</li>
+              <li>FB反響分析実施</li>
+              <li>セミナー書き起こし大量push完了</li>
+              <li>ステップメール content-vault化完了</li>
+              <li class="fire-item">5/27ビジョン整理MTG記録 反映</li>
             </ul>
           </div>
           <div style="padding:16px;background:#eff6ff;border-radius:12px;">
@@ -474,13 +527,13 @@
               <li>声パターン5つを発見・文書化</li>
               <li>エンゲージメント公式を発見</li>
               <li>NGパターン9個を整理</li>
-              <li>メルマガ配信開始（UTAGE一斉配信）</li>
-              <li class="fire-item">UTAGE配信システム移管・設定 進行中</li>
+              <li>メルマガ配信定常化（UTAGE一斉配信）</li>
+              <li class="fire-item">新ターゲット（リーダー層）への発信設計 進行中</li>
             </ul>
           </div>
         </div>
         <div style="padding:16px;background:var(--purple-light);border-radius:12px;margin-bottom:16px;">
-          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:8px;">⚡ story-engine-v2（5スキル分割）— 完成・稼働中！</div>
+          <div style="font-size:12px;font-weight:700;color:var(--purple);margin-bottom:8px;">⚡ story-engine-v2（5スキル分割）— 稼働中</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;font-size:11px;">
             <span style="background:white;padding:3px 10px;border-radius:8px;">1. story-orchestrator（統括・こあ）</span>
             <span style="background:white;padding:3px 10px;border-radius:8px;">2. story-db-manager（ストーリーDB）</span>
@@ -488,17 +541,14 @@
             <span style="background:white;padding:3px 10px;border-radius:8px;">4. story-draft-writer（ドラフト・れん+にじ）</span>
             <span style="background:white;padding:3px 10px;border-radius:8px;">5. content-publisher（配信・そよ）</span>
           </div>
-          <div style="margin-top:8px;font-size:11px;color:#047857;font-weight:600;">
-            ✅ セミナー管理台帳に3セミナー登録済み — 本格稼働中！
-          </div>
         </div>
         <div style="padding:16px;background:#fce7f3;border-radius:12px;">
           <div style="font-size:12px;font-weight:700;color:#be185d;margin-bottom:8px;">🌐 open-field（公開ポータル）</div>
           <ul class="checklist" style="font-size:12px;">
-            <li>GitHub Pages公開ポータル構築 — index.html + 5ダッシュボード</li>
+            <li>GitHub Pages公開ポータル本格運用</li>
             <li>UBM大阪ロードマップv3 公開</li>
             <li>LDMアースジャーニーLP 完成（OGP含む）</li>
-            <li class="fire-item">LP更新の仕組み化（Web管理画面構想）進行中</li>
+            <li class="fire-item">新ターゲット向けLP設計 進行中</li>
           </ul>
         </div>
       </div>
@@ -508,56 +558,102 @@
     <div class="phase-card priority">
       <div class="phase-header">
         <div class="phase-number">8</div>
-        <div class="phase-title">OTOプロジェクトの実動支援</div>
-        <span class="phase-badge badge-active">⏳ 5/16スピフェス</span>
+        <div class="phase-title">6月 新エネルギー体制スタート</div>
+        <span class="phase-badge badge-active">⏳ 6月始動</span>
       </div>
       <div class="phase-body">
-        <p>OTOはLDMの惑星。太陽の構造が固まり始めたので、動き出すタイミングが近い。</p>
+        <p>ND本講座（旧方式）は5月で終了。6月から「being駆動」「エネルギー保全」を軸にした新体制へ。</p>
         <ul class="checklist">
-          <li class="fire-item">スピフェス（5/16）— 間近！</li>
-          <li class="clock-item">対談設計（まりこし×レナ/堀内/ライラ）</li>
-          <li class="clock-item">レナさん接続不足問題</li>
+          <li class="fire-item">6月：神田さん新企画スタート</li>
+          <li class="clock-item">リンポチェ様事務局サポート 本格化</li>
+          <li class="clock-item">シンクロ起業塾 3ヶ月フォーラム＋ワールドカフェ運営</li>
+          <li class="clock-item">OTO 3人ユニット 純度レベル0-4の設計</li>
+          <li class="star-item">次回ビジョン整理MTG：2026-08-05(水) 14:30-16:00</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- FUNNEL -->
-  <div class="funnel-section">
-    <h3>コミュニティ起点ファネル（5/6確定）</h3>
-    <div class="funnel-flow">
-      <div class="funnel-step">
-        <div class="funnel-line"><div class="funnel-dot active"></div><div class="funnel-connector"></div></div>
-        <div class="funnel-content">
-          <h4>SNS（Facebook投稿）<span class="funnel-stat">リスト9,900件</span></h4>
-          <p>堀内さんの今をリアルタイムで発信。自然な流れでオプチャへ。</p>
+  <!-- LDM サブスク3階層 -->
+  <div class="layer-section">
+    <h3>① LDM — サブスク3階層モデル（5/27確定）</h3>
+    <div class="layer-flow">
+      <div class="layer-step">
+        <div class="layer-line"><div class="layer-dot active"></div><div class="layer-connector"></div></div>
+        <div class="layer-content">
+          <h4>無料オプチャ（入口）<span class="layer-stat">現1,300人</span></h4>
+          <p>旧アースジャーニーオプチャを含む。自然な接点・共鳴の場。堀内さんの今をリアルタイムで共有。</p>
         </div>
       </div>
-      <div class="funnel-step">
-        <div class="funnel-line"><div class="funnel-dot active"></div><div class="funnel-connector"></div></div>
-        <div class="funnel-content">
-          <h4>LINE オプチャ「アースジャーニー」（無料）<span class="funnel-stat">1,000人超</span></h4>
-          <p>有料レベルの情報を惜しみなく提供。月1ゲスト対談、エネルギーワーク、グルコン。AIの使い方・会社構築もシェア。5/7にプロジェクト化決定。</p>
+      <div class="layer-step">
+        <div class="layer-line"><div class="layer-dot active"></div><div class="layer-connector"></div></div>
+        <div class="layer-content">
+          <h4>月額8,800円サブスク（コア）<span class="layer-stat">運用中</span></h4>
+          <p>堀内さんとの双方向の関係。月1ライブ配信、グルコン、公開セッション、リアルの場。</p>
         </div>
       </div>
-      <div class="funnel-step">
-        <div class="funnel-line"><div class="funnel-dot active"></div><div class="funnel-connector"></div></div>
-        <div class="funnel-content">
-          <h4>アースジャーニー月額コミュニティ（月額8,800円）<span class="funnel-stat">約20人（5/6転換）</span></h4>
-          <p>堀内さんとの双方向やり取り。過去10万〜30万セミナーの参加権。公開セッション。リアルの場（ミロクの里・トータルヘルスデザイン・寝転さん）。</p>
-        </div>
-      </div>
-      <div class="funnel-step">
-        <div class="funnel-line"><div class="funnel-dot"></div></div>
-        <div class="funnel-content">
-          <h4>上位プログラム（月2万〜）</h4>
-          <p>基準値に応じた段階設計。将来構想。</p>
+      <div class="layer-step">
+        <div class="layer-line"><div class="layer-dot"></div></div>
+        <div class="layer-content">
+          <h4>上位コース（深層）<span class="layer-stat">2万 / 3万 / 4万</span></h4>
+          <p>基準値に応じた段階設計。今後段階的に展開。新時代リーダー層向け。</p>
         </div>
       </div>
     </div>
-    <div style="margin-top:16px;padding:12px 16px;background:rgba(59,130,246,0.08);border-radius:10px;font-size:12px;color:#1d4ed8;">
-      <strong>目標：</strong>月額8,800円 × 1,000人 = 月1,000万（安定ベース）<br>
-      <strong>短期目標：</strong>200〜300人 = 月200〜300万 → 1ヶ月以内に達成目標
+  </div>
+
+  <!-- LDM 関係性3階層 -->
+  <div class="layer-section">
+    <h3>① LDM — 関係性3階層モデル（5/27確定）</h3>
+    <div class="layer-flow">
+      <div class="layer-step">
+        <div class="layer-line"><div class="layer-dot active"></div><div class="layer-connector"></div></div>
+        <div class="layer-content">
+          <h4>堀内</h4>
+          <p>中心。being駆動。直接動くのではなく、講師陣を通して共鳴を広げる。</p>
+        </div>
+      </div>
+      <div class="layer-step">
+        <div class="layer-line"><div class="layer-dot active"></div><div class="layer-connector"></div></div>
+        <div class="layer-content">
+          <h4>講師（トップ3人）<span class="layer-stat">月1ライブ配信</span></h4>
+          <p>まずトップ1人にフォーカス → 最低2,000万安定化 → 拡張。将来FC化、講師が取締役 or FCオーナーへ。</p>
+        </div>
+      </div>
+      <div class="layer-step">
+        <div class="layer-line"><div class="layer-dot"></div></div>
+        <div class="layer-content">
+          <h4>お客様 / スタッフ</h4>
+          <p>講師を経由してLDMに繋がる。直接堀内に届く構造ではなく、再現可能なエコシステムに。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LDM 教育設計 4本柱 -->
+  <div class="layer-section">
+    <h3>① LDM — 教育設計の4本柱（オプチャ運営で見えた）</h3>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">柱 1</div>
+        <div class="pillar-title">学び方と成長の仕方</div>
+        <div class="pillar-desc">情報を取りに行く態度、自分の中で消化する方法、止まらず進む姿勢。</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">柱 2</div>
+        <div class="pillar-title">多責思考 → 自責思考</div>
+        <div class="pillar-desc">外部・環境のせいにする思考から、自分の選択として引き受ける思考へ。</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">柱 3</div>
+        <div class="pillar-title">根底教育</div>
+        <div class="pillar-desc">資本主義・宗教・お金・労働・マルクス・キリスト教・ユダヤ教の構造理解。</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">柱 4</div>
+        <div class="pillar-title">日本人本来のOS再構築</div>
+        <div class="pillar-desc">海外輸入のOSから抜けて、日本人本来の感性・関係性・価値観に戻る。</div>
+      </div>
     </div>
   </div>
 
@@ -601,13 +697,14 @@
   <div class="running-section">
     <h3>🔥 今動いているセッション・プロジェクト</h3>
     <div class="running-grid">
-      <div class="running-item"><div class="running-dot"></div>UTAGE配信システム移管・設定</div>
-      <div class="running-item"><div class="running-dot"></div>Notta書き起こし 大量push</div>
-      <div class="running-item"><div class="running-dot"></div>ステップメール content-vault化</div>
+      <div class="running-item"><div class="running-dot"></div>LDMサブスク3階層モデル運営</div>
+      <div class="running-item"><div class="running-dot"></div>講師トップ1人フォーカス（2,000万安定化）</div>
+      <div class="running-item"><div class="running-dot"></div>シンクロ起業塾 3ヶ月フォーラム設計</div>
+      <div class="running-item"><div class="running-dot"></div>OTO 3人ユニット・純度レベル設計</div>
+      <div class="running-item"><div class="running-dot"></div>神田さん新企画準備（6月以降）</div>
+      <div class="running-item"><div class="running-dot"></div>リンポチェ様事務局サポート</div>
       <div class="running-item"><div class="running-dot"></div>北原メソッド 落とし込み</div>
-      <div class="running-item"><div class="running-dot"></div>Kindle本 原稿執筆（第1章v2→続章）</div>
-      <div class="running-item"><div class="running-dot"></div>神田さんMM（メンタリング資料）</div>
-      <div class="running-item"><div class="running-dot"></div>LP更新の仕組み化（Web管理画面）</div>
+      <div class="running-item"><div class="running-dot"></div>新ターゲット向けLP設計</div>
     </div>
   </div>
 
@@ -652,7 +749,7 @@
         <div class="agent-info">
           <div class="agent-name">そよ(風)</div>
           <div class="agent-layer">Layer 3</div>
-          <div class="agent-status">✅ メルマガ配信開始・UTAGE連携</div>
+          <div class="agent-status">✅ メルマガ配信定常化・UTAGE連携</div>
         </div>
       </div>
       <div class="agent-chip">
@@ -678,14 +775,35 @@
   <div class="next-section">
     <h3>次にやること（優先順）</h3>
     <ol class="next-list">
-      <li><strong>5/9 Zoomセミナー2回目</strong> — コミュニティ紹介を10〜15分に圧縮。毎回入口を設ける</li>
-      <li><strong>5/10 ニューディメンション開始</strong> — 旧方式の最後のセミナー。テーマ：オープンコンタクト</li>
-      <li><strong>8,800円コミュニティ100〜200人を5月中に</strong> — サブスク安定ベースの構築</li>
-      <li><strong>5/16 スピフェス</strong> — OTOプロジェクトの布石</li>
-      <li><strong>UTAGE配信システム完成</strong> — フォーム→メインリスト自動追加＋ラベル付与の設定</li>
-      <li><strong>content-vault push完了</strong> — Notta書き起こし・ステップメール・FB全件</li>
-      <li><strong>Kindle本 続章執筆</strong> — 第1章v2完成。VIRAP™フレームワークを展開</li>
+      <li><strong>6月：新エネルギー体制スタート</strong> — being駆動・エネルギー保全を軸に運営</li>
+      <li><strong>神田さん新企画(6月以降)立ち上げ</strong> — 社外プロジェクト枠で運用設計</li>
+      <li><strong>LDM 講師トップ1人へフォーカス</strong> — 最低2,000万安定化 → 拡張展開</li>
+      <li><strong>LDMサブスク3階層モデル運用整備</strong> — 無料オプチャ→月額8,800円→上位コース(2万/3万/4万)</li>
+      <li><strong>シンクロ起業塾 3ヶ月フォーラム＋ワールドカフェ運営</strong> — 約40人前後・資本主義からの脱却</li>
+      <li><strong>OTO 3人ユニット 純度レベル0-4の設計</strong> — 人の進化をテーマに</li>
+      <li><strong>リンポチェ様事務局サポート 本格化</strong></li>
+      <li><strong>新ターゲット（新時代リーダー・経営者層）への発信設計</strong></li>
+      <li><strong>次回ビジョン整理MTG：2026-08-05(水) 14:30-16:00</strong></li>
     </ol>
+  </div>
+
+  <!-- RELATED LINKS -->
+  <div class="related-links">
+    <h3>🔗 関連リポジトリ（company-brain）</h3>
+    <ul class="rl-list">
+      <li>
+        <span class="rl-label">📝 5/27ビジョン整理MTG記録：</span>
+        <a href="https://github.com/synchro-mgmt/company-brain/blob/main/UPDATES_2026-05-27.md" target="_blank">UPDATES_2026-05-27.md</a>
+      </li>
+      <li>
+        <span class="rl-label">🏛️ 会社設計概要：</span>
+        <a href="https://github.com/synchro-mgmt/company-brain/blob/main/company-core/会社設計概要.md" target="_blank">company-core/会社設計概要.md</a>
+      </li>
+      <li>
+        <span class="rl-label">📖 現在のストーリー：</span>
+        <a href="https://github.com/synchro-mgmt/company-brain/blob/main/story-db/current-story.md" target="_blank">story-db/current-story.md</a>
+      </li>
+    </ul>
   </div>
 
   <!-- VISUAL ASSETS -->
@@ -694,7 +812,7 @@
     <div class="asset-tags">
       <span class="asset-tag">✅ 魂マップHTML</span>
       <span class="asset-tag">✅ 同心円マップHTML</span>
-      <span class="asset-tag">✅ ロードマップHTML（v9）</span>
+      <span class="asset-tag">✅ ロードマップHTML（v10）</span>
       <span class="asset-tag">✅ 財務設計書HTML（6タブ）</span>
       <span class="asset-tag">✅ 北原式統合ガイドHTML（4タブ）</span>
       <span class="asset-tag">✅ UBM大阪ロードマップv3</span>
@@ -705,9 +823,29 @@
     </div>
   </div>
 
+  <!-- VERSION HISTORY -->
+  <div class="version-history">
+    <h3>📜 バージョン履歴</h3>
+    <div class="vh-item">
+      <div class="vh-version">v10</div>
+      <div class="vh-date">2026-05-27</div>
+      <div class="vh-desc">5/27ビジョン整理MTG反映。4プロジェクト体制（LDM／シンクロ起業塾／OTO／社外プロジェクト）へ再編。LDMサブスク3階層・関係性3階層・教育4本柱を明文化。ターゲットを新時代リーダー・経営者層へシフト。3キーワード（純度・共鳴度・仕組み化）と真骨頂（仕組み化・構造化）を中核に。</div>
+    </div>
+    <div class="vh-item">
+      <div class="vh-version">v9</div>
+      <div class="vh-date">2026-05-08</div>
+      <div class="vh-desc">5/6 Zoomセミナー初回（約300名）。オプチャ1,000人突破でプロジェクト化。生命体ベースへの転換宣言。8,800円コミュニティ販売開始。メルマガ配信開始。Kindle本第1章原稿v2（VIRAP™命名）。open-fieldポータル本格稼働。</div>
+    </div>
+    <div class="vh-item">
+      <div class="vh-version">v8</div>
+      <div class="vh-date">2026-05-01以前</div>
+      <div class="vh-desc">7エージェント体制完成。財務防壁構築（北原式運用開始）。story-engine-v2リリース。content-vault基盤構築。発信塔パイプライン実証。</div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <div class="footer">
-    <p>会社設計ロードマップ 第9版 — 2026年5月8日<br>
+    <p>会社設計ロードマップ 第10版 — 2026年5月27日<br>
     株式会社シンクロニシティ・マネジメント ｜ こあ(COA)が管理<br>
     基盤資料の正：<a href="https://github.com/synchro-mgmt/company-brain">GitHub synchro-mgmt/company-brain</a></p>
   </div>
