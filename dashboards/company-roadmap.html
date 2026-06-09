@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会社設計ロードマップ v10 — 2026年5月27日</title>
+<title>会社設計ロードマップ v11 — 2026年6月9日</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
 
@@ -205,6 +205,17 @@
   .pillar-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
   .pillar-desc { font-size: 11px; color: var(--text-light); line-height: 1.6; }
 
+  .platform-section { background: linear-gradient(135deg, #fffbeb, #fefce8); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); border: 2px solid #fcd34d; }
+  .platform-section h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #92400e; }
+  .platform-lead { font-size: 14px; color: #78350f; line-height: 1.8; margin-bottom: 18px; }
+  .platform-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .platform-card { background: rgba(255,255,255,0.85); border: 1px solid #fde68a; border-radius: 12px; padding: 16px; }
+  .platform-card h4 { font-size: 13px; color: #92400e; margin-bottom: 6px; }
+  .platform-card p { font-size: 12px; color: var(--text-light); line-height: 1.7; }
+  .platform-flow { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 18px; padding: 14px; background: white; border-radius: 12px; }
+  .platform-flow span { background: var(--orange-light); color: #92400e; border-radius: 20px; padding: 5px 12px; font-size: 11px; font-weight: 700; }
+  .platform-flow b { color: var(--orange); }
+
   .pipeline-section { background: var(--card-bg); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 32px; box-shadow: var(--shadow); }
   .pipeline-section h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
   .pipeline { display: flex; align-items: center; gap: 0; overflow-x: auto; padding: 8px 0; }
@@ -271,6 +282,7 @@
     .agent-grid { grid-template-columns: 1fr; }
     .running-grid { grid-template-columns: 1fr; }
     .whats-new-grid { grid-template-columns: 1fr; }
+    .platform-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -283,22 +295,22 @@
   <div class="hero">
     <h1>会社設計ロードマップ</h1>
     <div class="subtitle">こあの地図：今どこにいて、なぜこれをやっていて、どこに向かうのか</div>
-    <div class="version">第10版</div>
-    <div class="date">2026年5月27日 ビジョン整理MTG反映 ｜ 株式会社シンクロニシティ・マネジメント</div>
+    <div class="version">第11版</div>
+    <div class="date">2026年6月9日 LDMプラットフォーム連続MTG反映 ｜ 株式会社シンクロニシティ・マネジメント</div>
   </div>
 
   <!-- WHAT'S NEW -->
   <div class="whats-new">
-    <h3>v9 → v10 の主な変化（5/9〜5/27 ビジョン整理MTG）</h3>
+    <h3>v10 → v11 の主な変化（6/9 LDMプラットフォーム連続MTG）</h3>
     <div class="whats-new-grid">
-      <div class="wn-item"><span class="wn-emoji">🔄</span><div><strong>4プロジェクト体制へ再編</strong> — LDM／シンクロ起業塾／OTO／社外プロジェクト</div></div>
-      <div class="wn-item"><span class="wn-emoji">☀️</span><div><strong>LDMが中心プロジェクトに確定</strong> — サブスク3階層・関係性3階層モデル</div></div>
-      <div class="wn-item"><span class="wn-emoji">🎯</span><div><strong>ターゲットシフト</strong> — 自己犠牲・不安層 → 新時代を作るリーダー・経営者層</div></div>
-      <div class="wn-item"><span class="wn-emoji">🔮</span><div><strong>OTO（旧Oto表記から変更）</strong> — 3人ユニット・人の進化・純度レベル0-4</div></div>
-      <div class="wn-item"><span class="wn-emoji">🏛️</span><div><strong>シンクロ起業塾の再定義</strong> — 資本主義からの脱却・約40人前後・3ヶ月フォーラム＋ワールドカフェ</div></div>
-      <div class="wn-item"><span class="wn-emoji">🌐</span><div><strong>社外プロジェクト枠を新設</strong> — 神田さん新企画(6月以降)・リンポチェ様事務局サポート</div></div>
-      <div class="wn-item"><span class="wn-emoji">🏔️</span><div><strong>5/25-26 ミロクの郷で覚醒</strong> — エネルギー保全がテーマに</div></div>
-      <div class="wn-item"><span class="wn-emoji">⚡</span><div><strong>6月から新エネルギー体制スタート</strong> — ND本講座旧方式は5月で終了</div></div>
+      <div class="wn-item"><span class="wn-emoji">🌱</span><div><strong>LDMを社会実装へ</strong> — セミナーではなく、人・組織の具体的変化を生む学習・実践システム</div></div>
+      <div class="wn-item"><span class="wn-emoji">🧠</span><div><strong>LDM × AIエージェント</strong> — 「インスピレーションを開花させる構造」という同じ事業思想</div></div>
+      <div class="wn-item"><span class="wn-emoji">🧪</span><div><strong>宴をMVPとして採用</strong> — 無料・有料、学習ロードマップ、相談導線を小さく検証</div></div>
+      <div class="wn-item"><span class="wn-emoji">🌬️</span><div><strong>そよを学習支援へ配置</strong> — 案内・一次回答・日常の伴走を担当</div></div>
+      <div class="wn-item"><span class="wn-emoji">🏢</span><div><strong>法人・教育展開</strong> — 企業・教育機関契約を第2収益エンジン候補に追加</div></div>
+      <div class="wn-item"><span class="wn-emoji">🤝</span><div><strong>講師ネットワーク</strong> — AIの日常支援と、人による深い専門支援を接続</div></div>
+      <div class="wn-item"><span class="wn-emoji">🔐</span><div><strong>独自開発に必須ゲート</strong> — アーキテクチャ・個人情報・決済・AIコードを事前審査</div></div>
+      <div class="wn-item"><span class="wn-emoji">📅</span><div><strong>次回実装MTG</strong> — 2026年6月19日 15:00、宴運用とそよ初期運用を確認</div></div>
     </div>
   </div>
 
@@ -406,17 +418,17 @@
         <span class="phase-badge badge-fire">🔥 新体制へ移行中！</span>
       </div>
       <div class="phase-body">
-        <p>5/27ビジョン整理MTGで、会社の活動を<strong>4つのプロジェクト</strong>に明確に分類。LDMが中心、シンクロ起業塾・OTOが並走、社外プロジェクトを別枠で管理。</p>
+        <p>5/27ビジョン整理MTGで、会社の活動を<strong>4つのプロジェクト</strong>に明確に分類。6/9の連続MTGでは、この体制を維持したまま、会員プラットフォームを第5事業ではなく<strong>4事業共通のインフラ</strong>として位置づけた。</p>
         <table class="project-table">
           <thead>
-            <tr><th>プロジェクト</th><th>位置</th><th>現状</th><th>5/27確定の方向性</th></tr>
+            <tr><th>プロジェクト</th><th>位置</th><th>現状</th><th>現在の方向性</th></tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>① LDM</strong></td>
               <td><span class="sun-badge">☀️ 中心</span></td>
               <td style="color:#047857;font-weight:600;">実動中！</td>
-              <td>サブスク3階層・関係性3階層モデル確定。新時代リーダー層へターゲットシフト</td>
+              <td>宴MVPとAI伴走を起点に、人・企業・教育現場の変化を支える社会実装プラットフォームへ</td>
             </tr>
             <tr>
               <td><strong>② シンクロ起業塾</strong></td>
@@ -487,6 +499,8 @@
           <li>北原式 選択と集中ディフェンスチェック — 朝レポートに統合</li>
           <li>UBM大阪ロードマップ v3完成</li>
           <li>MF会計 日次仕訳処理 定常化</li>
+          <li class="new-item">企業・教育機関契約を第2収益エンジン候補として設計開始</li>
+          <li class="new-item">講師・専門家への報酬循環モデルを追加</li>
           <li>財務マネジメント運用設計書 ビジュアルHTML（6タブ）</li>
           <li>北原式チェック統合ガイドHTML（4タブ）</li>
           <li class="fire-item">北原メソッドの更なる落とし込み作業 継続中</li>
@@ -528,6 +542,8 @@
               <li>エンゲージメント公式を発見</li>
               <li>NGパターン9個を整理</li>
               <li>メルマガ配信定常化（UTAGE一斉配信）</li>
+              <li class="fire-item">そよを案内・一次回答・学習支援へ配置</li>
+              <li class="fire-item">既存コンテンツを段階別カリキュラムへ再編</li>
               <li class="fire-item">新ターゲット（リーダー層）への発信設計 進行中</li>
             </ul>
           </div>
@@ -562,12 +578,16 @@
         <span class="phase-badge badge-active">⏳ 6月始動</span>
       </div>
       <div class="phase-body">
-        <p>ND本講座（旧方式）は5月で終了。6月から「being駆動」「エネルギー保全」を軸にした新体制へ。</p>
+        <p>ND本講座（旧方式）は5月で終了。6月から「being駆動」「エネルギー保全」を軸にした新体制へ。LDMの社会実装は宴MVPで検証し、企業・教育機関での小規模実証へつなげる。</p>
         <ul class="checklist">
+          <li class="fire-item">宴を無料・有料の二分類で稼働し、学習導線を検証</li>
+          <li class="fire-item">感想・質問・相談を集約する最小コミュニティ運用</li>
+          <li class="clock-item">企業研修・教育機関向け実証提案と成果指標の設計</li>
           <li class="fire-item">6月：神田さん新企画スタート</li>
           <li class="clock-item">リンポチェ様事務局サポート 本格化</li>
           <li class="clock-item">シンクロ起業塾 3ヶ月フォーラム＋ワールドカフェ運営</li>
           <li class="clock-item">OTO 3人ユニット 純度レベル0-4の設計</li>
+          <li class="star-item">次回LDM実装MTG：2026-06-19(金) 15:00</li>
           <li class="star-item">次回ビジョン整理MTG：2026-08-05(水) 14:30-16:00</li>
         </ul>
       </div>
@@ -657,6 +677,33 @@
     </div>
   </div>
 
+  <!-- LDM 社会実装プラットフォーム -->
+  <div class="platform-section">
+    <h3>🌱 LDM社会実装プラットフォーム（6/9確定）</h3>
+    <p class="platform-lead"><strong>LDMをセミナーとして販売するのではなく、人・組織のインスピレーション力を高め、人生・学習・経営の具体的変化につなげる学習・実践システムとして社会実装する。</strong></p>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <h4>第1段階：宴MVP</h4>
+        <p>無料・有料の二分類から開始。初期必修、段階別ロードマップ、動画、感想・質問、相談導線、コミュニティ需要を検証する。</p>
+      </div>
+      <div class="platform-card">
+        <h4>AI伴走：そよ</h4>
+        <p>案内・一次回答・学習支援を担当。AIが日常を支え、人間の講師・専門家が深い相談と変化を支える。</p>
+      </div>
+      <div class="platform-card">
+        <h4>第2収益エンジン</h4>
+        <p>個人サブスクに加え、企業・教育機関契約を開拓。講師・専門家への報酬循環と一般向け無料・低価格提供を両立する。</p>
+      </div>
+      <div class="platform-card">
+        <h4>独自開発の必須ゲート</h4>
+        <p>宴で不足機能が明確になってから判断。上級エンジニアによる設計レビュー、データ分離、最小権限、監査ログ、復旧手順を必須とする。</p>
+      </div>
+    </div>
+    <div class="platform-flow">
+      <span>LDMの変化構造</span><b>×</b><span>AIエージェント</span><b>×</b><span>学習・相談・実践基盤</span><b>×</b><span>講師ネットワーク</span>
+    </div>
+  </div>
+
   <!-- PIPELINE -->
   <div class="pipeline-section">
     <h3>発信塔パイプライン（創造の流れ）</h3>
@@ -698,6 +745,9 @@
     <h3>🔥 今動いているセッション・プロジェクト</h3>
     <div class="running-grid">
       <div class="running-item"><div class="running-dot"></div>LDMサブスク3階層モデル運営</div>
+      <div class="running-item"><div class="running-dot"></div>宴MVP 学習・相談導線の実証</div>
+      <div class="running-item"><div class="running-dot"></div>そよ 案内・一次回答・学習支援の初期運用</div>
+      <div class="running-item"><div class="running-dot"></div>企業・教育機関向け実証提案の設計</div>
       <div class="running-item"><div class="running-dot"></div>講師トップ1人フォーカス（2,000万安定化）</div>
       <div class="running-item"><div class="running-dot"></div>シンクロ起業塾 3ヶ月フォーラム設計</div>
       <div class="running-item"><div class="running-dot"></div>OTO 3人ユニット・純度レベル設計</div>
@@ -749,7 +799,7 @@
         <div class="agent-info">
           <div class="agent-name">そよ(風)</div>
           <div class="agent-layer">Layer 3</div>
-          <div class="agent-status">✅ メルマガ配信定常化・UTAGE連携</div>
+          <div class="agent-status">🔥 配信＋宴MVPの案内・一次回答・学習支援へ拡張</div>
         </div>
       </div>
       <div class="agent-chip">
@@ -775,14 +825,14 @@
   <div class="next-section">
     <h3>次にやること（優先順）</h3>
     <ol class="next-list">
-      <li><strong>6月：新エネルギー体制スタート</strong> — being駆動・エネルギー保全を軸に運営</li>
-      <li><strong>神田さん新企画(6月以降)立ち上げ</strong> — 社外プロジェクト枠で運用設計</li>
-      <li><strong>LDM 講師トップ1人へフォーカス</strong> — 最低2,000万安定化 → 拡張展開</li>
-      <li><strong>LDMサブスク3階層モデル運用整備</strong> — 無料オプチャ→月額8,800円→上位コース(2万/3万/4万)</li>
-      <li><strong>シンクロ起業塾 3ヶ月フォーラム＋ワールドカフェ運営</strong> — 約40人前後・資本主義からの脱却</li>
-      <li><strong>OTO 3人ユニット 純度レベル0-4の設計</strong> — 人の進化をテーマに</li>
-      <li><strong>リンポチェ様事務局サポート 本格化</strong></li>
-      <li><strong>新ターゲット（新時代リーダー・経営者層）への発信設計</strong></li>
+      <li><strong>宴MVPを無料・有料の二分類で稼働</strong> — 初期必修、段階別ロードマップ、動画、相談導線を検証</li>
+      <li><strong>動画追加の運用方針を文書化</strong> — 誰が、どの基準で、どの段階へ追加するかを簡潔に定義</li>
+      <li><strong>感想・質問の集約場所を決定</strong> — Slack等を使った最小コミュニティ運用を開始</li>
+      <li><strong>そよの初期運用を開始</strong> — 案内・一次回答・学習支援、LINE・Chatwork・Facebook連携を小さく検証</li>
+      <li><strong>変化事例の記録フォーマットを作成</strong> — 感想ではなく、人生・学習・組織の具体的成果を蓄積</li>
+      <li><strong>企業・教育機関向け実証提案を設計</strong> — 契約モデル、成果指標、講師・専門家の報酬循環を整理</li>
+      <li><strong>独自開発のセキュリティ要件を文書化</strong> — 宴の限界が見えるまで本開発は開始しない</li>
+      <li><strong>次回LDM実装MTG：2026-06-19(金) 15:00</strong> — 宴運用、コミュニティ連携、画面イメージ、そよ初期運用</li>
       <li><strong>次回ビジョン整理MTG：2026-08-05(水) 14:30-16:00</strong></li>
     </ol>
   </div>
@@ -792,8 +842,12 @@
     <h3>🔗 関連リポジトリ（company-brain）</h3>
     <ul class="rl-list">
       <li>
-        <span class="rl-label">📝 5/27ビジョン整理MTG記録：</span>
-        <a href="https://github.com/synchro-mgmt/company-brain/blob/main/UPDATES_2026-05-27.md" target="_blank">UPDATES_2026-05-27.md</a>
+        <span class="rl-label">📝 6/9 LDMプラットフォーム更新：</span>
+        <a href="https://github.com/synchro-mgmt/company-brain/blob/main/UPDATES_2026-06-09.md" target="_blank">UPDATES_2026-06-09.md</a>
+      </li>
+      <li>
+        <span class="rl-label">🌱 LDM社会実装テーマ：</span>
+        <a href="https://github.com/synchro-mgmt/company-brain/blob/main/story-db/themes/ldm-social-platform.md" target="_blank">story-db/themes/ldm-social-platform.md</a>
       </li>
       <li>
         <span class="rl-label">🏛️ 会社設計概要：</span>
@@ -812,7 +866,7 @@
     <div class="asset-tags">
       <span class="asset-tag">✅ 魂マップHTML</span>
       <span class="asset-tag">✅ 同心円マップHTML</span>
-      <span class="asset-tag">✅ ロードマップHTML（v10）</span>
+      <span class="asset-tag">✅ ロードマップHTML（v11）</span>
       <span class="asset-tag">✅ 財務設計書HTML（6タブ）</span>
       <span class="asset-tag">✅ 北原式統合ガイドHTML（4タブ）</span>
       <span class="asset-tag">✅ UBM大阪ロードマップv3</span>
@@ -826,6 +880,11 @@
   <!-- VERSION HISTORY -->
   <div class="version-history">
     <h3>📜 バージョン履歴</h3>
+    <div class="vh-item">
+      <div class="vh-version">v11</div>
+      <div class="vh-date">2026-06-09</div>
+      <div class="vh-desc">LDM社会実装プラットフォーム構想を反映。LDMとAIエージェントを同一思想として統合し、宴MVP、そよの学習支援、企業・教育機関契約、講師ネットワーク、独自開発のセキュリティゲートをロードマップへ追加。</div>
+    </div>
     <div class="vh-item">
       <div class="vh-version">v10</div>
       <div class="vh-date">2026-05-27</div>
@@ -845,7 +904,7 @@
 
   <!-- FOOTER -->
   <div class="footer">
-    <p>会社設計ロードマップ 第10版 — 2026年5月27日<br>
+    <p>会社設計ロードマップ 第11版 — 2026年6月9日<br>
     株式会社シンクロニシティ・マネジメント ｜ こあ(COA)が管理<br>
     基盤資料の正：<a href="https://github.com/synchro-mgmt/company-brain">GitHub synchro-mgmt/company-brain</a></p>
   </div>
