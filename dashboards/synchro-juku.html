@@ -32,6 +32,12 @@
   .card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1rem; margin-bottom: 8px; }
   .card p, .card li { color: var(--sub); font-size: .86rem; }
   .card ul { padding-left: 1.2em; }
+  .card strong { color: var(--text); }
+  .lead-card { background: linear-gradient(135deg, #fff, #faf4fd); border-color: #d9c3e5; }
+  .lead-card blockquote { color: var(--purple-dark); font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.05rem; font-weight: 700; line-height: 1.8; }
+  .lead-card p { margin-top: 10px; }
+  .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pill { padding: 4px 12px; border-radius: 999px; background: var(--purple-light); color: var(--purple-dark); font-size: .72rem; font-weight: 700; }
   .status { display: inline-block; margin-bottom: 10px; padding: 3px 11px; border-radius: 20px; font-size: .7rem; font-weight: 700; }
   .doing { color: #6d328c; background: #f1e5f8; }
   .planning { color: #9a6412; background: #fff0cd; }
@@ -51,10 +57,17 @@
   .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .decision { border-top: 4px solid var(--green); }
   .pending { border-top: 4px solid var(--gold); }
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .flow-step { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 15px; padding: 16px 12px; color: var(--sub); font-size: .76rem; text-align: center; }
+  .flow-step strong { display: block; margin-bottom: 5px; color: var(--purple); font-size: .72rem; }
+  .action-owner { color: var(--purple-dark); font-weight: 700; }
+  .state-dot { display: inline-block; width: 8px; height: 8px; margin-right: 5px; border-radius: 50%; background: var(--gold); }
+  .guardrail { border-left: 5px solid var(--pink); }
+  .source-note { margin-top: 12px; color: var(--sub); font-size: .73rem; }
   .back { display: inline-block; margin-top: 38px; color: var(--purple); text-decoration: none; font-size: .84rem; font-weight: 700; }
   footer { text-align: center; color: var(--sub); font-size: .75rem; padding: 30px; border-top: 1px solid var(--border); }
   @media (max-width: 720px) {
-    .summary, .grid, .decision-grid { grid-template-columns: 1fr; }
+    .summary, .grid, .decision-grid, .flow { grid-template-columns: 1fr; }
     .summary { grid-template-columns: repeat(2, 1fr); }
     th, td { padding: 11px 10px; font-size: .75rem; }
   }
@@ -70,10 +83,24 @@
 <main class="wrap">
   <div class="summary">
     <div class="metric"><strong>5</strong><span>進行・構想プロジェクト</span></div>
-    <div class="metric"><strong>3名</strong><span>コア運営メンバー</span></div>
+    <div class="metric"><strong>約40人</strong><span>既存サブスクメンバー</span></div>
     <div class="metric"><strong>6/17</strong><span>直近の無料講座</span></div>
     <div class="metric"><strong>7月</strong><span>新講座開始予定</span></div>
   </div>
+
+  <section>
+    <h2 class="section-title"><small>POSITIONING</small>シンクロ起業塾の現在地</h2>
+    <article class="card lead-card">
+      <blockquote>資本主義の勝ち負けから離れ、自分基準の豊かさと幸福を起点に、命からビジネスを回す実験場。</blockquote>
+      <p>会社の4プロジェクトのうち、LDMと並走する「ビジネス応用」の場。事業規模や売上額だけを成功とせず、自分と周囲の幸せ・豊かさを循環できる状態を育てる。</p>
+      <div class="pill-row">
+        <span class="pill">3か月に1回 フォーラム</span>
+        <span class="pill">ワールドカフェ</span>
+        <span class="pill">約40人の既存メンバー</span>
+        <span class="pill">清野翔太さんと共同運営</span>
+      </div>
+    </article>
+  </section>
 
   <section>
     <h2 class="section-title"><small>PROJECTS</small>プロジェクト一覧</h2>
@@ -81,7 +108,7 @@
       <article class="card">
         <span class="status doing">進行中</span>
         <h3>6月17日 無料講座</h3>
-        <p>サポーター型起業という選択肢を伝え、参加者の反応と要望を集める。販売を急ぐより、求められて企画が生まれる流れを作る。</p>
+        <p>サポーター型起業という選択肢を伝え、参加者の反応と要望を集める。堀内さんがまりこしさんの実践知を対談で引き出し、求められて企画が生まれる流れを作る。</p>
       </article>
       <article class="card">
         <span class="status planning">企画中</span>
@@ -101,7 +128,48 @@
       <article class="card">
         <span class="status planning">設計中</span>
         <h3>企画別収支管理</h3>
-        <p>売上、事務局稼働、制作費などを企画単位で集計し、講師を招く企画へ展開できる共通ルールを作る。</p>
+        <p>売上、名簿、当日運営、LP制作などを企画単位で事前区分。後から切り分けず、講師を招く企画へ展開できる共通ルールを作る。</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>CONVERSION PATH</small>無料講座から申込までの階段</h2>
+    <div class="flow">
+      <div class="flow-step"><strong>01 違和感</strong>今までの主人公型起業だけが道ではないと気づく</div>
+      <div class="flow-step"><strong>02 可能性</strong>サポーターとして働く道に憧れと可能性を感じる</div>
+      <div class="flow-step"><strong>03 必要性</strong>理屈を知るだけでは現場で実行できないと理解する</div>
+      <div class="flow-step"><strong>04 自信</strong>実践すれば身につけられる力だと感じる</div>
+      <div class="flow-step"><strong>05 参加</strong>3か月講座へ自分の意志で申し込む</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>LEARNING DESIGN</small>講座で育てる力</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>スキルより先に「あり方」</h3>
+        <p>儲かりそうな技術を集める前に、相手の目的へ主体的に関わり、信頼される仕事の姿勢を身につける。</p>
+      </article>
+      <article class="card">
+        <h3>高度なヒアリング力</h3>
+        <p>言葉をそのまま受け取るだけでなく、相手が本当に実現したい目的と、まだ言葉になっていない要望を読む。</p>
+      </article>
+      <article class="card">
+        <h3>報告・進捗共有・プラスアルファ</h3>
+        <p>受け身で待たず、自分から進み具合を共有する。依頼された範囲に、相手が喜ぶ価値を一つ加えて返す。</p>
+      </article>
+      <article class="card">
+        <h3>本業と並行して始める</h3>
+        <p>いきなり独立を前提にしない。今の仕事を続けながら、小さな実践と収入を積み重ねる選択肢を示す。</p>
+      </article>
+      <article class="card">
+        <h3>仲間と実現する力</h3>
+        <p>自分一人でできない依頼も、横のネットワークと連携して形にする。個人の能力だけで可能性を閉じない。</p>
+      </article>
+      <article class="card">
+        <h3>右腕から自分の事業へ</h3>
+        <p>憧れの人を支え、現場で学んだ力は、自分の商品づくり、顧客理解、関係性、将来前に出る時にも生きる。</p>
       </article>
     </div>
   </section>
@@ -137,9 +205,23 @@
     <table>
       <thead><tr><th>名前</th><th>現在の役割</th><th>強み・次の接続点</th></tr></thead>
       <tbody>
-        <tr><td>堀内恭隆さん</td><td>共同企画・概念設計・対談</td><td>場で構造と言葉を生む。6月17日の対談と講座のコアコンセプト設計。</td></tr>
-        <tr><td>まりこしさん</td><td>講師・実践知提供・運営ハブ</td><td>仕事現場の成功条件と失敗例を具体化。実践テーマと講座素材を整理する。</td></tr>
-        <tr><td>清野翔太さん</td><td>共同運営・企画販売設計</td><td>告知、申込、決済、収支を具体化。タイトル調査と販売導線を準備する。</td></tr>
+        <tr><td>堀内恭隆さん</td><td>方向性・概念設計・対談</td><td>場で構造と言葉を生む。6月17日の対談と講座のコアコンセプトに集中し、細かな事務管理は持たない。</td></tr>
+        <tr><td>まりこしさん</td><td>講師・実践知提供・運営ハブ</td><td>現場の失敗例と成功条件を具体化。実践テーマ、事例、12か月の継続テーマ候補を整理する。</td></tr>
+        <tr><td>清野翔太さん</td><td>共同運営・企画販売設計</td><td>告知、申込、決済、収支を具体化。タイトル調査、販売導線、事務局への集計依頼を準備する。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>NEXT ACTIONS</small>担当別アクション</h2>
+    <table>
+      <thead><tr><th>担当</th><th>次の動き</th><th>状態</th></tr></thead>
+      <tbody>
+        <tr><td class="action-owner">清野翔太さん</td><td>タイトル候補を複数作り、アンケートを実施する</td><td><span class="state-dot"></span>未着手</td></tr>
+        <tr><td class="action-owner">清野翔太さん</td><td>決済情報を受け取り、申込ページと告知文を作る</td><td><span class="state-dot"></span>未着手</td></tr>
+        <tr><td class="action-owner">堀内さん・まりこしさん</td><td>6月17日の無料講座を対談形式で実施する</td><td><span class="state-dot"></span>予定</td></tr>
+        <tr><td class="action-owner">まりこしさん</td><td>実践テーマ、事例、講座内容の素材を整理する</td><td><span class="state-dot"></span>未着手</td></tr>
+        <tr><td class="action-owner">運営</td><td>企画別の事務局工数と経費を集計できる状態にする</td><td><span class="state-dot"></span>未着手</td></tr>
       </tbody>
     </table>
   </section>
@@ -171,11 +253,35 @@
   </section>
 
   <section>
+    <h2 class="section-title"><small>TITLE RESEARCH</small>需要調査に使う入口候補</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>憧れ・関係性から入る</h3>
+        <ul>
+          <li>憧れの人とビジネスパートナーになる方法</li>
+          <li>雲の上の人をクライアントにする方法</li>
+          <li>憧れの人の隣で働くステージへ</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>意外性・親しみから入る</h3>
+        <ul>
+          <li>成功している起業家が、実はみんな通過している道</li>
+          <li>推し活起業</li>
+          <li>「サポーター型起業」を前面に出すかも同時検証</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section>
     <h2 class="section-title"><small>MEETING NOTE</small>2026年6月13日 MTGの核</h2>
-    <article class="card">
+    <article class="card guardrail">
       <h3>サポーター型起業は「裏方講座」ではない</h3>
       <p>憧れの人や格上の人と仕事をしながら、ビジネスの現場を学び、自分の価値と可能性を開く道。主人公型起業に違和感がある人へ、別の入口を示す構想として具体化した。</p>
+      <p><strong>運営上の防壁:</strong> 堀内さんは対談、構造化、言語化に集中する。告知、決済、名簿、収支集計、進行管理は運営側で準備し、細部の管理を堀内さんへ戻さない。</p>
     </article>
+    <p class="source-note">反映元: シンクロ起業塾 ROADMAP / PROJECTS / 2026-06-13企画MTG / 意思決定ログ / 関係者DB / company-brain</p>
   </section>
 
   <a class="back" href="../index.html">← Internal Fieldトップへ戻る</a>
