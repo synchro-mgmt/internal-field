@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOMENT — プロジェクト全体概要・ロードマップ</title>
+<link rel="icon" type="image/svg+xml" href="/internal-field/assets/favicon.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
+  :root {
+    --ink: #1f2430; --sub: #677084; --bg: #fbfaf8; --card: #fff; --line: #e7e1d9;
+    --rose: #c94f6d; --rose-light: #fde8ee; --teal: #0f8b8d; --teal-light: #e0f7f6;
+    --gold: #d59a2d; --gold-light: #fff2cf; --green: #2f8f5b; --green-light: #e4f5eb;
+    --blue: #3d6fb6; --blue-light: #e6eefc; --violet: #7057b8; --violet-light: #eee9fb;
+    --shadow: 0 6px 22px rgba(31,36,48,.07); --radius: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.75; }
+  a { color: inherit; }
+  .hero {
+    color: #fff; padding: 70px 24px 92px; text-align: center;
+    background:
+      linear-gradient(145deg, rgba(31,36,48,.96), rgba(61,111,182,.84) 56%, rgba(201,79,109,.82)),
+      radial-gradient(circle at 18% 12%, rgba(255,242,207,.28), transparent 32%);
+  }
+  .badge { display: inline-block; padding: 5px 16px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; font-size: .75rem; letter-spacing: .12em; margin-bottom: 14px; }
+  h1, h2, h3 { font-family: 'Zen Maru Gothic', sans-serif; }
+  .hero h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); letter-spacing: .04em; }
+  .hero p { max-width: 720px; margin: 14px auto 0; color: rgba(255,255,255,.84); }
+  .wrap { max-width: 1100px; margin: -54px auto 0; padding: 0 20px 68px; position: relative; }
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 30px; }
+  .metric { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 16px; text-align: center; box-shadow: var(--shadow); }
+  .metric strong { display: block; font-size: 1.25rem; color: var(--rose); }
+  .metric span { color: var(--sub); font-size: .78rem; }
+  section { margin-top: 34px; }
+  .section-title { font-size: 1.25rem; margin-bottom: 15px; }
+  .section-title small { display: block; color: var(--sub); font: 700 .72rem 'Noto Sans JP', sans-serif; letter-spacing: .1em; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: 0 4px 16px rgba(31,36,48,.04); }
+  .card h3 { font-size: 1.02rem; margin-bottom: 8px; }
+  .card p, .card li { color: var(--sub); font-size: .86rem; }
+  .card ul { padding-left: 1.2em; }
+  .lead-card { background: linear-gradient(135deg, #fff, #fff7f1); border-color: #efd4c7; }
+  .lead-card blockquote { color: #8f2f4b; font: 700 1.05rem/1.9 'Zen Maru Gothic', sans-serif; }
+  .lead-card p { margin-top: 10px; }
+  .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .pill { padding: 4px 12px; border-radius: 999px; background: var(--rose-light); color: #96324d; font-size: .72rem; font-weight: 700; }
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 9px; }
+  .flow-step { background: var(--card); border: 1px solid var(--line); border-radius: 15px; padding: 16px 12px; text-align: center; color: var(--sub); font-size: .76rem; }
+  .flow-step strong { display: block; color: var(--teal); margin-bottom: 6px; font-size: .72rem; }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; background: #ead4d6; }
+  .phase { position: relative; margin-bottom: 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+  .phase::before { content: ''; position: absolute; left: -26px; top: 25px; width: 13px; height: 13px; background: var(--rose); border: 4px solid var(--rose-light); border-radius: 50%; }
+  .phase h3 { font-size: 1rem; }
+  .phase .date { color: var(--rose); font-size: .75rem; font-weight: 900; letter-spacing: .04em; }
+  .phase p { color: var(--sub); font-size: .85rem; margin-top: 5px; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: .7rem; font-weight: 800; margin-bottom: 10px; }
+  .tag.done { color: #1f6d45; background: var(--green-light); }
+  .tag.next { color: #8a5d0d; background: var(--gold-light); }
+  .tag.plan { color: #244e8a; background: var(--blue-light); }
+  .tag.bridge { color: #4a3a8e; background: var(--violet-light); }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 16px rgba(31,36,48,.04); }
+  th, td { padding: 14px 16px; border-bottom: 1px solid var(--line); text-align: left; font-size: .82rem; vertical-align: top; }
+  th { background: #f6eee7; color: #7d3b27; }
+  td { color: var(--sub); }
+  tr:last-child td { border-bottom: 0; }
+  .note { background: #f7fbfb; border-left: 5px solid var(--teal); }
+  .source-note { color: var(--sub); font-size: .75rem; margin-top: 12px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .button { display: inline-block; padding: 9px 16px; border-radius: 999px; color: #fff; background: var(--teal); text-decoration: none; font-size: .82rem; font-weight: 800; }
+  .button.secondary { color: var(--teal); background: var(--teal-light); }
+  .back { display: inline-block; margin-top: 38px; color: var(--rose); text-decoration: none; font-size: .84rem; font-weight: 800; }
+  footer { text-align: center; color: var(--sub); font-size: .75rem; padding: 30px; border-top: 1px solid var(--line); }
+  @media (max-width: 760px) {
+    .summary, .grid, .flow { grid-template-columns: 1fr; }
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    th, td { padding: 11px 10px; font-size: .75rem; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="badge">INTERNAL PROJECT FIELD</div>
+  <h1>MOMENT</h1>
+  <p>メイク・美しさ・意識の変化を通じて、鏡を見た瞬間に「これが私だ」と自分の存在へ戻る体験を設計するプロジェクト。</p>
+</header>
+
+<main class="wrap">
+  <div class="summary">
+    <div class="metric"><strong>Phase 1</strong><span>コンセプト確定へ移行</span></div>
+    <div class="metric"><strong>6 Issues</strong><span>GitHubで初期管理</span></div>
+    <div class="metric"><strong>3層</strong><span>入口・観覧・上位体験</span></div>
+    <div class="metric"><strong>6/15</strong><span>初回MTG整理済み</span></div>
+  </div>
+
+  <section>
+    <h2 class="section-title"><small>CORE</small>プロジェクトの核</h2>
+    <article class="card lead-card">
+      <blockquote>メイクで別人になる場所ではない。鏡を見た瞬間に、「これが私だ」と自分の存在に戻る場所。</blockquote>
+      <p>MOMENTの中心は、美容そのものではなく、外見を通じて自己認識・内的安心感・自己実現のスタートラインが一気に立ち上がる瞬間にある。</p>
+      <div class="pill-row">
+        <span class="pill">鏡を見た瞬間</span>
+        <span class="pill">内的安心感</span>
+        <span class="pill">健全な他者評価</span>
+        <span class="pill">自己実現</span>
+        <span class="pill">ビフォーアフター</span>
+      </div>
+      <div class="links">
+        <a class="button" href="https://github.com/synchro-mgmt/MOMENT">GitHub repoを見る</a>
+        <a class="button secondary" href="https://github.com/synchro-mgmt/MOMENT/issues">Issuesを見る</a>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>POSITIONING</small>会社設計上の位置づけ</h2>
+    <div class="grid">
+      <article class="card">
+        <span class="tag bridge">会社設計</span>
+        <h3>意識領域を外側から見える形に翻訳する</h3>
+        <p>堀内さんの意識・自己実現領域を、美容・鏡・ビフォーアフターという可視化しやすい体験に接続する。</p>
+      </article>
+      <article class="card">
+        <span class="tag bridge">協業</span>
+        <h3>内田裕士さん側の美容・ブランド文脈と接続する</h3>
+        <p>美塾、ブランド開発、社会的信用のある美容文脈と、MOMENTの深い変化を無理なくつなぐ。</p>
+      </article>
+      <article class="card">
+        <span class="tag bridge">体験価値</span>
+        <h3>菱田紗絵子さんの変化を言語化する</h3>
+        <p>人からどう見られるかへの恐れがほどけ、自分の望みを伝え、気後れしていた場所に行けるようになる変化を素材化する。</p>
+      </article>
+      <article class="card">
+        <span class="tag bridge">信用設計</span>
+        <h3>スピリチュアルに見えすぎない見せ方を作る</h3>
+        <p>「波動」ではなく「意識」「内的安心感」「自己実現」「美しさ」「ビフォーアフター」を中心に対外言語を設計する。</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>CHANGE</small>MOMENTで起きている変化</h2>
+    <table>
+      <thead><tr><th>変化領域</th><th>起きていること</th><th>事業上の意味</th></tr></thead>
+      <tbody>
+        <tr><td>自己認識</td><td>鏡を見た瞬間に「これが私だ」と感じ、自分そのものへの肯定が起きる。</td><td>単なる美容ではなく、体験価値として差別化できる。</td></tr>
+        <tr><td>内的安心感</td><td>外側に安心感を埋めてもらおうとしなくなり、自分単体で存在できる感覚が立つ。</td><td>自己実現や次の行動へ進む前段階になる。</td></tr>
+        <tr><td>他者評価</td><td>どう見られるかへの恐れが減り、健全な評価は受け取れるようになる。</td><td>社会や場に出る力として説明できる。</td></tr>
+        <tr><td>行動変化</td><td>自分の望みを伝え、気後れしていた場所に行けるようになる。</td><td>ビフォーアフターと体験談にしやすい。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>EXPERIENCE PATH</small>体験導線の仮説</h2>
+    <div class="flow">
+      <div class="flow-step"><strong>01 認知</strong>note、LP、SNS、紹介でMOMENTを知る</div>
+      <div class="flow-step"><strong>02 入口</strong>オプチャで思想・対話・体験談に触れる</div>
+      <div class="flow-step"><strong>03 観覧</strong>公開セッションや軽いワークで変化を体験する</div>
+      <div class="flow-step"><strong>04 上位体験</strong>準備ができた人が少人数セッションへ進む</div>
+      <div class="flow-step"><strong>05 アフター</strong>自己実現・ビジョン・活動計画へつなぐ</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>ROADMAP</small>内部ロードマップ</h2>
+    <div class="timeline">
+      <article class="phase">
+        <div class="date">PHASE 0 / 立ち上げ</div>
+        <h3>GitHub管理の開始</h3>
+        <p>private repo、README、初回MTG議事録、プロジェクト設計、コンセプトメモ、ロードマップ、初期Issuesを作成済み。</p>
+      </article>
+      <article class="phase">
+        <div class="date">PHASE 1 / コンセプト確定</div>
+        <h3>一文定義と外向き言語を固める</h3>
+        <p>LP向けコピー、オプチャ説明文、避けたい表現と使える表現、菱田さんの変化の言語化を進める。</p>
+      </article>
+      <article class="phase">
+        <div class="date">PHASE 2 / 6月-9月ロードマップ</div>
+        <h3>日程・成果物・判断ポイントを見える化する</h3>
+        <p>6月、7月、8月、9月のゴールを決め、次回MTGアジェンダと役割分担を仮置きする。</p>
+      </article>
+      <article class="phase">
+        <div class="date">PHASE 3 / オプチャ設計</div>
+        <h3>入口と事前教育の場を作る</h3>
+        <p>オプチャ名、初回投稿、1週間分投稿テーマ、上位体験への導線を設計する。</p>
+      </article>
+      <article class="phase">
+        <div class="date">PHASE 4 / 公開セッション企画</div>
+        <h3>観覧者にも軽い変化が起きる中間導線を作る</h3>
+        <p>リアル/オンライン、直接セッション対象者数、観覧者ワーク、軽い版と強烈版のビフォーアフターを整理する。</p>
+      </article>
+      <article class="phase">
+        <div class="date">PHASE 5 / 素材管理</div>
+        <h3>写真・動画・インタビューを発信可能な資産にする</h3>
+        <p>素材一覧、公開可否、顔出し・名前出し・媒体別許諾、LP/note/オプチャ用素材を整理する。</p>
+      </article>
+      <article class="phase">
+        <div class="date">PHASE 6 / company-brain接続</div>
+        <h3>会社設計の正式プロジェクトへ接続する</h3>
+        <p>company-brain側へ置く情報とMOMENT repo側に置く情報の境界を決め、必要なら反映案を作る。</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>ISSUES</small>GitHub Issuesで管理中の初期タスク</h2>
+    <div class="grid">
+      <article class="card"><span class="tag next">#1</span><h3>一文定義とコンセプト確定</h3><p>内部・外部で迷わず説明できる言葉にする。</p></article>
+      <article class="card"><span class="tag next">#2</span><h3>6月-9月ロードマップ具体化</h3><p>日程・成果物・担当・判断ポイントまで落とし込む。</p></article>
+      <article class="card"><span class="tag plan">#3</span><h3>オプチャ設計書</h3><p>思想・事前教育・軽い体験・上位体験導線を担う入口を作る。</p></article>
+      <article class="card"><span class="tag plan">#4</span><h3>公開セッション企画</h3><p>観覧者にも変化が起きる中間導線を設計する。</p></article>
+      <article class="card"><span class="tag plan">#5</span><h3>素材管理表</h3><p>写真・動画・ビフォーアフター・インタビュー素材の公開可否を整理する。</p></article>
+      <article class="card"><span class="tag bridge">#6</span><h3>company-brain接続</h3><p>会社設計内の正式プロジェクトとして扱うための反映案を作る。</p></article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title"><small>GUARDRAILS</small>見せ方の注意点</h2>
+    <div class="grid">
+      <article class="card note">
+        <h3>避けたい見え方</h3>
+        <ul>
+          <li>単なるメイク講座や美容ショー</li>
+          <li>欠点補正・トレンドメイク中心の説明</li>
+          <li>スピリチュアル色が強すぎる言葉</li>
+          <li>高額セッションへの誘導に見える導線</li>
+          <li>堀内さん個人の魅力だけで集まる構造</li>
+        </ul>
+      </article>
+      <article class="card note">
+        <h3>使いたい見え方</h3>
+        <ul>
+          <li>美しさを通じて自分の存在に戻る体験</li>
+          <li>鏡を見た瞬間に自己認識が変わる体験</li>
+          <li>内的安心感が立ち上がる体験</li>
+          <li>そのまま社会や場に出ていける力</li>
+          <li>意識と美しさを社会に伝わる形へ翻訳するプロジェクト</li>
+        </ul>
+      </article>
+    </div>
+    <p class="source-note">Source: synchro-mgmt/MOMENT 初回MTG整理、プロジェクト設計、内部ロードマップより反映。</p>
+  </section>
+
+  <a href="../index.html" class="back">← Internal Field トップへ戻る</a>
+</main>
+
+<footer>
+  Internal Field — MOMENT Project Dashboard | 2026-06-15
+</footer>
+</body>
+</html>
