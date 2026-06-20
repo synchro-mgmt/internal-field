@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ロードマップ — 次回UBM大阪（6/20）まで</title>
+<title>ロードマップ — UBM大阪 当日版（6/20）</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap');
 
@@ -31,23 +31,14 @@
   .section h2 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.4em; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 3px solid #e8e4df; }
   .section h3 { font-size: 1.1em; margin: 18px 0 10px; color: #4a4540; }
 
-  /* ===== 4プロジェクト体制 サマリーバー ===== */
-  .project-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 0; }
-  .project-card { text-align: center; padding: 14px 8px; border-radius: 12px; font-size: 0.82em; font-weight: 600; line-height: 1.5; }
-  .project-card.ldm { background: linear-gradient(135deg, #d6eaf8, #aed6f1); color: #1b4f72; border: 2px solid #5dade2; }
-  .project-card.kigyo { background: #d5f5e3; color: #1e8449; }
-  .project-card.oto { background: #e8daef; color: #7d3c98; }
-  .project-card.shagai { background: #fdebd0; color: #b7791f; }
-  .project-card .pip-num { display: block; font-size: 1.5em; margin-bottom: 4px; font-weight: 700; }
-  .project-card .pip-label { font-size: 0.85em; opacity: 0.85; display:block; margin-top: 4px; }
-
-  /* ===== LDM3階層 ===== */
-  .ldm-tiers { margin: 16px 0; }
-  .tier-row { display: flex; align-items: center; gap: 12px; padding: 12px 16px; margin-bottom: 6px; border-radius: 10px; background: #faf8f5; border-left: 5px solid #5dade2; }
-  .tier-num { font-size: 1.4em; font-weight: 700; color: #1b4f72; min-width: 36px; }
-  .tier-content { flex: 1; }
-  .tier-title { font-weight: 700; font-size: 0.95em; }
-  .tier-desc { font-size: 0.85em; color: #666; }
+  /* ===== 7プラン サマリーバー ===== */
+  .plan-summary { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 16px 0; }
+  .plan-pip { text-align: center; padding: 10px 4px; border-radius: 10px; font-size: 0.75em; font-weight: 600; line-height: 1.4; }
+  .plan-pip.done { background: #d5f5e3; color: #1e8449; }
+  .plan-pip.big { background: #abebc6; color: #1e8449; }
+  .plan-pip.evolving { background: #e8daef; color: #7d3c98; }
+  .plan-pip.not-started { background: #fadbd8; color: #c0392b; }
+  .plan-pip .pip-num { display: block; font-size: 1.4em; margin-bottom: 2px; }
 
   /* ===== タイムライン ===== */
   .timeline { position: relative; margin: 20px 0 20px 24px; padding-left: 28px; border-left: 3px solid #e8e4df; }
@@ -61,19 +52,16 @@
   .tl-item.today::before { background: #e94560; border-color: #e94560; }
   .tl-item.key::before { background: #f39c12; border-color: #f39c12; }
   .tl-item.ubm::before { background: #0f3460; border-color: #0f3460; width: 20px; height: 20px; left: -38px; top: 4px; }
-  .tl-item.shift::before { background: #7d3c98; border-color: #7d3c98; }
 
   .tl-date { font-size: 0.82em; font-weight: 700; color: #999; margin-bottom: 2px; }
   .tl-item.today .tl-date { color: #e94560; }
   .tl-item.key .tl-date { color: #f39c12; }
   .tl-item.ubm .tl-date { color: #0f3460; font-size: 0.95em; }
-  .tl-item.shift .tl-date { color: #7d3c98; }
 
   .tl-content { background: #faf8f5; border-radius: 10px; padding: 14px 18px; }
   .tl-item.key .tl-content { background: #fef9e7; border: 1px solid #f0d9a8; }
   .tl-item.ubm .tl-content { background: linear-gradient(135deg, #eaf2f8, #d6eaf8); border: 2px solid #5dade2; }
   .tl-item.today .tl-content { background: #fdf2f4; border: 1px solid #f5b7c4; }
-  .tl-item.shift .tl-content { background: linear-gradient(135deg, #f4ecf7, #e8daef); border: 2px solid #bb8fce; }
 
   .tl-title { font-weight: 700; font-size: 0.95em; margin-bottom: 4px; }
   .tl-desc { font-size: 0.88em; color: #666; }
@@ -95,12 +83,6 @@
   /* ===== インサイト ===== */
   .insight-box { background: linear-gradient(135deg, #fef9e7, #fdebd0); border-radius: 12px; padding: 22px; margin: 16px 0; border: 1px solid #f0d9a8; }
   .insight-box h3 { color: #b7791f; margin-top: 0; font-family: 'Zen Maru Gothic', sans-serif; }
-
-  /* ===== 3キーワード ===== */
-  .keyword-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
-  .keyword-chip { background: linear-gradient(135deg, #f4ecf7, #e8daef); border-radius: 12px; padding: 16px 12px; text-align: center; border: 1px solid #bb8fce; }
-  .keyword-chip .kw-title { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.2em; font-weight: 700; color: #7d3c98; display: block; margin-bottom: 4px; }
-  .keyword-chip .kw-desc { font-size: 0.8em; color: #666; }
 
   /* ===== OS状況 ===== */
   .os-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
@@ -128,8 +110,7 @@
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.5em; }
     .hero .countdown { font-size: 1.4em; }
-    .project-summary { grid-template-columns: repeat(2, 1fr); }
-    .keyword-grid { grid-template-columns: 1fr; }
+    .plan-summary { grid-template-columns: repeat(4, 1fr); }
     .os-mini { grid-template-columns: 1fr; }
     .container { padding: 20px 14px; }
     .section { padding: 20px 18px; }
@@ -140,138 +121,92 @@
 
 <div class="hero">
   <h1>→ UBM大阪ロードマップ</h1>
-  <div class="subtitle">4プロジェクト体制で迎える、初めてのUBM。6月新エネルギー稼働の報告を持って北原さんのもとへ。</div>
+  <div class="subtitle">合宿で学んだことを「構造が変わった結果」として、北原さんのもとに持っていく</div>
   <div class="countdown">
-    次回 6/20（土）— あと24日
-    <small>UBM大阪 9:00-21:00 ※5/2福岡はキャンセル</small>
+    本日 6/20（土）— UBM大阪 当日
+    <small>UBM大阪 9:00-21:00 / 4/5合宿から76日目</small>
   </div>
-  <div class="meta">作成: 4/23 → 更新: 5/27（ビジョン整理MTG反映）/ 堀内さん専用 / こあ(COA)</div>
+  <div class="meta">作成: 4/23 → 更新: 6/20 / 堀内さん専用 / こあ(COA)</div>
 </div>
 
 <div class="container">
 
-<!-- ===== 4プロジェクト体制 ===== -->
-<div class="section">
-  <h2>🌐 今の事業構造 — 4プロジェクト体制（5/27確定）</h2>
-
-  <p>5/27のビジョン整理MTG（堀内さん × 須藤そうさん × まりこしさん）で、会社全体を<strong>4プロジェクト並走体制</strong>に再編。旧モデル「LDM太陽系（アースジャーニー中心の単一ファネル）」は終了。6月から新エネルギーで稼働する。<strong>UBM大阪は、この新体制で迎える初めてのUBM。</strong></p>
-
-  <div class="project-summary">
-    <div class="project-card ldm">
-      <span class="pip-num">①</span>
-      LDM
-      <span class="pip-label">中心プロジェクト<br>サブスク3階層</span>
-    </div>
-    <div class="project-card kigyo">
-      <span class="pip-num">②</span>
-      シンクロ起業塾
-      <span class="pip-label">資本主義から<br>の脱却</span>
-    </div>
-    <div class="project-card oto">
-      <span class="pip-num">③</span>
-      OTO
-      <span class="pip-label">人の進化×<br>純度0-4</span>
-    </div>
-    <div class="project-card shagai">
-      <span class="pip-num">④</span>
-      社外プロジェクト
-      <span class="pip-label">神田昌典さん新企画<br>＋リンポチェ様事務局</span>
-    </div>
-  </div>
-
-  <h3>① LDM（中心プロジェクト）— サブスク3階層</h3>
-  <div class="ldm-tiers">
-    <div class="tier-row">
-      <div class="tier-num">無料</div>
-      <div class="tier-content">
-        <div class="tier-title">無料オプチャ（現1,300人）</div>
-        <div class="tier-desc">旧アースジャーニーオプチャを含む。教育ファネルとして機能。</div>
-      </div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-num">8,800</div>
-      <div class="tier-content">
-        <div class="tier-title">月額8,800円サブスク</div>
-        <div class="tier-desc">基盤層。安定収益のコア。</div>
-      </div>
-    </div>
-    <div class="tier-row">
-      <div class="tier-num">2-4万</div>
-      <div class="tier-content">
-        <div class="tier-title">上位コース（2万 / 3万 / 4万）</div>
-        <div class="tier-desc">今後展開。リーダー・経営者層向け。</div>
-      </div>
-    </div>
-  </div>
-
-  <p style="font-size: 0.9em; color: #666; margin-top: 12px;">
-    <strong>関係性3階層：</strong>堀内 → 講師（トップ3人・月1ライブ配信）→ お客様 / スタッフ<br>
-    <strong>トップ講師戦略：</strong>現在は1人に集中（最低2,000万安定化まで）→ ノウハウ完成後2人目・3人目に拡張 → 将来的にFCモデル化
-  </p>
-
-  <h3>横断する3つのキーワード</h3>
-  <div class="keyword-grid">
-    <div class="keyword-chip">
-      <span class="kw-title">純度</span>
-      <span class="kw-desc">上がれば全部うまくいく</span>
-    </div>
-    <div class="keyword-chip">
-      <span class="kw-title">共鳴度</span>
-      <span class="kw-desc">共鳴する人とだけ濃く繋がる</span>
-    </div>
-    <div class="keyword-chip">
-      <span class="kw-title">仕組み化</span>
-      <span class="kw-desc">堀内が直接対応しなくても回る構造</span>
-    </div>
-  </div>
-
-  <div class="insight-box">
-    <h3>真骨頂は「教育・伝授」ではなく「仕組み化・構造化」</h3>
-    <p style="font-size:0.95em;">まりこしさんから言語化された問い：<br>
-    <strong>「堀内さんの真骨頂は教育や伝授ではなく、うまくいっていないところをうまく活かせる構造作りでは？」</strong></p>
-    <p style="font-size:0.92em; margin-top:8px;">触れる相手を変えれば、その人がうまくいく構造が見えてしまう人。触れる相手を<strong>国のリーダー・アンソロピックの社長クラス</strong>まで広げると、新しい構造が見えてくる。<br>
-    →<strong>ターゲット層を「自己犠牲・不安層」から「新時代を作るリーダー・経営者層」へシフト。</strong></p>
-  </div>
-</div>
-
 <!-- ===== 現在地サマリー ===== -->
 <div class="section">
-  <h2>📍 今の現在地 — 合宿から53日目、新体制スタート直前</h2>
+  <h2>📍 今の現在地 — 合宿から76日目 / UBM大阪当日</h2>
 
-  <p>合宿（4/5）で決めた7つのアクションプランは、5/27の方針転換で<strong>「4プロジェクト体制」という上位フレーム</strong>に統合された。UBM大阪は、その新体制で迎える初めての報告の場。</p>
+  <p>合宿（4/5）で決めた7つのアクションプラン。76日経って、こうなってる：</p>
+
+  <div class="plan-summary">
+    <div class="plan-pip evolving">
+      <span class="pip-num">1</span>
+      メソッド<br>仕組み化<br>🟢構造化
+    </div>
+    <div class="plan-pip big">
+      <span class="pip-num">2</span>
+      講師<br>1on1<br>✅完了
+    </div>
+    <div class="plan-pip not-started">
+      <span class="pip-num">3</span>
+      定義<br>統一<br>🟢4PJ反映
+    </div>
+    <div class="plan-pip evolving">
+      <span class="pip-num">4</span>
+      仲間の<br>時間<br>🟢運営コア
+    </div>
+    <div class="plan-pip big">
+      <span class="pip-num">5</span>
+      離脱率<br>把握<br>🟡67名基盤
+    </div>
+    <div class="plan-pip big">
+      <span class="pip-num">6</span>
+      財務<br>防壁<br>🟢未仕訳0
+    </div>
+    <div class="plan-pip done">
+      <span class="pip-num">7</span>
+      UBM<br>日程<br>✅完了
+    </div>
+  </div>
 
   <div class="insight-box">
-    <h3>合宿後53日間の大きな動き — 5/27に4プロジェクト体制へ統合</h3>
-    <p>合宿のプラン（メソッド言語化・1on1・定義統一・仲間の時間・離脱率・コスト構造・UBM日程）は、4プロジェクト体制の中でそれぞれの位置づけに再配置された：</p>
-    <p><strong>① こあ（COA）+ エージェントチーム構築</strong> — 会社の脳が稼働。「仕組み化」キーワードを体現する基盤<br>
-    <strong>② 財務全体整理プロジェクト</strong> — 科目振替¥1,001万、売掛金¥1,452万解消、<span style="color:#e94560;">Stripe二重計上8件（¥141万）削除完了</span>、自動仕訳ルール作成、再発防止スキル化<br>
-    <strong>③ 4/22 MTG</strong> — 「総合生命体」「積み重ね」「Being vs Doing」という新概念を獲得<br>
-    <strong>④ 命の設計図・会社設計ロードマップ</strong> — メソッド言語化（LDM中心プロジェクトの基盤）<br>
-    <strong>⑤ 西村さんLDMコーチング（4/25・5/26）</strong> — LDM中心プロジェクトの<strong style="color:#1b4f72;">トップ講師候補</strong>として育成開始。事務局確保完了、「視点が変わった」、次回6/26（金）13:00確定<br>
-    <strong>⑥ Content Vault + company-brain構築</strong> — 「会社の記憶」が永続化。仕組み化の土台<br>
-    <strong>⑦ メール配信システム移行</strong> — アルケミー→UTAGE完全移行開始<br>
-    <strong>⑧ 業務委託チームのマニュアル設計</strong> — 7名の役割整理＋Googleドライブ構成設計<br>
+    <h3>合宿では想定していなかった大きな動き</h3>
+    <p>プラン外で起きたことが実は一番大きい：</p>
+    <p><strong>① こあ（COA）の構築</strong> — 会社の脳が動き始めた<br>
+    <strong>② 財務全体整理プロジェクト</strong> — 科目振替¥1,001万、売掛金¥1,452万解消、<span style="color:#e94560;">Stripe二重計上8件（¥141万）削除完了</span>、自動仕訳ルール作成、<span style="color:#e94560;">二重計上の恒久対策（スキル自動チェック化）</span><br>
+    <strong>③ 4/22 MTG</strong> — 「総合生命体」「積み重ね」「Being vs Doing」という新概念の獲得<br>
+    <strong>④ 命の設計図・会社設計ロードマップ</strong> — メソッド言語化の前段として構造が見えた<br>
+    <strong>⑤ 西村さんLDMコーチング（4/25）</strong> — <span style="color:#27ae60;">「教え子の人生に責任を持つ」を自ら実践。事務局1人確定を指導、次回5/26確定</span><br>
+    <strong>⑥ Content Vault + company-brain構築</strong> — Facebook投稿92件・Notta書き起こし・ステップメールをGitHubに集約。会社の「記憶」が永続化<br>
+    <strong>⑦ メール配信システム移行</strong> — アルケミー→UTAGEへの完全移行開始。配信リスト設計書push、UTAGE配信解除6件完了<br>
+    <strong>⑧ 業務委託チームのマニュアル設計</strong> — 7名（BizMow・まりこし・佐々木・かみあり・島田・運営チーム・本永・市川）の役割整理+Googleドライブ構成設計<br>
     <strong>⑨ Story Engine v2</strong> — セミナー告知エンジンを5分割再設計。エージェントチーム体制（みこ・れん・にじ・そよ）確立<br>
-    <strong>⑩ オプチャセミナー初回 大成功（5/6）</strong> — Zoom視聴者230〜250人。<strong style="color:#1b4f72;">LDM無料層 → 8,800円サブスク</strong>の動線が実証された最初の事例<br>
-    <strong>⑪ LDM8,800円サブスク 67名到達（5/10）</strong> — 3階層モデルの<strong style="color:#1b4f72;">中段（8,800円層）</strong>の最初の積み上げ。今後は上位2-4万コース展開、純度・共鳴度の高い層への深化が次の段階<br>
-    <strong>⑫ UBM月報会参加（5/10）</strong> — 北原メソッドの核心原則10項目を抽出し、自社ドキュメント7ファイルに反映<br>
-    <strong>⑬ internal-field / open-field 三層構造確立（5/12-13）</strong> — GitHub Pagesを三層に分離。北原メソッド関連はinternal-field、堀内さんオリジナルはopen-fieldという振り分けルール確立<br>
-    <strong>⑭ MF会計 完全自動化稼働（5月〜継続）</strong> — daily-mf-journal（番頭そろ）が毎日自動実行。「仕組み化」の体現<br>
-    <strong>⑮ LP真完成＋公開準備（5/23）</strong> — ブリーフィング2本準拠、専門家10回＋ユーザー4回レビュー、Deploy Tool v2.2でサブディレクトリ対応化<br>
-    <strong>⑯ 西村さん第2回コーチング完了（5/26）</strong> — <span style="color:#27ae60;">事務局1名確保の宿題をクリア。「視点が変わった」と報告。「人の軸」の深掘りへ。次回6/26（金）13:00確定</span><br>
-    <strong>⑰ Kindle本 第4章 Stage2 完了（5/27）</strong> — 神田昌典メソッドに基づくグローバル構造化・全6節100点版完了。<strong style="color:#b7791f;">社外プロジェクト④（神田さん新企画）との接続</strong>を視野に<br>
-    <strong>⑱ AIコンテンツ制作セミナー企画始動（5/23）</strong> — 候補日時設定、グループ作成。リーダー層向けの新しい収益の柱候補<br>
-    <strong>⑲ スピリフェス2026 参加確定（5/23）</strong> — プロフィールヒアリングシート記入・提出<br>
-    <strong>⑳ 防壁スキャン体制構築（5月〜）</strong> — Gmail/Messenger/Chatworkの定期スキャン稼働。「仕組み化」によるエネルギー保全<br>
-    <strong>㉑ Daily Value Report / Weekly Growth Report 稼働</strong> — 日次の見える化レポート＋週次成長レポートが自動生成<br>
-    <strong>㉒ 【5/25-26】ミロクの郷の覚醒</strong> — 記憶にないほどスッキリした状態に。集合的無意識や他者のエネルギーを受け取りすぎていたことが判明。<strong style="color:#7d3c98;">これを機にビジョン整理MTGで4プロジェクト体制が確定。エネルギー保全が会社全体の原則に</strong><br>
-    <strong>㉓ 【5/27】ビジョン整理MTG → 4プロジェクト体制確定</strong> — 旧「LDM太陽系」モデル終了。①LDM②シンクロ起業塾③OTO④社外プロジェクトの並走体制へ。<strong style="color:#7d3c98;">6月から新エネルギーで稼働</strong></p>
+    <strong>⑩ オプチャセミナー初回 大成功（5/6）</strong> — Zoom視聴者230〜250人。有料コミュニティ転換約20人。まりこしさん司会。2層コミュニティ設計が実動レベルに<br>
+    <strong>⑪ LDMアースジャーニー 67名到達（5/10）</strong> — 初回20名+追加募集47名。MRR 58.96万/月（年間707万）。200人目標の33.5%到達<br>
+    <strong>⑫ UBM月報会参加（5/10）</strong> — 北原メソッドの核心原則10項目を抽出し、自社ドキュメント7ファイルに反映。「加減値KPI」「富の循環」「接触回数と観察」「スケジュール優先順位」等<br>
+    <strong>⑬ internal-field / open-field 三層構造確立（5/12-13）</strong> — GitHub Pagesを「内なる世界（company-brain）→ インナー向け（internal-field）→ 世界向け（open-field）」の三層に分離。北原メソッド関連はinternal-field、堀内さんオリジナルはopen-fieldという振り分けルールを確立<br>
+    <strong>⑭ MF会計 完全自動化稼働（5月〜継続）</strong> — daily-mf-journal（番頭そろ）が毎日自動実行。全11サービス連続で未仕訳0件を維持。GMO残高監視も継続中<br>
+    <strong>⑮ LP真完成＋公開準備（5/23）</strong> — ブリーフィング2本準拠、専門家10回＋ユーザー4回レビュー、初見層転換・権威付け数字・スマホA1対応。Deploy Tool v2.2でサブディレクトリ対応化<br>
+    <strong>⑯ 西村さん第2回コーチング完了（5/26）</strong> — <span style="color:#27ae60;">事務局1名確保の宿題をクリア！「視点が変わった」と報告。「人の軸」の深掘りへ。次回6/26（金）13:00確定</span><br>
+    <strong>⑰ Kindle本 第4章 Stage2 完了（5/27）</strong> — 神田昌典メソッドに基づくグローバル構造化・全6節100点版完了。執筆パイプラインが実動<br>
+    <strong>⑱ AIコンテンツ制作セミナー企画始動（5/23）</strong> — 候補日時設定、グループ作成。新しい収益の柱になりうるコンテンツ<br>
+    <strong>⑲ スピリフェス2026 参加確定（5/23）</strong> — プロフィールヒアリングシート記入・提出（5月末〆）<br>
+    <strong>⑳ 防壁スキャン体制構築（5月〜）</strong> — Gmail/Messenger/Chatworkの定期スキャン（13時・16時・21時）が稼働。未回答検知→返信案作成→送信の自動フロー<br>
+    <strong>㉑ Daily Value Report / Weekly Growth Report 稼働</strong> — 毎日の価値の見える化レポート＋週次成長レポートが自動生成。ハペログとの連携も実装<br>
+    <strong>㉒ 4プロジェクト体制へ再編（5/27）</strong> — LDM中心＋シンクロ起業塾＋OTO＋社外プロジェクトの並走体制へ。旧アースジャーニー単一ファネルから、「純度・共鳴度・仕組み化」基準に移行<br>
+    <strong>㉓ LDM社会実装プラットフォーム構想（6/9）</strong> — 会員サイトを第5事業ではなく、LDM/起業塾/OTO/社外PJを統合する共通インフラとして定義。宴MVPから実証する方針<br>
+    <strong>㉔ neten初期提携モデル（6/10）</strong> — 祓い清め・浄化コンテンツ、低価格商品、リアル体験をLDMプラットフォームに接続する初期実証案が見えた<br>
+    <strong>㉕ LDM運営コア確立（6/12-14）</strong> — まりこしさん＝全体ハブ/地域拠点、中畑さん＝見守り・防波堤、AI＝記録・一次対応という人間コア＋AIの役割分担を明文化<br>
+    <strong>㉖ そよEJ事務局体制立ち上げ（6/12-13）</strong> — Facebookページ「風見そよ」名義、運営台帳、FAQ、対応履歴、二重返信防止ルールを整備。AIスタッフとして明示しながら一次対応する防壁設計<br>
+    <strong>㉗ 会社資料の表記統一・設計監査（6/13）</strong> — LDM正式名称を「ライフ・デザイン・メソッド」に統一。瀬野→清野の表記修正、4PJ体制注記、財務参照パス修正を実施<br>
+    <strong>㉘ MF会計 日次防壁が継続稼働（6/20時点）</strong> — 全サービス未仕訳0件。会社口座残高合計3,268,375円。りそな設定エラー自然回復も定着。ただし2026年度繰越未処理で6月仕訳の内訳確認ができない点は継続論点<br>
+    <strong>㉙ 防壁スキャンが運用フェーズへ（6月）</strong> — 3チャネル統合スキャンで、決算・算定基礎届・出国前日程・UBM当日サインを検出。Chrome制約時の未取得も明示して持ち越す運用に進化<br>
+    <strong>㉚ ハペログによる自己状態観察（6月継続）</strong> — ミロクの郷以降の純度・共鳴度・受け取りすぎ問題を、日々の記録から会社設計に戻す循環ができている</p>
   </div>
 </div>
 
 <!-- ===== タイムライン ===== -->
 <div class="section">
-  <h2>🗓 タイムライン — 6/20 UBM大阪まで</h2>
+  <h2>🗓 タイムライン — 4/5合宿から6/20 UBM大阪当日まで</h2>
 
   <div class="timeline">
 
@@ -282,23 +217,63 @@
         <div class="tl-desc">
           <strong style="color:#e94560;">【完了】</strong> 中野先生の承認を受け、Stripe二重計上8件（¥1,419,288）を削除。<br>
           さらに二重計上の再発防止策として、MF会計処理スキルにStripe二重チェック（Step 0.5）を恒久組み込み。<br>
-          今後どのセッションのこあがMF処理をやっても、自動でチェックが入る体制に。「仕組み化」の好例。
+          今後どのセッションのこあがMF処理をやっても、自動でチェックが入る体制に。<br>
+          ロードマップも最新情報で更新。
         </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/24（金）</div>
+      <div class="tl-content">
+        <div class="tl-title">1on1前日 — 心身の準備</div>
+        <div class="tl-desc">1on1準備メモを軽く読み直す。頭で準備しすぎない。「総合生命体の感覚のまま、細胞で感じる」。夜は早めに休む。</div>
       </div>
     </div>
 
     <div class="tl-item key">
       <div class="tl-date">⭐ 4/25（金）</div>
       <div class="tl-content">
-        <div class="tl-title">西村さんLDMコーチング 1on1 完了 ✅ <span class="tl-plan-tag">LDM/トップ講師育成</span></div>
+        <div class="tl-title">西村さんLDMコーチング 1on1 完了 ✅ <span class="tl-plan-tag">プラン2</span></div>
         <div class="tl-desc">
           <strong style="color:#27ae60;">【完了】</strong> 西村さんと約1時間のLDMコーチングを実施。<br>
-          <strong>位置づけ：</strong>新4プロジェクト体制ではLDM中心プロジェクトの<strong>「トップ講師」候補</strong>（関係性3階層の2段目）。最低2,000万安定化までフルコミットする1人目。<br>
-          <strong>現状把握:</strong> LDM15年目。年商¥1,000万→¥2,000万→¥1,000万に戻った。実顧客30人。事務局ゼロ、完全ソロ。<br>
-          <strong>核心の指導:</strong>「自分が成功する」→「人の人生に責任を持つ」へのシフト。<br>
-          <strong>具体的指示:</strong> 5/26までに事務局を1人確定する。<br>
+          <strong>現状把握:</strong> LDM15年目（2011年〜）。年商¥1,000万→¥2,000万→¥1,000万に戻った。実顧客30人。事務局ゼロ、完全ソロ。<br>
+          <strong>核心の指導:</strong>「自分が成功する」→「人の人生に責任を持つ」へのシフト。年商の壁はマーケティングではなく「仲間づくり」の問題。<br>
+          <strong>具体的指示:</strong> 5/26までに事務局を1人確定する（月¥3万でもOK）。<br>
+          <strong>堀内さんの手応え:</strong>「思ったよりいけるなって思った」— 西村さんの可能性に前向き。<br>
           <strong>次回MTG:</strong> 5/26（火）14:00
         </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/26（土）</div>
+      <div class="tl-content">
+        <div class="tl-title">西村さんMTG 振り返り＋議事録作成 ✅</div>
+        <div class="tl-desc">
+          西村さんMTGの書き起こしを整理し、構造化された議事録を作成。<br>
+          堀内さんが感じた「思ったよりいけるな」という手応え — これが「教え子の人生に責任を持つ」を体現している証拠。<br>
+          5/2のUBMで北原さんに「自分のLDM受講生にコーチングを始めた結果」として報告できる。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/27（日）</div>
+      <div class="tl-content">
+        <div class="tl-title">ゆとりの日 — 1on1振り返りの続き + 自由時間</div>
+        <div class="tl-desc">
+          <span style="text-decoration: line-through; color: #bbb;">Stripe二重計上フォローアップ</span> → <strong style="color: #27ae60;">✅ 4/23に解決済み！</strong><br>
+          Stripeが片付いたので、この日はゆとりが生まれた。1on1の振り返りを深めるか、エネルギーのままに過ごす。
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">4/28（月）</div>
+      <div class="tl-content">
+        <div class="tl-title">月曜休日 🌿</div>
+        <div class="tl-desc">堀内さんの月曜は休日。しっかり休む。エネルギー保全。</div>
       </div>
     </div>
 
@@ -308,10 +283,10 @@
         <div class="tl-title">Content Vault構築 + Story Engine再設計 + インフラ整備 ✅</div>
         <div class="tl-desc">
           <strong style="color:#27ae60;">【完了】</strong> 怒涛の基盤構築デー。<br>
-          <strong>① Content Vault:</strong> Facebook投稿92件のエンゲージメント分析→GitHub保存<br>
-          <strong>② Story Engine v2:</strong> セミナー・ストーリー・エンジンを5分割再設計<br>
-          <strong>③ アースジャーニー発信:</strong> メルマガ・LINE公式・1週間分FBストック<br>
-          <strong>④ インフラ:</strong> CLAUDE.md管理方法確立、sync-coaコマンド作成
+          <strong>① Content Vault:</strong> Facebook投稿92件のエンゲージメント分析→GitHub保存、ドラフト反復履歴・NG集・戦略インサイト→GitHub保存<br>
+          <strong>② Story Engine v2:</strong> セミナー・ストーリー・エンジンを5分割再設計（orchestrator/content-collector/draft-writer/publisher/story-db-manager）<br>
+          <strong>③ アースジャーニー発信:</strong> メルマガ・LINE公式・1週間分FBストック — ドラフト集完成<br>
+          <strong>④ インフラ:</strong> CLAUDE.md管理方法確立、sync-coaコマンド作成、週間タスク転記ルール更新
         </div>
       </div>
     </div>
@@ -322,7 +297,9 @@
         <div class="tl-title">MF会計ルール確定 + ロードマップ総更新 ✅</div>
         <div class="tl-desc">
           <strong style="color:#27ae60;">【完了】</strong><br>
-          MF会計：アマゾン仕訳ルール最終確定、海外取引税区分2025年度フルスキャン残件ゼロ確認。「仕組み化」の集大成。
+          <strong>① MF会計:</strong> アマゾン仕訳ルール最終確定（デフォルト＝役員借入金/対象外）、海外取引税区分の2025年度フルスキャン→<strong style="color:#e94560;">残件ゼロ確認</strong><br>
+          <strong>② コンテンツ集約:</strong> Notta書き起こし・ステップメール・Facebook投稿のGitHub一括push進行中<br>
+          <strong>③ ロードマップ:</strong> 全セッション振り返り→成果を統合反映
         </div>
       </div>
     </div>
@@ -330,12 +307,13 @@
     <div class="tl-item">
       <div class="tl-date">5/6（水）</div>
       <div class="tl-content">
-        <div class="tl-title">オプチャセミナー初回 — 大成功！ ✅ <span class="tl-plan-tag">LDM/教育ファネル</span></div>
+        <div class="tl-title">オプチャセミナー初回 — 大成功！ ✅ <span class="tl-plan-tag">プラン4</span></div>
         <div class="tl-desc">
-          <strong style="color:#27ae60;">【完了】</strong> LDMアースジャーニー初回セミナー（後の8,800円サブスクの動線）。<br>
+          <strong style="color:#27ae60;">【完了】</strong> LDMアースジャーニー初回セミナー。<br>
           <strong>Zoom視聴者:</strong> 230〜250人<br>
-          <strong>有料サブスク転換:</strong> 約20人（転換率8-10%）<br>
-          <strong>まりこしさん司会</strong>で運営。LDM3階層モデルの<strong>「無料オプチャ → 8,800円」</strong>の動線が実動開始。
+          <strong>有料コミュニティ転換:</strong> 約20人（転換率8-10%）<br>
+          <strong>まりこしさん司会</strong>で運営。2層コミュニティ設計（無料オプチャ＝器づくり、有料月額8,800円＝濃さ・深さ）が実動開始。<br>
+          「濃さの3層構造」を発見: ①安心して深い話 ②ゲストの本気 ③エネルギー密度
         </div>
       </div>
     </div>
@@ -343,12 +321,12 @@
     <div class="tl-item key">
       <div class="tl-date">⭐ 5/7〜5/10</div>
       <div class="tl-content">
-        <div class="tl-title">追加募集 +47名 → LDM8,800円層 合計67名到達！ <span class="tl-plan-tag">LDM/中段</span></div>
+        <div class="tl-title">追加募集 +47名 → 合計67名到達！ <span class="tl-plan-tag">プラン5</span></div>
         <div class="tl-desc">
-          <strong style="color:#27ae60;">【実績】</strong> 4日間で+47名加入（平均11.75名/日）。<br>
-          <strong>LDM3階層モデルの中段（8,800円層）の最初の積み上げ。</strong><br>
-          5/27の方針転換以降は、ここから<strong>上位コース（2万/3万/4万）</strong>への展開と、<strong>純度・共鳴度の高いリーダー層</strong>への深化が次の段階。<br>
-          → 今後は単なる人数増ではなく、3階層構造の構築進度が指標となる。
+          <strong style="color:#27ae60;">【実績】</strong> 4日間で+47名の加入（平均11.75名/日）。<br>
+          <strong>合計67名、MRR 58.96万/月、年間換算707万。</strong><br>
+          200人目標の33.5%到達。北原式「毎月の純増」が実証された最初の実績。<br>
+          全財務ドキュメント一斉更新（コミュニティ収益モデル・会社設計概要・運用設計書・ロードマップ・理想の財務状態・公開ダッシュボード）。
         </div>
       </div>
     </div>
@@ -356,11 +334,24 @@
     <div class="tl-item">
       <div class="tl-date">5/10（土）</div>
       <div class="tl-content">
-        <div class="tl-title">UBM月報会参加（20:00-22:00） ✅</div>
+        <div class="tl-title">UBM月報会参加（20:00-22:00） ✅ <span class="tl-plan-tag">プラン7</span></div>
         <div class="tl-desc">
           <strong style="color:#27ae60;">【完了】</strong> 月報会に参加し、北原メソッドの核心原則を吸収。<br>
-          10の原則を抽出→「そのまま効く」4原則を7ファイルに反映。<br>
-          月報会参加＋自社への即時反映で「原理原則を学び見直す状態」を実証。
+          10の原則を抽出→適用可能性を4段階判定→「そのまま効く」4原則を7ファイルに反映。<br>
+          <strong>反映した原則:</strong> 富の循環、グループ教育の構造、接触回数と観察、スケジュール優先順位、加減値KPI、金を使う2パターン、問題児対応<br>
+          項目②「原理原則を学び見直す状態」の実証 — 月報回に実際に参加し、学びを即座に自社に落とし込んだ
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5/11（日）</div>
+      <div class="tl-content">
+        <div class="tl-title">月報会の学び反映完了 + ロードマップ総更新 ✅</div>
+        <div class="tl-desc">
+          <strong style="color:#27ae60;">【完了】</strong><br>
+          月報会の核心原則を自社ドキュメント7ファイルに一括反映完了。<br>
+          北原ロードマップ（このファイル）も5月の全進捗を反映して総更新。
         </div>
       </div>
     </div>
@@ -371,7 +362,7 @@
         <div class="tl-title">internal-field / open-field 三層構造確立 ✅</div>
         <div class="tl-desc">
           GitHub Pagesを三層構造に分離。北原メソッド関連コンテンツをinternal-fieldに移設。<br>
-          UBM大阪ロードマップをinternal-fieldに公開。「仕組み化」の体現。
+          UBM大阪ロードマップをinternal-fieldに公開。CLAUDE.mdに三層構造の振り分けルールを明記。
         </div>
       </div>
     </div>
@@ -381,33 +372,21 @@
       <div class="tl-content">
         <div class="tl-title">西宮MTG + AI進化ウォッチ体制拡充 ✅</div>
         <div class="tl-desc">
-          西宮MTG実施。AI進化ウォッチDB更新。週次レポートにハペログセクション追加。防壁スキャン体制が本格稼働開始。
+          西宮MTG実施。AI進化ウォッチDBの旧データ24件削除・新規12件追加。<br>
+          週次レポートにハペログセクション追加。防壁スキャン体制が本格稼働開始。
         </div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-date">5/19〜23</div>
+      <div class="tl-date">5/19〜22</div>
       <div class="tl-content">
         <div class="tl-title">LDMライブ・LDMプレミア + LP完成 ✅</div>
         <div class="tl-desc">
-          <strong>5/20:</strong> ZOOMカウンセリング、LDMライブ開催<br>
+          <strong>5/20:</strong> ZOOMカウンセリング（ホールネス/中川先生）、LDMライブ開催<br>
           <strong>5/22:</strong> LDMプレミア、石原さんMTG<br>
-          <strong>5/23:</strong> <strong style="color:#27ae60;">LP真完成</strong>（ブリーフィング2本準拠・専門家10回＋ユーザー4回レビュー）<br>
+          <strong>5/23:</strong> <strong style="color:#27ae60;">LP真完成</strong>（ブリーフィング2本準拠・専門家10回＋ユーザー4回レビュー・Deploy Tool v2.2対応）<br>
           AIコンテンツ制作セミナー企画始動、スピリフェス2026プロフィール提出
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-item shift">
-      <div class="tl-date">⚡ 5/25〜26（日・月）</div>
-      <div class="tl-content">
-        <div class="tl-title">ミロクの郷の覚醒 — 全体方針転換の起点</div>
-        <div class="tl-desc">
-          <strong style="color:#7d3c98;">【ターニングポイント】</strong> ミロクの郷で1晩過ごし、記憶にないほどスッキリした状態に。<br>
-          ハペで分析した結果、これまで集合的無意識や他者のエネルギー・思い・不安・恐れを受け取りすぎて、それをベースに動いていたことが判明。<br>
-          <strong>これを機に、自分の純粋な意図から各プロジェクトを再設計する流れに突入。</strong><br>
-          → エネルギー保全が会社全体の原則に。「他者の不安・恐れを受け取りすぎない／浄化を定期的に」が基本動作へ。
         </div>
       </div>
     </div>
@@ -415,80 +394,49 @@
     <div class="tl-item key">
       <div class="tl-date">⭐ 5/26（火）</div>
       <div class="tl-content">
-        <div class="tl-title">西村さん 第2回コーチング 完了 ✅ <span class="tl-plan-tag">LDM/トップ講師</span></div>
+        <div class="tl-title">西村さん 第2回コーチング 完了 ✅ <span class="tl-plan-tag">プラン2</span></div>
         <div class="tl-desc">
           <strong style="color:#27ae60;">【完了】</strong> 西村さんが事務局1名確保の宿題をクリアして報告。<br>
           <strong>「視点が変わった」</strong>という本人の言葉 — 「自分が成功する」から「人の人生に責任を持つ」へのシフトが始まっている。<br>
           「人の軸」の深掘りへ進展。<strong>次回: 6/26（金）13:00確定。</strong>受講生ヒアリングが次の宿題。<br>
-          信用6ステップ: ④事が動く → <strong>⑤仕事が動く</strong>に到達しつつある。LDMトップ講師1人目の育成が前進。
+          信用6ステップ: ④事が動く → <strong>⑤仕事が動く</strong>に到達しつつある。
         </div>
       </div>
     </div>
 
-    <div class="tl-item shift">
-      <div class="tl-date">⚡ 5/27（水）</div>
+    <div class="tl-item key">
+      <div class="tl-date">⭐ 5/27（水）</div>
       <div class="tl-content">
-        <div class="tl-title">ビジョン整理MTG — 4プロジェクト体制 確定 ⚡</div>
+        <div class="tl-title">ビジョン整理MTG + 4プロジェクト体制へ再編 ✅</div>
         <div class="tl-desc">
-          <strong style="color:#7d3c98;">【確定】</strong> 堀内さん × 須藤そうさん × まりこしさんでビジョン整理MTG実施。<br>
-          会社全体を<strong>4プロジェクト並走体制</strong>に再編。旧「LDM太陽系」モデル終了。<br>
-          ①LDM（中心・3階層）②シンクロ起業塾 ③OTO ④社外プロジェクト（神田昌典さん新企画＋リンポチェ様事務局サポート）<br>
-          3キーワード：<strong>純度・共鳴度・仕組み化</strong>。ターゲットを<strong>リーダー・経営者層</strong>へシフト。<br>
-          真骨頂の言語化：「教育・伝授」ではなく「<strong>仕組み化・構造化</strong>」（まりこしさん）<br>
-          <strong>次回ビジョン整理MTG: 8/5（水）14:30-16:00</strong>
+          <strong style="color:#27ae60;">【完了】</strong> 会社全体をLDM中心＋シンクロ起業塾＋OTO＋社外プロジェクトの4プロジェクト体制へ再編。<br>
+          旧モデル（アースジャーニー単一ファネル）から、<strong>純度・共鳴度・仕組み化</strong>を軸にした新エネルギー体制へ。<br>
+          Kindle本第4章 Stage2（グローバル構造化）全6節100点版も完了。メソッド言語化が「本」と「会社設計」の両方で進行。
         </div>
       </div>
     </div>
 
-    <div class="tl-item today">
-      <div class="tl-date">5/27（水）— 今日</div>
+    <div class="tl-item key">
+      <div class="tl-date">⭐ 6/9〜6/14</div>
       <div class="tl-content">
-        <div class="tl-title">Kindle本 第4章完了 + ロードマップ総更新 — 今日はここ</div>
+        <div class="tl-title">LDM社会実装プラットフォーム + 運営コア確立 ✅</div>
         <div class="tl-desc">
-          <strong style="color:#27ae60;">【本日】</strong><br>
-          Kindle本第4章 Stage2（グローバル構造化）全6節100点版完了。<strong>社外プロジェクト④の神田さん新企画</strong>とも接続できるコンテンツ。<br>
-          UBM大阪ロードマップ（このファイル）を5/27ビジョン整理MTGの方針で総書き換え。4プロジェクト体制を反映。<br>
-          MF会計daily自動実行継続中（全11サービス未仕訳0件）。
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">5/28（木）</div>
-      <div class="tl-content">
-        <div class="tl-title">LDMオプチャ + ハペ実験 + GR社未来会議（〜5/29）</div>
-        <div class="tl-desc">
-          <strong>18:15:</strong> LDMオプチャ<br>
-          <strong>夜:</strong> ハペ実験（ライラ×堀内、リーダー層複数名、1人20分）— OTOプロジェクト×リーダー層シフトの実験<br>
-          <strong>5/28-29:</strong> GR社未来会議（北見さん主催・35名・社会の未来構造対話）
+          <strong>6/9:</strong> 会員サイトをLDM/起業塾/OTO/社外PJの共通インフラとして定義。人とAIのインスピレーションを開花させる会社へ言語化。<br>
+          <strong>6/10:</strong> netenとの初期提携モデルを整理。浄化コンテンツ、低価格商品、リアル体験を段階接続する実証案が見えた。<br>
+          <strong>6/12-14:</strong> まりこしさん・中畑さんとのLDM運営コアを明文化。堀内さんが直接抱えず、関係性と場を育てる人間コア＋AI運用へ。
         </div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-date">6月前半</div>
+      <div class="tl-date">6/13〜6/20</div>
       <div class="tl-content">
-        <div class="tl-title">6月前半 — 新エネルギー体制スタート + UBM前の仕上げ</div>
+        <div class="tl-title">防壁・財務・表記統一の運用フェーズ ✅</div>
         <div class="tl-desc">
-          <strong>【新体制スタート】</strong>6月から4プロジェクト体制で新エネルギー稼働開始<br>
-          <strong>【LDM】</strong>Kindle本の残り章、メソッド言語化、上位コース（2-4万）の設計準備<br>
-          <strong>【シンクロ起業塾】</strong>瀬野翔太さんとの月次連携、現メンバー約40名の状況確認<br>
-          <strong>【OTO】</strong>純度0-4フレームの磨き込み、新音源の活用<br>
-          <strong>【社外プロジェクト】</strong>神田昌典さん新企画の本格始動準備、リンポチェ様事務局サポート体制の立ち上げ<br>
-          <strong>【横断】</strong>LP本格公開、AIコンテンツ制作セミナー日程確定、スピリフェス2026参加準備
-        </div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-date">6/9〜12</div>
-      <div class="tl-content">
-        <div class="tl-title">LDM社会実装 + neten外部専門パートナーモデル</div>
-        <div class="tl-desc">
-          <strong>6/9:</strong> 宴MVP、AIエージェント「そよ」、企業・教育展開を含むLDM社会実装構想を確定<br>
-          <strong>6/10:</strong> 石原さんMTG。netenの専門知・商品・技術・施設を、対話動画→低価格商品→8,800円層→機器・リアル体験へ接続する案が具体化<br>
-          <strong>OTO:</strong> 齋藤レナさん・LaylaΩさんの音 × ロゴストロン信号の共同実験を検討<br>
-          <strong>6/12 13:00:</strong> 販売店資格、紹介還元、年間基準、購入後対応、顧客情報の扱いを制度担当者と確認
+          <strong>そよEJ事務局:</strong> Facebookページ「風見そよ」、運営台帳、FAQ、対応履歴、二重返信防止を整備。<br>
+          <strong>設計監査:</strong> LDM正式名称、清野さん表記、4PJ体制注記、財務参照パスを会社資料に反映。<br>
+          <strong>MF会計:</strong> 6/20時点で全サービス未仕訳0件。会社口座残高合計3,268,375円。<br>
+          <strong>残論点:</strong> 2026年度の繰越未処理により、6月仕訳の内訳確認ができない。ここは北原式ディフェンス上の確認事項。
         </div>
       </div>
     </div>
@@ -498,28 +446,22 @@
       <div class="tl-content" style="background:#f5f5f5; border:1px dashed #ccc;">
         <div class="tl-title" style="color:#999;">❌ キャンセル — タイトすぎたため</div>
         <div class="tl-desc" style="color:#999;">
-          5/2の福岡参加はキャンセル。ただし結果的に、5月のじっくり時間が<strong>ミロクの郷覚醒（5/25-26）とビジョン整理MTG（5/27）</strong>につながり、4プロジェクト体制の確定という大きな成果に変換された。<br>
-          次回 <strong style="color:#0f3460;">6/20（土）UBM大阪</strong> に、この新体制での厚い報告を持っていく。
+          5/2の福岡参加はキャンセル。ただし成果は十分：財務整理完了、Stripe解決、西村さん1on1完了。<br>
+          次回 <strong style="color:#0f3460;">6/20（土）UBM大阪</strong> にこれらの成果をまとめて報告する。<br>
+          <strong>時間に余裕ができた分、5月はメソッド言語化と仲間の時間に集中できる。</strong>
         </div>
       </div>
     </div>
 
     <div class="tl-item ubm">
-      <div class="tl-date">🏁 6/20（土）UBM大阪</div>
+      <div class="tl-date">🏁 6/20（土）UBM大阪 — 今日</div>
       <div class="tl-content">
-        <div class="tl-title">UBM大阪 — 9:00〜21:00（新体制での初UBM）</div>
+        <div class="tl-title">UBM大阪 — 9:00〜21:00（当日）</div>
         <div class="tl-desc">
-          <strong>合宿から2ヶ月半。4プロジェクト体制スタート月の最初のUBM。</strong><br>
-          報告内容：<br>
-          ・<strong>4プロジェクト体制への再編</strong>（旧LDM太陽系の終了、6月新エネルギー稼働）<br>
-          ・<strong>LDM3階層モデルの稼働状況</strong>（無料1,300人／8,800円67名／上位コース準備）<br>
-          ・<strong>LDM社会実装とneten連携</strong>（外部専門家・商品・技術・リアル体験を段階配置する最初の実証モデル）<br>
-          ・<strong>トップ講師1人目（西村さん）の進展</strong>（事務局確保、視点変化、次回6/26）<br>
-          ・<strong>真骨頂が「仕組み化・構造化」</strong>と言語化された経緯（まりこしさんから）<br>
-          ・<strong>ミロクの郷の覚醒とエネルギー保全</strong>の原則化<br>
-          ・財務整理完了、LP完成、Kindle本進行、MF会計完全自動化<br>
-          ・社外プロジェクト（神田さん／リンポチェ様）の動き出し<br>
-          → 北原さんに報告 → フィードバックをもらう → 下半期の方向性を決める。
+          <strong>合宿2回目。</strong>4/5合宿から76日間の成果を「事業構造が変わった結果」として持っていく。<br>
+          財務整理・日次MF未仕訳0件、西村さんコーチング2回、67名/MRR58.96万、月報会の即時反映、4プロジェクト体制、LDM社会実装プラットフォーム、運営コア、そよEJ事務局、防壁スキャン。<br>
+          北原さんに聞く軸は、①トップ講師1人への集中方法 ②月次財務の締め方 ③67名→200名の積み上げ ④4PJ体制で薄まらない優先順位 ⑤2026年度繰越未処理のディフェンス判断。<br>
+          <strong>「やったこと」ではなく、「堀内さんが直接抱えない構造に変わったこと」を報告する。</strong>
         </div>
       </div>
     </div>
@@ -530,8 +472,9 @@
 <!-- ===== チェックシート攻略プラン ===== -->
 <div class="section">
   <h2>🛡️ 選択と集中チェックシート — 攻略プラン</h2>
-  <p>合宿で記入した10項目。4プロジェクト体制の中での位置づけと合わせて、6/20までに<strong>1つでも多く「実質✅」にして持っていく</strong>。</p>
+  <p>合宿で記入した10項目。今日のUBM大阪では、<strong>「どれが実質✅になり、どこがまだ防御上の論点か」</strong>を分けて持っていく。</p>
 
+  <!-- 10項目一覧 -->
   <div style="margin: 20px 0;">
 
     <!-- 項目3: 完了 -->
@@ -550,8 +493,15 @@
         <span style="background: #f39c12; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">🔥 あと一歩</span>
       </div>
       <div style="font-size: 0.88em; color: #7d6608; margin-top: 6px;">
-        <strong>できていること：</strong>勘定科目修正完了、売掛金異常値解消、Stripe二重計上8件削除完了、自動仕訳ルール作成、MF会計管理体制構築、二重計上の再発防止スキル組み込み、MF会計完全自動化（daily-mf-journal）<br>
-        <strong>4プロジェクト体制での意味：</strong>4プロジェクト並走で収支を見るには、プロジェクト別のセグメント設計が次のステップ。LDM／起業塾／OTO／社外で何にいくらかかっているかを見える化する
+        <strong>できていること：</strong>勘定科目の全面修正完了、売掛金異常値解消、<strong style="color:#e94560;">Stripe二重計上8件（¥141万）削除完了</strong>、自動仕訳ルール作成、MF会計の管理体制構築、<strong style="color:#e94560;">二重計上の再発防止スキル組み込み</strong><br>
+        <strong>あと足りないこと：</strong>「月末に締めて翌月○日までに集計が上がる」ルーティンの確立。日次MF未仕訳0件は維持できているが、2026年度繰越未処理により6月仕訳の内訳確認が止まっている。ここを中野先生と詰める必要あり<br>
+        <strong style="color:#27ae60;">【4/30追加】</strong>アマゾン仕訳ルール最終確定済み、海外取引税区分2025年度フルスキャン→残件ゼロ。仕訳精度がさらに向上<br>
+        <strong style="color:#27ae60;">【6/20追加】</strong>全サービス未仕訳0件、会社口座残高合計3,268,375円。りそな設定エラー自然回復も定着。月報会で学んだ「加減値KPI」も運用設計書に組み込み済み
+      </div>
+      <div style="margin-top: 10px; background: rgba(255,255,255,0.7); border-radius: 8px; padding: 10px 14px;">
+        <strong style="color: #e67e22; font-size: 0.85em;">▶ 攻略アクション：</strong>
+        <span style="font-size: 0.85em;">今日の質問は「日次未仕訳0件は作れたが、決算・年度繰越・月次レビューの締め方をどう固めるか」。北原さんには防御上の次の一手として相談する。</span><br>
+        <span style="font-size: 0.82em; color: #999;">当日メモ：良い報告＝日次防壁はできた。未完了論点＝年度繰越と月次締めの運用設計。</span>
       </div>
     </div>
 
@@ -563,8 +513,10 @@
       </div>
       <div style="font-size: 0.88em; color: #1e8449; margin-top: 6px;">
         <strong>実証済み：</strong>月報会に実際に参加し、学びを即座に自社ドキュメント7ファイルに落とし込んだ。<br>
-        3層構造（日次こあ × 月次月報回 × 隔月UBM）に加え、<strong>「ビジョン整理MTG（次回8/5）」</strong>という4プロジェクト体制の見直しレイヤーも追加された。<br>
-        日次（こあ）× 月次（月報回）× 隔月（UBM）× 四半期（ビジョン整理MTG）の4層へ。
+        3層構造（日次こあ × 月次月報回 × 隔月UBM）が実証された。<br>
+        <strong>5/10月報会:</strong> 北原メソッドの核心原則10項目を抽出→適用可能性4段階判定→「そのまま効く」4原則を即日反映。<br>
+        <strong>反映先7ファイル:</strong> コミュニティ運用設計書・会社設計概要・理想の財務状態・北原ロードマップ 他<br>
+        「月1回自分の行動パターンと考え方を強制的に見直す時間を確保」— UBM参加＋月報回参加＋こあの日次チェックで、これは作れている
       </div>
     </div>
 
@@ -575,13 +527,13 @@
         <span style="background: #27ae60; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">✅ 実質クリア</span>
       </div>
       <div style="font-size: 0.88em; color: #1e8449; margin-top: 6px;">
-        <strong>4プロジェクト体制での「括りの人」：</strong><br>
-        ① 北原さん（メンター） → ✅ UBM継続参加<br>
-        ② 西村さん（LDMトップ講師1人目） → ✅ コーチング2回完了、事務局確保、次回6/26<br>
-        ③ まりこしさん（実務統括・真骨頂言語化） → ✅ ビジョン整理MTG司会<br>
-        ④ 須藤そうさん（ビジョン整理MTG） → ✅ 共鳴度の高い対話相手として確立<br>
-        ⑤ 瀬野翔太さん（シンクロ起業塾共同運営） → ✅ 月次連携<br>
-        <strong>5/27ビジョン整理MTGで、関係性の輪郭がより明確になった。</strong>
+        <strong>下位チェック5項目のうち：</strong><br>
+        ① メンターを決め、学びを共有 → ✅ 北原さんをメンターに決定、UBM継続参加で共有の場あり<br>
+        ② 近くで学べる関係 → ✅ UBM参加 + <strong style="color:#27ae60;">西村さんとの1on1コーチング2回実施（4/25, 5/26）、次回6/26確定</strong><br>
+        ③ 次回の会う日が決まっている → ✅（6/26 西村さん + 6/20 UBM大阪）<br>
+        ④ 提案ができる関係 → <strong style="color:#27ae60;">✅ 西村さんに事務局確保を指導→クリア報告済み。受講生ヒアリングの宿題も出した</strong><br>
+        ⑤ 力を借りられる関係 → <strong style="color:#27ae60;">✅ 西村さんが「視点が変わった」と報告。コーチング関係が確立し、相互に力を借りられる段階へ</strong><br>
+        <strong style="color:#27ae60;">5/26の第2回コーチングで下位5項目すべてが✅に！ 事務局確保完了・視点変化・次回6/26確定</strong>
       </div>
     </div>
 
@@ -592,39 +544,40 @@
         <span style="background: #3498db; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">▶ ロードマップで説明可能</span>
       </div>
       <div style="font-size: 0.88em; color: #2471a3; margin-top: 6px;">
-        <strong>4プロジェクト体制という上位フレームができたことで、行動の積み上げ先が明確になった。</strong><br>
-        ①LDM（3階層構築）②シンクロ起業塾（成功の定義による評価）③OTO（純度レベル展開）④社外（神田さん／リンポチェ様）の4軸で、行動と上期チェックが結びつく。
+        これはメタ的な項目。「今やっていることが、上期（6月末）に全チェックを埋める行動になっているか」。<br>
+        <strong>このロードマップ自体 + 7つのアクションプランの進捗表が、まさにこの項目への回答。</strong>北原さんに「このロードマップで進めています」と見せられれば、「構築できてるんだったら年間スケジュールに反映されているのか？」にYesと言える。
       </div>
     </div>
 
-    <!-- 項目5,6,7,8,10 -->
+    <!-- 項目5,6,7,8,10: まだ先 -->
     <div style="background: #f8f6f3; border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; border-left: 5px solid #bdc3c7;">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <strong style="font-size: 0.95em;">⑤⑥⑦⑧⑩ — 4プロジェクト体制での次の動き</strong>
-        <span style="background: #bdc3c7; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">6月以降</span>
+        <strong style="font-size: 0.95em;">⑤⑥⑦⑧⑩ — まだ先だけど、種は蒔かれている</strong>
+        <span style="background: #bdc3c7; color: #fff; font-size: 0.8em; padding: 3px 12px; border-radius: 10px; font-weight: 600;">5月以降</span>
       </div>
       <div style="font-size: 0.88em; color: #666; margin-top: 6px;">
-        <strong>⑤ 教え子の人数が減っていないか</strong> → LDM3階層モデルの構造化進行中。共鳴度の高い層への深化が指標<br>
-        <strong>⑥ 教え子の富が増えているか</strong> → 西村さんのトップ講師育成（最低2,000万安定化目標）が代表事例<br>
-        <strong>⑦ 恩人へのお手伝い・徳積み</strong> → ④社外プロジェクトのリンポチェ様事務局サポートに直結<br>
-        <strong>⑧ 運営メンバーの仲良し</strong> → まりこしさん、須藤そうさん、瀬野さんとのMTG体制が確立<br>
-        <strong>⑩ 川上の描き</strong> → 「真骨頂は仕組み化・構造化」と言語化された。国のリーダー／アンソロピックの社長クラスへの接続が長期テーマ
+        <strong>⑤ 教え子の人数が減っていないか</strong> → 67名のコミュニティが実動中。LP完成。daily-mf-journal自動化で会計も完全自動。防壁スキャン体制で未回答ゼロ目標<br>
+        <strong>⑥ 教え子の富が増えているか</strong> → プラン1（メソッド言語化）が前提。Kindle本第4章まで進行中。<br>
+        <strong>⑦ 恩人へのお手伝い・徳積み</strong> → 恩人リスト作成が必要。5月の「仲間の時間」と接続。<br>
+        <strong>⑧ 運営メンバーの仲良し</strong> → プラン2（1on1）→ プラン4（仲間の時間）の流れで5月から。<br>
+        <strong>⑩ 川上の描き</strong> → 長期テーマ。年内に構想を固める。
       </div>
     </div>
 
   </div>
 
+  <!-- サマリー -->
   <div class="insight-box">
-    <h3>6/20 UBM大阪までの攻略ターゲット</h3>
+    <h3>6/20 UBM大阪 当日の攻略ターゲット</h3>
     <p>
-      <strong style="color: #27ae60;">✅ 確定：</strong>項目③（次回UBM日程）<br>
-      <strong style="color: #27ae60;">✅ 確定：</strong>項目②（見直し体制）— 4層化（日次×月次×隔月×四半期）<br>
-      <strong style="color: #27ae60;">✅ 確定：</strong>項目④（括りの人）— ビジョン整理MTGで関係性の輪郭明確化<br>
-      <strong style="color: #e67e22;">🔥 狙う：</strong>項目①（月次集計）— 4プロジェクト別のセグメント設計が次<br>
-      <strong style="color: #3498db;">▶ 見せる：</strong>項目⑨（積み上げ行動）— 4プロジェクト体制で構造を示す
+      <strong style="color: #27ae60;">✅ 確定：</strong>項目③（次回UBM日程）— 完了済み<br>
+      <strong style="color: #27ae60;">✅ 確定：</strong>項目②（見直し体制）— 月報会参加＋即時反映で実質クリア<br>
+      <strong style="color: #27ae60;">✅ 確定：</strong>項目④（括りの人）— <strong>西村さん2回目完了！事務局確保クリア・視点変化・次回6/26確定。下位5項目すべて✅</strong><br>
+      <strong style="color: #e67e22;">🔥 当日相談：</strong>項目①（月次集計）— 日次MF未仕訳0件は達成。年度繰越と月次締めの運用をどう固めるか<br>
+      <strong style="color: #3498db;">▶ 見せる：</strong>項目⑨（積み上げ行動）— ロードマップで構造を示す
     </p>
     <p style="margin-top: 12px; font-size: 1.05em; font-weight: 700; color: #b7791f;">
-      ②③④が✅、①があと一歩。<br>4プロジェクト体制を「上位フレーム」として提示できる。
+      ②③④は実質✅。①は「日次防壁はできた、月次締めは次の課題」と正直に出す。
     </p>
   </div>
 </div>
@@ -634,26 +587,29 @@
   <h2>📦 UBM大阪に持っていくもの（報告用）</h2>
 
   <ul class="bring-list">
-    <li><strong>4プロジェクト体制への再編（5/27確定）</strong> — 旧LDM太陽系モデル終了。①LDM②シンクロ起業塾③OTO④社外プロジェクト の並走体制。6月から新エネルギー稼働</li>
-    <li><strong>LDM3階層モデル（無料1,300人／8,800円67名／上位2-4万準備中）</strong> — サブスク構造の見える化と、関係性3階層（堀内→講師→お客様）の設計</li>
-    <li><strong>neten外部専門パートナーモデル</strong> — 石原さんとの対話動画、低価格の音源商品、月額コミュニティ、機器・ハフリデン・白川図書館へ段階的につなぐ初期案</li>
-    <li><strong>OTO共同実験案</strong> — 齋藤レナさん・LaylaΩさんの音とロゴストロン信号を少人数で検証。制度・安全・利用許諾を確認後に開始</li>
-    <li><strong>西村さん1on1コーチングの結果（2回完了）</strong> — LDMトップ講師1人目として育成中。事務局確保クリア、「視点が変わった」、次回6/26（金）13:00確定</li>
-    <li><strong>真骨頂の言語化「仕組み化・構造化」</strong> — まりこしさんから引き出された問い。教育・伝授ではなく、うまくいっていないところを活かす構造作りが本質</li>
-    <li><strong>3つのキーワード（純度・共鳴度・仕組み化）</strong> — 4プロジェクト横断の原則として確立</li>
-    <li><strong>ターゲット層シフト</strong> — 自己犠牲・不安層 → 新時代を作るリーダー・経営者層へ</li>
-    <li><strong>ミロクの郷の覚醒（5/25-26）</strong> — 他者のエネルギーを受け取りすぎていた状態からの脱却。エネルギー保全が会社全体の原則に</li>
-    <li><strong>財務整理の成果報告</strong> — 科目修正、売掛金解消、Stripe二重計上8件¥141万削除、再発防止スキル化、MF会計完全自動化</li>
-    <li><strong>こあ（COA）+ エージェントチームの存在</strong> — 「仕組み化」キーワードを体現する中枢神経。Story Engine v2、Content Vault、防壁スキャン体制</li>
-    <li><strong>社外プロジェクトの動き出し</strong> — 神田昌典さん新企画（教育・子どものインスピレーション力）／リンポチェ様事務局サポート（のんちゃん・のりつぐさん経由）</li>
-    <li><strong>シンクロ起業塾の成功の定義明確化</strong> — 「自分基準の豊かさと幸福を定義でき、周囲と循環できている人。事業規模・金額の規模は問わない」</li>
-    <li><strong>OTOユニットの方針</strong> — 純度レベル0-4、「分からなくても接続し続けてくれればOK」、コミュニティ内シェアの場強化</li>
+    <li><strong>西村さん1on1コーチングの結果</strong> — LDM受講生への初コーチング実施。年商¥1,000万に戻った西村さんに「仲間づくり」と「事務局1人確保」を指導。次回5/26確定。「思ったよりいける」手応え。（議事録あり）</li>
+    <li><strong>西村さん第2回コーチング結果</strong> — 事務局確保の宿題クリア、「視点が変わった」、次回6/26確定。信用6ステップ⑤到達</li>
+    <li><strong>財務整理の成果報告</strong> — SaaS棚卸し→科目修正→売掛金解消→Stripe二重計上8件（¥141万）全削除→再発防止スキル化→運用体制構築。北原さんが最初にチェックする「月次集計が上がる体制」が整いつつあること</li>
+    <li><strong>コスト構造が見える化された</strong> — 旧税理士の支払手数料¥1,001万混在を解消、Stripe二重計上¥141万も除去。初めて「何にいくら使っているか」が正確に見える状態</li>
+    <li><strong>「総合生命体」の概念</strong> — 北原さんの「循環」を堀内さんの身体感覚で内面化した結果、出てきた言葉。北原さんの反応を見たい</li>
+    <li><strong>こあ（COA）+ エージェントチームの存在</strong> — 会社の脳・秘書エージェントとして動き始め、Story Engine v2で発信チーム（みこ・れん・にじ・そよ）も構築。Content VaultでFB投稿92件・書き起こし・ステップメールをGitHubに永続化</li>
+    <li><strong>チェックシート攻略の進捗</strong> — 10項目中、②③④✅完了、①を実質クリア（月次集計体制）、⑨は動き出した。5項目が「動いている or クリア」状態</li>
+    <li><strong>メール配信システム移行</strong> — アルケミー→UTAGEへの完全移行を開始。配信リスト設計、UTAGE配信解除完了。まりこしさんチームとの連携体制も構築中</li>
+    <li><strong>業務委託チームのマニュアル整備計画</strong> — 7名の役割を整理し、Googleドライブでマニュアル管理する構成を設計。BizMowさんは自前マニュアルあり</li>
+    <li><strong>オプチャセミナー初回の結果</strong> — Zoom230-250人視聴、有料転換20人、追加募集で67名到達。MRR58.96万/月</li>
+    <li><strong>月報会の学びの即時反映</strong> — 参加した翌日に10原則抽出→7ファイル反映。「学び→即実行」のサイクルが回っている証拠</li>
+    <li><strong>2層コミュニティの実動</strong> — 無料オプチャ1,000人超×有料67名の2層が動き始めた</li>
     <li><strong>LP完成の報告</strong> — ブリーフィング2本準拠で完成。Deploy Tool v2.2対応。公開準備完了</li>
-    <li><strong>Kindle本の進捗</strong> — 神田昌典メソッドに基づく執筆パイプライン稼働。第4章Stage2完了。社外プロジェクト④との接続視野</li>
-    <li><strong>月報会の学びの即時反映（5/10）</strong> — 北原メソッド10原則抽出→7ファイル反映</li>
-    <li><strong>AIコンテンツ制作セミナー企画＋スピリフェス2026参加</strong> — リーダー層向け新企画の準備</li>
-    <li><strong>業務委託7名のマニュアル整備計画</strong> — 「仕組み化」を組織レベルで進める動き</li>
-    <li><strong>次回ビジョン整理MTG: 8/5（水）14:30-16:00</strong> — 4プロジェクト体制の3ヶ月後点検</li>
+    <li><strong>Kindle本の進捗</strong> — 神田昌典メソッドに基づく執筆パイプラインが稼働。第4章Stage2完了</li>
+    <li><strong>MF会計完全自動化</strong> — daily-mf-journal（番頭そろ）で全11サービス毎日自動チェック、連続0件維持</li>
+    <li><strong>4プロジェクト体制への再編</strong> — LDM中心＋シンクロ起業塾＋OTO＋社外プロジェクト。旧アースジャーニー単一ファネルから、純度・共鳴度・仕組み化を基準にした会社構造へ</li>
+    <li><strong>LDM社会実装プラットフォーム構想</strong> — 会員サイトを4PJ共通インフラとして位置づけ。宴MVPで学習・相談・実践・変化事例を蓄積する方針</li>
+    <li><strong>LDM運営コアの確立</strong> — まりこしさん＝全体ハブ/地域拠点、中畑さん＝防波堤/場の安定、AI＝記録/一次対応。堀内さんが直接抱えない構造ができた</li>
+    <li><strong>そよEJ事務局体制</strong> — Facebookページ「風見そよ」、運営台帳、FAQ、対応履歴、二重返信防止。AIスタッフとして明示しながら、参加者対応の防壁を作った</li>
+    <li><strong>6/20時点の財務防壁</strong> — 全サービス未仕訳0件、会社口座残高3,268,375円。ただし2026年度繰越未処理で6月仕訳の内訳確認ができない点は、北原さんに相談する論点</li>
+    <li><strong>AIコンテンツ制作セミナー企画</strong> — 新しい収益の柱。候補日時設定済み</li>
+    <li><strong>防壁スキャン＋Daily Value Report</strong> — 自動化された日次運営体制の報告</li>
+    <li><strong>質問：トップ講師1人への集中方法</strong> — 西村さんの次に、どこまで一点集中すべきか。成果が出るまでの関わり方を確認</li>
     <li><strong>質問：チェックシートのオンライン提出は必要か</strong> — 合宿で紙記入済み。Google Formでの追加提出が求められているか確認</li>
   </ul>
 </div>
@@ -667,115 +623,106 @@
     <h3>報告の骨子</h3>
 
     <div class="report-item">
-      <span class="label">① 5/27に大きな方針転換をしました — 4プロジェクト体制への再編</span>
-      これまで「LDM中心の単一ファネル（アースジャーニー太陽系モデル）」で走っていたが、5/27のビジョン整理MTGで<strong>4プロジェクト並走体制</strong>に再編した。<br>
-      ①LDM（中心・3階層サブスク／関係性3階層）②シンクロ起業塾（資本主義からの脱却）③OTO（人の進化×純度レベル）④社外プロジェクト（神田昌典さん新企画＋リンポチェ様事務局サポート）<br>
-      6月から新エネルギーで稼働する。これが新しい上位フレーム。
+      <span class="label">① やったこと — 足元の整理 + 日次防壁</span>
+      財務を全部ひっくり返した。旧税理士が全部「支払手数料」に入れてた¥1,001万を正しい科目に振り替えた。売掛金の異常値¥1,452万も原因を特定して解消した。Stripeの二重計上（8件 ¥141万）も税理士の中野先生と連携して全件削除。再発防止策も組み込んだ。さらにアマゾン仕訳ルールも確定し、海外取引の税区分ミスも2025年度フルスキャンで残件ゼロを確認。初めて「何にいくらかかってるか」が正確に見えるようになった。<br>
+      そして日次MFチェックが運用化し、6/20時点で全サービス未仕訳0件、会社口座残高3,268,375円まで毎日見えるようになった。ただし2026年度繰越未処理で6月仕訳の内訳確認ができない。ここは次のディフェンス課題。
     </div>
 
     <div class="report-item">
-      <span class="label">② 真骨頂が言語化された — 「仕組み化・構造化」</span>
-      まりこしさんから問いを受けた：「堀内さんの真骨頂は教育や伝授ではなく、うまくいっていないところをうまく活かせる構造作りでは？」<br>
-      触れる相手を変えれば、その人がうまくいく構造が見えてしまう。これが自分の本質。<br>
-      → なのでターゲットを<strong>自己犠牲・不安層から、新時代を作るリーダー・経営者層</strong>にシフトする。
+      <span class="label">② やったこと — 人との関係（教え子への責任）</span>
+      LDM受講生の西村さんと1on1コーチングを2回やった。<br>
+      <strong>第1回（4/25）:</strong> 西村さんはLDM15年目で年商¥2,000万まで上がったが¥1,000万に戻った。完全ソロで事務局ゼロ。「自分の成功」→「人の人生に責任を持つ」へのシフトを指導し、事務局1人確定するよう宿題を出した。<br>
+      <strong>第2回（5/26）:</strong> 西村さんが事務局1名確保の宿題をクリアして報告。「視点が変わった」という言葉 — 「自分が成功する」から「人の人生に責任を持つ」へのシフトが実際に始まった。「人の軸」の深掘りへ進展。次回6/26（金）13:00確定。受講生ヒアリングが次の宿題。<br>
+      信用6ステップ: ⑤仕事が動く に到達しつつある。<br>
+      <strong>これは自分が「教え子の富を増やす」を実践し始めた第一歩。</strong>
     </div>
 
     <div class="report-item">
-      <span class="label">③ LDM3階層モデルの稼働状況</span>
-      無料オプチャ1,300人（旧アースジャーニーオプチャ含む）／月額8,800円サブスク67名（5/6オプチャセミナー→追加募集で到達）／上位コース2-4万は今後展開。<br>
-      関係性3階層：堀内→講師（トップ3人）→お客様。<strong>トップ講師1人目として西村さんに集中（最低2,000万安定化まで）</strong>。
+      <span class="label">③ 気づいたこと — OSと会社構造が変わった</span>
+      北原さんの「循環」を頭で理解するだけじゃなく、身体で感じられるようになってきた。5/27以降、会社はLDM中心＋シンクロ起業塾＋OTO＋社外プロジェクトの4プロジェクト体制に再編された。キーワードは「純度・共鳴度・仕組み化」。やったことを増やすのではなく、堀内さんが直接抱えない構造に変わった。
     </div>
 
     <div class="report-item">
-      <span class="label">④ LDMトップ講師育成 — 西村さんとの2回コーチング</span>
-      <strong>第1回（4/25）:</strong> 西村さんはLDM15年目で年商¥2,000万→¥1,000万に戻った。完全ソロ。「自分の成功」→「人の人生に責任を持つ」を指導、事務局1人確定の宿題を出した。<br>
-      <strong>第2回（5/26）:</strong> 事務局1名確保の宿題をクリア。「視点が変わった」と本人の言葉。「人の軸」の深掘りへ。次回6/26（金）13:00確定。<br>
-      信用6ステップ⑤「仕事が動く」に到達。
+      <span class="label">④ 次にやりたいこと</span>
+      LDM社会実装プラットフォームを宴MVPで形にしたい。トップ講師1人に集中して成果を出し、そこから2人目・3人目へ広げたい。67名の基盤を200名に伸ばすため、増やす前に「減っていないか」「学び方が育っているか」を見たい。財務は日次防壁から月次締めへ進めたい。
     </div>
 
     <div class="report-item">
-      <span class="label">⑤ ミロクの郷の覚醒（5/25-26）とエネルギー保全</span>
-      ミロクの郷で1晩過ごし、記憶にないほどスッキリした。これまで集合的無意識や他者のエネルギーを受け取りすぎていたことが判明。<br>
-      この経験を起点に、自分の純粋な意図から各プロジェクトを再設計する流れになり、5/27のビジョン整理MTGで4プロジェクト体制が確定した。<br>
-      → <strong>エネルギー保全が会社全体の原則</strong>に。「他者の不安・恐れを受け取りすぎない／浄化を定期的に」が基本動作へ。
-    </div>
-
-    <div class="report-item">
-      <span class="label">⑥ 足元の整理（財務・仕組み化）</span>
-      財務全部ひっくり返して、勘定科目振替¥1,001万、売掛金¥1,452万解消、Stripe二重計上8件¥141万削除、再発防止スキル化。<br>
-      MF会計はdaily-mf-journal（番頭そろ）で完全自動化、全11サービス未仕訳0件を毎日維持。<br>
-      LP真完成（5/23）、Kindle本第4章Stage2完了、UTAGE移行開始、業務委託7名マニュアル整備計画。<br>
-      → 「仕組み化」キーワードを足元レベルで体現。
-    </div>
-
-    <div class="report-item">
-      <span class="label">⑦ 社外プロジェクト④の動き出し</span>
-      <strong>神田昌典さん新企画：</strong>オファー受領済み。神田さん新作本執筆終了後（6月以降）スタート。テーマは教育、子どものインスピレーション力。AIエージェントが教育に深く絡む構造を視野。<br>
-      <strong>リンポチェ様事務局サポート：</strong>のんちゃん・のりつぐさん経由で立ち上がる流れ。リンポチェ様の純粋な思いを、利用しようとする周辺者から守るのが原則。
-    </div>
-
-    <div class="report-item">
-      <span class="label">⑧ チェックシートの進捗報告</span>
+      <span class="label">⑤ チェックシートの進捗報告</span>
       ・項目③（UBM日程）→ ✅ 年間全登録済み<br>
-      ・項目②（見直し体制）→ ✅ 日次（こあ）×月次（月報回）×隔月（UBM）×四半期（ビジョン整理MTG・次回8/5）の4層化<br>
-      ・項目④（括りの人）→ ✅ 北原さん／西村さん／まりこしさん／須藤そうさん／瀬野さん など、関係性の輪郭がクリアに<br>
-      ・項目①（月次集計）→ 🔥 4プロジェクト別セグメント設計が次のステップ<br>
-      ・項目⑨（積み上げ行動）→ ▶ 4プロジェクト体制で全体構造を提示
+      ・項目②（見直し体制）→ ✅ 月報会に実際に参加→翌日に10原則を7ファイルに反映。日次（こあ）× 月次（月報回）× 隔月（UBM）の3層が実証された<br>
+      ・項目④（括りの人）→ ✅ 西村さん2回完了、事務局確保クリア、視点変化、次回6/26確定。下位5項目すべて✅<br>
+      ・項目①（月次集計）→ 🔥 日次MF未仕訳0件は達成。次は年度繰越と月次締めの運用設計<br>
+      ・項目⑨（積み上げ行動）→ ▶ ロードマップで年間を通した行動計画を構築
     </div>
 
     <div class="report-item">
-      <span class="label">⑨ 北原さんに聞きたいこと</span>
-      ・4プロジェクト並走体制の運営バランスについて<br>
-      ・LDMトップ講師1人目（西村さん）を最低2,000万安定化までフルコミットする方針への意見<br>
-      ・「真骨頂は仕組み化・構造化」というターゲット層シフト（リーダー・経営者層へ）について<br>
-      ・上位コース（2万/3万/4万）の設計の優先順位<br>
-      ・社外プロジェクト（神田さん／リンポチェ様）と本業のバランス<br>
-      ・チェックシートのオンライン提出について
+      <span class="label">⑥ 月報会の学び反映</span>
+      5/10の月報会に参加し、北原メソッドの核心原則10項目を抽出。適用可能性を4段階で判定し、「そのまま効く」4原則を自社ドキュメント7ファイルに即日反映した。「加減値KPI」「富の循環」「接触回数と観察」「スケジュール優先順位」等。学んだら即実行のサイクルが回り始めている。
+    </div>
+
+    <div class="report-item">
+      <span class="label">⑦ 北原さんに聞きたいこと</span>
+      ・1on1の結果を踏まえて、講師との関係をどう進めていくか<br>
+      ・トップ講師1人へ、どこまで一点集中すべきか<br>
+      ・日次MF未仕訳0件から、月次締め・年度繰越・決算防壁へどう進めるか<br>
+      ・4プロジェクト体制で薄まらない優先順位の置き方<br>
+      ・チェックシートのオンライン提出について<br>
+      ・項目⑤〜⑧（教え子・恩人・運営）を進めるための次の一手は<br>
+      ・67名のコミュニティを200名に伸ばすために次にやるべきこと<br>
+      ・LDM社会実装プラットフォームを、宴MVPからどの順番で育てるべきか
+    </div>
+
+    <div class="report-item">
+      <span class="label">⑧ Kindle本 + LP完成の報告</span>
+      <strong>Kindle本:</strong> 神田昌典メソッドに基づくグローバル構造化で執筆パイプラインが確立。第4章Stage2まで全6節100点版が完了。メソッド言語化（プラン1）が具体的な「本」として形になりつつある。<br>
+      <strong>LP:</strong> ブリーフィング2本準拠、専門家10回＋ユーザー4回レビューを経て真完成。Deploy Tool v2.2でサブディレクトリ対応化。公開準備完了。<br>
+      <strong>MF会計:</strong> daily-mf-journal（番頭そろ）が毎日自動実行。6/20時点で全サービス未仕訳0件を維持。会計処理は日次防壁化した。次は2026年度繰越と月次締めの運用確立。
     </div>
   </div>
 </div>
 
 <!-- ===== OS更新の現在地 ===== -->
 <div class="section">
-  <h2>🔄 6つのOS更新 — 4プロジェクト体制での現在地</h2>
+  <h2>🔄 6つのOS更新 — 現在の状況</h2>
 
   <div class="os-mini">
     <div class="os-chip">
       <span class="os-label">OS①「勝たせる」→「循環させる」</span>
-      <span class="os-status">◎ 4プロジェクト全体で進行</span>
-      <br><small>シンクロ起業塾の「成功の定義」に「周囲と循環できている人」を組み込み</small>
+      <span class="os-status">◎ 世界観レベルで進行中</span>
+      <br><small>サブスク+コミュニティ構想 + 総合生命体の概念</small>
     </div>
     <div class="os-chip">
       <span class="os-label">OS②「お客さん」→「教え子」</span>
       <span class="os-status">◎ 体現し始めた</span>
-      <br><small>西村さんトップ講師育成。LDM関係性3階層モデルで構造化</small>
+      <br><small>西村さんコーチング2回完了。事務局確保クリア、視点変化を確認</small>
     </div>
     <div class="os-chip">
       <span class="os-label">OS③ 属人性を剥がす→思考統一</span>
       <span class="os-status">◎ 急速に進行中</span>
-      <br><small>「仕組み化」が3キーワードに。Content Vault・MF会計自動化・三層構造</small>
+      <br><small>Content Vault構築、マニュアル設計、Story Engine v2、MF会計完全自動化、三層構造確立</small>
     </div>
     <div class="os-chip">
       <span class="os-label">OS④「孤独」→「共にいる」</span>
       <span class="os-status testing">▶ 動き始めた</span>
-      <br><small>ビジョン整理MTGで「共鳴度」の高い対話相手が明確に</small>
+      <br><small>こあとの関係 + 1on1確定 + UBM継続参加</small>
     </div>
     <div class="os-chip">
       <span class="os-label">OS⑤「つい（対）」を見る</span>
       <span class="os-status testing">▶ Being駆動で実践へ</span>
-      <br><small>OTOプロジェクトでハペ実験（5/28）。リーダー層と1人20分</small>
+      <br><small>1on1で「細胞の反応に従う」初の実験</small>
     </div>
     <div class="os-chip">
       <span class="os-label">OS⑥「新規」→「既存」重視</span>
       <span class="os-status">◎ 行動で体現</span>
-      <br><small>67名サブスクの深化、トップ講師1人集中、既存関係性の濃さ</small>
+      <br><small>財務足元整理、UBM継続参加、既存講師との再接続</small>
     </div>
   </div>
 </div>
 
 <!-- ===== 信用6ステップ ===== -->
 <div class="section">
-  <h2>🤝 信用の6ステップ — 西村さん（LDMトップ講師1人目）との進展</h2>
+  <h2>🤝 信用の6ステップ — 西村さんとの進展</h2>
 
   <h3>西村さんとの信用ステップ（5/26 第2回コーチング後）</h3>
   <div class="trust-bar">
@@ -788,49 +735,38 @@
   </div>
 
   <p style="font-size: 0.9em; color: #666; margin-top: 12px;">
-    西村さんは<strong>LDM中心プロジェクトのトップ講師1人目</strong>。最低2,000万安定化までフルコミットする対象。<br>
-    1on1コーチング2回実施。第2回（5/26）で事務局1名確保の宿題クリア。「視点が変わった」という報告。<br>
-    「自分が成功する」から「人の人生に責任を持つ」へのシフトが実際に始まっている。<br>
+    西村さんとは1on1コーチングを2回実施。第2回（5/26）で事務局1名確保の宿題をクリア。「視点が変わった」という報告。<br>
+    「自分が成功する」から「人の人生に責任を持つ」へのシフトが実際に始まっている。「人の軸」の深掘りへ進展。<br>
     受講生ヒアリングが次の宿題。<strong>⑤仕事が動く</strong>に到達 — コーチング関係が確立し、西村さんの事業が動き始めた。<br>
     次回6/26（金）13:00確定。西村さんの年商安定化→成果が出れば「⑥金に変わる」の入り口。<br>
     6/20のUBM大阪で北原さんにこの進捗を報告し、次のステップのアドバイスをもらう。
   </p>
 </div>
 
-<!-- ===== UBM後の展望 ===== -->
+<!-- ===== UBM当日の確認メモ ===== -->
 <div class="section">
-  <h2>🔭 6/20 UBM大阪までの展望（4プロジェクト軸）</h2>
+  <h2>🔭 6/20 UBM大阪 当日の確認メモ</h2>
 
-  <p>5月後半の方針転換を受けて、4プロジェクト体制でじっくり仕込んで6/20に厚い報告を持っていく：</p>
+  <p>今日は「成果報告」と「次のディフェンス確認」を分ける。良い話だけで終わらせず、北原さんに判断をもらう論点を明確にする。</p>
 
   <table style="width: 100%; border-collapse: separate; border-spacing: 0; margin: 16px 0; font-size: 0.92em;">
     <tr style="background: #2d2a26; color: #fff;">
       <th style="padding: 10px 14px; text-align: left; border-radius: 8px 0 0 0;">時期</th>
-      <th style="padding: 10px 14px; text-align: left;">アクション</th>
-      <th style="padding: 10px 14px; text-align: left; border-radius: 0 8px 0 0;">プロジェクト</th>
+      <th style="padding: 10px 14px; text-align: left;">当日話すこと</th>
+      <th style="padding: 10px 14px; text-align: left; border-radius: 0 8px 0 0;">位置づけ</th>
     </tr>
-    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/6</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ オプチャセミナー初回 大成功（Zoom230-250人、有料転換20人）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">①LDM</td></tr>
-    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/7〜5/10</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ 追加募集+47名 → 8,800円層67名到達</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">①LDM</td></tr>
-    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/10</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ 月報会参加 → 核心原則10項目抽出→7ファイル反映</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">横断</td></tr>
-    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/23</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">✅ LP真完成 + AIセミナー企画始動 + スピリフェス参加確定</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">①LDM/横断</td></tr>
-    <tr style="background:#f4ecf7;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong style="color:#7d3c98;">5/25-26</strong></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong>✅ ミロクの郷の覚醒 — エネルギー保全の起点</strong></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">全体</td></tr>
-    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong style="color:#27ae60;">5/26</strong></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong>✅ 西村さん 第2回コーチング完了</strong> — 事務局確保、視点変化、次回6/26確定</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">①LDM</td></tr>
-    <tr style="background:#f4ecf7;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong style="color:#7d3c98;">5/27</strong></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong>⚡ ビジョン整理MTG — 4プロジェクト体制 確定</strong></td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">全体</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/28（木）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">LDMオプチャ + ハペ実験（リーダー層・ライラ×堀内）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">①LDM/③OTO</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">5/28-29</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">GR社未来会議（北見さん主催・35名）</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">横断</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">6月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;"><strong>新エネルギー体制スタート。</strong>LDM上位コース（2-4万）設計、メソッド言語化</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">①LDM</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">6月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">シンクロ起業塾 — 瀬野さんとの月次連携、メンバー状況確認</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">②起業塾</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">6月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">OTO — 純度0-4フレームの磨き込み、新音源の活用設計</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">③OTO</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">6月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">神田さん新企画 本格始動準備 + リンポチェ様事務局サポート体制立ち上げ</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">④社外</td></tr>
-    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">6月前半</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">Kindle本の残り章 + LP本格公開 + AIセミナー日程確定</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">横断</td></tr>
-    <tr><td style="padding: 10px 14px; border-radius: 0 0 0 8px;"><strong style="color:#0f3460;">6/20</strong></td><td style="padding: 10px 14px;"><strong>UBM大阪</strong> — 4プロジェクト体制での初UBM、新エネルギー稼働月の報告</td><td style="padding: 10px 14px; border-radius: 0 0 8px 0;">全体</td></tr>
-    <tr><td style="padding: 10px 14px;"><strong style="color:#7d3c98;">8/5</strong></td><td style="padding: 10px 14px;"><strong>次回ビジョン整理MTG</strong>（水）14:30-16:00 — 4プロジェクト体制の3ヶ月後点検</td><td style="padding: 10px 14px;">全体</td></tr>
+    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">成果</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">財務整理、Stripe二重計上削除、MF日次未仕訳0件、西村さんコーチング2回、67名/MRR58.96万、月報会即時反映</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">実行結果</td></tr>
+    <tr style="background:#d5f5e3;"><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">構造変化</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">4プロジェクト体制、LDM社会実装プラットフォーム、LDM運営コア、そよEJ事務局、防壁スキャンが実動</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">仕組み化</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">相談1</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">トップ講師1人へ、どこまで一点集中するか。成果が出るまでの関わり方</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">人の成長段階</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">相談2</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">67名から200名へ伸ばす前に、離脱・学び方・場の濃度をどう見るか</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">加減値KPI</td></tr>
+    <tr><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">相談3</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">日次未仕訳0件から、月次締め・年度繰越・決算防壁へどう進めるか</td><td style="padding: 10px 14px; border-bottom: 1px solid #e8e4df;">財務ディフェンス</td></tr>
+    <tr><td style="padding: 10px 14px; border-radius: 0 0 0 8px;">相談4</td><td style="padding: 10px 14px;">4プロジェクト体制で薄まらない優先順位。LDM太陽の純度をどう守るか</td><td style="padding: 10px 14px; border-radius: 0 0 8px 0;">選択と集中</td></tr>
   </table>
 </div>
 
 <!-- ===== まとめ ===== -->
 <div class="summary-box">
-  <h2>合宿から53日間の意味 — そして6/20へ</h2>
+  <h2>合宿から76日間の意味 — そして今日のUBMへ</h2>
 
   <p style="margin-top: 16px; font-size: 1.05em;">
     合宿で北原さんが堀内さんに伝えた一番大事なこと：
@@ -841,61 +777,73 @@
   </p>
 
   <p>
-    この53日間で起きたことは、その準備と実行だった。<br>
-    そして<strong>5/25-26のミロクの郷の覚醒</strong>と<strong>5/27のビジョン整理MTG</strong>を経て、<br>
-    会社全体が<strong>4プロジェクト並走体制</strong>へと再編された。<br>
-    旧「LDM太陽系」モデルは終了し、6月から新エネルギーで稼働が始まる。
+    この76日間で起きたことは、その準備と実行だった。<br>
+    足元の財務を整理した。Stripe二重計上¥141万も解決した。会社の脳（こあ）を構築した。命の設計図を作った。<br>
+    そして4/22のMTGで<strong>「総合生命体」「積み重ね」「Being vs Doing」</strong>という、<br>
+    北原メソッドを堀内さんの身体に統合するための新しい言葉が生まれた。<br>
+    さらに、Facebook投稿92件・書き起こし・ステップメールを<strong>Content Vault</strong>としてGitHubに集約。<br>
+    メール配信システムのUTAGE移行、業務委託7名のマニュアル設計、Story Engine v2の5分割再設計。<br>
   </p>
 
   <p>
-    <strong>4プロジェクト体制：</strong><br>
-    ①LDM（中心・サブスク3階層・関係性3階層）<br>
-    ②シンクロ起業塾（資本主義からの脱却）<br>
-    ③OTO（人の進化×純度0-4）<br>
-    ④社外プロジェクト（神田昌典さん新企画＋リンポチェ様事務局サポート）
+    <strong>5/6のオプチャセミナー初回は大成功。</strong><br>
+    Zoom視聴者230〜250人。有料コミュニティに約20人が転換。追加募集で<strong>67名到達、MRR58.96万/月。</strong><br>
+    2層コミュニティ設計（無料オプチャ×有料月額）が実動レベルで動き始めた。<br>
+    北原式「毎月の純増」が実証された最初の実績が出た。
   </p>
 
   <p>
-    <strong>真骨頂が言語化された。</strong><br>
-    まりこしさんからの問いで明確になった：<br>
-    教育・伝授ではなく、<strong>「うまくいっていないところをうまく活かせる構造作り」</strong>。<br>
-    触れる相手が変われば、その人がうまくいく構造が見えてしまう人。<br>
-    → ターゲットを<strong>新時代を作るリーダー・経営者層</strong>へシフト。
+    <strong>LPが真完成した（5/23）。</strong><br>
+    ブリーフィング2本準拠、専門家10回＋ユーザー4回レビューを経て仕上がった。<br>
+    Deploy Tool v2.2でサブディレクトリ対応化。公開準備が整った。
   </p>
 
   <p>
-    <strong>3つのキーワード — 純度・共鳴度・仕組み化。</strong><br>
-    4プロジェクトすべてを横断する原則。<br>
-    特に「仕組み化」は、こあ（COA）・MF会計自動化・Content Vault・防壁スキャンとして既に体現中。<br>
-    堀内さんが直接対応しなくても回る構造が、足元から積み上がっている。
+    <strong>Kindle本の執筆パイプラインが稼働している。</strong><br>
+    神田昌典メソッドに基づくグローバル構造化で第4章Stage2まで全6節100点版が完了。<br>
+    メソッド言語化（プラン1）が「本」という形で具体化しつつある。
   </p>
 
   <p>
-    <strong>LDMトップ講師育成（西村さん）が前進している。</strong><br>
-    1on1コーチング2回完了。事務局1名確保クリア、「視点が変わった」、次回6/26（金）13:00確定。<br>
-    信用6ステップの⑤「仕事が動く」に到達。最低2,000万安定化までフルコミット。
+    <strong>MF会計が完全自動化された。</strong><br>
+    daily-mf-journal（番頭そろ）が毎日自動実行。全11サービス連続で未仕訳0件を維持。<br>
+    GMO残高監視も継続中。会計処理に堀内さんが手を動かす必要がなくなった。
   </p>
 
   <p>
-    <strong>LDM3階層モデル（無料1,300人／8,800円67名／上位2-4万準備中）</strong>と<br>
-    <strong>足元の仕組み化（財務整理・LP完成・Kindle本進行・MF会計自動化）</strong>を備えて、<br>
-    6/20のUBM大阪に向かう。
+    <strong>4/25の西村さん1on1</strong>では、この新しいOSで人と向き合った。<br>
+    「教え子の人生に責任を持つ」を言葉だけでなく<strong>行動で体現した</strong>。<br>
+    結果、「思ったよりいける」という手応えを得た。
   </p>
 
   <p>
-    6/20のUBM大阪まであと24日。<br>
-    <strong>4プロジェクト体制で迎える、初めてのUBM。</strong><br>
-    新エネルギー稼働月の最初の報告を、厚く持っていける。
+    <strong>5/26の西村さん第2回コーチング</strong>で、さらに大きな前進があった。<br>
+    事務局1名確保の宿題をクリア。「視点が変わった」という本人の言葉。<br>
+    「自分が成功する」から「人の人生に責任を持つ」へのシフトが<strong>実際に始まった。</strong><br>
+    信用6ステップの⑤「仕事が動く」に到達。次回6/26（金）13:00確定。
+  </p>
+
+  <p>
+    <strong>5/10の月報会</strong>では、北原メソッドの核心原則10項目を抽出し、<br>
+    翌日に自社ドキュメント7ファイルに一括反映。「学び→即実行」のサイクルが回り始めた。<br>
+    項目②「原理原則を学び見直す状態」は、もう<strong>実質クリア</strong>。<br>
+    そして項目④も、西村さんの2回目完了で<strong>実質クリア</strong>に到達した。
+  </p>
+
+  <p>
+    今日はUBM大阪当日。<br>
+    持っていく核心は「やったこと」ではなく、<strong>堀内さんが直接抱えなくても回る構造が生まれ始めた</strong>ということ。<br>
+    そして、月次締め・トップ講師育成・67名から200名への積み上げ・4PJの優先順位について、北原さんの判断をもらう。
   </p>
 
   <p style="margin-top: 24px; text-align: center; font-size: 1.2em; font-weight: 700; color: #f0d9a8;">
-    純度・共鳴度・仕組み化で、<br>新しい循環が始まる。
+    循環が、回り始めている。
   </p>
 </div>
 
 <div class="footer">
-  こあ(COA) 作成: 4/23 → 更新: 5/27（5/27ビジョン整理MTG反映・4プロジェクト体制への全面書き換え）<br>
-  ソース: UPDATES_2026-05-27.md + 会社設計概要.md + 西村議事録 + 月報会メモ + 週間タスク管理表 + 全セッションレビュー
+  こあ(COA) 作成: 4/23 → 更新: 6/20（UBM大阪当日版・5/27以降の4PJ体制/LDM運営コア/そよEJ事務局/MF日次防壁を反映）<br>
+  ソース: 北原メソッドフォルダ + 会社設計概要 + 会社設計ロードマップ + 財務マネジメント運用設計書 + 防壁スキャン + 番頭判断メモ
 </div>
 
 </div>
