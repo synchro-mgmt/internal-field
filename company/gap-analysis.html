@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>理想 vs 現状 ギャップ分析 — 2026-05-27 v5.0 4プロジェクト体制</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN',sans-serif; color:#1a1a2e; background:#f0f4f8; line-height:1.7; }
+  .container { max-width:860px; margin:0 auto; padding:20px 16px 60px; }
+  .hero { text-align:center; padding:44px 24px 36px; margin-bottom:28px; background:linear-gradient(135deg,#059669,#0d9488); border-radius:20px; color:#fff; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; top:-60px; right:-60px; width:200px; height:200px; background:rgba(255,255,255,0.06); border-radius:50%; }
+  .hero h1 { font-size:24px; font-weight:800; margin-bottom:6px; }
+  .hero .sub { font-size:14px; opacity:0.8; margin-bottom:14px; }
+  .hero .badges { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .hero .badge { padding:5px 16px; border-radius:20px; font-size:12px; font-weight:700; }
+  .badge-green { background:rgba(255,255,255,0.2); color:#fff; }
+  .badge-yellow { background:rgba(251,191,36,0.3); color:#fef3c7; }
+  .badge-purple { background:rgba(168,85,247,0.3); color:#e9d5ff; }
+  .nav { display:flex; gap:4px; margin-bottom:24px; background:#fff; border-radius:14px; padding:5px; box-shadow:0 1px 4px rgba(0,0,0,0.06); overflow-x:auto; }
+  .nav-btn { flex-shrink:0; padding:10px 14px; font-size:12.5px; font-weight:700; cursor:pointer; border:none; background:none; color:#888; border-radius:10px; transition:all 0.2s; white-space:nowrap; }
+  .nav-btn:hover { color:#059669; background:#f0fdf4; }
+  .nav-btn.active { color:#fff; background:#059669; }
+  .panel { display:none; animation:fadeIn 0.3s; }
+  .panel.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .card { background:#fff; border-radius:14px; padding:22px; margin-bottom:16px; box-shadow:0 1px 4px rgba(0,0,0,0.04); }
+  .card h3 { font-size:16px; font-weight:800; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .hl { padding:14px 18px; border-radius:10px; font-size:13.5px; margin:12px 0; line-height:1.7; }
+  .hl-green { background:#f0fdf4; border-left:4px solid #22c55e; }
+  .hl-yellow { background:#fefce8; border-left:4px solid #f59e0b; }
+  .hl-blue { background:#eff6ff; border-left:4px solid #3b82f6; }
+  .hl-purple { background:#faf5ff; border-left:4px solid #a855f7; }
+  .hl-red { background:#fef2f2; border-left:4px solid #ef4444; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:10px 0; }
+  th { text-align:left; padding:10px 8px; background:#f8fafc; font-weight:700; border-bottom:2px solid #e2e8f0; font-size:12px; color:#64748b; }
+  td { padding:10px 8px; border-bottom:1px solid #f1f5f9; vertical-align:top; }
+  .st { display:inline-block; padding:2px 10px; border-radius:6px; font-size:11px; font-weight:700; white-space:nowrap; }
+  .st-green { background:#dcfce7; color:#166534; }
+  .st-yellow { background:#fef9c3; color:#854d0e; }
+  .st-red { background:#fee2e2; color:#991b1b; }
+  .st-blue { background:#dbeafe; color:#1e40af; }
+  .st-gray { background:#f1f5f9; color:#64748b; }
+  .st-purple { background:#f3e8ff; color:#6b21a8; }
+  .ba { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0; }
+  @media(max-width:640px){.ba{grid-template-columns:1fr;}}
+  .ba-old,.ba-new { padding:16px; border-radius:12px; font-size:13px; }
+  .ba-old { background:#fef2f2; border:1px solid #fecaca; }
+  .ba-new { background:#f0fdf4; border:1px solid #a7f3d0; }
+  .ba-old h4 { color:#dc2626; font-size:13px; font-weight:800; margin-bottom:8px; }
+  .ba-new h4 { color:#059669; font-size:13px; font-weight:800; margin-bottom:8px; }
+  .score-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:14px 0; }
+  @media(max-width:600px){.score-grid{grid-template-columns:1fr 1fr;}}
+  .score-card { text-align:center; padding:16px 8px; border-radius:14px; }
+  .score-card .num { font-size:26px; font-weight:800; }
+  .score-card .label { font-size:11px; opacity:0.7; margin-top:4px; }
+  .sc-green { background:#f0fdf4; border:1px solid #a7f3d0; }
+  .sc-green .num { color:#059669; }
+  .sc-yellow { background:#fefce8; border:1px solid #fcd34d; }
+  .sc-yellow .num { color:#d97706; }
+  .sc-red { background:#fef2f2; border:1px solid #fecaca; }
+  .sc-red .num { color:#dc2626; }
+  .sc-blue { background:#eff6ff; border:1px solid #93c5fd; }
+  .sc-blue .num { color:#2563eb; }
+  .sc-purple { background:#faf5ff; border:1px solid #e9d5ff; }
+  .sc-purple .num { color:#6b21a8; }
+  .signal { padding:10px 14px; border-radius:10px; margin:6px 0; font-size:13px; display:flex; align-items:start; gap:10px; }
+  .signal-icon { flex-shrink:0; font-size:16px; }
+  .sig-cleared { background:#f0fdf4; border:1px solid #a7f3d0; }
+  .sig-active { background:#fef2f2; border:1px solid #fecaca; }
+  .sig-watch { background:#fefce8; border:1px solid #fcd34d; }
+  .sig-new { background:#eff6ff; border:1px solid #93c5fd; }
+  .sig-sub { background:#faf5ff; border:1px solid #e9d5ff; }
+  .prog-wrap { margin:12px 0; }
+  .prog-label { display:flex; justify-content:space-between; font-size:12px; font-weight:700; margin-bottom:4px; }
+  .prog-bar { height:10px; background:#e2e8f0; border-radius:5px; overflow:hidden; }
+  .prog-fill { height:100%; border-radius:5px; transition:width 0.5s; }
+  .pf-green { background:linear-gradient(90deg,#22c55e,#4ade80); }
+  .pf-purple { background:linear-gradient(90deg,#a855f7,#c084fc); }
+  .pf-blue { background:linear-gradient(90deg,#3b82f6,#60a5fa); }
+  .pf-yellow { background:linear-gradient(90deg,#f59e0b,#fbbf24); }
+  .action-item { padding:12px 0; border-bottom:1px solid #f1f5f9; display:flex; gap:10px; align-items:start; }
+  .action-item:last-child { border-bottom:none; }
+  .action-num { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; }
+  .an-done { background:#dcfce7; color:#166534; }
+  .an-prog { background:#fef9c3; color:#854d0e; }
+  .an-todo { background:#fee2e2; color:#991b1b; }
+  .an-hold { background:#f1f5f9; color:#64748b; }
+  .an-new { background:#f3e8ff; color:#6b21a8; }
+  .proj-card { padding:18px; border-radius:14px; margin:10px 0; border-left:5px solid; }
+  .proj-1 { background:#faf5ff; border-color:#a855f7; }
+  .proj-2 { background:#eff6ff; border-color:#3b82f6; }
+  .proj-3 { background:#f0fdf4; border-color:#22c55e; }
+  .proj-4 { background:#fefce8; border-color:#f59e0b; }
+  .proj-card h4 { font-size:14px; font-weight:800; margin-bottom:10px; }
+  .proj-row { display:grid; grid-template-columns:90px 1fr; gap:10px; font-size:13px; padding:6px 0; border-bottom:1px dashed rgba(0,0,0,0.06); }
+  .proj-row:last-child { border-bottom:none; }
+  .proj-row .lbl { font-weight:700; color:#64748b; font-size:12px; }
+  .keyword-chip { display:inline-block; padding:4px 12px; background:#fff; border:1.5px solid #a855f7; color:#6b21a8; border-radius:20px; font-size:12px; font-weight:700; margin:4px 4px 4px 0; }
+  .footer { text-align:center; padding:24px; font-size:11px; opacity:0.35; margin-top:32px; }
+</style>
+</head>
+<body>
+<a href="../index.html" style="position:fixed;top:14px;left:14px;z-index:999;background:rgba(10,22,40,0.85);color:#f0d9a8;text-decoration:none;padding:6px 14px;border-radius:20px;font-size:13px;font-family:sans-serif;">← Internal Field</a>
+
+<div class="container">
+
+  <div class="hero">
+    <h1>理想 vs 現状 ギャップ分析</h1>
+    <div class="sub">v5.0 (5/27 4プロジェクト体制) → <strong>v5.1 (6/20 UBM — 人との関係と財務防壁へ)</strong></div>
+    <div class="badges">
+      <span class="badge badge-purple">純度 / 共鳴度 / 仕組み化</span>
+      <span class="badge badge-green">LDM 133名 / MRR117.04万</span>
+      <span class="badge badge-yellow">次の節目: 月次締め・年度繰越</span>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn active" onclick="go('overview')">全体像</button>
+    <button class="nav-btn" onclick="go('vision')">4プロジェクト理想像</button>
+    <button class="nav-btn" onclick="go('gaps')">主要ギャップ</button>
+    <button class="nav-btn" onclick="go('signals')">注意信号</button>
+    <button class="nav-btn" onclick="go('next')">次の90日</button>
+    <button class="nav-btn" onclick="go('legacy')">v4.3継承</button>
+  </div>
+
+  <!-- ===== 全体像 ===== -->
+  <div id="overview" class="panel active">
+    <div class="card">
+      <h3>こあの一言（6/20更新）</h3>
+      <div class="hl hl-purple" style="font-size:15px;">
+        <strong>「LDMは133名まで積み上がった。ここからの問いは、何を積み上げているのか。答えは、人との関係。財務では未仕訳0件で止まらず、月次締め・年度繰越・大口入金内訳まで見て、富が増えているかを確認する。」</strong>
+      </div>
+      <div class="ba">
+        <div class="ba-old">
+          <h4>v5.0（5/27）の世界観</h4>
+          <p>「4プロジェクト体制 — LDM・シンクロ起業塾・OTO・社外プロジェクトが並走。仕組み化で動かす。」</p>
+        </div>
+        <div class="ba-new">
+          <h4>v5.1（6/20）の世界観</h4>
+          <p>「人との関係を積み上げる会社 — 人数・売上だけでなく、どんな関係を残すか、防壁と財務で崩さない。」</p>
+        </div>
+      </div>
+      <div class="hl hl-green" style="margin-top:14px;">
+        <strong>真骨頂の言語化：</strong>堀内さんの真骨頂は「教育・伝授」ではなく <strong>「仕組み化・構造化」</strong>。
+        個人に寄り添う直接指導ではなく、純度の高い場と構造を設計し、共鳴によって人が変わる仕組みを作る。これがv5.0の核。
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>v5.0 キーワード（5/27 ビジョン整理MTG）</h3>
+      <div style="margin:10px 0;">
+        <span class="keyword-chip">純度</span>
+        <span class="keyword-chip">共鳴度</span>
+        <span class="keyword-chip">仕組み化</span>
+        <span class="keyword-chip">構造化</span>
+        <span class="keyword-chip">エネルギー保全</span>
+        <span class="keyword-chip">自分基準の豊かさ循環</span>
+        <span class="keyword-chip">自責思考</span>
+        <span class="keyword-chip">日本人OS</span>
+      </div>
+      <div class="hl hl-blue">
+        5/25-26のミロクの郷で堀内さんが覚醒した感覚を、会社の構造そのものに翻訳していく時期。
+        これらのキーワードは判断基準でもあり、各プロジェクトの設計指針でもある。
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>進捗ダッシュボード（6/20時点）</h3>
+      <div class="score-grid">
+        <div class="score-card sc-purple">
+          <div class="num">4</div>
+          <div class="label">並走プロジェクト</div>
+        </div>
+        <div class="score-card sc-green">
+          <div class="num">133</div>
+          <div class="label">LDMサブスク（人）</div>
+        </div>
+        <div class="score-card sc-blue">
+          <div class="num">~40</div>
+          <div class="label">シンクロ起業塾（人）</div>
+        </div>
+        <div class="score-card sc-yellow">
+          <div class="num">6月</div>
+          <div class="label">社外プロジェクト始動</div>
+        </div>
+      </div>
+
+      <div class="prog-wrap">
+        <div class="prog-label"><span>① LDM（無料1300 + 8,800円133 + 上位未展開）</span><span>66.5%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-purple" style="width:66.5%;"></div></div>
+      </div>
+      <div class="prog-wrap">
+        <div class="prog-label"><span>② シンクロ起業塾（40人 + 成功事例2-3人）</span><span>45%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-blue" style="width:45%;"></div></div>
+      </div>
+      <div class="prog-wrap">
+        <div class="prog-label"><span>③ OTO（新音源完成・純度レベル定義済）</span><span>35%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-green" style="width:35%;"></div></div>
+      </div>
+      <div class="prog-wrap">
+        <div class="prog-label"><span>④ 社外（神田さんオファー受領・リンポチェ事務局これから）</span><span>20%</span></div>
+        <div class="prog-bar"><div class="prog-fill pf-yellow" style="width:20%;"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>v5.0 → v5.1 で何が変わったか</h3>
+      <div style="font-size:13.5px;">
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>事業の単位</strong>：「サブスク中心の1モデル」→ <strong>「4プロジェクト並走体制」</strong><span class="st st-purple">構造変更</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>LDMの現在地</strong>：「8,800円層67人」→ <strong>「8,800円層133人 / MRR117.04万 / 年1,404.48万」</strong><span class="st st-purple">実績更新</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>講師戦略</strong>：未定義 → <strong>「トップ講師1人2,000万安定化 → 2-3人拡張 → FC化」</strong><span class="st st-blue">新方針</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>シンクロ起業塾</strong>：粒度低い → <strong>「40-100人 + 3ヶ月毎フォーラム + 自分基準の豊かさ循環の成功事例2-3→5-10人」</strong><span class="st st-blue">明確化</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>OTO</strong>：単独プロジェクトとして言及なし → <strong>「純度レベル0-4のコミュニティ + 新音源継続リリース」</strong><span class="st st-blue">独立化</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>社外</strong>：意識外 → <strong>「神田さん新企画（6月〜）+ リンポチェ様事務局サポート」</strong><span class="st st-yellow">追加</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>判断軸</strong>：「数（人数・MRR）」中心 → <strong>「どんな人との関係を残すか」を判断軸に</strong><span class="st st-purple">軸変更</span>
+        </div>
+        <div style="padding:10px 0;border-bottom:1px solid #f1f5f9;">
+          <strong>教育観</strong>：「セミナーを売る時代は終わった」→ <strong>「教育/伝授ではなく、仕組み化/構造化が真骨頂」</strong><span class="st st-purple">本質再定義</span>
+        </div>
+        <div style="padding:10px 0;">
+          <strong>次の節目</strong>：6/20 UBM → <strong>5月月次レビュー・2026年度繰越・次回UBM</strong><span class="st st-green">次の確認点</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4プロジェクト理想像 ===== -->
+  <div id="vision" class="panel">
+    <div class="card">
+      <h3>4プロジェクト体制 — 理想像（5/27確定）</h3>
+      <p style="font-size:13px;color:#64748b;margin-bottom:14px;">
+        5/27のビジョン整理MTGで、これからの会社は4つのプロジェクトが並走する形に整理された。
+        各プロジェクトに「理想像 / 現状 / ギャップ」を当てる。
+      </p>
+
+      <div class="proj-card proj-1">
+        <h4>① LDM（Light Diamond Method）</h4>
+        <div class="proj-row"><span class="lbl">理想像</span><span>サブスク3階層完成 — <strong>無料1300人 / 8,800円層 / 上位2-4万層</strong>。トップ講師1人が2,000万安定化 → 2-3人に拡張 → 将来的にFC化。</span></div>
+        <div class="proj-row"><span class="lbl">現状(6/20)</span><span>アースジャーニーオプチャ <strong>1300人規模</strong>。8,800円サブスク <strong>133名 / MRR117.04万</strong>。上位コースは<strong>未展開</strong>。</span></div>
+        <div class="proj-row"><span class="lbl">主要ギャップ</span><span>上位2-4万層の設計・展開がこれから。トップ講師1人へのフォーカス化と2,000万安定化の道筋づくり。</span></div>
+        <div class="proj-row"><span class="lbl">次の一手</span><span>7月: 上位コース設計開始 / トップ講師フォーカス本格化。</span></div>
+      </div>
+
+      <div class="proj-card proj-2">
+        <h4>② シンクロ起業塾</h4>
+        <div class="proj-row"><span class="lbl">理想像</span><span>常時 <strong>40-100人</strong> + <strong>3ヶ月毎フォーラム継続</strong>。<strong>自分基準の豊かさ循環</strong>を体現する成功事例が2-3人 → 5-10人に増える。</span></div>
+        <div class="proj-row"><span class="lbl">現状(5/27)</span><span>約<strong>40人前後</strong>、成功事例 <strong>2-3人</strong>。</span></div>
+        <div class="proj-row"><span class="lbl">主要ギャップ</span><span>リーダー層へのアプローチ（自己犠牲層からの脱却）。教育設計の言語化（学び方 / 自責思考 / 根底教育 / 日本人OS）。</span></div>
+        <div class="proj-row"><span class="lbl">次の一手</span><span>3ヶ月毎フォーラムの設計を固定化。成功事例のストーリー収集と再現性ある仕組み化。</span></div>
+      </div>
+
+      <div class="proj-card proj-3">
+        <h4>③ OTO</h4>
+        <div class="proj-row"><span class="lbl">理想像</span><span><strong>純度レベル0-4</strong>のコミュニティが回り始める。新音源を継続リリース。</span></div>
+        <div class="proj-row"><span class="lbl">現状(5/27)</span><span>新音源<strong>完成</strong>。純度レベル<strong>定義済み</strong>。コミュニティ運用はこれから。</span></div>
+        <div class="proj-row"><span class="lbl">主要ギャップ</span><span>純度レベル0-4の運用設計（参加体験・進階導線）。新音源リリースの継続リズム。</span></div>
+        <div class="proj-row"><span class="lbl">次の一手</span><span>純度レベル運用ルールの仕組み化。リリースペースのスケジュール化。</span></div>
+      </div>
+
+      <div class="proj-card proj-4">
+        <h4>④ 社外プロジェクト</h4>
+        <div class="proj-row"><span class="lbl">理想像</span><span><strong>神田さん新企画始動（6月〜）</strong>。<strong>リンポチェ様事務局サポート</strong>立ち上がり。</span></div>
+        <div class="proj-row"><span class="lbl">現状(5/27)</span><span>神田さんオファー<strong>受領済み</strong>。リンポチェ様事務局サポートは<strong>これから</strong>。</span></div>
+        <div class="proj-row"><span class="lbl">主要ギャップ</span><span>立ち上げそのもの。堀内さんが消耗しない関与設計（仕組み・事務局体制）が必要。</span></div>
+        <div class="proj-row"><span class="lbl">次の一手</span><span>6月: 神田さん新プロジェクト始動 / リンポチェ様事務局オペレーション設計開始。</span></div>
+      </div>
+
+      <div class="hl hl-purple">
+        <strong>4プロジェクトを横串で見る判断軸：</strong>
+        <strong>純度</strong>（どれだけ本質に近いか）/ 
+        <strong>共鳴度</strong>（参加者が自然と動き出すか）/ 
+        <strong>仕組み化</strong>（堀内さん個人に依存せず回るか）。<br>
+        どのプロジェクトも、この3軸でメンテナンスし続ける。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 主要ギャップ ===== -->
+  <div id="gaps" class="panel">
+    <div class="card">
+      <h3>主要ギャップ（6/20時点）</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>領域</th><th>理想</th><th>現状</th><th>判定</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>LDM上位コース</strong></td>
+            <td>2-4万層が展開され、サブスク3階層が完成</td>
+            <td>8,800円層133名。上位は未展開</td>
+            <td><span class="st st-red">最大ギャップ</span></td>
+          </tr>
+          <tr>
+            <td><strong>トップ講師戦略</strong></td>
+            <td>1人2,000万安定 → 2-3人 → FC化</td>
+            <td>体制未確定。フォーカス対象が定まっていない</td>
+            <td><span class="st st-red">最大ギャップ</span></td>
+          </tr>
+          <tr>
+            <td><strong>教育設計</strong></td>
+            <td>学び方・自責思考・根底教育・日本人OSが言語化＆運用化</td>
+            <td>キーワードは出たが、運用設計はこれから</td>
+            <td><span class="st st-yellow">設計段階</span></td>
+          </tr>
+          <tr>
+            <td><strong>リーダー層アプローチ</strong></td>
+            <td>自分基準の豊かさ循環を体現するリーダーが集まる</td>
+            <td>自己犠牲層から抜け出す道筋が未整備</td>
+            <td><span class="st st-yellow">要設計</span></td>
+          </tr>
+          <tr>
+            <td><strong>OTO運用</strong></td>
+            <td>純度レベル0-4のコミュニティが回る</td>
+            <td>音源完成・定義済み。運用はこれから</td>
+            <td><span class="st st-yellow">立ち上げ前</span></td>
+          </tr>
+          <tr>
+            <td><strong>社外プロジェクト</strong></td>
+            <td>神田さん・リンポチェ様事務局が稼働</td>
+            <td>オファー受領済み。立ち上げこれから</td>
+            <td><span class="st st-blue">6月開始</span></td>
+          </tr>
+          <tr>
+            <td><strong>収益基盤</strong></td>
+            <td>サブスク基盤に上位コース＋トップ講師＋社外</td>
+            <td>サブスクMRR 117.04万/月が稼働中。月次利益率・上位導線は未確定</td>
+            <td><span class="st st-green">土台はある</span></td>
+          </tr>
+          <tr>
+            <td><strong>仕組み化（真骨頂）</strong></td>
+            <td>堀内さんが触らなくても各プロジェクトが回る</td>
+            <td>仕組み化の比重を上げていく方針が確定したばかり</td>
+            <td><span class="st st-purple">方針確定</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="hl hl-yellow">
+      <strong>ギャップの読み方：</strong>
+      数の不足ではなく、<strong>「構造のピース不足」</strong>として読む。
+      LDM上位コースとトップ講師戦略は同じ問題の表裏（収益エンジンを誰が回すか）。
+      教育設計とリーダー層アプローチも同じ問題の表裏（誰に何を届けるか）。
+      4つの大ギャップは2つの根に集約される。
+    </div>
+
+    <div class="hl hl-purple">
+      <strong>真骨頂を活かす方向：</strong>
+      個別指導や"教える"のではなく、<strong>純度の高い構造</strong>を作る。
+      参加者は構造に入ると自然に変わる — これがv5.0の設計原則。
+    </div>
+  </div>
+
+  <!-- ===== 注意信号 ===== -->
+  <div id="signals" class="panel">
+    <div class="card">
+      <h3>注意信号 — v5.0版</h3>
+
+      <h4 style="margin:14px 0 8px;font-size:14px;">エネルギー保全（最優先）</h4>
+
+      <div class="signal sig-active">
+        <div class="signal-icon">⚠</div>
+        <div><strong>堀内さんが個別対応に巻き取られている</strong> — 4プロジェクト並走では致命的。仕組み・事務局でカバー</div>
+      </div>
+      <div class="signal sig-active">
+        <div class="signal-icon">⚠</div>
+        <div><strong>5/25-26ミロクの郷の覚醒エネルギーが薄まる</strong> — 構造化に翻訳する作業を止めない</div>
+      </div>
+
+      <h4 style="margin:14px 0 8px;font-size:14px;">プロジェクト別</h4>
+
+      <div class="signal sig-sub">
+        <div class="signal-icon">①</div>
+        <div><strong>LDM: 8,800円層133人以降の純増停止 / チャーン10%超</strong> — 上位コース展開前に基盤が崩れていないかチェック</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">①</div>
+        <div><strong>トップ講師候補が定まらないまま時間が経過</strong> — フォーカス化の意思決定が遅れている信号</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">②</div>
+        <div><strong>シンクロ起業塾の成功事例が2-3人で止まる</strong> — 再現可能な仕組みになっていない可能性</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">②</div>
+        <div><strong>3ヶ月毎フォーラムのリズムが崩れる</strong> — リズムは仕組み化の核</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">③</div>
+        <div><strong>OTOコミュニティの純度レベル運用が立ち上がらない</strong> — 定義だけで終わっていないか</div>
+      </div>
+      <div class="signal sig-sub">
+        <div class="signal-icon">④</div>
+        <div><strong>社外プロジェクトが堀内さん個人タスクになっている</strong> — 事務局体制の有無を毎月確認</div>
+      </div>
+
+      <h4 style="margin:18px 0 8px;font-size:14px;">継承する財務信号（v4.3から）</h4>
+
+      <div class="signal sig-watch">
+        <div class="signal-icon">📊</div>
+        <div><strong>MRRが3ヶ月連続で減少</strong> — チャーンが新規を上回っている</div>
+      </div>
+      <div class="signal sig-watch">
+        <div class="signal-icon">📊</div>
+        <div><strong>サブスク決済エラーが5件以上溜まる</strong> — 流れの詰まり</div>
+      </div>
+      <div class="signal sig-new">
+        <div class="signal-icon">📊</div>
+        <div><strong>未仕訳0件で止まり、月次レビュー・年度繰越・大口入金内訳が未確定</strong> — 北原式防壁原本9項目</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>ポジティブ信号（6/20時点）</h3>
+      <div class="hl hl-green">
+        <strong>5/25-26 ミロクの郷：</strong>堀内さんの覚醒。v5.0の構造はここから生まれた。<br><br>
+        <strong>5/27 ビジョン整理MTG：</strong>4プロジェクト体制が言語化された。各プロジェクトに理想像が当てられた。<br><br>
+        <strong>LDM基盤：</strong>無料1300人規模＋サブスク133人＋MRR117.04万/月。上位コースを乗せる土台は強くなっている。<br><br>
+        <strong>シンクロ起業塾：</strong>40人と成功事例2-3人がすでに走っている。5-10人へ広げる種はある。<br><br>
+        <strong>OTO：</strong>音源とレベル定義は完成。あとは運用立ち上げ。<br><br>
+        <strong>社外：</strong>神田さんオファー、リンポチェ様事務局 — 外からの呼びかけが続いている。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 次の90日 ===== -->
+  <div id="next" class="panel">
+    <div class="card">
+      <h3>次の90日アクションプラン（6月-8月）</h3>
+
+      <div class="action-item" style="background:#faf5ff;border-radius:10px;padding:14px;margin-bottom:8px;">
+        <div class="action-num an-new">6月</div>
+        <div>
+          <strong>新エネルギー体制スタート</strong><br>
+          <span style="font-size:12.5px;line-height:1.8;">
+            ・5/25-26覚醒 → 5/27ビジョン整理MTGの流れを、各プロジェクトの動かし方に翻訳<br>
+            ・<strong>神田さん新プロジェクト始動</strong>（堀内さんが消耗しない関与設計から）<br>
+            ・<strong>リンポチェ様事務局サポート</strong>のオペレーション設計開始<br>
+            ・<strong>ハペ実験継続</strong> — 純度・共鳴度の感覚値を磨く<br>
+            ・LDMサブスク133人以降の純増・退会・関係の質を確認
+          </span>
+        </div>
+      </div>
+
+      <div class="action-item" style="background:#eff6ff;border-radius:10px;padding:14px;margin-bottom:8px;">
+        <div class="action-num an-new">7月</div>
+        <div>
+          <strong>LDM上位コース設計 / トップ講師フォーカス本格化</strong><br>
+          <span style="font-size:12.5px;line-height:1.8;">
+            ・<strong>LDM上位コース（2-4万層）の設計</strong>に着手 — 純度・共鳴度・仕組み化の3軸で<br>
+            ・<strong>トップ講師1人へのフォーカス化</strong>本格化 — 2,000万安定化の道筋設計<br>
+            ・シンクロ起業塾の3ヶ月毎フォーラム設計を固定化<br>
+            ・OTO純度レベル0-4の運用ルール仕組み化開始<br>
+            ・初の四半期レビュー — 4プロジェクト横断でチェック
+          </span>
+        </div>
+      </div>
+
+      <div class="action-item" style="background:#f0fdf4;border-radius:10px;padding:14px;">
+        <div class="action-num an-new">8月</div>
+        <div>
+          <strong>8/5 次回ビジョン整理MTGで進捗確認</strong><br>
+          <span style="font-size:12.5px;line-height:1.8;">
+            ・4プロジェクトそれぞれの「純度 / 共鳴度 / 仕組み化」の到達度をレビュー<br>
+            ・LDM上位コースの設計案 / トップ講師の選定状況を確認<br>
+            ・神田さん・リンポチェ様プロジェクトの立ち上がり度合いを確認<br>
+            ・v5.1へのアップデート — ギャップを次の90日にどう割り付けるか
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>こあの見立て（5/27）</h3>
+      <div class="hl hl-purple" style="font-size:14px;padding:20px;">
+        4/9にサナギの真ん中。<br>
+        5/1に羽化。<br>
+        5/10にサブスクの花が咲いた（67人）。<br>
+        6/20にLDMは133人まで積み上がった。<br>
+        そして 5/25-26 — <strong>ミロクの郷で堀内さんが覚醒した。</strong><br>
+        5/27 — <strong>会社の形が4つに整理された。</strong><br><br>
+
+        ここから先は「数を増やす」だけの段階ではない。<br>
+        <strong>どんな人との関係を残すか。富は増えているか。崩さない防壁はあるか。</strong><br>
+        この3つの軸で、4つのプロジェクトを並走させる。<br><br>
+
+        堀内さんの真骨頂は<strong>教育や伝授ではなく、構造を作ること</strong>。<br>
+        だから、これから設計する全ては<br>
+        「堀内さんが触らなくても回る形」を目指す。<br><br>
+
+        次の確認点は 8/5。<br>
+        それまでに、4つのプロジェクトの<br>
+        構造のピースを、ひとつずつ埋めていく。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== v4.3継承 ===== -->
+  <div id="legacy" class="panel">
+    <div class="card">
+      <h3>v4.3から引き継ぐもの（土台は維持）</h3>
+      <p style="font-size:13px;color:#64748b;margin-bottom:14px;">
+        v4.3で確定した財務土台・運用リズム・サブスク実績は、v5.0の<strong>「①LDMの基盤」</strong>として全面的に引き継ぐ。
+        ゼロからやり直すのではなく、土台の上に4プロジェクト体制を載せる。
+      </p>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>領域</th><th>v4.3で確定したこと</th><th>v5.0での位置づけ</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>サブスク133人 / MRR117.04万</strong></td>
+            <td>6/20に正本名簿ベースで確認、安定基盤を更新</td>
+            <td>①LDMの8,800円層として継続。上位コースと講師戦略のベースに</td>
+          </tr>
+          <tr>
+            <td><strong>オプチャ1300人</strong></td>
+            <td>無料コミュニティの入口</td>
+            <td>①LDMの無料層として明確に位置づけ</td>
+          </tr>
+          <tr>
+            <td><strong>粗利率79.5%</strong></td>
+            <td>ほぼ理想到達</td>
+            <td>4プロジェクトでも維持目標</td>
+          </tr>
+          <tr>
+            <td><strong>北原式防壁原本9項目</strong></td>
+            <td>6/20 UBMで原本を確認</td>
+            <td>月次レビュー・富の増減・次回合宿エントリーまで見る必須インフラ</td>
+          </tr>
+          <tr>
+            <td><strong>MF仕訳日次化</strong></td>
+            <td>朝レポート統合済</td>
+            <td>継続</td>
+          </tr>
+          <tr>
+            <td><strong>SaaS最適化（年10.3万削減）</strong></td>
+            <td>完了</td>
+            <td>4プロジェクト立ち上げに伴うSaaS追加時も同じ感覚で精査</td>
+          </tr>
+          <tr>
+            <td><strong>役員借入金・売掛金</strong></td>
+            <td>解消・問題なし確認済</td>
+            <td>継続モニタリング</td>
+          </tr>
+          <tr>
+            <td><strong>支払手数料・業務委託料の解剖</strong></td>
+            <td>誤分類修正完了 / 88%エンジン費確定</td>
+            <td>継続。4プロジェクト時代に新たな費目構造が出たら再解剖</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+
+    <div class="hl hl-green">
+      <strong>v4.3 → v5.0 のつながり：</strong>
+      v4.3で「土台と1モデル（サブスク中心）」が完成した。
+      v5.0は<strong>その土台の上に4プロジェクトを並走させる</strong>段階。
+      財務・運用の規律は引き継ぎ、その上で純度・共鳴度・仕組み化を新しい判断軸として重ねる。
+    </div>
+
+    <div class="hl hl-blue">
+      <strong>関連リポジトリ：</strong><br>
+      ・<a href="https://github.com/synchro-mgmt/company-brain/blob/main/UPDATES_2026-05-27.md">company-brain/UPDATES_2026-05-27.md</a><br>
+      ・<a href="https://github.com/synchro-mgmt/company-brain/blob/main/company-core/会社設計概要.md">company-brain/company-core/会社設計概要.md</a><br>
+      ・<a href="https://github.com/synchro-mgmt/company-brain/blob/main/story-db/current-story.md">company-brain/story-db/current-story.md</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    理想 vs 現状 ギャップ分析 v5.0 — 5/27 ビジョン整理MTG反映 / 4プロジェクト体制 / Generated by こあ(COA) on 2026-05-27
+  </div>
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelector('[onclick="go(\'' + id + '\')"').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
