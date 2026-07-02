@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>OTO — 人の進化 ／ 純度0-4ロードマップ（2026-06-10更新版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0a0807; --bg-2: #1a1210; --bg-3: #221816; --ink: #e8dfd3; --ink-mute: #a8a097; --gold: #d4af37; --gold-soft: #b8943a; --vermillion: #c1272d; --vermillion-soft: #8b1e22; --line: rgba(212, 175, 55, 0.18); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans JP', sans-serif; line-height: 1.85; -webkit-font-smoothing: antialiased; }
+  body { background: radial-gradient(ellipse at top, rgba(193,39,45,0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(212,175,55,0.06) 0%, transparent 50%), var(--bg); min-height: 100vh; }
+  .container { max-width: 980px; margin: 0 auto; padding: 60px 24px 120px; }
+  .hero { text-align: center; padding: 60px 0 80px; border-bottom: 1px solid var(--line); position: relative; }
+  .hero::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--gold)); }
+  .hero-kanji { font-family: 'Shippori Mincho', serif; font-size: clamp(80px, 16vw, 180px); color: var(--gold); font-weight: 900; line-height: 1; text-shadow: 0 0 60px rgba(212,175,55,0.3); letter-spacing: 0.05em; margin-bottom: 20px; background: linear-gradient(180deg, var(--gold) 0%, var(--vermillion) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .hero-sub { font-family: 'Noto Serif JP', serif; font-size: clamp(14px, 2vw, 18px); color: var(--gold); letter-spacing: 0.3em; margin-bottom: 8px; }
+  .hero-date { color: var(--ink-mute); font-size: 14px; letter-spacing: 0.2em; margin-top: 24px; }
+  .hero-decoration { display: inline-block; color: var(--vermillion); font-size: 18px; margin: 16px 12px; letter-spacing: 0.5em; }
+  section { margin: 80px 0; }
+  .section-label { display: inline-block; font-family: 'Noto Serif JP', serif; font-size: 12px; color: var(--vermillion); letter-spacing: 0.4em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--vermillion); }
+  .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--gold); margin-bottom: 24px; letter-spacing: 0.05em; }
+  .section-lead { color: var(--ink-mute); font-size: 15px; line-height: 1.9; max-width: 700px; margin-bottom: 32px; }
+  .core-card { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); padding: 48px 36px; border-radius: 4px; text-align: center; position: relative; overflow: hidden; }
+  .core-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .core-card .quote { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 3vw, 28px); color: var(--gold); line-height: 1.6; margin-bottom: 20px; letter-spacing: 0.05em; }
+  .core-card .quote-sub { color: var(--ink-mute); font-size: 14px; line-height: 1.9; }
+  .declaration { background: linear-gradient(135deg, var(--vermillion-soft), var(--bg-2)); border: 1px solid var(--vermillion); padding: 56px 36px; border-radius: 4px; text-align: center; position: relative; }
+  .declaration-mark { color: var(--gold); font-family: 'Shippori Mincho', serif; font-size: 32px; margin-bottom: 16px; letter-spacing: 1em; }
+  .declaration-body { font-family: 'Noto Serif JP', serif; font-size: clamp(18px, 2.6vw, 24px); color: #fff; line-height: 1.9; letter-spacing: 0.05em; }
+  .declaration-body em { color: var(--gold); font-style: normal; font-weight: 900; }
+  .declaration-note { color: var(--ink-mute); font-size: 12px; margin-top: 24px; letter-spacing: 0.2em; }
+  .phase { display: grid; grid-template-columns: 140px 1fr; gap: 32px; margin-bottom: 48px; padding: 36px; background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border-left: 3px solid var(--vermillion); border-radius: 0 4px 4px 0; position: relative; }
+  .phase-kanji-block { text-align: center; border-right: 1px solid var(--line); padding-right: 24px; }
+  .phase-kanji { font-family: 'Shippori Mincho', serif; font-size: 96px; line-height: 1; color: var(--gold); font-weight: 900; text-shadow: 0 0 30px rgba(212, 175, 55, 0.4); margin-bottom: 12px; }
+  .phase-num { font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--vermillion); letter-spacing: 0.2em; }
+  .phase-title { font-family: 'Noto Serif JP', serif; font-size: clamp(20px, 3vw, 26px); color: var(--gold); margin-bottom: 8px; font-weight: 700; }
+  .phase-period { color: var(--vermillion); font-size: 13px; letter-spacing: 0.15em; margin-bottom: 20px; }
+  .phase-body { color: var(--ink); font-size: 15px; line-height: 1.9; }
+  .phase-body strong { color: var(--gold); }
+  .phase-body ul { list-style: none; margin: 16px 0; padding: 0; }
+  .phase-body li { padding: 6px 0 6px 24px; position: relative; }
+  .phase-body li::before { content: "◆"; position: absolute; left: 0; color: var(--vermillion); font-size: 10px; top: 12px; }
+  .phase-callout { background: rgba(193, 39, 45, 0.1); border: 1px solid rgba(193, 39, 45, 0.3); padding: 16px 20px; margin-top: 20px; border-radius: 4px; color: var(--ink); font-size: 14px; line-height: 1.8; }
+  .phase-callout strong { color: var(--vermillion); }
+  .three-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  .three-card { background: linear-gradient(180deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); border-radius: 4px; padding: 32px 24px; position: relative; }
+  .three-card .chakra-kanji { font-family: 'Shippori Mincho', serif; font-size: 56px; color: var(--gold); font-weight: 900; margin-bottom: 8px; line-height: 1; }
+  .three-card .chakra-label { color: var(--vermillion); font-size: 12px; letter-spacing: 0.3em; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .three-card .role { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 16px; margin-bottom: 8px; }
+  .three-card .person-name { font-family: 'Noto Serif JP', serif; font-size: 22px; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .three-card .core-quote { color: var(--gold); font-style: italic; font-size: 13px; line-height: 1.7; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+  .three-card .details { font-size: 13px; color: var(--ink-mute); line-height: 1.8; }
+  .three-card .details strong { color: var(--ink); }
+  .three-card .details p { margin-bottom: 8px; }
+  .layer-stack { display: flex; flex-direction: column; gap: 2px; margin-top: 24px; }
+  .layer { padding: 28px 32px; border-left: 4px solid var(--gold); background: var(--bg-2); border-radius: 0 4px 4px 0; }
+  .layer-top { border-color: var(--gold); }
+  .layer-mid { border-color: var(--vermillion); background: var(--bg-3); }
+  .layer-bottom { border-color: var(--gold-soft); }
+  .layer-label { color: var(--vermillion); font-size: 11px; letter-spacing: 0.3em; margin-bottom: 8px; }
+  .layer-title { font-family: 'Noto Serif JP', serif; font-size: 18px; color: var(--gold); margin-bottom: 6px; }
+  .layer-desc { font-size: 14px; color: var(--ink); line-height: 1.8; }
+  .timeline { margin: 32px 0; position: relative; padding-left: 32px; }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold), var(--vermillion), var(--gold-soft)); }
+  .timeline-item { position: relative; padding-bottom: 32px; }
+  .timeline-item::before { content: ""; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 12px var(--gold); }
+  .timeline-date { color: var(--vermillion); font-size: 13px; letter-spacing: 0.2em; margin-bottom: 4px; }
+  .timeline-event { color: var(--ink); font-size: 15px; line-height: 1.8; }
+  .timeline-event strong { color: var(--gold); }
+  .jundo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
+  .jundo-card { background: linear-gradient(180deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); border-radius: 4px; padding: 24px 16px; text-align: center; position: relative; }
+  .jundo-card .level-num { font-family: 'Shippori Mincho', serif; font-size: 48px; color: var(--gold); font-weight: 900; line-height: 1; margin-bottom: 8px; text-shadow: 0 0 20px rgba(212,175,55,0.3); }
+  .jundo-card .level-label { color: var(--vermillion); font-size: 10px; letter-spacing: 0.2em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .jundo-card .level-desc { color: var(--ink); font-size: 12px; line-height: 1.7; text-align: left; }
+  .jundo-card.lv-4 { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.1), var(--bg-3)); }
+  .four-project-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+  .four-project { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 24px 16px; text-align: center; }
+  .four-project.highlight { border-color: var(--gold); background: linear-gradient(180deg, rgba(212,175,55,0.12), var(--bg-3)); box-shadow: 0 0 24px rgba(212,175,55,0.15); }
+  .four-project .fp-num { font-family: 'Shippori Mincho', serif; font-size: 36px; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .four-project .fp-name { font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--ink); margin-bottom: 6px; font-weight: 700; }
+  .four-project .fp-role { color: var(--ink-mute); font-size: 11px; letter-spacing: 0.1em; }
+  .four-project.highlight .fp-name { color: var(--gold); }
+  .footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--line); text-align: center; color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; line-height: 2; }
+  .footer-decoration { color: var(--gold); font-size: 18px; letter-spacing: 0.5em; margin-bottom: 20px; }
+  @media (max-width: 700px) {
+    .container { padding: 40px 16px 80px; }
+    .phase { grid-template-columns: 1fr; padding: 24px; }
+    .phase-kanji-block { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; padding-bottom: 16px; }
+    .phase-kanji { font-size: 72px; }
+    .three-card-grid { grid-template-columns: 1fr; }
+    .jundo-grid { grid-template-columns: 1fr; }
+    .four-project-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<a href="../../index.html" style="position:fixed;top:14px;left:14px;z-index:999;background:rgba(10,22,40,0.85);color:#f0d9a8;text-decoration:none;padding:6px 14px;border-radius:20px;font-size:13px;font-family:sans-serif;">← Internal Field</a>
+
+<div class="container">
+  <header class="hero">
+    <div class="hero-kanji">OTO</div>
+    <div class="hero-sub">EVOLUTION OF HUMAN ／ SOUND × COMMUNITY</div>
+    <h1 class="hero-title">人の進化 — OTOロードマップ</h1>
+    <div class="hero-decoration">◇　◆　◇</div>
+    <div style="color:var(--ink-mute); font-size:14px; letter-spacing:0.15em; line-height:1.9;">
+      分からなくても、接続し続けてくれればOK。<br>
+      純度が上がれば、全部うまくいく。
+    </div>
+    <div class="hero-date">2026-06-10 neten共同実験案反映版  ／  4プロジェクト体制③  ／  純度レベル0-4</div>
+  </header>
+
+  <section>
+    <span class="section-label">─ UPDATE NOTICE ─</span>
+    <h2 class="section-title">このページについて（2026-06-10更新）</h2>
+    <p class="section-lead">2026-05-27にOTOを <strong style="color:var(--gold);">4プロジェクト体制の③</strong> として再定義。2026-06-10のneten石原さんMTGで、齋藤レナさん・LaylaΩさんの音とロゴストロン信号を組み合わせる共同実験案が加わった。純度0-4と「分からなくても接続OK」の原則を保ちながら、小さく検証する。</p>
+    <div class="core-card">
+      <div class="quote">「分からなくても、<br>接続し続けてくれればOK」</div>
+      <div class="quote-sub">気づきのタイミングは、その人のリズム。<br>意図と手放し。コミュニティ内で先に気づいた人が、他者を引き上げる。</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ 4 PROJECTS ─</span>
+    <h2 class="section-title">会社全体の4プロジェクト体制（OTO ＝ ③）</h2>
+    <p class="section-lead">2026年6月から、会社全体が4プロジェクト並走体制で稼働。OTOはその③として位置づく。</p>
+    <div class="four-project-grid">
+      <div class="four-project">
+        <div class="fp-num">①</div>
+        <div class="fp-name">LDM</div>
+        <div class="fp-role">中心プロジェクト</div>
+      </div>
+      <div class="four-project">
+        <div class="fp-num">②</div>
+        <div class="fp-name">シンクロ起業塾</div>
+        <div class="fp-role">資本主義からの脱却</div>
+      </div>
+      <div class="four-project highlight">
+        <div class="fp-num">③</div>
+        <div class="fp-name">OTO</div>
+        <div class="fp-role">人の進化（このページ）</div>
+      </div>
+      <div class="four-project">
+        <div class="fp-num">④</div>
+        <div class="fp-name">社外プロジェクト</div>
+        <div class="fp-role">神田さん／リンポチェ様</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ THE 3 UNIT ─</span>
+    <h2 class="section-title">OTO 3人ユニット</h2>
+    <p class="section-lead">堀内さん・齋藤レナさん・LaylaΩさんの3人ユニットで「人の進化」をテーマに活動する。<br>音源・場・コミュニティを通して、未来の人類にチューニングする。</p>
+    <div class="three-card-grid">
+      <div class="three-card">
+        <div class="chakra-kanji">天</div>
+        <div class="chakra-label">音 ／ 周波数</div>
+        <div class="role">外側からの覚醒</div>
+        <div class="person-name">齋藤レナさん</div>
+        <div class="core-quote">音は、認識の上の次元で<br>変換をかける。</div>
+        <div class="details">
+          <p><strong>担当：</strong>音源・ライブパフォーマンス・周波数</p>
+          <p><strong>新作：</strong>反強制的に聴いたら変わっていくレベルの音源が完成</p>
+        </div>
+      </div>
+      <div class="three-card">
+        <div class="chakra-kanji">心</div>
+        <div class="chakra-label">構造 ／ 言語化</div>
+        <div class="role">構造・仕組み化</div>
+        <div class="person-name">堀内さん</div>
+        <div class="core-quote">純度が上がれば、<br>全部うまくいく。</div>
+        <div class="details">
+          <p><strong>担当：</strong>純度の構造化・仕組み化・他プロジェクトとの連携</p>
+          <p><strong>真骨頂：</strong>触れる相手を変えるとうまくいく構造が見える</p>
+        </div>
+      </div>
+      <div class="three-card">
+        <div class="chakra-kanji">地</div>
+        <div class="chakra-label">体 ／ 神経系</div>
+        <div class="role">内側からの解放</div>
+        <div class="person-name">LaylaΩさん</div>
+        <div class="core-quote">体は呪いを<br>無効化するために使う。</div>
+        <div class="details">
+          <p><strong>担当：</strong>身体・神経系・セルフラブの増幅</p>
+          <p><strong>共創原理：</strong>3もらって10になる、セルフラブの伝播</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ JUNDO LEVELS ─</span>
+    <h2 class="section-title">純度レベル 0-4</h2>
+    <p class="section-lead">OTOの活動を「純度レベル0-4」で構造化。段階を定義することで、コミュニティ内で純度が上がる流れを作る。<br>純度が高くなれば、お金もパートナーシップも、結果として全部うまくいく。</p>
+    <div class="jundo-grid">
+      <div class="jundo-card">
+        <div class="level-num">0</div>
+        <div class="level-label">LEVEL 0 ／ 接続</div>
+        <div class="level-desc">まず触れる。分からなくてOK。音と場に接続するだけで何かが動き出す段階。</div>
+      </div>
+      <div class="jundo-card">
+        <div class="level-num">1</div>
+        <div class="level-label">LEVEL 1 ／ 体感</div>
+        <div class="level-desc">音や場で「何か起きてる」を体感で受け取る。言語化はまだ不要。</div>
+      </div>
+      <div class="jundo-card">
+        <div class="level-num">2</div>
+        <div class="level-label">LEVEL 2 ／ 気づき</div>
+        <div class="level-desc">自分のリズムで気づきが降りてくる。コミュニティ内で言葉にしてシェアする段階。</div>
+      </div>
+      <div class="jundo-card">
+        <div class="level-num">3</div>
+        <div class="level-label">LEVEL 3 ／ 純化</div>
+        <div class="level-desc">日常の在り方が変わり始める。お金・関係・仕事の流れが変化する。</div>
+      </div>
+      <div class="jundo-card lv-4">
+        <div class="level-num">4</div>
+        <div class="level-label">LEVEL 4 ／ 引き上げ</div>
+        <div class="level-desc">先に気づいた者として、他者を引き上げる側に回る。反共生的環境を体現する。</div>
+      </div>
+    </div>
+    <div class="phase-callout" style="margin-top: 24px;">
+      <strong>運用方針：</strong>段階を「テスト」や「卒業要件」にはしない。あくまで <strong style="color:var(--gold);">本人と運営の共通言語</strong> として、「今このあたりにいる」を見える化するための物差し。<br>
+      レベル間の移動は本人のリズム。意図と手放し。
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ CUSTOMER POLICY ─</span>
+    <h2 class="section-title">お客さんへの方針</h2>
+    <p class="section-lead">顕在意識のレイヤーと、OTOが働きかけるレイヤーには距離がある。だからこそ、入口は「分からなくてOK」にする。</p>
+    <div class="layer-stack">
+      <div class="layer layer-top">
+        <div class="layer-label">入口 ── 接続OK方針</div>
+        <div class="layer-title">「分からなくても、接続し続けてくれればOK」</div>
+        <div class="layer-desc">
+          顕在意識は「お金・パートナーシップ」に奪われている層が多い。「進化したい」が願望にまで結びついていない段階のお客さんも多い。<br>
+          だから、まずは <strong>触れ続けてくれるだけでOK</strong> という入口を用意する。
+        </div>
+      </div>
+      <div class="layer layer-mid">
+        <div class="layer-label">中層 ── 個人のリズム</div>
+        <div class="layer-title">気づきのタイミングは、その人のリズム</div>
+        <div class="layer-desc">
+          こちらから「気づかせる」ことはしない。<strong>意図と手放し</strong>。<br>
+          音と場と仲間が揃っていれば、その人のタイミングで降りてくる。
+        </div>
+      </div>
+      <div class="layer layer-bottom">
+        <div class="layer-label">下層 ── 反共生的環境</div>
+        <div class="layer-title">コミュニティ内での気づきシェアの場を強化</div>
+        <div class="layer-desc">
+          先に気づいた人が他者を引き上げる、反共生的な環境を作る。<br>
+          運営が一方的に教えるのではなく、参加者同士の共鳴で純度が上がっていく構造に。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ KEY PRINCIPLES ─</span>
+    <h2 class="section-title">横断する3つのキーワード</h2>
+    <p class="section-lead">OTOを含む全プロジェクトに通底する原則。意思決定で迷ったらここに戻る。</p>
+    <div class="three-card-grid">
+      <div class="three-card" style="text-align:center;">
+        <div class="chakra-kanji" style="font-size:48px;">純度</div>
+        <div class="chakra-label">JUNDO</div>
+        <div class="details" style="text-align:left;">
+          <p>純度が上がれば、全部うまくいく。OTOの中心軸であり、お客さんとの共通言語。</p>
+        </div>
+      </div>
+      <div class="three-card" style="text-align:center;">
+        <div class="chakra-kanji" style="font-size:48px;">共鳴度</div>
+        <div class="chakra-label">RESONANCE</div>
+        <div class="details" style="text-align:left;">
+          <p>共鳴する人とだけ濃く繋がる。広く浅くではなく、深く正確に。</p>
+        </div>
+      </div>
+      <div class="three-card" style="text-align:center;">
+        <div class="chakra-kanji" style="font-size:48px;">仕組み化</div>
+        <div class="chakra-label">STRUCTURE</div>
+        <div class="details" style="text-align:left;">
+          <p>堀内が直接対応しなくても回る構造を作る。3人ユニットが現場に立ち続けられる土台を整える。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ TIMELINE ─</span>
+    <h2 class="section-title">タイムライン</h2>
+    <p class="section-lead">5/16セミナーから6月新エネルギー体制、neten共同実験、8/5次回MTGまでの流れ。</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026-04-16</div>
+        <div class="timeline-event"><strong>OTOユニット Instagramライブ</strong> ── 3人ユニットの始動</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-05-16</div>
+        <div class="timeline-event"><strong>OTOセミナー（100名超参加）</strong> ── 過去の記録は seminar-script を参照</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-05-25 / 26</div>
+        <div class="timeline-event"><strong>ミロクの郷での覚醒</strong> ── エネルギー保全と新地球との接続が確認された</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-05-27  ★ 方針確定</div>
+        <div class="timeline-event"><strong>ビジョン整理MTG</strong> ── 4プロジェクト体制／OTO＝③／純度0-4／「接続OK」方針が確定</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-06</div>
+        <div class="timeline-event"><strong>新エネルギー体制スタート</strong> ── 新作音源リリース／コミュニティ内シェア強化／純度の運用開始</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-06-10 ★ 外部接続</div>
+        <div class="timeline-event"><strong>neten石原さんMTG</strong> ── 齋藤レナさん・LaylaΩさんの音とロゴストロン信号を組み合わせる共同実験案が生まれた</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-06-12 13:00</div>
+        <div class="timeline-event"><strong>販売制度確認MTG</strong> ── 実証前に販売資格、商品条件、責任分界、顧客情報の扱いを確認</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2026-08-05（水）14:30-16:00</div>
+        <div class="timeline-event"><strong>次回ビジョン整理MTG</strong> ── 純度運用の振り返りと次フェーズ設計</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ NEXT ACTIONS ─</span>
+    <h2 class="section-title">直近のやること</h2>
+    <div class="phase">
+      <div class="phase-kanji-block">
+        <div class="phase-kanji">音</div>
+        <div class="phase-num">ACTION 1</div>
+      </div>
+      <div>
+        <div class="phase-title">新作音源のリリース設計</div>
+        <div class="phase-period">2026-06 〜</div>
+        <div class="phase-body">
+          <p>反強制的に聴いたら変わっていくレベルの音源が完成。<strong>「分からなくても接続し続けてくれればOK」</strong> の入口に置く。</p>
+          <ul>
+            <li>無料で触れられる導線（純度Lv0→1）</li>
+            <li>サブスクメンバー向け継続提供（純度Lv2→3）</li>
+            <li>ライブパフォーマンス／場としての音の体験</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-kanji-block">
+        <div class="phase-kanji">場</div>
+        <div class="phase-num">ACTION 2</div>
+      </div>
+      <div>
+        <div class="phase-title">コミュニティ内の気づきシェアの場を強化</div>
+        <div class="phase-period">2026-06 〜 継続</div>
+        <div class="phase-body">
+          <p><strong>反共生的環境</strong>を意図的に作る。先に気づいた人が、他者を引き上げる。</p>
+          <ul>
+            <li>気づき投稿の場（オプチャ／専用スレッド）</li>
+            <li>純度レベルを共通言語として運用</li>
+            <li>3人がリポスト・反応で温める</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-kanji-block">
+        <div class="phase-kanji">連</div>
+        <div class="phase-num">ACTION 3</div>
+      </div>
+      <div>
+        <div class="phase-title">他プロジェクトとの連動</div>
+        <div class="phase-period">2026-06 〜</div>
+        <div class="phase-body">
+          <p>OTOは単独で完結させず、LDM／シンクロ起業塾／社外プロジェクトと共鳴度を持って繋ぐ。</p>
+          <ul>
+            <li>LDMサブスクメンバーへの音源接続</li>
+            <li>シンクロ起業塾の「資本主義からの脱却」テーマとの呼応</li>
+            <li>神田さん新プロジェクト／リンポチェ様サポートとの精神的整合</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-kanji-block">
+        <div class="phase-kanji">験</div>
+        <div class="phase-num">ACTION 4</div>
+      </div>
+      <div>
+        <div class="phase-title">neten × OTO ロゴストロン共同実験</div>
+        <div class="phase-period">制度確認後、小さく開始</div>
+        <div class="phase-body">
+          <p>齋藤レナさん・LaylaΩさんの音とロゴストロン信号を組み合わせ、OTOの純度レベル0-4にどのような体感変化が起きるかを検証する。</p>
+          <ul>
+            <li>最初に実験目的、対象、測定方法、利用許諾を定義</li>
+            <li>少人数で体感・継続性・安全性を記録</li>
+            <li>結果を見て音源、場、リトリートへの展開を判断</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ ENERGY ─</span>
+    <h2 class="section-title">エネルギー保全（5/25-26 ミロクの郷の覚醒から）</h2>
+    <div class="core-card">
+      <div class="quote-sub" style="text-align:left; color:var(--ink); font-size:15px;">
+        <strong style="color:var(--gold);">他者の不安・恐れ・思いを受け取りすぎない。</strong><br><br>
+        OTOは「人の進化」を扱う場である以上、<br>
+        参加者の濃いエネルギーが3人に流れ込む。<br><br>
+        ・浄化を定期的に行う<br>
+        ・ご先祖様レベルのエネルギーも来る前提で備える<br>
+        ・本人・先祖の両方を新地球とつなぎ直す視点を持つ<br>
+        ・3人それぞれが、自分のリズムで離れる時間を取る<br><br>
+        <strong style="color:var(--vermillion);">エネルギーが燃え続けることが、活動が続くことの土台。</strong>
+      </div>
+    </div>
+  </section>
+
+  <section style="text-align:center;">
+    <span class="section-label">─ RELATED ─</span>
+    <h2 class="section-title">関連リンク</h2>
+    <p class="section-lead" style="margin: 0 auto 24px;">過去のセミナー記録（5/16）はこちら。新方針適用前のアーカイブとして参照。</p>
+    <a href="./seminar-2026-05-16-script.html" style="display: inline-block; padding: 14px 28px; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Noto Serif JP', serif; font-size: 14px; letter-spacing: 0.1em; border-radius: 4px;">◇ 2026-05-16 セミナー記録（アーカイブ）◇</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-decoration">◇　◆　◇</div>
+    <div>OTO ── 人の進化  ／  3人ユニット（堀内・齋藤レナ・LaylaΩ）</div>
+    <div>株式会社シンクロニシティ・マネジメント ／ 4プロジェクト体制 ③</div>
+    <div style="margin-top:16px; opacity:0.6;">Internal use only ── OTO members  ／  Last updated: 2026-06-10（neten共同実験案を反映）</div>
+  </footer>
+</div>
+</body>
+</html>
