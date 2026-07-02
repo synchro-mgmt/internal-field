@@ -11,18 +11,24 @@
     --navy: #0a1628; --navy-mid: #132040; --accent: #e94560; --gold: #f0d9a8; --gold-dark: #c4a86a;
     --sun: #f39c12; --ldm: #d97706; --synchro: #8e44ad; --oto: #e67e22; --external: #0891b2;
     --bg: #faf9f7; --card: #ffffff; --text: #1a1a2e; --text-sub: #64748b; --border: #e2e8f0;
-    --indigo: #4f46e5; --indigo-light: #e0e7ff;
+    --indigo: #4f46e5;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Noto Sans JP', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; -webkit-font-smoothing: antialiased; min-height: 100vh; }
-  .hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, #1b2d4f 100%); color: #fff; padding: 80px 40px 60px; text-align: center; position: relative; overflow: hidden; }
+  .hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, #1b2d4f 100%); color: #fff; padding: 72px 40px 88px; text-align: center; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -40%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(243,156,18,0.08) 0%, transparent 70%); border-radius: 50%; }
   .hero-inner { position: relative; z-index: 1; }
   .hero-badge { display: inline-block; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 6px 20px; border-radius: 30px; font-size: 0.78em; font-weight: 500; letter-spacing: 0.1em; margin-bottom: 20px; color: var(--gold); }
   .hero h1 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 2.6em; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.06em; }
   .hero .subtitle { font-size: 1em; opacity: 0.6; font-weight: 300; max-width: 480px; margin: 0 auto; letter-spacing: 0.04em; }
-  .solar-section { max-width: 900px; margin: -40px auto 0; padding: 0 24px 60px; position: relative; z-index: 2; }
-  .sun-card { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid var(--sun); border-radius: 24px; padding: 36px; text-align: center; margin-bottom: 32px; box-shadow: 0 8px 32px rgba(243,156,18,0.15); transition: transform 0.3s ease; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; position: relative; z-index: 2; }
+  .stats-bar { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 22px 28px; margin-top: -48px; margin-bottom: 36px; box-shadow: 0 8px 32px rgba(10,22,40,0.10); display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .stat { text-align: center; min-width: 120px; }
+  .stat .num { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.5em; font-weight: 700; color: var(--navy); }
+  .stat .label { font-size: 0.72em; color: var(--text-sub); letter-spacing: 0.05em; }
+  .stat .note { font-size: 0.68em; color: var(--gold-dark); font-weight: 600; }
+  .section-label { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.82em; font-weight: 700; color: var(--text-sub); letter-spacing: 0.08em; margin: 36px 0 14px; padding-left: 4px; }
+  .sun-card { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid var(--sun); border-radius: 24px; padding: 34px; text-align: center; box-shadow: 0 8px 32px rgba(243,156,18,0.15); transition: transform 0.3s ease; }
   .sun-card:hover { transform: translateY(-3px); }
   .sun-icon { font-size: 2.4em; margin-bottom: 8px; }
   .sun-card h2 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.4em; color: #92400e; margin-bottom: 8px; }
@@ -34,7 +40,7 @@
   .sun-links a:hover { background: #e67e22; transform: translateY(-1px); }
   .sun-links a.secondary { background: transparent; border: 2px solid var(--sun); color: #92400e; }
   .sun-links a.secondary:hover { background: rgba(243,156,18,0.1); }
-  .planet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 32px; }
+  .planet-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .planet-card { background: var(--card); border-radius: 20px; padding: 28px; border: 1px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,0.04); transition: all 0.3s ease; text-decoration: none; color: var(--text); display: block; }
   .planet-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
   .planet-card.active { border-color: var(--ldm); box-shadow: 0 4px 16px rgba(217,119,6,0.15); }
@@ -43,6 +49,9 @@
   .planet-card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.1em; font-weight: 700; }
   .planet-card p { font-size: 0.85em; color: var(--text-sub); line-height: 1.7; }
   .planet-tag { display: inline-block; font-size: 0.72em; padding: 3px 12px; border-radius: 20px; font-weight: 600; margin-top: 12px; }
+  .sub-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .sub-links a { font-size: 0.75em; font-weight: 600; text-decoration: none; padding: 4px 14px; border-radius: 20px; background: rgba(217,119,6,0.1); color: #92400e; transition: background 0.2s; }
+  .sub-links a:hover { background: rgba(217,119,6,0.22); }
   .ldm-structure { margin-top: 14px; padding: 14px; background: #fffbeb; border-radius: 12px; border: 1px solid #fde68a; }
   .ldm-structure .layer { display: flex; align-items: center; gap: 8px; font-size: 0.78em; margin-bottom: 6px; color: #78350f; }
   .ldm-structure .layer:last-child { margin-bottom: 0; }
@@ -50,17 +59,6 @@
   .ldm-structure .layer .lv.l1 { background: rgba(217,119,6,0.15); color: #92400e; }
   .ldm-structure .layer .lv.l2 { background: rgba(217,119,6,0.3); color: #78350f; }
   .ldm-structure .layer .lv.l3 { background: var(--ldm); color: #fff; }
-  .section-label { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.82em; font-weight: 700; color: var(--text-sub); letter-spacing: 0.08em; margin-bottom: 14px; padding-left: 4px; }
-  .story-section { margin-bottom: 32px; }
-  .research-card { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #0ea5e9; border-radius: 24px; padding: 36px; text-align: center; box-shadow: 0 8px 32px rgba(14,165,233,0.12); transition: transform 0.3s ease; text-decoration: none; color: var(--text); display: block; }
-  .research-card:hover { transform: translateY(-3px); }
-  .research-card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.3em; color: #0369a1; margin-bottom: 8px; }
-  .research-card p { font-size: 0.88em; color: #0284c7; max-width: 500px; margin: 0 auto; line-height: 1.7; }
-  .research-badge { display: inline-block; background: #0ea5e9; color: #fff; font-size: 0.75em; font-weight: 600; padding: 4px 16px; border-radius: 20px; margin-top: 16px; }
-  .research-meta { display: flex; gap: 10px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
-  .research-meta span { font-size: 0.72em; padding: 3px 12px; border-radius: 20px; font-weight: 600; background: rgba(14,165,233,0.12); color: #0369a1; }
-  .story-emoji { font-size: 2.2em; margin-bottom: 8px; }
-  .dashboard-section { margin-bottom: 32px; }
   .dashboard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .dash-card { background: var(--card); border-radius: 16px; padding: 24px 20px; border: 1px solid var(--border); text-align: center; transition: all 0.3s ease; text-decoration: none; color: var(--text); display: block; }
   .dash-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
@@ -68,29 +66,34 @@
   .dash-icon { font-size: 1.6em; margin-bottom: 8px; }
   .dash-card h4 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 0.88em; font-weight: 700; margin-bottom: 4px; }
   .dash-card p { font-size: 0.75em; color: var(--text-sub); }
-  .util-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 40px; }
+  .research-card { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 2px solid #0ea5e9; border-radius: 24px; padding: 32px; text-align: center; box-shadow: 0 8px 32px rgba(14,165,233,0.12); transition: transform 0.3s ease; text-decoration: none; color: var(--text); display: block; }
+  .research-card:hover { transform: translateY(-3px); }
+  .research-card h3 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 1.2em; color: #0369a1; margin-bottom: 8px; }
+  .research-card p { font-size: 0.88em; color: #0284c7; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+  .research-badge { display: inline-block; background: #0ea5e9; color: #fff; font-size: 0.75em; font-weight: 600; padding: 4px 16px; border-radius: 20px; margin-top: 16px; }
+  .updates-list { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 8px 24px; }
+  .update-row { display: flex; gap: 14px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.85em; }
+  .update-row:last-child { border-bottom: none; }
+  .update-row .date { font-weight: 700; color: var(--gold-dark); white-space: nowrap; font-size: 0.9em; }
+  .update-row .body { color: var(--text-sub); }
+  .update-row .body strong { color: var(--text); }
+  .util-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
   .util-card { background: var(--card); border-radius: 16px; padding: 20px; border: 1px solid var(--border); text-align: center; transition: all 0.2s ease; text-decoration: none; color: var(--text); display: block; }
   .util-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); transform: translateY(-2px); }
   .util-icon { font-size: 1.6em; margin-bottom: 8px; }
   .util-card h4 { font-size: 0.85em; font-weight: 700; margin-bottom: 4px; }
   .util-card p { font-size: 0.75em; color: var(--text-sub); }
-  .update-banner { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 1px solid #6ee7b7; border-radius: 16px; padding: 20px 28px; margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
-  .update-banner .update-icon { font-size: 1.6em; flex-shrink: 0; }
-  .update-banner .update-text { font-size: 0.88em; color: #065f46; }
-  .update-banner .update-text strong { color: #047857; }
   .portal-footer { text-align: center; padding: 40px 24px; font-size: 0.8em; color: var(--text-sub); border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
   .portal-footer strong { color: var(--text); font-weight: 600; }
-  .open-field-link { display: inline-flex; align-items: center; gap: 6px; background: rgba(79,70,229,0.08); color: var(--indigo); text-decoration: none; padding: 8px 20px; border-radius: 30px; font-size: 0.82em; font-weight: 600; margin-top: 12px; transition: all 0.2s; }
+  .open-field-link { display: inline-flex; align-items: center; gap: 6px; background: rgba(79,70,229,0.08); color: var(--indigo); text-decoration: none; padding: 8px 20px; border-radius: 30px; font-size: 0.82em; font-weight: 600; margin-top: 24px; transition: all 0.2s; }
   .open-field-link:hover { background: rgba(79,70,229,0.15); }
   @media (max-width: 640px) {
-    .hero { padding: 60px 24px 48px; }
+    .hero { padding: 56px 24px 72px; }
     .hero h1 { font-size: 1.8em; }
-    .planet-grid { grid-template-columns: 1fr; }
-    .dashboard-grid { grid-template-columns: 1fr; }
+    .planet-grid, .dashboard-grid { grid-template-columns: 1fr; }
     .util-grid { grid-template-columns: repeat(2, 1fr); }
-    .solar-section { padding: 0 16px 40px; }
-    .research-card { padding: 28px 20px; }
-    .update-banner { flex-direction: column; text-align: center; }
+    .container { padding: 0 16px 40px; }
+    .stats-bar { padding: 18px; }
   }
 </style>
 </head>
@@ -102,25 +105,27 @@
     <div class="subtitle">命のフィールドを内側から照らす</div>
   </div>
 </div>
-<div class="solar-section">
-  <div class="update-banner">
-    <div class="update-icon">🌅</div>
-    <div>
-      <div class="update-text"><strong>2026-06-20 UBM更新</strong> — 会社設計の上位問いを「何を積み上げているのか＝人との関係」へ更新。LDM有料133名/MRR117.04万、防壁原本9項目、月次締め・年度繰越を次の経営OSとして統合。</div>
-    </div>
+<div class="container">
+
+  <!-- 今の数字（唯一の数値ソース。UBM更新時はここだけ直す） -->
+  <div class="stats-bar">
+    <div class="stat"><div class="num">133名</div><div class="label">LDM有料コミュニティ</div></div>
+    <div class="stat"><div class="num">117.04万</div><div class="label">MRR（月額）</div></div>
+    <div class="stat"><div class="num">1,300人</div><div class="label">無料オプチャ（入口）</div></div>
+    <div class="stat"><div class="note">最終更新</div><div class="num" style="font-size:1.1em;">2026-06-20</div><div class="label">UBM大阪</div></div>
   </div>
+
   <div class="sun-card">
     <div class="sun-icon">☀️</div>
     <h2>堀内恭隆 — 命のフィールドの中心</h2>
     <p>4プロジェクトの真ん中にある太陽。教育や伝授ではなく、<strong>仕組み化／構造化</strong>が真骨頂。これからは「どんな人との関係を残すか」を軸に、純度の高い場を共鳴で広げていく。</p>
-    <div class="sun-keywords">
-      <span>純度</span><span>共鳴度</span><span>仕組み化</span>
-    </div>
+    <div class="sun-keywords"><span>純度</span><span>共鳴度</span><span>仕組み化</span></div>
     <div class="sun-links">
-      <a href="dashboards/ubm-roadmap.html">UBM継続ロードマップ</a>
-      <a href="dashboards/company-roadmap.html" class="secondary">会社設計ロードマップv11</a>
+      <a href="company/ubm/index.html">UBM継続ロードマップ</a>
+      <a href="company/roadmap.html" class="secondary">会社設計ロードマップ v13</a>
     </div>
   </div>
+
   <div class="section-label">🪐 4 PROJECTS — 4プロジェクト体制</div>
   <div class="planet-grid">
     <div class="planet-card active">
@@ -128,18 +133,19 @@
         <div class="planet-icon" style="background: rgba(217,119,6,0.12);">☀️</div>
         <h3>① LDM（Life Design Method）</h3>
       </div>
-      <p>すべての中心。命のデザインを通じて人生を丸ごと創造するメソッド。6/20時点で有料コミュニティは<strong>133名 / MRR117.04万</strong>。ここからは人数だけでなく、誰が濃く残り、講師・拠点・運営の核になるかを見る。</p>
+      <p>すべての中心。命のデザインを通じて人生を丸ごと創造するメソッド。人数だけでなく、誰が濃く残り、講師・拠点・運営の核になるかを見る。</p>
       <div class="ldm-structure">
-        <div class="layer"><span class="lv l1">L1</span>無料オプチャ（アースジャーニー）— 1,300人の入口</div>
-        <div class="layer"><span class="lv l2">L2</span>月額 8,800円 サブスク — 133名 / MRR117.04万</div>
+        <div class="layer"><span class="lv l1">L1</span>無料オプチャ（アースジャーニー）— 入口</div>
+        <div class="layer"><span class="lv l2">L2</span>月額 8,800円 サブスク — 有料コミュニティ</div>
         <div class="layer"><span class="lv l3">L3</span>月額 2〜4万円 上位プログラム — リーダー層</div>
-      </div>
-      <div class="ldm-structure" style="margin-top:8px;">
         <div class="layer"><span class="lv l1">関係</span>堀内 → 講師トップ3 → お客様（FC化展望）</div>
       </div>
-      <span class="planet-tag" style="background: rgba(217,119,6,0.15); color: #92400e;">中心プロジェクト / 6/20 UBM反映済</span>
+      <div class="sub-links">
+        <a href="projects/ldm/solar-asset-map.html">⚗️ 資産マップ</a>
+        <a href="projects/ldm/earth-journey-roadmap.html">🌍 アースジャーニー発展ロードマップ</a>
+      </div>
     </div>
-    <a href="dashboards/synchro-juku.html" class="planet-card">
+    <a href="projects/synchro-juku/index.html" class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(142,68,173,0.1);">🚀</div>
         <h3>② シンクロ起業塾</h3>
@@ -147,7 +153,7 @@
       <p>LDMのビジネス応用。約40人の既存メンバー、フォーラム、ワールドカフェを土台に、命からビジネスを回す実験を続ける。2026年6月からは<strong>サポーター型起業</strong>という新しい入口も始動。</p>
       <span class="planet-tag" style="background: rgba(142,68,173,0.1); color: #8e44ad;">全体像・進行状況・関係者を見る →</span>
     </a>
-    <a href="oto/launch-roadmap-ePvwbbfko4I.html" class="planet-card">
+    <a href="projects/oto/launch-roadmap.html" class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(230,126,34,0.1);">🎵</div>
         <h3>③ OTO</h3>
@@ -155,96 +161,94 @@
       <p>音 × サイエンス × シャーマニズム。命の周波数を場として現すプロジェクト。齋藤レナさん・LaylaΩさんの音とロゴストロン信号を組み合わせる共同実験をnetenと検討する。</p>
       <span class="planet-tag" style="background: rgba(230,126,34,0.1); color: #e67e22;">現行ロードマップを見る →</span>
     </a>
-    <div class="planet-card">
+    <a href="projects/external/index.html" class="planet-card">
       <div class="planet-header">
         <div class="planet-icon" style="background: rgba(8,145,178,0.1);">🌐</div>
         <h3>④ 社外プロジェクト</h3>
       </div>
       <p>共鳴ベースで関わる外部の場。<strong>神田昌典さん新企画</strong>と<strong>リンポチェ様事務局</strong>の2つを軸に、堀内さんの仕組み化の力を外部の生態系へ届ける。</p>
-      <span class="planet-tag" style="background: rgba(8,145,178,0.1); color: #0e7490;">神田さん新企画 / リンポチェ様事務局</span>
-    </div>
-  </div>
-  <div class="story-section">
-    <div class="section-label">📊 STRATEGY & RESEARCH</div>
-    <a href="reports/x-global-growth-strategy-2026.html" class="research-card">
-      <div class="story-emoji">𝕏</div>
-      <h3>世界中の人が集まるXアカウント構築戦略 2026</h3>
-      <p>最新アルゴリズム解析・成長戦略・マネタイズ・90日アクションプランを完全網羅。<br>グローバルアカウントを本気で育てるための実践レポート。</p>
-      <div class="research-meta">
-        <span>2026-05-12</span>
-        <span>SNS戦略</span>
-      </div>
-      <span class="research-badge">レポートを読む →</span>
+      <span class="planet-tag" style="background: rgba(8,145,178,0.1); color: #0e7490;">2つのプロジェクトを見る →</span>
     </a>
   </div>
-  <div class="dashboard-section">
-    <div class="section-label">DASHBOARDS</div>
-    <div class="dashboard-grid">
-      <a href="dashboards/ubm-roadmap.html" class="dash-card featured">
-        <div class="dash-icon">🏁</div>
-        <h4>UBM継続ロードマップ</h4>
-        <p>4/4原点・6/20報告・毎月UBM運用の入口</p>
-      </a>
-      <a href="dashboards/company-roadmap.html" class="dash-card">
-        <div class="dash-icon">🗺️</div>
-        <h4>会社設計ロードマップ</h4>
-        <p>v13 — 6/20 UBM「人との関係」軸を反映</p>
-      </a>
-      <a href="dashboards/synchro-juku.html" class="dash-card" style="border-color: var(--synchro); box-shadow: 0 4px 16px rgba(142,68,173,0.12);">
-        <div class="dash-icon">🚀</div>
-        <h4>シンクロ起業塾</h4>
-        <p>全体戦略・プロジェクト・アクション・関係者DB</p>
-      </a>
-      <a href="dashboards/financial-roadmap.html" class="dash-card">
-        <div class="dash-icon">💰</div>
-        <h4>財務マネジメント設計</h4>
-        <p>LDM133名・防壁原本9項目・月次/年度繰越</p>
-      </a>
-      <a href="dashboards/gap-analysis.html" class="dash-card">
-        <div class="dash-icon">🎯</div>
-        <h4>ギャップ分析</h4>
-        <p>6/20現在地補正と次の90日</p>
-      </a>
-      <a href="dashboards/earth-journey-roadmap.html" class="dash-card">
-        <div class="dash-icon">🌍</div>
-        <h4>アースジャーニー発展ロードマップ</h4>
-        <p>コミュニティ4フェーズ 2026-2027 — v3.3</p>
-      </a>
-      <a href="dashboards/moment-project.html" class="dash-card" style="border-color: #c94f6d; box-shadow: 0 4px 16px rgba(201,79,109,0.12);">
-        <div class="dash-icon">🪞</div>
-        <h4>MOMENT</h4>
-        <p>プロジェクト全体概要・内部ロードマップ — 2026-06-15</p>
-      </a>
-      <a href="dashboards/ldm-solar-asset-map.html" class="dash-card">
-        <div class="dash-icon">⚗️</div>
-        <h4>LDM太陽系 資産マップ</h4>
-        <p>れんの資産化マップ — 4プロジェクト体制 2026-06-13</p>
-      </a>
-    </div>
+
+  <div class="section-label">🏛 COMPANY — 経営のOS</div>
+  <div class="dashboard-grid">
+    <a href="company/ubm/index.html" class="dash-card featured">
+      <div class="dash-icon">🏁</div>
+      <h4>UBM継続ロードマップ</h4>
+      <p>4/4原点・6/20報告・毎月UBM運用の入口</p>
+    </a>
+    <a href="company/roadmap.html" class="dash-card">
+      <div class="dash-icon">🗺️</div>
+      <h4>会社設計ロードマップ v13</h4>
+      <p>6/20 UBM「人との関係」軸を反映</p>
+    </a>
+    <a href="company/financial.html" class="dash-card">
+      <div class="dash-icon">💰</div>
+      <h4>財務マネジメント設計</h4>
+      <p>防壁原本9項目・月次締め・年度繰越</p>
+    </a>
+    <a href="company/gap-analysis.html" class="dash-card">
+      <div class="dash-icon">🎯</div>
+      <h4>ギャップ分析</h4>
+      <p>6/20現在地補正と次の90日</p>
+    </a>
   </div>
+
+  <div class="section-label">🪞 OTHER PROJECTS — その他の動き</div>
+  <div class="dashboard-grid">
+    <a href="projects/moment/index.html" class="dash-card" style="border-color: #c94f6d; box-shadow: 0 4px 16px rgba(201,79,109,0.12);">
+      <div class="dash-icon">🪞</div>
+      <h4>MOMENT</h4>
+      <p>プロジェクト全体概要・内部ロードマップ — 2026-06-15</p>
+    </a>
+    <a href="projects/oto/seminar-2026-05-16-script.html" class="dash-card">
+      <div class="dash-icon">🎤</div>
+      <h4>OTO セミナー台本（5/16）</h4>
+      <p>セミナー資料は projects/oto/ に格納</p>
+    </a>
+  </div>
+
+  <div class="section-label">📊 STRATEGY &amp; RESEARCH — 戦略リサーチの蓄積基地</div>
+  <a href="reports/index.html" class="research-card">
+    <div style="font-size:2em; margin-bottom:8px;">📚</div>
+    <h3>リサーチレポート一覧</h3>
+    <p>戦略リサーチ・レポート・ノウハウをここに蓄積していく。<br>最新:「世界中の人が集まるXアカウント構築戦略 2026」（2026-05-12）</p>
+    <span class="research-badge">一覧を見る →</span>
+  </a>
+
+  <div class="section-label">📝 UPDATES — 更新履歴</div>
+  <div class="updates-list">
+    <div class="update-row"><span class="date">2026-07-02</span><span class="body"><strong>サイト再編</strong> — company / projects / reports の3層構造へ。旧URLはリダイレクトで温存。</span></div>
+    <div class="update-row"><span class="date">2026-06-20</span><span class="body"><strong>UBM更新</strong> — 上位問いを「何を積み上げているのか＝人との関係」へ。防壁原本9項目、月次締め・年度繰越を経営OSに統合。</span></div>
+    <div class="update-row"><span class="date">2026-06-15</span><span class="body"><strong>MOMENT</strong> プロジェクトダッシュボード追加。</span></div>
+  </div>
+
+  <div class="section-label">🔧 UTILITY</div>
   <div class="util-grid">
-    <div class="util-card">
+    <a href="https://github.com/synchro-mgmt/company-brain/tree/main/agents" class="util-card">
       <div class="util-icon">🤖</div>
       <h4>Agent Team</h4>
-      <p>エージェントチーム</p>
-    </div>
-    <div class="util-card">
+      <p>エージェント定義（company-brain）</p>
+    </a>
+    <a href="https://github.com/synchro-mgmt/company-brain/tree/main/docs" class="util-card">
       <div class="util-icon">📋</div>
       <h4>Team Manual</h4>
-      <p>チームマニュアル</p>
-    </div>
-    <div class="util-card">
+      <p>チームドキュメント（company-brain）</p>
+    </a>
+    <a href="https://synchro-mgmt.github.io/open-field/" class="util-card">
       <div class="util-icon">🌱</div>
       <h4>Vision</h4>
-      <p>ビジョン・コンセプト</p>
-    </div>
+      <p>ビジョン・コンセプト（open-field）</p>
+    </a>
     <a href="tools/deploy.html" class="util-card">
       <div class="util-icon">🌿</div>
       <h4>Deploy Tool v2.5</h4>
       <p>zip → GitHub デプロイ</p>
     </a>
   </div>
-  <div style="text-align:center; margin-bottom: 20px;">
+
+  <div style="text-align:center;">
     <a href="https://synchro-mgmt.github.io/open-field/" class="open-field-link">🌍 open-field（公開サイト）を見る →</a>
   </div>
 </div>
