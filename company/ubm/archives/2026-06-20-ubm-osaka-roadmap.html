@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロードマップ — LDM新3階層モデルと次回UBM大阪（6/20）まで</title>
+<link rel="icon" type="image/svg+xml" href="/internal-field/assets/favicon.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #132040;
+    --navy-light: #1b2d4f;
+    --accent: #e94560;
+    --accent-soft: #ff6b81;
+    --gold: #f0d9a8;
+    --gold-dark: #c4a86a;
+    --green: #2ecc71;
+    --green-dark: #1a9c54;
+    --green-bg: #e8faf0;
+    --orange: #f39c12;
+    --orange-bg: #fef9e7;
+    --blue: #3498db;
+    --blue-bg: #eaf2f8;
+    --purple: #8e44ad;
+    --purple-bg: #f4ecf7;
+    --bg: #faf9f7;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --text-sub: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 24px rgba(0,0,0,0.06);
+    --shadow-hover: 0 8px 32px rgba(0,0,0,0.1);
+    --radius: 20px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hero {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-light) 75%, var(--accent) 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(240,217,168,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 0.82em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    color: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+  .hero .subtitle {
+    font-size: 0.95em;
+    opacity: 0.75;
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .hero .countdown {
+    margin-top: 24px;
+    font-size: 2em;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+  .hero .countdown small {
+    font-size: 0.42em;
+    font-weight: 400;
+    opacity: 0.6;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0;
+  }
+  .hero .meta {
+    margin-top: 20px;
+    font-size: 0.78em;
+    opacity: 0.4;
+    letter-spacing: 0.05em;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: box-shadow 0.3s ease;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+  .card h2 {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .emoji { font-size: 1.2em; }
+  .card h3 {
+    font-size: 1.05em;
+    font-weight: 700;
+    margin: 20px 0 10px;
+    color: var(--text);
+  }
+
+  .tier-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 24px 0;
+  }
+  .tier {
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .tier-label {
+    font-size: 0.7em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+  .tier-title {
+    font-weight: 900;
+    font-size: 1.05em;
+    margin-bottom: 4px;
+  }
+  .tier-desc {
+    font-size: 0.85em;
+    opacity: 0.85;
+    line-height: 1.7;
+  }
+  .tier.t1 { background: linear-gradient(135deg, #e0f2fe, #bae6fd); color: #0c4a6e; border-color: #7dd3fc; }
+  .tier.t2 { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #064e3b; border-color: #6ee7b7; }
+  .tier.t3 { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #78350f; border-color: #fcd34d; }
+  .tier-arrow {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--text-sub);
+    margin: -2px 0;
+    opacity: 0.6;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+  }
+  .project-card {
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.78em;
+    font-weight: 600;
+    line-height: 1.5;
+    transition: transform 0.2s ease;
+    border: 1px solid var(--border);
+  }
+  .project-card:hover { transform: translateY(-2px); }
+  .project-card .label {
+    display: block;
+    font-size: 0.7em;
+    opacity: 0.7;
+    font-weight: 500;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+  }
+  .project-card .name {
+    display: block;
+    font-size: 1.15em;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+  .project-card.center { background: linear-gradient(135deg, #fde2e4, #fbc4c8); color: #991b1b; border-color: #fda4af; }
+  .project-card.run-1 { background: linear-gradient(135deg, #e0f2fe, #bae6fd); color: #0c4a6e; border-color: #7dd3fc; }
+  .project-card.run-2 { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #4c1d95; border-color: #c4b5fd; }
+  .project-card.run-3 { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #78350f; border-color: #fcd34d; }
+
+  .insight {
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+    border-radius: var(--radius-sm);
+    padding: 24px 28px;
+    margin: 20px 0;
+    border: 1px solid #fde68a;
+  }
+  .insight h3 {
+    color: #92400e;
+    margin-top: 0;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    font-size: 1.05em;
+  }
+  .insight p { font-size: 0.92em; color: #78350f; }
+  .insight strong { color: #1a1a2e; }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .pillar {
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--accent);
+  }
+  .pillar .num {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    font-weight: 900;
+    font-size: 0.85em;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .pillar .title { font-weight: 700; font-size: 0.95em; vertical-align: middle; }
+  .pillar .desc { font-size: 0.82em; color: var(--text-sub); margin-top: 8px; line-height: 1.7; }
+
+  .relation-chain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0;
+  }
+  .relation-node {
+    background: linear-gradient(135deg, #1b2d4f, #132040);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.92em;
+    text-align: center;
+    min-width: 240px;
+    box-shadow: var(--shadow);
+  }
+  .relation-node.lvl2 { background: linear-gradient(135deg, #e94560, #c62828); }
+  .relation-node.lvl3 { background: linear-gradient(135deg, #f0d9a8, #c4a86a); color: #4a3719; }
+  .relation-node small {
+    display: block;
+    font-size: 0.7em;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 4px;
+  }
+  .relation-arrow {
+    color: var(--text-sub);
+    font-size: 1.4em;
+    opacity: 0.5;
+  }
+
+  .timeline {
+    position: relative;
+    margin: 24px 0 24px 20px;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--border) 0%, var(--accent) 50%, var(--navy) 100%);
+    border-radius: 3px;
+  }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+    background: #fff;
+    z-index: 1;
+  }
+  .tl-item.today::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(233,69,96,0.2); }
+  .tl-item.key::before { background: var(--orange); border-color: var(--orange); box-shadow: 0 0 0 4px rgba(243,156,18,0.2); }
+  .tl-item.done::before { background: var(--green); border-color: var(--green); }
+  .tl-item.ubm::before { background: var(--navy); border-color: var(--navy); width: 18px; height: 18px; left: -41px; top: 6px; box-shadow: 0 0 0 4px rgba(10,22,40,0.15); }
+  .tl-item.mtg::before { background: var(--purple); border-color: var(--purple); box-shadow: 0 0 0 4px rgba(142,68,173,0.2); }
+
+  .tl-date {
+    font-size: 0.8em;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-bottom: 4px;
+    letter-spacing: 0.02em;
+  }
+  .tl-item.today .tl-date { color: var(--accent); }
+  .tl-item.key .tl-date { color: var(--orange); }
+  .tl-item.mtg .tl-date { color: var(--purple); }
+  .tl-item.ubm .tl-date { color: var(--navy); font-size: 0.9em; font-weight: 900; }
+
+  .tl-content {
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+  }
+  .tl-item.today .tl-content { background: #fef2f2; border-color: #fecaca; }
+  .tl-item.key .tl-content { background: var(--orange-bg); border-color: #fde68a; }
+  .tl-item.done .tl-content { background: var(--green-bg); border-color: #a7f3d0; }
+  .tl-item.mtg .tl-content { background: var(--purple-bg); border-color: #d2b4de; }
+  .tl-item.ubm .tl-content { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #93c5fd; }
+
+  .tl-title { font-weight: 700; font-size: 0.92em; margin-bottom: 6px; }
+  .tl-desc { font-size: 0.85em; color: var(--text-sub); line-height: 1.8; }
+  .tl-tag {
+    display: inline-block;
+    font-size: 0.68em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    background: var(--border);
+    color: var(--text-sub);
+    margin-left: 6px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+
+  .check-item {
+    border-radius: var(--radius-sm);
+    padding: 18px 22px;
+    margin-bottom: 12px;
+    border-left: 5px solid;
+  }
+  .check-item.clear { background: var(--green-bg); border-color: var(--green); }
+  .check-item.almost { background: var(--orange-bg); border-color: var(--orange); }
+  .check-item.info { background: var(--blue-bg); border-color: var(--blue); }
+  .check-item.future { background: #f8fafc; border-color: #cbd5e1; }
+  .check-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .check-header strong { font-size: 0.92em; }
+  .check-badge {
+    font-size: 0.75em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .check-badge.green { background: var(--green); }
+  .check-badge.orange { background: var(--orange); }
+  .check-badge.blue { background: var(--blue); }
+  .check-badge.gray { background: #94a3b8; }
+  .check-body { font-size: 0.85em; margin-top: 8px; color: var(--text-sub); }
+
+  .os-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .os-card {
+    background: #f8fafc;
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    font-size: 0.85em;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease;
+  }
+  .os-card:hover { transform: translateY(-1px); }
+  .os-label { font-weight: 700; font-size: 0.78em; color: var(--text-sub); display: block; margin-bottom: 4px; letter-spacing: 0.02em; }
+  .os-status { font-weight: 700; }
+  .os-status.good { color: var(--green-dark); }
+  .os-status.progress { color: var(--blue); }
+
+  .keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 18px 0;
+    justify-content: center;
+  }
+  .keyword {
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    color: var(--gold);
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+  }
+
+  .prospect-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    font-size: 0.88em;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .prospect-table thead tr {
+    background: var(--navy);
+    color: #fff;
+  }
+  .prospect-table th { padding: 12px 16px; text-align: left; font-weight: 600; font-size: 0.9em; letter-spacing: 0.03em; }
+  .prospect-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .prospect-table tbody tr:last-child td { border-bottom: none; }
+  .prospect-table tbody tr:hover { background: #f8fafc; }
+  .prospect-table .done-row { background: var(--green-bg); }
+  .prospect-table .done-row td { color: var(--green-dark); }
+
+  .summary {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy-light) 100%);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(233,69,96,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .summary h2 {
+    color: var(--gold);
+    border-bottom-color: rgba(255,255,255,0.15);
+    font-family: 'Zen Maru Gothic', sans-serif;
+    position: relative;
+  }
+  .summary p { opacity: 0.9; margin-bottom: 14px; position: relative; }
+  .summary strong { color: var(--gold); }
+
+  .new-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #c62828);
+    color: #fff;
+    font-size: 0.6em;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 24px;
+    margin-top: 28px;
+    font-size: 0.78em;
+    color: var(--text-sub);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding: 40px 24px 36px; }
+    .hero h1 { font-size: 1.6em; }
+    .hero .countdown { font-size: 1.5em; }
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillars { grid-template-columns: 1fr; }
+    .os-grid { grid-template-columns: 1fr; }
+    .container { padding: 24px 16px; }
+    .card { padding: 24px 20px; }
+    .relation-node { min-width: 200px; }
+  }
+</style>
+</head>
+<body>
+<a href="../../../index.html" style="position:fixed;top:14px;left:14px;z-index:999;background:rgba(10,22,40,0.85);color:#f0d9a8;text-decoration:none;padding:6px 14px;border-radius:20px;font-size:13px;font-family:sans-serif;">← Internal Field</a>
+
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Synchro Management</div>
+    <h1>UBM大阪ロードマップ</h1>
+    <div class="subtitle">5/27ビジョン整理MTGで確定した「新3階層モデル × 4プロジェクト体制」を、6/20大阪で報告する</div>
+    <div class="countdown">
+      次回 6/20（土）
+      <small>UBM大阪 9:00-21:00</small>
+    </div>
+    <div class="meta">作成 4/23 / 更新 5/27 / v6 — 5/27ビジョン整理MTG反映</div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="card">
+  <h2><span class="emoji">🌐</span> neten連携 — 学びから商品・技術・体験へ</h2>
+  <p>石原さんとの6/10 MTGで、LDM社会実装プラットフォームへ外部専門パートナーを接続する最初のモデルが具体化した。</p>
+
+  <div class="tier-stack">
+    <div class="tier t1">
+      <div class="tier-label">STEP 1 / 無料学習</div>
+      <div class="tier-title">石原さん × 堀内さん 対話動画</div>
+      <div class="tier-desc">祓い清め・浄化を、特別な世界の話ではなく日常の変化として伝える。</div>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="tier t2">
+      <div class="tier-label">STEP 2 / 小さな実践</div>
+      <div class="tier-title">低価格で、すぐ使える商品</div>
+      <div class="tier-desc">音源を第一候補に、購入後の体感・継続・問い合わせを小さく検証する。</div>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="tier t3">
+      <div class="tier-label">STEP 3 / 深い体験</div>
+      <div class="tier-title">8,800円層 → 機器・施設・リトリート</div>
+      <div class="tier-desc">ロゴストロン機器、生活用品、ハフリデン、白川図書館などを、必要な人の変化段階に合わせて接続する。</div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h3>実証開始前のゲート</h3>
+    <p>6/12 13:00の制度確認MTGで、販売店資格、紹介還元、年間基準、購入後対応、責任分界、顧客情報の扱いを正式資料で確認する。条件が確定するまでは売上計画へ算入しない。</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🌅</span> 5/27 ビジョン整理MTGで景色が変わった</h2>
+
+  <p>5/25-26 ミロクの郷での覚醒と、5/27の須藤そうさん × まりこしさんとのビジョン整理MTGで、会社の形がはっきりした。<br>
+  旧モデル「LDM太陽系（アースジャーニー中心の単一ファネル）」は終了。ここから6月以降は<strong>新エネルギー体制</strong>で進む。</p>
+
+  <div class="insight">
+    <h3>5/27に確定した4つの大転換</h3>
+    <p><strong>① 4プロジェクト並走体制へ再編</strong> — LDM（中心）／シンクロ起業塾／OTO／社外プロジェクト（神田昌典さん新企画＋リンポチェ様事務局）。<br>
+    <strong>② LDMが新3階層モデルへ</strong> — 無料オプチャ（1,300人）→ 月額8,800円サブスク → 上位コース（2万/3万/4万・今後展開）。<br>
+    <strong>③ 関係性も3階層に</strong> — 堀内 → 講師（トップ3人・月1ライブ配信）→ お客様/スタッフ。将来FC化、講師が取締役 or FCオーナーへ。<br>
+    <strong>④ ターゲットがシフト</strong> — 自己犠牲・不安層から、<strong>新時代を作るリーダー・経営者層</strong>へ。自己犠牲・不安層はLDM教育ファネルで別仕組みで受け止める。</p>
+    <p style="margin-top:12px;"><strong>ND本講座は5月で旧方式が終了</strong>。6月から全部、新エネルギーで稼働する。</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🏛️</span> 4プロジェクト体制 — LDMは中心プロジェクト</h2>
+  <p>会社全体は4つのプロジェクトが並走する構造に再編された。LDMはその中心。</p>
+
+  <div class="project-grid">
+    <div class="project-card center">
+      <span class="label">中心</span>
+      <span class="name">LDM</span>
+      3階層サブスク<br>新時代リーダー教育
+    </div>
+    <div class="project-card run-1">
+      <span class="label">並走①</span>
+      <span class="name">シンクロ<br>起業塾</span>
+      資本主義からの脱却<br>個人の幸福×循環
+    </div>
+    <div class="project-card run-2">
+      <span class="label">並走②</span>
+      <span class="name">OTO</span>
+      3人ユニット<br>純度レベル0-4
+    </div>
+    <div class="project-card run-3">
+      <span class="label">並走③</span>
+      <span class="name">社外PJ</span>
+      神田さん新企画<br>リンポチェ様事務局
+    </div>
+  </div>
+
+  <p style="font-size:0.88em; color:var(--text-sub); margin-top:8px;">
+    シンクロ起業塾は「左でも右でもない、資本主義/マルクス主義のアップデート版」を世に提示する流れ。
+    OTOは堀内・齋藤レナ・LaylaΩの3人ユニットで「人の進化」がテーマ。
+    社外プロジェクトは神田昌典さんの新企画（教育・子どものインスピレーション力）と、リンポチェ様事務局サポート（のんちゃん・のりつぐさん経由）。
+  </p>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🪜</span> LDM新構造 — サブスク3階層モデル</h2>
+  <p>旧「単一8,800円」モデルから、入口の無料層と上位コースを備えた3階層へ。</p>
+
+  <div class="tier-stack">
+    <div class="tier t1">
+      <div class="tier-label">TIER 1 / 入口</div>
+      <div class="tier-title">無料オプチャ（現1,300人）</div>
+      <div class="tier-desc">旧アースジャーニーオプチャを含む。誰でも入れる入口。ここから関係性が始まる。</div>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="tier t2">
+      <div class="tier-label">TIER 2 / コア</div>
+      <div class="tier-title">月額 8,800円 サブスク</div>
+      <div class="tier-desc">コアコミュニティ。継続的な学びと循環の場。MRRの基盤。</div>
+    </div>
+    <div class="tier-arrow">▼</div>
+    <div class="tier t3">
+      <div class="tier-label">TIER 3 / 上位</div>
+      <div class="tier-title">上位コース（2万 / 3万 / 4万）— 今後展開</div>
+      <div class="tier-desc">より深い学びと関係性を求める層へ。今後段階的に展開する。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🤝</span> LDM関係性3階層 — トップ講師戦略とFC化展望</h2>
+  <p>堀内さんが直接対応しなくても回る構造を作るため、関係性も3階層に。</p>
+
+  <div class="relation-chain">
+    <div class="relation-node">
+      堀内
+      <small>直接つながる</small>
+    </div>
+    <div class="relation-arrow">↓</div>
+    <div class="relation-node lvl2">
+      講師（トップ3人）
+      <small>月1ライブ配信を担う</small>
+    </div>
+    <div class="relation-arrow">↓</div>
+    <div class="relation-node lvl3">
+      お客様 / スタッフ
+      <small>循環の最前線</small>
+    </div>
+  </div>
+
+  <div class="insight">
+    <h3>トップ講師戦略 — 1人にフォーカス → 拡張 → FC化</h3>
+    <p>まず<strong>1人に集中</strong>して<strong>最低2,000万の安定化</strong>まで持っていく。
+    ノウハウが完成したら2人目・3人目に拡張。<br>
+    将来的には<strong>FC（フランチャイズ）モデル化</strong>し、講師が取締役 or FCオーナーになる構造へ。<br>
+    これが堀内さんの真骨頂「教育・伝授」ではなく<strong>「仕組み化・構造化」</strong>の体現。</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">📚</span> LDM教育設計 — 4本柱</h2>
+  <p>オプチャ運営で見えてきた、根本から作り直すべき4つの教育の柱。</p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <span class="num">1</span><span class="title">学び方と成長の仕方</span>
+      <div class="desc">そもそも「どう学ぶか」「どう成長するか」の土台を作り直す。</div>
+    </div>
+    <div class="pillar">
+      <span class="num">2</span><span class="title">多責思考 → 自責思考</span>
+      <div class="desc">人や環境のせいにする視点から、自分の選択を取り戻す視点へ。</div>
+    </div>
+    <div class="pillar">
+      <span class="num">3</span><span class="title">根底教育</span>
+      <div class="desc">資本主義・宗教・お金・労働・マルクス・キリスト教・ユダヤ教 — 世界の土台にある仕組みを学ぶ。</div>
+    </div>
+    <div class="pillar">
+      <span class="num">4</span><span class="title">日本人本来のOS再構築</span>
+      <div class="desc">借り物のOSではなく、日本人本来の感性・関係性・在り方を取り戻す。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🗝️</span> 横断する3つのキーワードと真骨頂</h2>
+
+  <div class="keywords">
+    <span class="keyword">純度</span>
+    <span class="keyword">共鳴度</span>
+    <span class="keyword">仕組み化</span>
+  </div>
+
+  <p style="font-size:0.9em; color:var(--text-sub); text-align:center;">
+    <strong style="color:var(--text);">純度</strong>が上がれば全部うまくいく ／
+    <strong style="color:var(--text);">共鳴度</strong>の高い人とだけ濃く繋がる ／
+    <strong style="color:var(--text);">仕組み化</strong>で堀内が直接対応しなくても回る構造を作る
+  </p>
+
+  <div class="insight" style="margin-top:24px;">
+    <h3>真骨頂は「教育・伝授」ではなく「仕組み化・構造化」</h3>
+    <p>まりこしさんから言語化された問い：<br>
+    <em>「堀内さんの真骨頂は教育や伝授ではなく、うまくいっていないところをうまく活かせる構造作りでは？」</em></p>
+    <p style="margin-top:10px;">触れる相手を変えれば、その人がうまくいく構造が見えてしまう人。
+    触れる相手を<strong>国のリーダー・Anthropicの社長クラス</strong>まで広げると、新しい構造が見えてくる。</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🗓</span> タイムライン — 5/27から6/20 UBM大阪まで</h2>
+
+  <div class="timeline">
+
+    <div class="tl-item done">
+      <div class="tl-date">5/6（水）</div>
+      <div class="tl-content">
+        <div class="tl-title">Zoomセミナー ~300名参加 — 初の実売上発生</div>
+        <div class="tl-desc">34人がLDMコミュニティ（月額8,800円）に転換。MRR ~299,200円。生命体ベースへの転換を宣言。</div>
+      </div>
+    </div>
+
+    <div class="tl-item done">
+      <div class="tl-date">5/25-26（日・月）</div>
+      <div class="tl-content">
+        <div class="tl-title">ミロクの郷で覚醒 — エネルギー保全テーマ <span class="tl-tag">転換点</span></div>
+        <div class="tl-desc">他者の不安・恐れを受け取りすぎないこと、定期的な浄化、ご先祖様レベルのエネルギーも来る ─ という気づき。エネルギー保全がここから核テーマに。</div>
+      </div>
+    </div>
+
+    <div class="tl-item mtg">
+      <div class="tl-date">5/27（火）</div>
+      <div class="tl-content">
+        <div class="tl-title">ビジョン整理MTG — 新方針確定 <span class="tl-tag">公式アップデート</span></div>
+        <div class="tl-desc">堀内さん × 須藤そうさん × まりこしさん。4プロジェクト並走体制、LDM3階層モデル、関係性3階層、ターゲットシフト、トップ講師戦略、FC化展望、教育4本柱 — すべてここで確定。</div>
+      </div>
+    </div>
+
+    <div class="tl-item today">
+      <div class="tl-date">今日 — 全ドキュメント更新中 <span class="new-badge">NEW</span></div>
+      <div class="tl-content">
+        <div class="tl-title">5/27方針をリポジトリ全体に反映</div>
+        <div class="tl-desc">company-brain側は更新済み。internal-field側も順次新方針へ書き換え中。古い記述と矛盾するものは本通知が優先。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">5/28（木）</div>
+      <div class="tl-content">
+        <div class="tl-title">LDMオプチャ 18:15 ／ ハペ実験（夜）</div>
+        <div class="tl-desc">ライラ×堀内、リーダー層複数名、1人20分のハペ実験。</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">5/28-29</div>
+      <div class="tl-content">
+        <div class="tl-title">GR社未来会議</div>
+        <div class="tl-desc">北見さん主催・35名・社会の未来構造対話。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">6月〜</div>
+      <div class="tl-content">
+        <div class="tl-title">新エネルギー体制スタート ／ 神田さん新プロジェクト本格化</div>
+        <div class="tl-desc">ND本講座旧方式が5月で終了。6月から4プロジェクト体制で新エネルギーで稼働。神田さん新企画（教育・子どものインスピレーション力）が新作本執筆終了後にスタート。</div>
+      </div>
+    </div>
+
+    <div class="tl-item key">
+      <div class="tl-date">6/10（水）</div>
+      <div class="tl-content">
+        <div class="tl-title">neten石原さんMTG — 外部専門パートナーモデル始動</div>
+        <div class="tl-desc">対話動画→低価格商品→8,800円層→機器・リアル体験の導線案が具体化。OTOではレナ・LaylaΩの音とロゴストロン信号の共同実験を検討。</div>
+      </div>
+    </div>
+
+    <div class="tl-item mtg">
+      <div class="tl-date">6/12（金）13:00</div>
+      <div class="tl-content">
+        <div class="tl-title">neten販売制度確認MTG</div>
+        <div class="tl-desc">販売資格、紹介還元、年間基準、最初の商品、購入後対応、顧客情報の扱いを確認。確認後に初期実証の可否を判断する。</div>
+      </div>
+    </div>
+
+    <div class="tl-item ubm">
+      <div class="tl-date">6/20（土）UBM大阪</div>
+      <div class="tl-content">
+        <div class="tl-title">UBM大阪 — 9:00〜21:00（次回参加）</div>
+        <div class="tl-desc">合宿から2ヶ月半の成果を報告。<strong>新3階層モデル・4プロジェクト体制・FC化展望・トップ講師戦略</strong>をフィードバックにかける。「実際にこう循環した」が報告できる状態で臨む。</div>
+      </div>
+    </div>
+
+    <div class="tl-item mtg">
+      <div class="tl-date">8/5（水）14:30-16:00</div>
+      <div class="tl-content">
+        <div class="tl-title">次回ビジョン整理MTG</div>
+        <div class="tl-desc">UBM大阪を踏まえて、4プロジェクト体制の進捗とLDM3階層モデルの実装状況を共有・調整する場。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🛡️</span> チェックシート — 新方針での進捗</h2>
+  <p>合宿で記入した10項目を、5/27新方針に照らして再評価：</p>
+
+  <div style="margin: 20px 0;">
+    <div class="check-item clear">
+      <div class="check-header">
+        <strong>次回UBM日程</strong>
+        <span class="check-badge green">クリア済み</span>
+      </div>
+      <div class="check-body" style="color:#166534;">年間スケジュール全登録。次回6/20大阪。</div>
+    </div>
+
+    <div class="check-item clear">
+      <div class="check-header">
+        <strong>会社全体の構造</strong>
+        <span class="check-badge green">クリア済み</span>
+      </div>
+      <div class="check-body" style="color:#166534;">5/27 MTGで4プロジェクト並走体制 + LDM3階層モデルが確定。「LDM太陽系」から「4プロジェクト体制」へ。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>コスト構造把握</strong>
+        <span class="check-badge orange">3階層モデルで再設計中</span>
+      </div>
+      <div class="check-body">旧「単一8,800円」前提の財務設計は順次書き換え。3階層（無料／8,800円／上位2-4万）と4プロジェクト並走を前提に再構築する。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>月次集計体制</strong>
+        <span class="check-badge orange">あと一歩</span>
+      </div>
+      <div class="check-body">管理体制構築済み、仕訳ルール確定済み。プロジェクト別の集計軸への対応が次の課題。</div>
+    </div>
+
+    <div class="check-item clear">
+      <div class="check-header">
+        <strong>括りの人との関係</strong>
+        <span class="check-badge green">深化</span>
+      </div>
+      <div class="check-body" style="color:#166534;">須藤そうさん × まりこしさんとの5/27ビジョン整理MTGで方針を共同設計。次回は8/5。トップ講師戦略も明確化。</div>
+    </div>
+
+    <div class="check-item info">
+      <div class="check-header">
+        <strong>積み上げ行動</strong>
+        <span class="check-badge blue">構造化フェーズへ</span>
+      </div>
+      <div class="check-body">「個別アクションの積み上げ」から「仕組み化・構造化」のフェーズへ。真骨頂は教育ではなく構造作り、と言語化された。</div>
+    </div>
+
+    <div class="check-item almost">
+      <div class="check-header">
+        <strong>離脱率把握 / 会員動向</strong>
+        <span class="check-badge orange">実データ取得中</span>
+      </div>
+      <div class="check-body">無料オプチャ1,300人・8,800円サブスクの実データを継続把握中。上位コース展開後は階層別の動線把握が必要に。</div>
+    </div>
+
+    <div class="check-item future">
+      <div class="check-header">
+        <strong>FC化・トップ講師育成</strong>
+        <span class="check-badge gray">これから</span>
+      </div>
+      <div class="check-body">トップ1人にフォーカスして最低2,000万安定化 → 2人目・3人目 → FC化。順番に積み上げる中長期テーマ。</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🔄</span> OS更新 — 5/27方針反映後の現在地</h2>
+
+  <div class="os-grid">
+    <div class="os-card">
+      <span class="os-label">「勝たせる」→「循環させる」</span>
+      <span class="os-status good">◎ 3階層サブスクで循環構造化</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「お客さん」→「教え子」</span>
+      <span class="os-status good">◎ 講師経由の関係性へ進化</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">属人性 → 仕組み化</span>
+      <span class="os-status good">◎ FC化展望が言語化</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「孤独」→「共にいる」</span>
+      <span class="os-status good">◎ 4プロジェクト × トップ講師</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「自己犠牲層」→「リーダー層」</span>
+      <span class="os-status good">◎ ターゲットシフト確定</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「新規」→「既存」重視</span>
+      <span class="os-status good">◎ 純度 × 共鳴度の関係性へ</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「LDM単独」→「4プロジェクト並走」</span>
+      <span class="os-status good">◎ 5/27 MTGで確定</span>
+    </div>
+    <div class="os-card">
+      <span class="os-label">「広く受ける」→「エネルギー保全」</span>
+      <span class="os-status progress">○ ミロクの郷の覚醒テーマ</span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="emoji">🔭</span> 6/20 UBM大阪までの展望</h2>
+
+  <table class="prospect-table">
+    <thead>
+      <tr><th>時期</th><th>アクション</th><th>状態</th></tr>
+    </thead>
+    <tbody>
+      <tr class="done-row"><td>5/6</td><td>Zoomセミナー300名・34人転換 — 初の実売上</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/25-26</td><td>ミロクの郷で覚醒・エネルギー保全テーマ確立</td><td>✅ 完了</td></tr>
+      <tr class="done-row"><td>5/27</td><td>ビジョン整理MTG — 4プロジェクト体制 / LDM3階層 / FC化展望が確定</td><td>✅ 完了</td></tr>
+      <tr><td>5/28</td><td>LDMオプチャ 18:15 ／ ハペ実験（夜）</td><td>🔜 次</td></tr>
+      <tr><td>5/28-29</td><td>GR社未来会議</td><td>🔜 次</td></tr>
+      <tr><td>6月〜</td><td>新エネルギー体制スタート（ND旧方式は5月終了）</td><td>—</td></tr>
+      <tr><td>6月〜</td><td>神田さん新プロジェクト本格化（教育・子どものインスピレーション力）</td><td>—</td></tr>
+      <tr><td>6月〜</td><td>LDM3階層モデルの実装開始（上位コース2万/3万/4万の準備）</td><td>—</td></tr>
+      <tr class="done-row"><td>6/10</td><td>neten石原さんMTG — 外部専門パートナーモデルの初期案を設計</td><td>✅ 完了</td></tr>
+      <tr><td>6/12</td><td>neten販売制度確認MTG（13:00）</td><td>🔜 次</td></tr>
+      <tr><td>6月〜</td><td>トップ講師1人にフォーカス → 最低2,000万安定化に向けて伴走</td><td>—</td></tr>
+      <tr><td><strong>6/20</strong></td><td><strong>UBM大阪 — 新方針の成果報告</strong></td><td>—</td></tr>
+      <tr><td><strong>8/5</strong></td><td><strong>次回ビジョン整理MTG（14:30-16:00）</strong></td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="summary">
+  <h2>5/27で景色が変わった — 6/20は「新しい構造」を持って臨む</h2>
+
+  <p style="margin-top:20px; font-size:1.05em;">
+    旧モデル「LDM太陽系（アースジャーニー中心の単一ファネル）」は終了した。
+  </p>
+
+  <p>
+    5/25-26 ミロクの郷でエネルギー保全に覚醒し、5/27 ビジョン整理MTGで会社の形がはっきりした。<br>
+    <strong>4プロジェクト並走体制</strong>（LDM／シンクロ起業塾／OTO／社外プロジェクト）。<br>
+    <strong>LDM新3階層モデル</strong>（無料オプチャ→8,800円→上位2-4万）。<br>
+    <strong>関係性3階層とトップ講師戦略</strong>（堀内→講師トップ3人→お客様/スタッフ → 将来FC化）。<br>
+    <strong>外部専門パートナーモデル</strong>（無料学習→低価格商品→継続学習→専門商品・リアル体験）。<br>
+    <strong>ターゲットは新時代を作るリーダー・経営者層へ</strong>。<br>
+    教育4本柱（学び方／自責思考／根底教育／日本人本来のOS再構築）も確定。
+  </p>
+
+  <p>
+    6/20 UBM大阪では、「個別アクションが積み上がった」ではなく<br>
+    「<strong>新しい構造</strong>が出来た。これが循環し始める設計になっている」を報告できる。
+  </p>
+
+  <p style="margin-top:28px; text-align:center; font-size:1.3em; font-weight:900; color:var(--gold); letter-spacing:0.05em;">
+    純度 × 共鳴度 × 仕組み化 — 構造が、立ち上がった。
+  </p>
+</div>
+
+<div class="footer">
+  作成: 4/23 / 更新: 6/10（neten外部専門パートナーモデル反映）<br>
+  Synchro Management | internal-field
+</div>
+
+</div>
+</body>
+</html>
