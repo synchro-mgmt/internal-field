@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>OTO セミナー1 実施記録 — 2026-05-16（アーカイブ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #0a0807; --bg-2: #1a1210; --bg-3: #221816; --ink: #e8dfd3; --ink-mute: #a8a097; --gold: #d4af37; --gold-soft: #b8943a; --vermillion: #c1272d; --vermillion-soft: #8b1e22; --line: rgba(212, 175, 55, 0.18); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans JP', sans-serif; line-height: 1.85; -webkit-font-smoothing: antialiased; }
+  body { background: radial-gradient(ellipse at top, rgba(193,39,45,0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom, rgba(212,175,55,0.06) 0%, transparent 50%), var(--bg); min-height: 100vh; }
+  .container { max-width: 980px; margin: 0 auto; padding: 60px 24px 120px; }
+  .hero { text-align: center; padding: 60px 0 80px; border-bottom: 1px solid var(--line); position: relative; }
+  .hero::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, var(--gold)); }
+  .hero-kanji { font-family: 'Shippori Mincho', serif; font-size: clamp(80px, 16vw, 180px); color: var(--gold); font-weight: 900; line-height: 1; letter-spacing: 0.05em; margin-bottom: 20px; background: linear-gradient(180deg, var(--gold) 0%, var(--vermillion) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(212,175,55,0.3); }
+  .hero-sub { font-family: 'Noto Serif JP', serif; font-size: clamp(14px, 2vw, 18px); color: var(--gold); letter-spacing: 0.3em; margin-bottom: 8px; }
+  .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(28px, 4.5vw, 44px); font-weight: 900; color: var(--ink); margin-bottom: 16px; letter-spacing: 0.05em; }
+  .hero-decoration { display: inline-block; color: var(--vermillion); font-size: 18px; margin: 16px 12px; letter-spacing: 0.5em; }
+  .hero-date { color: var(--ink-mute); font-size: 14px; letter-spacing: 0.2em; margin-top: 24px; }
+  section { margin: 80px 0; }
+  .section-label { display: inline-block; font-family: 'Noto Serif JP', serif; font-size: 12px; color: var(--vermillion); letter-spacing: 0.4em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--vermillion); }
+  .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--gold); margin-bottom: 24px; letter-spacing: 0.05em; }
+  .section-lead { color: var(--ink-mute); font-size: 15px; line-height: 1.9; max-width: 700px; margin-bottom: 32px; }
+  .archive-notice { background: linear-gradient(135deg, rgba(193,39,45,0.18), rgba(212,175,55,0.08)); border: 1px solid var(--vermillion); padding: 32px 28px; border-radius: 4px; margin-bottom: 48px; }
+  .archive-notice .notice-label { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 13px; letter-spacing: 0.3em; margin-bottom: 12px; }
+  .archive-notice .notice-title { color: var(--ink); font-family: 'Noto Serif JP', serif; font-size: 18px; line-height: 1.7; margin-bottom: 12px; }
+  .archive-notice .notice-body { color: var(--ink); font-size: 14px; line-height: 1.9; }
+  .archive-notice .notice-body strong { color: var(--gold); }
+  .archive-notice a { color: var(--gold); text-decoration: underline; }
+  .declaration { background: linear-gradient(135deg, var(--vermillion-soft), var(--bg-2)); border: 1px solid var(--vermillion); padding: 56px 36px; border-radius: 4px; text-align: center; }
+  .declaration-mark { color: var(--gold); font-family: 'Shippori Mincho', serif; font-size: 32px; margin-bottom: 16px; letter-spacing: 1em; }
+  .declaration-body { font-family: 'Noto Serif JP', serif; font-size: clamp(18px, 2.6vw, 24px); color: #fff; line-height: 1.9; letter-spacing: 0.05em; }
+  .declaration-body em { color: var(--gold); font-style: normal; font-weight: 900; }
+  .declaration-note { color: var(--ink-mute); font-size: 12px; margin-top: 24px; letter-spacing: 0.2em; }
+  .flow-diagram { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 32px 0; align-items: stretch; }
+  .flow-step { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 20px 12px; text-align: center; position: relative; }
+  .flow-step .step-kanji { font-family: 'Shippori Mincho', serif; font-size: 48px; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .flow-step .step-label { font-size: 11px; color: var(--vermillion); letter-spacing: 0.2em; margin-bottom: 4px; }
+  .flow-step .step-name { font-size: 13px; color: var(--ink); font-family: 'Noto Serif JP', serif; }
+  @media (max-width: 700px) { .flow-diagram { grid-template-columns: 1fr; gap: 8px; } }
+  .schedule-block { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 24px; background: var(--bg-2); border-left: 3px solid var(--vermillion); border-radius: 0 4px 4px 0; margin-bottom: 16px; }
+  .schedule-time { color: var(--vermillion); font-family: 'Noto Serif JP', serif; font-size: 15px; letter-spacing: 0.1em; padding-top: 4px; }
+  .schedule-title { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+  .schedule-detail { color: var(--ink); font-size: 14px; line-height: 1.9; }
+  .schedule-detail ul { list-style: none; margin-top: 8px; }
+  .schedule-detail li { padding: 4px 0 4px 20px; position: relative; font-size: 13px; }
+  .schedule-detail li::before { content: "◆"; position: absolute; left: 0; color: var(--vermillion); font-size: 8px; top: 8px; }
+  .schedule-result { background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.3); padding: 12px 16px; margin-top: 12px; border-radius: 4px; font-size: 13px; color: var(--gold); }
+  @media (max-width: 700px) { .schedule-block { grid-template-columns: 1fr; padding: 20px; gap: 12px; } }
+  .three-card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  .three-card { background: linear-gradient(180deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); border-radius: 4px; padding: 32px 24px; position: relative; }
+  .three-card .chakra-kanji { font-family: 'Shippori Mincho', serif; font-size: 56px; color: var(--gold); font-weight: 900; margin-bottom: 8px; line-height: 1; text-shadow: 0 0 20px rgba(212,175,55,0.3); }
+  .three-card .chakra-label { color: var(--vermillion); font-size: 12px; letter-spacing: 0.3em; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .three-card .person-name { font-family: 'Noto Serif JP', serif; font-size: 24px; color: var(--ink); margin-bottom: 6px; letter-spacing: 0.05em; font-weight: 700; }
+  .three-card .role-label { color: var(--gold); font-size: 13px; margin-bottom: 16px; }
+  .three-card h4 { color: var(--vermillion); font-size: 11px; letter-spacing: 0.2em; margin-top: 20px; margin-bottom: 8px; }
+  .killer-list { list-style: none; margin: 0; }
+  .killer-list li { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 14px; line-height: 1.7; padding: 8px 0 8px 20px; position: relative; border-bottom: 1px dotted var(--line); }
+  .killer-list li:last-child { border-bottom: none; }
+  .killer-list li::before { content: "「"; position: absolute; left: 0; color: var(--vermillion); }
+  .killer-list li::after { content: "」"; color: var(--vermillion); }
+  .killer-list li.new::before { content: "✨「"; }
+  .killer-list li.new { color: #fff; }
+  .topic-list { list-style: none; }
+  .topic-list li { padding: 4px 0 4px 16px; position: relative; font-size: 13px; color: var(--ink); }
+  .topic-list li::before { content: "・"; position: absolute; left: 0; color: var(--gold); }
+  @media (max-width: 700px) { .three-card-grid { grid-template-columns: 1fr; } }
+  .baton { background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; padding: 28px; margin-bottom: 20px; position: relative; }
+  .baton-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .baton-from, .baton-to { font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--gold); }
+  .baton-arrow { color: var(--vermillion); font-size: 20px; }
+  .baton-quote { color: #fff; font-family: 'Noto Serif JP', serif; font-size: 15px; line-height: 2; font-style: italic; padding-left: 16px; border-left: 2px solid var(--vermillion); }
+  .baton-quote .speaker { display: block; color: var(--vermillion); font-size: 12px; font-style: normal; margin-bottom: 4px; letter-spacing: 0.2em; }
+  .stance { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); border: 1px solid var(--line); padding: 36px; border-radius: 4px; }
+  .stance-row { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: start; }
+  .stance-row:last-child { border-bottom: none; }
+  .stance-mark { color: var(--vermillion); font-size: 24px; font-weight: 900; text-align: center; }
+  .stance-content { color: var(--ink); font-size: 14px; line-height: 1.8; }
+  .stance-content strong { color: var(--gold); }
+  .result-summary { background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(193,39,45,0.1)); border: 1px solid var(--gold); padding: 36px; border-radius: 4px; }
+  .result-summary h3 { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 18px; margin-bottom: 16px; }
+  .result-summary p { color: var(--ink); font-size: 14px; line-height: 1.9; margin-bottom: 12px; }
+  .result-summary strong { color: var(--gold); }
+  .result-summary .number { color: var(--vermillion); font-size: 32px; font-weight: 900; font-family: 'Noto Serif JP', serif; }
+  .link-back { display: inline-block; padding: 14px 28px; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Noto Serif JP', serif; font-size: 14px; letter-spacing: 0.1em; transition: all 0.3s; border-radius: 4px; margin: 0 8px; }
+  .link-back:hover { background: var(--gold); color: var(--bg); }
+  .footer { margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--line); text-align: center; color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; line-height: 2; }
+  .footer-decoration { color: var(--gold); font-size: 18px; letter-spacing: 0.5em; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+<a href="../../index.html" style="position:fixed;top:14px;left:14px;z-index:999;background:rgba(10,22,40,0.85);color:#f0d9a8;text-decoration:none;padding:6px 14px;border-radius:20px;font-size:13px;font-family:sans-serif;">← Internal Field</a>
+
+<div class="container">
+  <header class="hero">
+    <div class="hero-kanji">OTO</div>
+    <div class="hero-sub">SEMINAR #1 ── IMPLEMENTATION RECORD ／ ARCHIVE</div>
+    <h1 class="hero-title">OTOセミナー1 実施記録（アーカイブ）</h1>
+    <div class="hero-decoration">◇　◆　◇</div>
+    <div style="color:var(--ink-mute); font-size:14px; letter-spacing:0.15em; line-height:1.9;">
+      2026-05-16 ／ 3人ユニットで実施した最初の大規模セミナーの記録<br>
+      ※ 2026-05-27以降は新方針が適用されます
+    </div>
+    <div class="hero-date">2026.05.16 ( FRI )  ／  21:00 ─ 22:30  ／  100名超参加</div>
+  </header>
+
+  <div class="archive-notice">
+    <div class="notice-label">─ ARCHIVE NOTICE ─</div>
+    <div class="notice-title">このページは過去の記録（アーカイブ）です</div>
+    <div class="notice-body">
+      <strong>2026-05-27 ビジョン整理MTG</strong>（堀内さん × 須藤そうさん × まりこしさん）で、OTOの位置づけと方針が再定義されました。<br>
+      会社全体は <strong>4プロジェクト体制</strong> に再編され、OTOはその ③ として「人の進化」をテーマに、<strong>純度レベル0-4</strong> の段階設計と <strong>「分からなくても接続し続けてくれればOK」</strong> 方針で動きます。<br><br>
+      このページは <strong>2026-05-16セミナーの記録</strong> として保存しています。当時の「焚き火戦略／5/24販売開始」モデルはすでに終了しています。<br>
+      現行のOTO方針は <a href="./launch-roadmap.html">最新ロードマップ</a> を参照してください。
+    </div>
+  </div>
+
+  <section>
+    <span class="section-label">─ RESULT ─</span>
+    <h2 class="section-title">実施結果サマリー</h2>
+    <p class="section-lead">設計通り、それ以上が起きた夜の記録。3人ユニットでの最初の大規模セミナー。</p>
+    <div class="result-summary">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px; text-align: center;">
+        <div>
+          <div class="number">100+</div>
+          <div style="color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; margin-top: 4px;">PARTICIPANTS</div>
+        </div>
+        <div>
+          <div class="number">3</div>
+          <div style="color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; margin-top: 4px;">UNIT MEMBERS</div>
+        </div>
+        <div>
+          <div class="number">90<span style="font-size:18px;">分</span></div>
+          <div style="color: var(--ink-mute); font-size: 12px; letter-spacing: 0.2em; margin-top: 4px;">SESSION</div>
+        </div>
+      </div>
+      <h3>◇ 設計通り動いたこと</h3>
+      <p>松果体（レナさん）→ ハート（堀内さん）→ 丹田（LaylaΩさん）の流れが完璧に通り、バトンも自然に繋がった。最後の音の体験ワークでは<strong>意識が飛ぶ参加者続出</strong>、神経に電気が走ったというコメントが多数。</p>
+      <h3>◇ 想定以上だったこと</h3>
+      <p>3人のエネルギーで世界観を渡す手応えを得た。参加者の体感が深く入った。コミュニティ内での気づきシェアの種が、ここで蒔かれた。</p>
+      <h3>◇ この夜に降臨したキラーワード（現方針でも継承）</h3>
+      <p>・<strong>「お金は、価値の排出の結果」</strong>（堀内さん）<br>・<strong>「異常値を叩き出さないと、進化しない」</strong>（堀内さん）<br>・<strong>「人間12W vs AI 27億W」</strong>（レナさん）<br>・<strong>「呪いを無効化するスキル」</strong>（LaylaΩさん）<br>・<strong>「3もらって10になる、セルフラブ」</strong>（LaylaΩさん）</p>
+      <h3>◇ 5/27以降への接続</h3>
+      <p>この夜の体験は、<strong>純度レベル1（体感）→ レベル2（気づき）</strong> への入口として今も有効。新方針では「分からなくてもOK」を前面に出しつつ、ここで生まれたキラーワードはコミュニティ内シェアの言語として継承される。</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ DECLARATION ─</span>
+    <h2 class="section-title">この夜に立てた宣言（記録）</h2>
+    <p class="section-lead">オープニングで3人で立てた宣言。100名超の参加者に届けた。<br>※ 現行のOTO方針では「人の進化」というテーマに統一されている。</p>
+    <div class="declaration">
+      <div class="declaration-mark">◇</div>
+      <div class="declaration-body">
+        新しい時代に入り、<br><em>進化</em>することで、<br>新しい世界と<em>豊かさの流れ</em>に繋がる。<br>──そのスイッチを、音で、3人で、入れる。
+      </div>
+      <div class="declaration-note">★ 2026-05-16セミナーで届けた宣言（記録）</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ FLOW ─</span>
+    <h2 class="section-title">天 → 心 → 地 へ、垂直に降ろした</h2>
+    <p class="section-lead">3人がリレーで、頭→心→腹まで一気に通した夜の流れ。</p>
+    <div class="flow-diagram">
+      <div class="flow-step"><div class="step-kanji">天</div><div class="step-label">PHASE 1</div><div class="step-name">松果体・レナさん</div></div>
+      <div class="flow-step"><div class="step-kanji">心</div><div class="step-label">PHASE 2</div><div class="step-name">ハート・堀内さん</div></div>
+      <div class="flow-step"><div class="step-kanji">地</div><div class="step-label">PHASE 3</div><div class="step-name">丹田・LaylaΩさん</div></div>
+      <div class="flow-step"><div class="step-kanji">音</div><div class="step-label">SEAL</div><div class="step-name">3人で体験ワーク</div></div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ SCHEDULE & RESULT ─</span>
+    <h2 class="section-title">タイムテーブル ＆ 実施結果</h2>
+    <p class="section-lead">90分の流れと、実際に起きたこと。各セクションに ✅ 実施結果 を併記。</p>
+
+    <div class="schedule-block">
+      <div class="schedule-time">21:00 – 21:10</div>
+      <div>
+        <div class="schedule-title">★ オープニング（3人で）  ✅</div>
+        <div class="schedule-detail">
+          場の周波数を上げる。今夜の宣言を立てる。
+          <ul>
+            <li>3人それぞれの一言挨拶</li>
+            <li>「今夜は、人類の進化とお金の話です」</li>
+            <li>「今夜は、世界観を渡す夜」と明示</li>
+          </ul>
+          <div class="schedule-result">✓ 100名超が集まり、宣言が立った。参加者の温度が一気に上がった。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-block">
+      <div class="schedule-time">21:10 – 21:30</div>
+      <div>
+        <div class="schedule-title">★ 第1幕・松果体 ── レナさん  ✅</div>
+        <div class="schedule-detail">
+          天から音を降ろし、参加者の松果体を起動させる。
+          <ul>
+            <li>「全部が周波数」の話</li>
+            <li>「進化したい、じゃ進化しない。進化する、と決める」</li>
+            <li>風の時代・感性の時代の宣言</li>
+            <li>参加者にスタンプ・コメントで「決意表明」させる</li>
+          </ul>
+          <div class="schedule-result">✓ <strong>「人間12W vs AI 27億W」</strong>の話で会場一気に覚醒。「進化する」と決意表明する参加者続出。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-block">
+      <div class="schedule-time">21:30 – 21:50</div>
+      <div>
+        <div class="schedule-title">★ 第2幕・ハート ── 堀内さん  ✅</div>
+        <div class="schedule-detail">
+          目覚めた状態で、ハートが開いてるか・閉じてるかを体感させる。
+          <ul>
+            <li>ハートの開閉を実演</li>
+            <li>「閉じたいんだね」を認めるプロセス</li>
+            <li>「お金は、努力じゃない。在り方の排出だ」</li>
+            <li>サラリーマン時代「住む世界、変わった」体験談</li>
+          </ul>
+          <div class="schedule-result">✓ ハート閉じる実演で参加者「苦しい」「呼吸できない」コメント連発。<strong>「進化に対してハートが閉じるのが正常」「異常値を叩き出す」</strong>が新キラーワードとして降臨。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-block">
+      <div class="schedule-time">21:50 – 22:10</div>
+      <div>
+        <div class="schedule-title">★ 第3幕・丹田 ── LaylaΩさん  ✅</div>
+        <div class="schedule-detail">
+          開いたハートを、身体・神経系まで降ろして着地させる。
+          <ul>
+            <li>「呪いを無効化するスキル」</li>
+            <li>「ふにゃふにゃでええんやで」</li>
+            <li>過去ベースの神経系の話</li>
+            <li>「3もらって10にする」セルフラブの増幅</li>
+          </ul>
+          <div class="schedule-result">✓ 「生きてるだけで勝ち組」「DNAは環境で引き出される」など新フレーズ多数。「打てば響く」レスポンスで場が一段上がった。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-block">
+      <div class="schedule-time">22:10 – 22:13</div>
+      <div>
+        <div class="schedule-title">★ 音の体験ワーク（レナさん主導、3人で場を作る）  ✅</div>
+        <div class="schedule-detail">
+          天から地まで通った状態で、音を浴びる。共鳴の体験。
+          <ul>
+            <li>全身に降ろした状態で音を聞く</li>
+            <li>3人で場を作る（沈黙含む）</li>
+            <li>体感を持ち帰ってもらう</li>
+          </ul>
+          <div class="schedule-result">✓ 堀内さんも「意識飛んでた」と告白。「神経に電気が走った」「太古の時代と新時代の融合」など神話的な感想多数。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="schedule-block">
+      <div class="schedule-time">22:20 – 22:27</div>
+      <div>
+        <div class="schedule-title">★ クロージング（3人で）  ✅</div>
+        <div class="schedule-detail">
+          世界観を渡して、余韻を残して終わる。
+          <ul>
+            <li>3人それぞれからの締めの言葉</li>
+            <li>「オプチャで感想シェアしてね」</li>
+            <li>次の機会へ繋ぐ余韻</li>
+          </ul>
+          <div class="schedule-result">✓ 場の温度がピークのままクロージング。コミュニティ内シェアの種が蒔かれた。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ 3 PILLARS ─</span>
+    <h2 class="section-title">3人の役割 × キラーワード（5/16降臨ワード追加版）</h2>
+    <p class="section-lead">設計時のキラーワードに加えて、本番中に降臨した新ワードを ✨ マークで追加。<br>※ 現方針でも、これらは <strong style="color:var(--gold);">純度レベル2（気づき）</strong> の段階で参加者が共鳴するキーワード群として継承されている。</p>
+
+    <div class="three-card-grid">
+      <div class="three-card">
+        <div class="chakra-kanji">天</div>
+        <div class="chakra-label">音 ／ 周波数</div>
+        <div class="person-name">齋藤レナさん</div>
+        <div class="role-label">▶ 外側からの覚醒・周波数の専門家</div>
+        <h4>◆ キラーワード（事前設計）</h4>
+        <ul class="killer-list">
+          <li>進化したい、じゃ進化しない。進化する、と決める</li>
+          <li>全部が周波数。お守りも、念も、名前も、植物も</li>
+          <li>1人の決意で、場の周波数が変わる</li>
+          <li>AIにできないのは、感じること</li>
+        </ul>
+        <h4 style="color: var(--gold);">✨ 5/16降臨ワード</h4>
+        <ul class="killer-list">
+          <li class="new">人間が12ワットでできることに、AIは27億ワット必要</li>
+          <li class="new">進化したいなら、進化するって覚悟を決める</li>
+          <li class="new">周波数の強さは、思いの強さ</li>
+        </ul>
+      </div>
+
+      <div class="three-card">
+        <div class="chakra-kanji">心</div>
+        <div class="chakra-label">構造 ／ 言語化</div>
+        <div class="person-name">堀内さん</div>
+        <div class="role-label">▶ 構造からのリブート・在り方の翻訳者</div>
+        <h4>◆ キラーワード（事前設計）</h4>
+        <ul class="killer-list">
+          <li>ハートは、開いてるか、閉じてるか。それだけ</li>
+          <li>お金は、努力じゃない。在り方の排出だ</li>
+          <li>増やすより、消耗を減らす</li>
+          <li>ハートと無限の富は、連動する</li>
+        </ul>
+        <h4 style="color: var(--gold);">✨ 5/16降臨ワード</h4>
+        <ul class="killer-list">
+          <li class="new">進化に対してハートが閉じるのが、正常</li>
+          <li class="new">異常値を叩き出さないと、進化しない</li>
+          <li class="new">住む世界、変わった（サラリーマン辞めた話）</li>
+          <li class="new">怖いまま、ハートを開く</li>
+          <li class="new">バンジーをブランコ感覚で乗れるようになる</li>
+        </ul>
+      </div>
+
+      <div class="three-card">
+        <div class="chakra-kanji">地</div>
+        <div class="chakra-label">体 ／ 神経系</div>
+        <div class="person-name">LaylaΩさん</div>
+        <div class="role-label">▶ 内側からの解放・身体に降ろす翻訳者</div>
+        <h4>◆ キラーワード（事前設計）</h4>
+        <ul class="killer-list">
+          <li>進化はドラゴンボールの飛躍じゃない。ふにゃふにゃでええんやで</li>
+          <li>過去ベースの体が、90%を握ってる</li>
+          <li>天才は、緩んでる</li>
+          <li>安心の中でしかチャレンジできない</li>
+        </ul>
+        <h4 style="color: var(--gold);">✨ 5/16降臨ワード</h4>
+        <ul class="killer-list">
+          <li class="new">体は呪いを無効化するために使う</li>
+          <li class="new">3もらって10になる、セルフラブの増幅</li>
+          <li class="new">生きてるだけで、私たちは勝ち組</li>
+          <li class="new">DNAは環境で引き出される因子が変わる</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ BATON ─</span>
+    <h2 class="section-title">バトンの繋ぎ方  ✅ 完璧に繋がった</h2>
+    <p class="section-lead">設計通りのバトンで、流れに切れ目を作らなかった。実際に交わされた言葉の記録。</p>
+
+    <div class="baton">
+      <div class="baton-header">
+        <span class="baton-from">レナさん</span>
+        <span class="baton-arrow">▶</span>
+        <span class="baton-to">堀内さん</span>
+      </div>
+      <div class="baton-quote">
+        <span class="speaker">LENA ──</span>
+        「今、あなたの松果体に、新しい次元の周波数が降りてきましたね。<br>じゃあ、その新しい世界に向かって、<br>あなたのハートは今、どうなっていますか？<br>──堀内さん、ここからお願いします」
+      </div>
+    </div>
+
+    <div class="baton">
+      <div class="baton-header">
+        <span class="baton-from">堀内さん</span>
+        <span class="baton-arrow">▶</span>
+        <span class="baton-to">LaylaΩさん</span>
+      </div>
+      <div class="baton-quote">
+        <span class="speaker">HORIUCHI ──</span>
+        「ハートが新しい未来に開いた。<br>でも、それを身体に降ろさないと、現実は変わらない。<br>身体まで降ろして、安心の中で着地する作業──<br>LaylaΩさん、ここからお願いします」
+      </div>
+    </div>
+
+    <div class="baton">
+      <div class="baton-header">
+        <span class="baton-from">LaylaΩさん</span>
+        <span class="baton-arrow">▶</span>
+        <span class="baton-to">3人で</span>
+      </div>
+      <div class="baton-quote">
+        <span class="speaker">LAYLA ──</span>
+        「これでみんな、天から地まで繋がりました。<br>じゃあ最後に、この状態を、音で固めましょう。<br>──レナちゃん、おねがい✨」
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-label">─ STANCE ─</span>
+    <h2 class="section-title">本番で守った姿勢（記録）</h2>
+    <p class="section-lead">この夜、3人で守った合言葉。<br>※ 現方針では「売らない」「資料は説明しない」は引き続き活きており、純度方針と整合する。</p>
+    <div class="stance">
+      <div class="stance-row">
+        <div class="stance-mark">①</div>
+        <div class="stance-content"><strong>世界観を渡す</strong> ── 金額の話をしなかった。「ここまでです✨」で終えた。 ✅</div>
+      </div>
+      <div class="stance-row">
+        <div class="stance-mark">②</div>
+        <div class="stance-content"><strong>資料は説明しない</strong> ── 3人のエネルギーで持っていった。 ✅</div>
+      </div>
+      <div class="stance-row">
+        <div class="stance-mark">③</div>
+        <div class="stance-content"><strong>拡散される「言葉の種」を意図的に置く</strong> ── 各人キラーワード＋新フレーズ多数発生。 ✅</div>
+      </div>
+      <div class="stance-row">
+        <div class="stance-mark">④</div>
+        <div class="stance-content"><strong>3人で「招待」する</strong> ── 売るんじゃなく「この世界に来る人を見つけた」。 ✅</div>
+      </div>
+      <div class="stance-row">
+        <div class="stance-mark">⑤</div>
+        <div class="stance-content"><strong>参加者を巻き込む</strong> ── スタンプ・コメントで参加者自身が場を作った。 ✅</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="text-align:center;">
+    <span class="section-label">─ NEXT ─</span>
+    <h2 class="section-title">現行方針へ</h2>
+    <p class="section-lead" style="margin: 0 auto 24px;">2026-05-27以降は <strong style="color:var(--gold);">純度レベル0-4</strong> と <strong style="color:var(--gold);">「分からなくても接続OK」</strong> を核とする新方針が適用されています。<br>最新のロードマップはこちら。</p>
+    <a class="link-back" href="./launch-roadmap.html">◇ OTO 現行ロードマップへ ◇</a>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-decoration">◇　◆　◇</div>
+    <div>OTO ── 人の進化  ／  3人ユニット（堀内・齋藤レナ・LaylaΩ）</div>
+    <div>2026.05.16  ／  Seminar #1 Implementation Record（アーカイブ）</div>
+    <div style="margin-top:16px; opacity:0.6;">Internal use only ── OTO members  ／  Last updated: 2026-05-27（新方針反映 ／ アーカイブ化）</div>
+  </footer>
+</div>
+</body>
+</html>
